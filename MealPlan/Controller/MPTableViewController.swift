@@ -9,29 +9,33 @@ import UIKit
 
 
 enum MPTableViewCellType {
-    case horizontalCollectionView
+    case horizontalCollectionViewType
 }
 
 extension MPTableViewCellType {
     func configureCell()-> MPTableViewCellProtocol {
         switch (self) {
-        case .horizontalCollectionView: return HorizontalCollectionView()
+        case .horizontalCollectionViewType: return HorizontalCollectionViewItem()
         }
     }
 }
 
 protocol MPTableViewCellProtocol {
-    var cell: UITableViewCell {get}
+    //var cell: UITableViewCell {get}
     var reuseIdentifier: String {get}
     var rowHeight: Int {get}
 }
 
-struct HorizontalCollectionView: MPTableViewCellProtocol {
-    var cell: UITableViewCell = CalendarCell()
+struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
+    //var cell: UITableViewCell = CalendarCell()
+    var reuseIdentifier: String = "HorizontalCollectionView"
+    var rowHeight: Int = 70
+}
+
+struct CalendarView: MPTableViewCellProtocol {
     var reuseIdentifier: String = "CalendarCell"
     var rowHeight: Int = 263
 }
-
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
@@ -51,8 +55,10 @@ extension MPTableViewController {
         let item = rowArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.configureCell().reuseIdentifier, for: indexPath)
         switch (item) {
-        case .horizontalCollectionView:
-            let cell = cell as! CalendarCell //?replace?
+        case .horizontalCollectionViewType:
+            let cell = cell as! HorizontalCollectionView
+            cell.frame = tableView.bounds
+            cell.layoutIfNeeded()
             return cell
         }
     }

@@ -18,6 +18,11 @@
 		AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E4E2097558C0083B229 /* CalendarCell.xib */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
 		ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* TestViewController.swift */; };
+		ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */; };
+		ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC3120984E87001B44CF /* HorizontalCollectionViewCell.xib */; };
+		ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC352098506B001B44CF /* HorizontalCollectionView.swift */; };
+		ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC362098506B001B44CF /* HorizontalCollectionView.xib */; };
+		ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		AD2C8E4E2097558C0083B229 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2C20983CA6001B44CF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		ADAEAC3120984E87001B44CF /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		ADAEAC352098506B001B44CF /* HorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionView.swift; sourceTree = "<group>"; };
+		ADAEAC362098506B001B44CF /* HorizontalCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionView.xib; sourceTree = "<group>"; };
+		ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCollectionViewController.swift; sourceTree = "<group>"; };
 		D37309EFBDECF37451CD0041 /* Pods-MealPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,8 +106,10 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD2C8E4D2097558C0083B229 /* CalendarCell.swift */,
-				AD2C8E4E2097558C0083B229 /* CalendarCell.xib */,
+				ADAEAC342098501A001B44CF /* HorizontalCollectionView */,
+				ADAEAC2F20984E56001B44CF /* HorizontalCollectionViewCell */,
+				ADAEAC3920985B25001B44CF /* CalendarView */,
+				ADAEAC2E20984E38001B44CF /* CalendarCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -106,8 +118,43 @@
 			isa = PBXGroup;
 			children = (
 				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
+				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD2C8E4D2097558C0083B229 /* CalendarCell.swift */,
+				AD2C8E4E2097558C0083B229 /* CalendarCell.xib */,
+			);
+			path = CalendarCell;
+			sourceTree = "<group>";
+		};
+		ADAEAC2F20984E56001B44CF /* HorizontalCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */,
+				ADAEAC3120984E87001B44CF /* HorizontalCollectionViewCell.xib */,
+			);
+			path = HorizontalCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		ADAEAC342098501A001B44CF /* HorizontalCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEAC352098506B001B44CF /* HorizontalCollectionView.swift */,
+				ADAEAC362098506B001B44CF /* HorizontalCollectionView.xib */,
+			);
+			path = HorizontalCollectionView;
+			sourceTree = "<group>";
+		};
+		ADAEAC3920985B25001B44CF /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		B8EDB626E49D95E5CD959838 /* Pods */ = {
@@ -187,9 +234,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
+				ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */,
 				AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +291,9 @@
 			files = (
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
+				ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */,
+				ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */,
+				ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */,
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
 				ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */,
