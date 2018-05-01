@@ -19,7 +19,7 @@ class TestViewController: MPTableViewController {
         //detailTableView.register(UINib(nibName: "contentDetailHeaderImageCell", bundle: nil), forCellReuseIdentifier: "contentDetailHeaderImageCell")
         testTable.delegate = self
         testTable.dataSource = self
-        testTable.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")//only for reuse? but if this line is removed, it crashes!
+        testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
         testTable.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         
         configureTableView()
@@ -28,6 +28,7 @@ class TestViewController: MPTableViewController {
 
     func configureTableView(){
         
+        self.rowArray.append(.calendarCollectionViewType)
         self.rowArray.append(.horizontalCollectionViewType)
         
     }

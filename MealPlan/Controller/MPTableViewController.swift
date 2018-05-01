@@ -10,12 +10,14 @@ import UIKit
 
 enum MPTableViewCellType {
     case horizontalCollectionViewType
+    case calendarCollectionViewType
 }
 
 extension MPTableViewCellType {
     func configureCell()-> MPTableViewCellProtocol {
         switch (self) {
         case .horizontalCollectionViewType: return HorizontalCollectionViewItem()
+        case .calendarCollectionViewType: return CalendarViewItem()
         }
     }
 }
@@ -32,9 +34,9 @@ struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
     var rowHeight: Int = 70
 }
 
-struct CalendarView: MPTableViewCellProtocol {
-    var reuseIdentifier: String = "CalendarCell"
-    var rowHeight: Int = 263
+struct CalendarViewItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "CalendarCollectionView"
+    var rowHeight: Int = 246
 }
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -57,6 +59,11 @@ extension MPTableViewController {
         switch (item) {
         case .horizontalCollectionViewType:
             let cell = cell as! HorizontalCollectionView
+            cell.frame = tableView.bounds
+            cell.layoutIfNeeded()
+            return cell
+        case .calendarCollectionViewType:
+            let cell = cell as! CalendarCollectionView
             cell.frame = tableView.bounds
             cell.layoutIfNeeded()
             return cell

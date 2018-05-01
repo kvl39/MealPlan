@@ -11,8 +11,6 @@ import UIKit
 class HorizontalCollectionView: MPCollectionViewController {
 
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
-    //var imageArray:[UIImage] = []
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
