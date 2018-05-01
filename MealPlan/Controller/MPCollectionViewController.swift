@@ -9,9 +9,22 @@
 import UIKit
 
 
-//class MPCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-//    
-//    var imageArray:[UIImage] = []
-//    
-//    
-//}
+class MPCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    var imageArray:[UIImage] = []
+
+}
+
+extension MPCollectionViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as! HorizontalCollectionViewCell
+        cell.collectionViewImage.image = imageArray[indexPath.row]
+        return cell
+    }
+    
+}

@@ -8,14 +8,20 @@
 
 import UIKit
 
-class HorizontalCollectionView: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class HorizontalCollectionView: MPCollectionViewController {
 
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
-    var imageArray:[UIImage] = []
+    //var imageArray:[UIImage] = []
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        configureCollectionView()
+        
+    }
+    
+    func configureCollectionView(){
         
         self.horizontalCollectionView.delegate = self
         self.horizontalCollectionView.dataSource = self
@@ -42,16 +48,3 @@ class HorizontalCollectionView: UITableViewCell, UICollectionViewDelegate, UICol
     
 }
 
-extension HorizontalCollectionView {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as! HorizontalCollectionViewCell
-        cell.collectionViewImage.image = imageArray[indexPath.row]
-        return cell
-    }
-    
-}
