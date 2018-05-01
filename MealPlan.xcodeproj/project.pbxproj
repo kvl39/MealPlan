@@ -14,6 +14,10 @@
 		AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E3C2096EFAF0083B229 /* Assets.xcassets */; };
 		AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E3E2096EFAF0083B229 /* LaunchScreen.storyboard */; };
 		AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4B20971AFA0083B229 /* CustomCell.swift */; };
+		AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4D2097558C0083B229 /* CalendarCell.swift */; };
+		AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E4E2097558C0083B229 /* CalendarCell.xib */; };
+		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
+		ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		AD2C8E3F2096EFAF0083B229 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2C8E412096EFAF0083B229 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD2C8E4B20971AFA0083B229 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		AD2C8E4D2097558C0083B229 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		AD2C8E4E2097558C0083B229 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
+		ADAEAC2C20983CA6001B44CF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D37309EFBDECF37451CD0041 /* Pods-MealPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +77,7 @@
 				AD2C8E352096EFAD0083B229 /* AppDelegate.swift */,
 				AD2C8E372096EFAD0083B229 /* ViewController.swift */,
 				AD2C8E392096EFAD0083B229 /* Main.storyboard */,
+				ADAEAC2C20983CA6001B44CF /* TestViewController.swift */,
 				AD2C8E4B20971AFA0083B229 /* CustomCell.swift */,
 				AD2C8E3C2096EFAF0083B229 /* Assets.xcassets */,
 				AD2C8E3E2096EFAF0083B229 /* LaunchScreen.storyboard */,
@@ -87,6 +96,8 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD2C8E4D2097558C0083B229 /* CalendarCell.swift */,
+				AD2C8E4E2097558C0083B229 /* CalendarCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,6 +105,7 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +190,7 @@
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
+				AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,9 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
+				ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */,
+				AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
