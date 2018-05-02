@@ -11,20 +11,20 @@ import UIKit
 
 class MPCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    var imageArray:[UIImage] = []
-    //var viewArray
+    //var imageArray:[UIImage] = []
+    var viewArray: [UIView] = []
 
 }
 
 extension MPCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArray.count
+        return viewArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as! HorizontalCollectionViewCell
-        cell.collectionViewImage.image = imageArray[indexPath.row]
+        cell.collectionViewCell.addSubview(viewArray[indexPath.row])   // = viewArray[indexPath.row]
         return cell
     }
     

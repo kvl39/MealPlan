@@ -35,17 +35,23 @@ class TestViewController: MPTableViewController {
         testTable.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         self.rowArray.append(.calendarCollectionViewType)
        
-       var imageArray = [UIImage]()
-       imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-       imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-       imageArray.append(#imageLiteral(resourceName: "btn_back"))
-       imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-       imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-       imageArray.append(#imageLiteral(resourceName: "btn_back"))
+       var imageArray = [UIView]()
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
+       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
        self.rowArray.append(.horizontalCollectionViewType(.imageType, imageArray))
         
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         
+    }
+    
+    func generateViewWithImage(image: UIImage)->UIView {
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+        imageView.image = image
+        return imageView
     }
     
     @objc func onSelectDate(notification:Notification)

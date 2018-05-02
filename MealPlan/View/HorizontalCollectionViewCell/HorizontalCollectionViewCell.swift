@@ -11,8 +11,9 @@ import UIKit
 class HorizontalCollectionViewCell: UICollectionViewCell {
 
    
-    @IBOutlet weak var collectionViewImage: UIImageView!
+   
     
+    @IBOutlet weak var collectionViewCell: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

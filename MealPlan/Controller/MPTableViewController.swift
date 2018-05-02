@@ -9,14 +9,14 @@ import UIKit
 
 
 enum MPTableViewCellType {
-    case horizontalCollectionViewType(horizontalCollectionViewItemType, [UIImage])
+    case horizontalCollectionViewType(horizontalCollectionViewItemType, [UIView])
     case calendarCollectionViewType
 }
 
 extension MPTableViewCellType {
     func configureCell()-> MPTableViewCellProtocol {
         switch (self) {
-        case .horizontalCollectionViewType(let type, let Array): return HorizontalCollectionViewItem(collectionViewItemType: type, imageArray: Array)
+        case .horizontalCollectionViewType(let type, let Array): return HorizontalCollectionViewItem(collectionViewItemType: type, viewArray: Array)
         case .calendarCollectionViewType: return CalendarViewItem()
         }
     }
@@ -37,12 +37,12 @@ struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "HorizontalCollectionView"
     var rowHeight: Int = 70
     var collectionViewItemType: horizontalCollectionViewItemType = .imageType
-    var imageArray: [UIImage] = []
+    var viewArray: [UIView] = []
     
     init(collectionViewItemType: horizontalCollectionViewItemType = .imageType,
-         imageArray: [UIImage] = []) {
+         viewArray: [UIView] = []) {
         self.collectionViewItemType = collectionViewItemType
-        self.imageArray = imageArray
+        self.viewArray = viewArray
     }
 }
 
@@ -79,7 +79,7 @@ extension MPTableViewController {
             let cell = cell as! HorizontalCollectionView
             guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return cell}
             cell.type = itemStruct.collectionViewItemType
-            cell.imageArray = itemStruct.imageArray
+            cell.viewArray = itemStruct.viewArray
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             return cell

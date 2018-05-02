@@ -19,20 +19,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hLN-gi-LSi">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-j3-80G">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="49.5"/>
-                    </imageView>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hLN-gi-LSi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cxn-FB-SYg"/>
-                    <constraint firstAttribute="bottom" secondItem="hLN-gi-LSi" secondAttribute="bottom" id="FcS-KF-xjM"/>
-                    <constraint firstItem="hLN-gi-LSi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XIl-Rc-ZSI"/>
-                    <constraint firstAttribute="trailing" secondItem="hLN-gi-LSi" secondAttribute="trailing" id="ZfE-ua-E2w"/>
+                    <constraint firstItem="PAN-j3-80G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Igh-UF-N7k"/>
+                    <constraint firstItem="PAN-j3-80G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="b0u-va-P3r"/>
+                    <constraint firstAttribute="trailing" secondItem="PAN-j3-80G" secondAttribute="trailing" id="ew8-ec-5NN"/>
+                    <constraint firstAttribute="bottom" secondItem="PAN-j3-80G" secondAttribute="bottom" id="yiL-tn-bQB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="collectionViewImage" destination="hLN-gi-LSi" id="XW3-jP-hGm"/>
+                <outlet property="collectionViewCell" destination="PAN-j3-80G" id="w6W-s0-3SH"/>
             </connections>
             <point key="canvasLocation" x="-96" y="124"/>
         </tableViewCell>

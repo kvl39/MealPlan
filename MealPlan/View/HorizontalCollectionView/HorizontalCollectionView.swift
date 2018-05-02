@@ -28,16 +28,16 @@ class HorizontalCollectionView: MPCollectionViewController {
         self.horizontalCollectionView.dataSource = self
         self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
         
-        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
-        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+//        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
         
     }
 
