@@ -12,6 +12,7 @@ import UIKit
 class MPCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var imageArray:[UIImage] = []
+    //var viewArray
 
 }
 

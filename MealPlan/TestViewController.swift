@@ -34,7 +34,15 @@ class TestViewController: MPTableViewController {
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
         testTable.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         self.rowArray.append(.calendarCollectionViewType)
-        self.rowArray.append(.horizontalCollectionViewType)
+       
+       var imageArray = [UIImage]()
+       imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+       imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+       imageArray.append(#imageLiteral(resourceName: "btn_back"))
+       imageArray.append(#imageLiteral(resourceName: "btn_like_selected"))
+       imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+       imageArray.append(#imageLiteral(resourceName: "btn_back"))
+       self.rowArray.append(.horizontalCollectionViewType(.imageType, imageArray))
         
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         

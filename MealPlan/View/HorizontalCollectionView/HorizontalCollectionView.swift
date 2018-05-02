@@ -12,11 +12,14 @@ class HorizontalCollectionView: MPCollectionViewController {
 
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
     
+    var type: horizontalCollectionViewItemType = .chartType
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         configureCollectionView()
-        
+        print("here")
+        print(type)
     }
     
     func configureCollectionView(){
@@ -43,6 +46,8 @@ class HorizontalCollectionView: MPCollectionViewController {
 
         // Configure the view for the selected state
     }
+    
+    
     
 }
 
