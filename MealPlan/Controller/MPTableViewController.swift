@@ -39,8 +39,13 @@ struct CalendarViewItem: MPTableViewCellProtocol {
     var rowHeight: Int = 246
 }
 
+protocol MPTableViewControllerDelegateProtocol: class {
+    func MPCalendarCellDidSelect()
+}
+
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
+    weak var delegate: MPTableViewControllerDelegateProtocol?
 }
 
 extension MPTableViewController {
@@ -59,19 +64,28 @@ extension MPTableViewController {
         switch (item) {
         case .horizontalCollectionViewType:
             let cell = cell as! HorizontalCollectionView
-            cell.frame = tableView.bounds
-            cell.layoutIfNeeded()
+            //cell.frame = tableView.bounds
+            //cell.layoutIfNeeded()
             return cell
         case .calendarCollectionViewType:
             let cell = cell as! CalendarCollectionView
-            cell.frame = tableView.bounds
-            cell.layoutIfNeeded()
+            //cell.frame = tableView.bounds
+            //cell.layoutIfNeeded()
+            //cell.delegate = self
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
+    }
+    
+}
+
+extension MPTableViewController: MPCalendarViewDelegateProtocol {
+    
+    func calendarDidSelect(date: Date) {
+        self.delegate?.MPCalendarCellDidSelect()
     }
     
 }

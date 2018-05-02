@@ -9,10 +9,15 @@
 import UIKit
 import JTAppleCalendar
 
+protocol MPCalendarViewDelegateProtocol: class {
+    func calendarDidSelect(date: Date)
+}
+
 class MPCalendarView: UITableViewCell {
     
     let formatter = DateFormatter()
-    
+    weak var delegate: MPCalendarViewDelegateProtocol?
+    //static let notificationName = Notification.Name("myNotificationName")
 }
 
 extension MPCalendarView: JTAppleCalendarViewDataSource {
@@ -87,6 +92,8 @@ extension MPCalendarView: JTAppleCalendarViewDelegate {
         guard let validCell = cell as? CalendarCell else {return}
         validCell.selectedView.isHidden = false
         configureTextColor(cell: validCell, cellState: cellState)
+        self.delegate?.calendarDidSelect(date: date)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SelectDate"), object: nil, userInfo:["date": formatter.string(from: date)])
         
     }
     
