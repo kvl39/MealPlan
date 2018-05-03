@@ -16,6 +16,9 @@
 		AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4B20971AFA0083B229 /* CustomCell.swift */; };
 		AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4D2097558C0083B229 /* CalendarCell.swift */; };
 		AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E4E2097558C0083B229 /* CalendarCell.xib */; };
+		AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B48209B0545009915F3 /* AddPageHistoryController.swift */; };
+		AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4A209B0649009915F3 /* AddPageViewController.swift */; };
+		AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */; };
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
 		ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* TestViewController.swift */; };
@@ -42,6 +45,9 @@
 		AD2C8E4B20971AFA0083B229 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AD2C8E4D2097558C0083B229 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		AD2C8E4E2097558C0083B229 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		AD566B48209B0545009915F3 /* AddPageHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageHistoryController.swift; sourceTree = "<group>"; };
+		AD566B4A209B0649009915F3 /* AddPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageViewController.swift; sourceTree = "<group>"; };
+		AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePickupController.swift; sourceTree = "<group>"; };
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2C20983CA6001B44CF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 				ADAEAC4420985E53001B44CF /* MPCalendarView.swift */,
 				AD7044232099A5590022E15D /* MPPieChart.swift */,
+				AD566B48209B0545009915F3 /* AddPageHistoryController.swift */,
+				AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */,
+				AD566B4A209B0649009915F3 /* AddPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,7 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
+				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
+				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */,
 				ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */,
 				ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */,
@@ -316,6 +327,7 @@
 				ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */,
 				AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */,
 				ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */,
+				AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
