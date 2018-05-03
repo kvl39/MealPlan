@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 
 class TestViewController: MPTableViewController {
 
@@ -39,9 +38,9 @@ class TestViewController: MPTableViewController {
     func configureAddButton() {
         
         addButton = generateButtonWithConstraint(title: "+", bottomConstraintConstant: -20.0)
-        takePictureButton = generateButtonWithConstraint(title: "takePicture", bottomConstraintConstant: -60.0)
-        typeButton = generateButtonWithConstraint(title: "type", bottomConstraintConstant: -100.0)
-        shareButton = generateButtonWithConstraint(title: "share", bottomConstraintConstant: -140.0)
+        takePictureButton = generateButtonWithConstraint(title: "takePicture", bottomConstraintConstant: -80.0)
+        typeButton = generateButtonWithConstraint(title: "type", bottomConstraintConstant: -140.0)
+        shareButton = generateButtonWithConstraint(title: "share", bottomConstraintConstant: -200.0)
         addButtonRightConstraint = NSLayoutConstraint(item: addButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: -20)
         takePictureButtonRightConstraint = NSLayoutConstraint(item: takePictureButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: 100)
         typeButtonRightConstraint = NSLayoutConstraint(item: typeButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: 100)
@@ -70,16 +69,6 @@ class TestViewController: MPTableViewController {
     }
     
     func showButton() {
-//        UIView.animate(withDuration: 0.5) {
-//            //self.takePictureButton?.alpha = 1
-//            self.typeButton?.alpha = 1
-//            self.shareButton?.alpha = 1
-//
-//            //self.takePictureButtonRightConstraint?.constant = -20
-//            self.typeButtonRightConstraint?.constant = -20
-//            self.shareButtonRightConstraint?.constant = -20
-//            self.view.layoutIfNeeded()
-//        }
         
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.takePictureButton?.alpha = 1
@@ -120,14 +109,14 @@ class TestViewController: MPTableViewController {
         button.setTitle("", for: .normal)
         //button.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
         button.setTitle(title, for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor.black
         self.view.addSubview(button)
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.frame.size = CGSize(width: 50.0, height: 50.0)
-//        let rightConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: rightConstraintConstant)
+        let heightConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 40)
+        let widthConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 40)
         let bottomConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottomMargin, multiplier: 1.0, constant: bottomConstraintConstant)
-        view.addConstraints([bottomConstraint])
+        view.addConstraints([heightConstraint, widthConstraint, bottomConstraint])
         return button
     }
 
