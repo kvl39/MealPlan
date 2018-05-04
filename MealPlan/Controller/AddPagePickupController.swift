@@ -13,6 +13,8 @@ class AddPagePickupController: MPTableViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let recipeManager = RecipeManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,8 @@ class AddPagePickupController: MPTableViewController {
         tableView.dataSource = self
         
         configureTableView()
+        
+        recipeManager.getRecipe(keyWord: "?q=fish&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=2")
     }
     
     func configureTableView() {

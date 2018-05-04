@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nme-7q-flW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Esc-KF-OKA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,6 +91,7 @@
                             <constraint firstAttribute="bottom" secondItem="klY-1F-Txy" secondAttribute="bottom" id="aYi-Mi-bsT"/>
                             <constraint firstItem="klY-1F-Txy" firstAttribute="top" secondItem="OBX-WA-ydR" secondAttribute="top" id="dUw-Sn-JoP"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="JO3-57-O7B"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="klY-1F-Txy" id="bMI-HK-u5o"/>
@@ -120,6 +121,7 @@
                             <constraint firstAttribute="bottom" secondItem="QGt-9T-Bm8" secondAttribute="bottom" id="KtO-3r-CgX"/>
                             <constraint firstAttribute="trailing" secondItem="QGt-9T-Bm8" secondAttribute="trailing" id="fSj-O0-Eal"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mc7-OK-Nw5"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="QGt-9T-Bm8" id="ovb-Nu-XWY"/>
