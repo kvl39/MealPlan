@@ -36,21 +36,21 @@ class AddPageViewController: UIViewController {
             popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             ])
         
-        popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        popupView.alpha = 0
+//        popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        popupView.alpha = 1
         
-        UIView.animate(withDuration: 0.4) {
+//        UIView.animate(withDuration: 0.4) {
             self.visualEffectView.effect = self.effect
-            self.popupView.alpha = 1
-            self.popupView.transform = CGAffineTransform.identity
-        }
+//            self.popupView.alpha = 1
+//            self.popupView.transform = CGAffineTransform.identity
+//        }
         
         isPopup = true
     }
     
     func animateOut() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            //self.popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
             self.popupView.alpha = 0
             self.visualEffectView.effect = nil
         }) { (success:Bool) in
