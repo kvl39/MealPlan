@@ -18,8 +18,6 @@ class HorizontalCollectionView: MPCollectionViewController {
         super.awakeFromNib()
         
         configureCollectionView()
-        print("here")
-        print(type)
     }
     
     func configureCollectionView(){

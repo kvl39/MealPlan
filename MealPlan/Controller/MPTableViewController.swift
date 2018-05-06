@@ -11,6 +11,7 @@ import UIKit
 enum MPTableViewCellType {
     case horizontalCollectionViewType([UIView])
     case calendarCollectionViewType
+    case recipeCellType
 }
 
 extension MPTableViewCellType {
@@ -18,6 +19,7 @@ extension MPTableViewCellType {
         switch (self) {
         case .horizontalCollectionViewType(let Array): return HorizontalCollectionViewItem(viewArray: Array)
         case .calendarCollectionViewType: return CalendarViewItem()
+        case .recipeCellType: return RecipeCellItem()
         }
     }
 }
@@ -47,6 +49,11 @@ struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
 struct CalendarViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "CalendarCollectionView"
     var rowHeight: Int = 246
+}
+
+struct RecipeCellItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeTableViewCell"
+    var rowHeight: Int = 100
 }
 
 protocol MPTableViewControllerDelegateProtocol: class {
@@ -84,6 +91,9 @@ extension MPTableViewController {
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             //cell.delegate = self
+            return cell
+        case .recipeCellType:
+            let cell = cell as! RecipeTableViewCell
             return cell
         }
     }
