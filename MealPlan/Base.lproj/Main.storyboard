@@ -115,7 +115,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <segue destination="mYB-r8-15F" kind="embed" id="FiX-g6-6LV"/>
+                        <segue destination="Pw1-Da-z3f" kind="embed" id="FiX-g6-6LV"/>
                     </connections>
                 </containerView>
             </objects>
@@ -159,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="363" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jfj-h8-3zz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jfj-h8-3zz">
                                 <rect key="frame" x="0.0" y="0.0" width="363" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -173,13 +173,32 @@
                             <constraint firstItem="Jfj-h8-3zz" firstAttribute="top" secondItem="8U7-ON-mYS" secondAttribute="top" id="lC6-Ab-YqH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gLc-sL-whs"/>
                     <connections>
                         <outlet property="tableView" destination="Jfj-h8-3zz" id="CXt-be-0lL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-Iq-feu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3218" y="-552"/>
+            <point key="canvasLocation" x="4156" y="-552.3238380809596"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZkH-nD-s8G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pw1-Da-z3f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4zT-P7-rmI">
+                        <rect key="frame" x="0.0" y="0.0" width="363" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mYB-r8-15F" kind="relationship" relationship="rootViewController" id="10c-8D-dzm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aI0-54-Amf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3310" y="-552"/>
         </scene>
     </scenes>
 </document>

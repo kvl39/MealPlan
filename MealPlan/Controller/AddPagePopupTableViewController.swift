@@ -46,12 +46,19 @@ class AddPagePopupTableViewController: MPTableViewController {
             cell.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
         }
         
-        var delay = 0.0
-        for cell in cells {
-            UIView.animate(withDuration: 0.5, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: [], animations: {
-                cell.transform = .identity
+//        var delay = 0.0
+//        for cell in cells {
+//            UIView.animate(withDuration: 0.5, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+//                cell.transform = .identity
+//            })
+//            delay = delay + 0.1
+//        }
+        
+        var duration = 0.1 * Double(cells.count)
+        for index in 0...cells.count-1 {
+            UIView.animate(withDuration: duration - Double(index)*0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [], animations: {
+                cells[index].transform = .identity
             })
-            delay = delay + 0.1
         }
     }
     
