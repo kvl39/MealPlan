@@ -27,35 +27,19 @@ class AddPagePopupTableViewController: MPTableViewController {
     func configureTableView(){
         
         
-        tableView.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
+        tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         
         
-        var imageArray = [UIView]()
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray))
+        var imageArray = [UIImage]()
+        imageArray.append(#imageLiteral(resourceName: "btn_like_normal"))
+        imageArray.append(#imageLiteral(resourceName: "iTunesArtwork"))
         
-        
-        var imageArray2 = [UIView]()
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
-        
-        
+        self.rowArray.append(.recipeCellType(#imageLiteral(resourceName: "btn_like_normal"), "1st row"))
+        self.rowArray.append(.recipeCellType(#imageLiteral(resourceName: "btn_back"), "2nd row"))
+
     }
     
-    func generateViewWithImage(image: UIImage)->UIView {
-        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
-        imageView.image = image
-        return imageView
-    }
+    
     
     
 

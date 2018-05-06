@@ -12,22 +12,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableViewCell" rowHeight="126" id="KGk-i7-Jjw" customClass="RecipeTableViewCell" customModule="MealPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="RecipeTableViewCell" customModule="MealPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="394" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="394" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-75-CpV">
-                        <rect key="frame" x="20" y="10" width="80" height="80"/>
+                        <rect key="frame" x="20" y="10" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="80" id="cHi-ZT-fdE"/>
-                            <constraint firstAttribute="width" constant="80" id="yRe-5y-mZw"/>
+                            <constraint firstAttribute="height" constant="60" id="cHi-ZT-fdE"/>
+                            <constraint firstAttribute="width" constant="60" id="yRe-5y-mZw"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdV-W0-qyw">
-                        <rect key="frame" x="130" y="32" width="125" height="36"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdV-W0-qyw">
+                        <rect key="frame" x="130" y="22" width="42" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="AJ0-tc-zqB"/>
                         </constraints>
@@ -37,9 +37,9 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="kbr-75-CpV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Ob-fU-hpv"/>
-                    <constraint firstItem="KdV-W0-qyw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YIf-GZ-hjb"/>
-                    <constraint firstItem="KdV-W0-qyw" firstAttribute="leading" secondItem="kbr-75-CpV" secondAttribute="trailing" constant="30" id="dlf-OV-46T"/>
+                    <constraint firstItem="KdV-W0-qyw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2TI-ne-mVy"/>
+                    <constraint firstItem="kbr-75-CpV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6Al-RW-qXA"/>
+                    <constraint firstItem="KdV-W0-qyw" firstAttribute="leading" secondItem="kbr-75-CpV" secondAttribute="trailing" constant="50" id="dlf-OV-46T"/>
                     <constraint firstItem="kbr-75-CpV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wV2-u7-QyE"/>
                 </constraints>
             </tableViewCellContentView>

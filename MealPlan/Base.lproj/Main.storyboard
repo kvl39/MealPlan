@@ -94,7 +94,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="2Vc-TZ-78M" secondAttribute="bottom" constant="20" id="Whm-Es-o2J"/>
                             <constraint firstItem="2Vc-TZ-78M" firstAttribute="leading" secondItem="gfa-SZ-Bpk" secondAttribute="leading" constant="25" id="wCI-AQ-Nx2"/>
@@ -110,7 +110,7 @@
                 <containerView opaque="NO" contentMode="scaleToFill" id="qiJ-W1-vpa">
                     <rect key="frame" x="0.0" y="0.0" width="363" height="300"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.88366866438356162" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <segue destination="mYB-r8-15F" kind="embed" id="FiX-g6-6LV"/>
                     </connections>
@@ -158,13 +158,14 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jfj-h8-3zz">
                                 <rect key="frame" x="0.0" y="0.0" width="363" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAA-Q7-wPn">
                                 <rect key="frame" x="158.5" y="258" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jfj-h8-3zz" firstAttribute="leading" secondItem="8U7-ON-mYS" secondAttribute="leading" id="DL6-Gs-dfw"/>
                             <constraint firstItem="WAA-Q7-wPn" firstAttribute="top" secondItem="Jfj-h8-3zz" secondAttribute="bottom" constant="8" id="FJv-aF-gY9"/>
