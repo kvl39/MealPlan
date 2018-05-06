@@ -32,8 +32,8 @@ class TestViewController: MPTableViewController {
 
         configureTableView()
         configureAddButton()
-        
     }
+   
     
     func configureAddButton() {
         
@@ -161,6 +161,7 @@ class TestViewController: MPTableViewController {
               let date = userInfo["date"] as? String else {return}
         print(date)
     }
+    
     
 
 }
