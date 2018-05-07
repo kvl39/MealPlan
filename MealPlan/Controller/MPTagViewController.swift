@@ -19,12 +19,24 @@ extension String {
 
 class MPTagViewController: UIViewController {
     
-    var tempDataArray: [String] = ["A", "BBB", "CCCC", "DDDDD", "EEEEEE", "FFFFFFF"]
+    //var dataArray: [String] = ["A", "BBB", "CCCC", "DDDDD", "EEEEEE", "FFFFFFF"]
+    var tagArray: AddPageTag!
+    var observation: NSKeyValueObservation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createTag(onView: self.view, with: tempDataArray)
+        createTag(onView: self.view, with: tagArray.tags)
+        configureObserver()
+    }
+    
+    func configureObserver() {
+        
+        observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, change) in
+            //print(change)
+            print(tagArray.tags)
+        }
+        
     }
     
     func createTag(onView view: UIView, with array: [String]) {
@@ -76,8 +88,8 @@ class MPTagViewController: UIViewController {
     }
     
     @objc func removeTag(_ sender: UIButton) {
-        tempDataArray.remove(at: sender.tag-1)
-        createTag(onView: self.view, with: tempDataArray)
+        tagArray.tags.remove(at: sender.tag-1)
+        createTag(onView: self.view, with: tagArray.tags)
     }
     
 

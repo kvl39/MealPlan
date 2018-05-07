@@ -16,6 +16,7 @@ class AddPageViewController: UIViewController {
     
     var effect: UIVisualEffect!
     var isPopup: Bool = false
+    var tags: AddPageTag = AddPageTag()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,13 @@ class AddPageViewController: UIViewController {
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "AddPageToTagView") {
+            let vc = segue.destination as! MPTagViewController
+            vc.tagArray = self.tags
+        }
     }
     
     func animateIn(senderTag: Int) {
@@ -66,6 +74,8 @@ class AddPageViewController: UIViewController {
 
 
     @IBAction func selectByAction(_ sender: UIButton) {
+        
+        self.tags.tags.append("new")
         
         if isPopup {
             animateOut()
