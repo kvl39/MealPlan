@@ -26,7 +26,7 @@ class MPTagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        createTag(onView: self.view, with: tagArray.tags)
+        //createTag(onView: self.view, with: tagArray.tags)
         configureObserver()
     }
     
@@ -35,6 +35,7 @@ class MPTagViewController: UIViewController {
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, change) in
             //print(change)
             print(tagArray.tags)
+            self.createTag(onView: self.view, with: tagArray.tags)
         }
         
     }

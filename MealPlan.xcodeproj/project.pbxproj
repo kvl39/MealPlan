@@ -32,6 +32,7 @@
 		AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */; };
 		AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
+		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
 		ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* TestViewController.swift */; };
 		ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */; };
@@ -73,6 +74,7 @@
 		AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeClassModel.swift; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
+		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2C20983CA6001B44CF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				AD566B4A209B0649009915F3 /* AddPageViewController.swift */,
 				AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */,
 				AD53A1F3209FF15D0016E4D1 /* MPTagViewController.swift */,
+				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
+				ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,

@@ -58,12 +58,7 @@ class AddPagePopupTableViewController: MPTableViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = self.storyboard!.instantiateViewController(withIdentifier: "contentDetailView") as! ContentDetailViewController
-//        self.navigationController!.pushViewController(vc, animated: true)
-//        vc.article = articles[indexPath.row]
-//        vc.cell = self.discoverCollectionView.cellForItem(at: indexPath) as! DiscoveryCollectionViewCell
-//        vc.rowNumber = indexPath.row
-//        vc.delegate = self
+
         
         if self.recipeClass.childArray.count > 0 {
             //push to next table view
