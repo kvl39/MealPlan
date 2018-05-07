@@ -154,7 +154,7 @@
         <!--Add Page Popup Table View Controller-->
         <scene sceneID="G6U-Xc-JrO">
             <objects>
-                <viewController id="mYB-r8-15F" customClass="AddPagePopupTableViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPagePopupTableViewController" id="mYB-r8-15F" customClass="AddPagePopupTableViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8U7-ON-mYS">
                         <rect key="frame" x="0.0" y="0.0" width="363" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
