@@ -30,6 +30,9 @@ class AddPageViewController: UIViewController {
         if (segue.identifier == "AddPageToTagView") {
             let vc = segue.destination as! MPTagViewController
             vc.tagArray = self.tags
+        } else if (segue.identifier == "AddPageToSearchView") {
+            let vc = segue.destination as! SearchViewController
+            vc.tagArray = self.tags
         }
     }
     
@@ -75,9 +78,9 @@ class AddPageViewController: UIViewController {
 
     @IBAction func selectByAction(_ sender: UIButton) {
         
-        self.tags.tags.append("new")
         
         if isPopup {
+            self.tags.tags.append("chicken")
             animateOut()
         } else {
             animateIn(senderTag: 0)

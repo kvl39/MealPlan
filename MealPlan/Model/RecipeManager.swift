@@ -26,6 +26,7 @@ struct RecipeManager {
         recipeProvider.getRecipe(keyword: keyWord, success: { (recipe) in
             
             print(recipe)
+            self.delegate?.manager(self, didGet: recipe)
             
         }) { (error) in
             print(error)

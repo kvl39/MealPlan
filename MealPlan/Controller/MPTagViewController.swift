@@ -34,7 +34,7 @@ class MPTagViewController: UIViewController {
         
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, change) in
             //print(change)
-            print(tagArray.tags)
+            //print(tagArray.tags)
             self.createTag(onView: self.view, with: tagArray.tags)
         }
         

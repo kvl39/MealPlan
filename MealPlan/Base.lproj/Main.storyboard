@@ -69,7 +69,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-ud-r8d">
                                 <rect key="frame" x="0.0" y="421" width="375" height="166"/>
                                 <connections>
-                                    <segue destination="mGc-JB-OaZ" kind="embed" id="8ud-5E-FWC"/>
+                                    <segue destination="mGc-JB-OaZ" kind="embed" identifier="AddPageToSearchView" id="8ud-5E-FWC"/>
                                 </connections>
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6I-IV-6Hx">
@@ -244,15 +244,30 @@
             </objects>
             <point key="canvasLocation" x="3336" y="286"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="AKn-Hf-OLW">
             <objects>
-                <viewController id="mGc-JB-OaZ" sceneMemberID="viewController">
+                <viewController id="mGc-JB-OaZ" customClass="SearchViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIn-om-Mh7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CwY-ar-eDe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CwY-ar-eDe" firstAttribute="top" secondItem="FIn-om-Mh7" secondAttribute="top" id="6Tk-4W-gXS"/>
+                            <constraint firstItem="CwY-ar-eDe" firstAttribute="leading" secondItem="FIn-om-Mh7" secondAttribute="leading" id="7Ac-I9-C5e"/>
+                            <constraint firstAttribute="bottom" secondItem="CwY-ar-eDe" secondAttribute="bottom" id="9P1-BW-xIT"/>
+                            <constraint firstAttribute="trailing" secondItem="CwY-ar-eDe" secondAttribute="trailing" id="cVN-I5-sZU"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="CwY-ar-eDe" id="yUC-tH-4co"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCw-q1-HU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
