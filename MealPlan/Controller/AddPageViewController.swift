@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPageViewController: UIViewController {
+class AddPageViewController: UIViewController, SearchViewControllerProtocol {
     
     @IBOutlet var popupView: UIView!
     
@@ -17,6 +17,7 @@ class AddPageViewController: UIViewController {
     var effect: UIVisualEffect!
     var isPopup: Bool = false
     var tags: AddPageTag = AddPageTag()
+    var animationManager = AddPageAnimationController()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class AddPageViewController: UIViewController {
             vc.tagArray = self.tags
         } else if (segue.identifier == "AddPageToSearchView") {
             let vc = segue.destination as! SearchViewController
+            vc.delegate = self
             vc.tagArray = self.tags
         }
     }
@@ -75,19 +77,17 @@ class AddPageViewController: UIViewController {
         isPopup = false
     }
 
-
     @IBAction func selectByAction(_ sender: UIButton) {
-        
         if isPopup {
             self.tags.tags.append("chicken")
             animateOut()
         } else {
             animateIn(senderTag: 0)
         }
-
     }
     
-    
-
+    func selectRecipeAnimation(cell: RecipeSearchResultCell) {
+        animationManager.selectRecipeAnimation(cell: cell, view: self.view)
+    }
     
 }

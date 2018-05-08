@@ -11,12 +11,16 @@
 
 import UIKit
 
+protocol SearchViewControllerProtocol: class {
+    func selectRecipeAnimation(cell: RecipeSearchResultCell)
+}
+
 class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
     var tagArray: AddPageTag!
     var observation: NSKeyValueObservation!
     var recipeManager = RecipeManager()
-    
+    weak var delegate: SearchViewControllerProtocol?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -55,28 +59,38 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         
         //data for test only
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell"))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel2"))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel2", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel3", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
+    
     }
     
     @objc override func selectRecipeAction(_ sender : UIButton) {
         print("select tag:\(sender.tag)" )
-        guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {
-            return
-        }
         
-        if selected {
-            sender.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
-        } else {
-            sender.setImage(#imageLiteral(resourceName: "success_green"), for: .normal)
-        }
+        guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {return}
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        guard let cell = self.tableView.cellForRow(at: indexPath) as? RecipeSearchResultCell,
+              let cellImage = cell.recipeImage.image,
+              let cellTitle = cell.recipeTitle.text else {return}
+
+        self.rowArray[sender.tag] = .recipeSearchCellType(cellImage, cellTitle, !selected)
+        self.tableView.beginUpdates()
+        self.tableView.reloadRows(at: [indexPath], with: .none)
+        self.tableView.endUpdates()
         
         //2. trigger animation to add to history controller
-        
+        self.delegate?.selectRecipeAnimation(cell: cell)
         
         
         //3. add to history controller
     }
+
+    
     
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []

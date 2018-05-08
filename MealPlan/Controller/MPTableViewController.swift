@@ -12,7 +12,7 @@ enum MPTableViewCellType {
     case horizontalCollectionViewType([UIView])
     case calendarCollectionViewType
     case recipeCellType(UIImage, String)
-    case recipeSearchCellType(UIImage, String)
+    case recipeSearchCellType(UIImage, String, Bool)
 }
 
 extension MPTableViewCellType {
@@ -22,8 +22,8 @@ extension MPTableViewCellType {
         case .calendarCollectionViewType: return CalendarViewItem()
         case .recipeCellType(let image, let title):
             return RecipeCellItem(image: image, title: title)
-        case .recipeSearchCellType(let image, let title):
-            return RecipeSearchCellItem(image: image, title: title)
+        case .recipeSearchCellType(let image, let title, let selected):
+            return RecipeSearchCellItem(image: image, title: title, selected: selected)
         }
     }
 }
@@ -72,20 +72,22 @@ struct RecipeSearchCellItem: MPTableViewCellProtocol {
     var rowHeight: Int = 80
     var image: UIImage?
     var title: String = ""
+    var selected: Bool = false
     
-    init(image: UIImage, title: String) {
+    init(image: UIImage, title: String, selected: Bool) {
         self.image = image
         self.title = title
+        self.selected = selected
     }
 }
 
-protocol MPTableViewControllerDelegateProtocol: class {
-    func MPCalendarCellDidSelect()
-}
+//protocol MPTableViewControllerDelegateProtocol: class {
+//    func MPCalendarCellDidSelect()
+//}
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
-    weak var delegate: MPTableViewControllerDelegateProtocol?
+    //weak var delegate: MPTableViewControllerDelegateProtocol?
 }
 
 extension MPTableViewController {
@@ -129,6 +131,11 @@ extension MPTableViewController {
             cell.recipeTitle.text = itemStruct.title
             cell.selectRecipe.addTarget(self, action: #selector(selectRecipeAction(_:)), for: .touchUpInside)
             cell.selectRecipe.tag = indexPath.row
+            if itemStruct.selected {
+                cell.selectRecipe.setImage(#imageLiteral(resourceName: "success_green"), for: .normal)
+            } else {
+                cell.selectRecipe.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
+            }
             return cell
         }
     }
@@ -140,12 +147,12 @@ extension MPTableViewController {
 
 }
 
-extension MPTableViewController: MPCalendarViewDelegateProtocol {
-    
-    func calendarDidSelect(date: Date) {
-        self.delegate?.MPCalendarCellDidSelect()
-    }
-}
+//extension MPTableViewController: MPCalendarViewDelegateProtocol {
+//    
+//    func calendarDidSelect(date: Date) {
+//        self.delegate?.MPCalendarCellDidSelect()
+//    }
+//}
 
 extension MPTableViewController {
     @objc func selectRecipeAction(_ sender : UIButton) {

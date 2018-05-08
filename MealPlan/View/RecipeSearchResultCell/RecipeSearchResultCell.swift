@@ -17,6 +17,8 @@ class RecipeSearchResultCell: UITableViewCell {
     
     @IBOutlet weak var selectRecipe: UIButton!
     
+    var recipeSelected: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
