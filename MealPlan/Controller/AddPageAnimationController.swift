@@ -8,11 +8,17 @@
 
 import UIKit
 
-class AddPageAnimationController {
+class AddPageAnimationController: UIViewController, CAAnimationDelegate{
+    
+    var imageView = UIImageView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, view: UIView, cellRect: CGRect) {
         
-        let imageView = UIImageView(image: cell.recipeImage.image)
+        self.imageView = UIImageView(image: cell.recipeImage.image)
         imageView.frame = CGRect(origin: cellRect.origin, size: CGSize(width: 40, height: 40))
         print("y:\(cellRect.origin.y)")
         view.addSubview(imageView)
@@ -24,22 +30,20 @@ class AddPageAnimationController {
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.path = path.cgPath
         animation.duration = 2.0
-        animation.isRemovedOnCompletion = true
+        animation.isRemovedOnCompletion=true
+        animation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.delegate = self
         imageView.layer.add(animation, forKey: "animation")
-        
-        
-        
-        
-
-//
-//        // set some more parameters for the animation
-//        // this rotation mode means that our object will rotate so that it's parallel to whatever point it is currently on the curve
-//        anim.rotationMode = kCAAnimationRotateAuto
-//        anim.repeatCount = Float.infinity
-//        anim.duration = 5.0
-//
-//        // we add the animation to the squares 'layer' property
-//        square.layer.addAnimation(anim, forKey: "animate position along path")
     }
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        print("AAA")
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        imageView.removeFromSuperview()
+    }
+    
+    
 }
 
