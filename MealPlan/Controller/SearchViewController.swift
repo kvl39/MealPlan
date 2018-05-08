@@ -12,7 +12,7 @@
 import UIKit
 
 protocol SearchViewControllerProtocol: class {
-    func selectRecipeAnimation(cell: RecipeSearchResultCell)
+    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect)
 }
 
 class SearchViewController: MPTableViewController, RecipeManagerProtocol {
@@ -60,8 +60,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         
         //data for test only
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel2", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel3", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
@@ -84,7 +84,10 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.tableView.endUpdates()
         
         //2. trigger animation to add to history controller
-        self.delegate?.selectRecipeAnimation(cell: cell)
+        
+        let cellRectInTable = tableView.rectForRow(at: indexPath)
+        let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
+        self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView)
         
         
         //3. add to history controller

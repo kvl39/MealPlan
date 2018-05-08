@@ -86,8 +86,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol {
         }
     }
     
-    func selectRecipeAnimation(cell: RecipeSearchResultCell) {
-        animationManager.selectRecipeAnimation(cell: cell, view: self.view)
-    }
+    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect) {
+        animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
+    } 
     
 }
