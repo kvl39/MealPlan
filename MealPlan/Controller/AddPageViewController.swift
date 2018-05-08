@@ -78,7 +78,6 @@ class AddPageViewController: UIViewController {
 
     @IBAction func selectByAction(_ sender: UIButton) {
         
-        
         if isPopup {
             self.tags.tags.append("chicken")
             animateOut()

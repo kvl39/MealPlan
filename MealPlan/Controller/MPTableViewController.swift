@@ -11,7 +11,8 @@ import UIKit
 enum MPTableViewCellType {
     case horizontalCollectionViewType([UIView])
     case calendarCollectionViewType
-    case recipeCellType(UIImage,String)
+    case recipeCellType(UIImage, String)
+    case recipeSearchCellType(UIImage, String)
 }
 
 extension MPTableViewCellType {
@@ -21,6 +22,8 @@ extension MPTableViewCellType {
         case .calendarCollectionViewType: return CalendarViewItem()
         case .recipeCellType(let image, let title):
             return RecipeCellItem(image: image, title: title)
+        case .recipeSearchCellType(let image, let title):
+            return RecipeSearchCellItem(image: image, title: title)
         }
     }
 }
@@ -54,6 +57,18 @@ struct CalendarViewItem: MPTableViewCellProtocol {
 
 struct RecipeCellItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "RecipeTableViewCell"
+    var rowHeight: Int = 80
+    var image: UIImage?
+    var title: String = ""
+    
+    init(image: UIImage, title: String) {
+        self.image = image
+        self.title = title
+    }
+}
+
+struct RecipeSearchCellItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeSearchResultCell"
     var rowHeight: Int = 80
     var image: UIImage?
     var title: String = ""
@@ -107,6 +122,14 @@ extension MPTableViewController {
             cell.recipeName.text = itemStruct.title
             cell.backgroundColor = UIColor.clear
             return cell
+        case .recipeSearchCellType:
+            let cell = cell as! RecipeSearchResultCell
+            guard let itemStruct = item.configureCell() as? RecipeSearchCellItem else {return cell}
+            cell.recipeImage.image = itemStruct.image
+            cell.recipeTitle.text = itemStruct.title
+            cell.selectRecipe.addTarget(self, action: #selector(selectRecipeAction(_:)), for: .touchUpInside)
+            cell.selectRecipe.tag = indexPath.row
+            return cell
         }
     }
     
@@ -114,6 +137,7 @@ extension MPTableViewController {
         return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
     }
     
+
 }
 
 extension MPTableViewController: MPCalendarViewDelegateProtocol {
@@ -121,6 +145,11 @@ extension MPTableViewController: MPCalendarViewDelegateProtocol {
     func calendarDidSelect(date: Date) {
         self.delegate?.MPCalendarCellDidSelect()
     }
-    
+}
+
+extension MPTableViewController {
+    @objc func selectRecipeAction(_ sender : UIButton) {
+        
+    }
 }
 

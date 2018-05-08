@@ -6,6 +6,9 @@
 //  Copyright © 2018年 Kevin Liao. All rights reserved.
 //
 
+//ToDo:
+//1. play animation after retrieving search result
+
 import UIKit
 
 class SearchViewController: MPTableViewController, RecipeManagerProtocol {
@@ -27,7 +30,6 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     }
     
     func configureObserver() {
-        
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, change) in
             print(tagArray.tags)
             var searchKeyword = "?q="
@@ -40,7 +42,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                     }
                 }
                 searchKeyword = searchKeyword + "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=5"
-                self.recipeManager.getRecipe(keyWord: searchKeyword)
+                //self.recipeManager.getRecipe(keyWord: searchKeyword)
             } else {
                 self.rowArray = []
                 self.tableView.reloadData()
@@ -50,12 +52,19 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     
     func configureTableView() {
         
-        tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         
-        
-        
+        //data for test only
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell"))
+        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel2"))
     }
     
+    @objc override func selectRecipeAction(_ sender : UIButton) {
+        print("select tag:\(sender.tag)" )
+        sender.setImage(#imageLiteral(resourceName: "success_green"), for: .normal)
+        //1. change button image
+        //2. trigger animation to add to history controller
+    }
     
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
