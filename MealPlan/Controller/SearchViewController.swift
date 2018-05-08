@@ -61,9 +61,21 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     
     @objc override func selectRecipeAction(_ sender : UIButton) {
         print("select tag:\(sender.tag)" )
-        sender.setImage(#imageLiteral(resourceName: "success_green"), for: .normal)
-        //1. change button image
+        guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {
+            return
+        }
+        
+        if selected {
+            sender.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "success_green"), for: .normal)
+        }
+        
         //2. trigger animation to add to history controller
+        
+        
+        
+        //3. add to history controller
     }
     
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {

@@ -38,7 +38,7 @@
                             <constraint firstAttribute="width" constant="30" id="e8F-XA-dQy"/>
                             <constraint firstAttribute="height" constant="30" id="qme-M6-zta"/>
                         </constraints>
-                        <state key="normal" title="Button" backgroundImage="success_black"/>
+                        <state key="normal" title="Button" image="success_black"/>
                     </button>
                 </subviews>
                 <constraints>
