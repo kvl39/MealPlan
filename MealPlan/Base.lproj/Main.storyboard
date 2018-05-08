@@ -54,7 +54,7 @@
                                     <constraint firstAttribute="height" constant="153" id="mla-id-u2D"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="nP8-Md-6oK" kind="embed" id="xUE-Lu-AO9"/>
+                                    <segue destination="nP8-Md-6oK" kind="embed" identifier="AddPageToHistoryView" id="xUE-Lu-AO9"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmU-6c-oql">
@@ -264,6 +264,7 @@
                             <constraint firstAttribute="bottom" secondItem="CwY-ar-eDe" secondAttribute="bottom" id="9P1-BW-xIT"/>
                             <constraint firstAttribute="trailing" secondItem="CwY-ar-eDe" secondAttribute="trailing" id="cVN-I5-sZU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wjm-8Q-O3C"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="CwY-ar-eDe" id="yUC-tH-4co"/>

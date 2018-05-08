@@ -66,12 +66,11 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
         self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
-    
     }
     
     @objc override func selectRecipeAction(_ sender : UIButton) {
-        print("select tag:\(sender.tag)" )
         
+        //toggle select button
         guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {return}
         let indexPath = IndexPath(row: sender.tag, section: 0)
         guard let cell = self.tableView.cellForRow(at: indexPath) as? RecipeSearchResultCell,
@@ -83,16 +82,13 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.tableView.reloadRows(at: [indexPath], with: .none)
         self.tableView.endUpdates()
         
-        //2. trigger animation to add to history controller
-        
-        let cellRectInTable = tableView.rectForRow(at: indexPath)
-        let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
-        self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView)
-        
-        
-        //3. add to history controller
+        //select animation
+        if !selected {
+            let cellRectInTable = tableView.rectForRow(at: indexPath)
+            let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
+            self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView)
+        }
     }
-
     
     
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {

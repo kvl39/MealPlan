@@ -25,7 +25,7 @@ class HorizontalCollectionView: MPCollectionViewController {
         self.horizontalCollectionView.delegate = self
         self.horizontalCollectionView.dataSource = self
         self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
-        
+        self.itemCount = self.viewArray.count
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

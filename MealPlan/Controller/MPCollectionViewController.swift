@@ -12,6 +12,7 @@ import UIKit
 class MPCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var viewArray: [UIView] = []
+    var itemCount: Int = 0
 
 }
 

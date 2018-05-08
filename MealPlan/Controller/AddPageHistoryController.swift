@@ -11,6 +11,7 @@ import UIKit
 class AddPageHistoryController: MPTableViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var imageArray = [UIView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,6 @@ class AddPageHistoryController: MPTableViewController {
         
         tableView.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         
-        
-        var imageArray = [UIView]()
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
@@ -38,13 +37,13 @@ class AddPageHistoryController: MPTableViewController {
         self.rowArray.append(.horizontalCollectionViewType(imageArray))
         
         
-        var imageArray2 = [UIView]()
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
+//        var imageArray2 = [UIView]()
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
         
         
     }
@@ -55,7 +54,16 @@ class AddPageHistoryController: MPTableViewController {
         return imageView
     }
     
-    
+    func selectAnimationDidFinish(animationImage: UIImage) {
+        
+        var indexPath = IndexPath(row: 0, section: 0)
+        guard let cell = self.tableView.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
+        indexPath = IndexPath(item: 0, section: 0)
+        cell.viewArray.insert(generateViewWithImage(image: animationImage), at: 0)
+        cell.horizontalCollectionView.insertItems(at: [indexPath])
+        cell.horizontalCollectionView.reloadItems(at: [indexPath])
+
+    }
     
     
 }

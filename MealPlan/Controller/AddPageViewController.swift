@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPageViewController: UIViewController, SearchViewControllerProtocol {
+class AddPageViewController: UIViewController, SearchViewControllerProtocol, AnimationControllerProtocol {
     
     @IBOutlet var popupView: UIView!
     
@@ -18,10 +18,12 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol {
     var isPopup: Bool = false
     var tags: AddPageTag = AddPageTag()
     var animationManager = AddPageAnimationController()
+    var addPageHistoryController = AddPageHistoryController()
   
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        animationManager.delegate = self
+        
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
@@ -35,6 +37,9 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol {
             let vc = segue.destination as! SearchViewController
             vc.delegate = self
             vc.tagArray = self.tags
+        } else if (segue.identifier == "AddPageToHistoryView") {
+            let vc = segue.destination as! AddPageHistoryController
+            self.addPageHistoryController = vc
         }
     }
     
@@ -88,6 +93,10 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol {
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect) {
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
-    } 
+    }
+    
+    func selectAnimationDidFinish(animationImage: UIImage) {
+        addPageHistoryController.selectAnimationDidFinish(animationImage: animationImage)
+    }
     
 }
