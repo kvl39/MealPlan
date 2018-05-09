@@ -29,21 +29,21 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
-        //createFakeData()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
-    func createFakeData() {
-        
-        let ingre1 = IngredientAPIModel(text: "ingre1", weight: 1.0)
-        let ingre2 = IngredientAPIModel(text: "ingre2", weight: 2.0)
-        let nutri1 = NutrientAPIModel(label: "nutre1", quantity: 1.0)
-        let nutri2 = NutrientAPIModel(label: "nutre2", quantity: 2.0)
-        let nutri3 = NutrientAPIModel(label: "nutre3", quantity: 3.0)
-        let totalDaily = TotalDaily(ENERC_KCAL: nutri1, FAT: nutri2, FASAT: nutri3)
-        
-        let reci1 = RecipeInformation(url: URL(string: "url1")!, image: URL(string: "url1")!, label: "label1", ingredients: [ingre1, ingre2], calories: 33.3, totalDaily: totalDaily)
-        self.addedRecipe.append(reci1)
-    }
+//    func createFakeData() {
+//
+//        let ingre1 = IngredientAPIModel(text: "ingre1", weight: 1.0)
+//        let ingre2 = IngredientAPIModel(text: "ingre2", weight: 2.0)
+//        let nutri1 = NutrientAPIModel(label: "nutre1", quantity: 1.0)
+//        let nutri2 = NutrientAPIModel(label: "nutre2", quantity: 2.0)
+//        let nutri3 = NutrientAPIModel(label: "nutre3", quantity: 3.0)
+//        let totalDaily = TotalDaily(ENERC_KCAL: nutri1, FAT: nutri2, FASAT: nutri3)
+//
+//        let reci1 = RecipeInformation(url: URL(string: "url1")!, image: URL(string: "url1")!, label: "label1", ingredients: [ingre1, ingre2], calories: 33.3, totalDaily: totalDaily)
+//        self.addedRecipe.append(reci1)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "AddPageToTagView") {
@@ -67,7 +67,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         NSLayoutConstraint.activate([
             popupView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             popupView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            popupView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            popupView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height-350),
             popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             ])
         
