@@ -15,6 +15,7 @@ protocol AnimationControllerProtocol: class {
 class AddPageAnimationController: UIViewController, CAAnimationDelegate{
     
     var imageView = UIImageView()
+    var animatingImageView = [UIImageView]()
     weak var delegate: AnimationControllerProtocol?
     
     override func viewDidLoad() {
@@ -42,12 +43,19 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
     }
     
     func animationDidStart(_ anim: CAAnimation) {
+        print("AAA")
+        self.animatingImageView.append(imageView)
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        imageView.removeFromSuperview()
-        guard let animationImage = imageView.image else {return}
+        print("BBB")
+//        imageView.removeFromSuperview()
+//        guard let animationImage = imageView.image else {return}
+//        delegate?.selectAnimationDidFinish(animationImage: animationImage)
+        self.animatingImageView[0].removeFromSuperview()
+        guard let animationImage = self.animatingImageView[0].image else {return}
         delegate?.selectAnimationDidFinish(animationImage: animationImage)
+        self.animatingImageView.remove(at: 0)
     }
     
 }

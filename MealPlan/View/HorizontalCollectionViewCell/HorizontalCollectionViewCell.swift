@@ -16,14 +16,7 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collectionViewCell: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        print("------------------")
-        print("HorizontalCollectionViewCell init")
     }
 
-    deinit {
-        print("------------------")
-        print("HorizontalCollectionViewCell de  de  deinit")
-    }
     
 }
