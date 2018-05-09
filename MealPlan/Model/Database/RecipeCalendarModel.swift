@@ -12,7 +12,8 @@ import RealmSwift
 
 class RecipeCalendarRealmModel: Object {
     @objc dynamic var recipeDay = Date(timeIntervalSince1970: 1)
-    let RecipeRealmModel = List<RecipeRealmModel>()
+    //let RecipeRealmModel = List<RecipeRealmModel>()
+    @objc dynamic var recipeRealmModel: RecipeRealmModel? = nil
 }
 
 class RecipeRealmModel: Object {

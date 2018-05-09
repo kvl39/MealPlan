@@ -20,6 +20,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var animationManager = AddPageAnimationController()
     var addPageHistoryController = AddPageHistoryController()
     var addedRecipe: [RecipeInformation] = []
+    var realmManager = RealmManager()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,20 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
+        //createFakeData()
+    }
+    
+    func createFakeData() {
+        
+        let ingre1 = IngredientAPIModel(text: "ingre1", weight: 1.0)
+        let ingre2 = IngredientAPIModel(text: "ingre2", weight: 2.0)
+        let nutri1 = NutrientAPIModel(label: "nutre1", quantity: 1.0)
+        let nutri2 = NutrientAPIModel(label: "nutre2", quantity: 2.0)
+        let nutri3 = NutrientAPIModel(label: "nutre3", quantity: 3.0)
+        let totalDaily = TotalDaily(ENERC_KCAL: nutri1, FAT: nutri2, FASAT: nutri3)
+        
+        let reci1 = RecipeInformation(url: URL(string: "url1")!, image: URL(string: "url1")!, label: "label1", ingredients: [ingre1, ingre2], calories: 33.3, totalDaily: totalDaily)
+        self.addedRecipe.append(reci1)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,6 +105,11 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         } else {
             animateIn(senderTag: 0)
         }
+    }
+    
+    @IBAction func confirmSelection(_ sender: Any) {
+        //pass self.addedRecipe to Realm
+        realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
     }
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {

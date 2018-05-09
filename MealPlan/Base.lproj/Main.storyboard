@@ -112,6 +112,14 @@
                                     <action selector="selectByAction:" destination="Esc-KF-OKA" eventType="touchUpInside" id="9fo-qs-jul"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bap-Kr-KGR">
+                                <rect key="frame" x="329" y="620" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="confirm"/>
+                                <connections>
+                                    <action selector="confirmSelection:" destination="Esc-KF-OKA" eventType="touchUpInside" id="504-Of-yM2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -295,4 +303,7 @@
             <point key="canvasLocation" x="1229.5999999999999" y="121.88905547226388"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="confirm" width="512" height="512"/>
+    </resources>
 </document>
