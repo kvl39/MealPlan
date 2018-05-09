@@ -21,6 +21,7 @@
 		AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E4E2097558C0083B229 /* CalendarCell.xib */; };
 		AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD428EE120A2C66700A04A32 /* RealmManager.swift */; };
 		AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD428EE320A2C6C200A04A32 /* RecipeCalendarModel.swift */; };
+		AD428EE620A32D1E00A04A32 /* AddPagePopupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */; };
 		AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E2CF120A14C6300C4573F /* RecipeSearchResultCell.swift */; };
 		AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4E2CF220A14C6300C4573F /* RecipeSearchResultCell.xib */; };
 		AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */; };
@@ -68,6 +69,7 @@
 		AD2C8E4E2097558C0083B229 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
 		AD428EE120A2C66700A04A32 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		AD428EE320A2C6C200A04A32 /* RecipeCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCalendarModel.swift; sourceTree = "<group>"; };
+		AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupNavigationController.swift; sourceTree = "<group>"; };
 		AD4E2CF120A14C6300C4573F /* RecipeSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchResultCell.swift; sourceTree = "<group>"; };
 		AD4E2CF220A14C6300C4573F /* RecipeSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeSearchResultCell.xib; sourceTree = "<group>"; };
 		AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageAnimationController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				AD53A1F3209FF15D0016E4D1 /* MPTagViewController.swift */,
 				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
+				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */,
 				ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */,
 				ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */,
+				AD428EE620A32D1E00A04A32 /* AddPagePopupNavigationController.swift in Sources */,
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
 				ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */,
 				AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */,

@@ -21,6 +21,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var addPageHistoryController = AddPageHistoryController()
     var addedRecipe: [RecipeInformation] = []
     var realmManager = RealmManager()
+    var addPagePopupTableViewController = UINavigationController()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,9 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         } else if (segue.identifier == "AddPageToHistoryView") {
             let vc = segue.destination as! AddPageHistoryController
             self.addPageHistoryController = vc
+        } else if (segue.identifier == "AddPageToPopView") {
+            let vc = segue.destination as! UINavigationController
+            self.addPagePopupTableViewController = vc
         }
     }
     
@@ -87,8 +91,11 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     
     func animateOut() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.popupView.alpha = 0
+            if let popupTableViewController = self.addPagePopupTableViewController.viewControllers.first as? AddPagePopupTableViewController {
+                popupTableViewController.animateOutTableCells()
+            }
+//            self.popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+//            self.popupView.alpha = 0
             self.visualEffectView.effect = nil
             self.visualEffectView.alpha = 0
         }) { (success:Bool) in

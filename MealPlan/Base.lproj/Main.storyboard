@@ -158,7 +158,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <segue destination="Pw1-Da-z3f" kind="embed" id="FiX-g6-6LV"/>
+                        <segue destination="Pw1-Da-z3f" kind="embed" identifier="AddPageToPopView" id="FiX-g6-6LV"/>
                     </connections>
                 </containerView>
             </objects>
