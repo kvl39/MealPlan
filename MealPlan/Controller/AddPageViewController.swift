@@ -100,7 +100,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
 
     @IBAction func selectByAction(_ sender: UIButton) {
         if isPopup {
-            self.tags.tags.append("chicken")
+            //self.tags.tags.append("chicken")
             animateOut()
         } else {
             animateIn(senderTag: 0)

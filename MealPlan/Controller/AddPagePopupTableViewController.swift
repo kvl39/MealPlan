@@ -15,7 +15,7 @@ class AddPagePopupTableViewController: MPTableViewController {
     
     var recipeClass: RecipeClass = RecipeClassLayer0()
     
-    let imageArray: [UIImage] = [#imageLiteral(resourceName: "btn_like_normal"), #imageLiteral(resourceName: "btn_back"), #imageLiteral(resourceName: "iTunesArtwork"), #imageLiteral(resourceName: "btn_like_normal"), #imageLiteral(resourceName: "btn_back"), #imageLiteral(resourceName: "iTunesArtwork")]
+    //let imageArray: [UIImage] = [#imageLiteral(resourceName: "btn_like_normal"), #imageLiteral(resourceName: "btn_back"), #imageLiteral(resourceName: "iTunesArtwork"), #imageLiteral(resourceName: "btn_like_normal"), #imageLiteral(resourceName: "btn_back"), #imageLiteral(resourceName: "iTunesArtwork")]
     //let titleArray: [String] = ["1","2", "3", "4", "5", "6"]
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class AddPagePopupTableViewController: MPTableViewController {
         tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         
         for index in 0...recipeClass.recipeTitle.count-1 {
-            self.rowArray.append(.recipeCellType(imageArray[index], recipeClass.recipeTitle[index]))
+            self.rowArray.append(.recipeCellType(recipeClass.recipeImage[index], recipeClass.recipeTitle[index]))
         }
     }
     

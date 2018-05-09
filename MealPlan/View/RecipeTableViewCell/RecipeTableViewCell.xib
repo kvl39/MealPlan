@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-75-CpV">
-                        <rect key="frame" x="20" y="10" width="60" height="60"/>
+                        <rect key="frame" x="20" y="20" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="cHi-ZT-fdE"/>
-                            <constraint firstAttribute="width" constant="60" id="yRe-5y-mZw"/>
+                            <constraint firstAttribute="height" constant="40" id="cHi-ZT-fdE"/>
+                            <constraint firstAttribute="width" constant="40" id="yRe-5y-mZw"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdV-W0-qyw">
-                        <rect key="frame" x="130" y="22" width="42" height="36"/>
+                        <rect key="frame" x="80" y="22" width="42" height="36"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="36" id="AJ0-tc-zqB"/>
                         </constraints>
@@ -39,7 +39,7 @@
                 <constraints>
                     <constraint firstItem="KdV-W0-qyw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2TI-ne-mVy"/>
                     <constraint firstItem="kbr-75-CpV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6Al-RW-qXA"/>
-                    <constraint firstItem="KdV-W0-qyw" firstAttribute="leading" secondItem="kbr-75-CpV" secondAttribute="trailing" constant="50" id="dlf-OV-46T"/>
+                    <constraint firstItem="KdV-W0-qyw" firstAttribute="leading" secondItem="kbr-75-CpV" secondAttribute="trailing" constant="20" id="dlf-OV-46T"/>
                     <constraint firstItem="kbr-75-CpV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="wV2-u7-QyE"/>
                 </constraints>
             </tableViewCellContentView>
