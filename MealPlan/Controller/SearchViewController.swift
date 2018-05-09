@@ -12,7 +12,8 @@
 import UIKit
 
 protocol SearchViewControllerProtocol: class {
-    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect)
+    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation)
+    func deSelectRecipe(cell: RecipeSearchResultCell, deSelectedRecipe: RecipeInformation)
 }
 
 class SearchViewController: MPTableViewController, RecipeManagerProtocol {
@@ -21,6 +22,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     var observation: NSKeyValueObservation!
     var recipeManager = RecipeManager()
     weak var delegate: SearchViewControllerProtocol?
+    var searchRecipeModel: RecipeModel?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -45,8 +47,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                         searchKeyword = searchKeyword + "%26" + tagArray.tags[index]
                     }
                 }
-                searchKeyword = searchKeyword + "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=5"
-                //self.recipeManager.getRecipe(keyWord: searchKeyword)
+                searchKeyword = searchKeyword + "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=7"
+                self.recipeManager.getRecipe(keyWord: searchKeyword)
             } else {
                 self.rowArray = []
                 self.tableView.reloadData()
@@ -59,13 +61,13 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         
         //data for test only
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
     }
     
     @objc override func selectRecipeAction(_ sender : UIButton) {
@@ -83,18 +85,24 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.tableView.endUpdates()
         
         //select animation
+        guard let searchResult = self.searchRecipeModel,
+            let selectedHits = searchResult.hits[sender.tag] as? hits,
+            let selectedRecipe = selectedHits.recipe as? RecipeInformation else {return}
         if !selected {
             let cellRectInTable = tableView.rectForRow(at: indexPath)
             let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
-            self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView)
+            self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView, selectedRecipe: selectedRecipe)
+        } else {
+            self.delegate?.deSelectRecipe(cell: cell, deSelectedRecipe: selectedRecipe)
         }
     }
     
     
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
+        self.searchRecipeModel = products
         for index in 0...products.hits.count-1 {
-            self.rowArray.append(.recipeCellType(#imageLiteral(resourceName: "btn_back"), products.hits[index].recipe.label))
+            self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), products.hits[index].recipe.label, false))
         }
         
         DispatchQueue.main.async{

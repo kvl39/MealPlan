@@ -91,8 +91,13 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         }
     }
     
-    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect) {
+    func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
+        print("select label:\(selectedRecipe.label)")
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
+    }
+    
+    func deSelectRecipe(cell: RecipeSearchResultCell, deSelectedRecipe: RecipeInformation) {
+        print("deselect lable:\(deSelectedRecipe.label)")
     }
     
     func selectAnimationDidFinish(animationImage: UIImage) {
