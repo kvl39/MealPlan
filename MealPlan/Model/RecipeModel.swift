@@ -25,4 +25,23 @@ struct RecipeInformation: Codable {
     var url: URL
     var image: URL
     var label: String
+    var ingredients: [IngredientAPIModel]
+    var calories: Double
+    var totalDaily: TotalDaily
+}
+
+struct IngredientAPIModel: Codable {
+    var text: String
+    var weight: Double
+}
+
+struct TotalDaily: Codable {
+    var ENERC_KCAL: NutrientAPIModel
+    var FAT: NutrientAPIModel
+    var FASAT: NutrientAPIModel
+}
+
+struct NutrientAPIModel: Codable {
+    var label: String
+    var quantity: Double
 }

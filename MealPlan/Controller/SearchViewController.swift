@@ -46,7 +46,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                     }
                 }
                 searchKeyword = searchKeyword + "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=5"
-                //self.recipeManager.getRecipe(keyWord: searchKeyword)
+                self.recipeManager.getRecipe(keyWord: searchKeyword)
             } else {
                 self.rowArray = []
                 self.tableView.reloadData()
@@ -59,13 +59,13 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         
         //data for test only
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
-        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
+//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
     }
     
     @objc override func selectRecipeAction(_ sender : UIButton) {
