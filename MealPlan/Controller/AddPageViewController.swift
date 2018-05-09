@@ -22,6 +22,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var addedRecipe: [RecipeInformation] = []
     var realmManager = RealmManager()
     var addPagePopupTableViewController = UINavigationController()
+    var observation: NSKeyValueObservation!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
         self.navigationController?.navigationBar.isHidden = true
+        configureObserver()
     }
     
 //    func createFakeData() {
@@ -45,6 +47,19 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
 //        let reci1 = RecipeInformation(url: URL(string: "url1")!, image: URL(string: "url1")!, label: "label1", ingredients: [ingre1, ingre2], calories: 33.3, totalDaily: totalDaily)
 //        self.addedRecipe.append(reci1)
 //    }
+    
+    
+    func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(tagSelected(notification:)), name: NSNotification.Name(rawValue: "SelectTag"), object: nil)
+    }
+    
+    @objc func tagSelected(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let tag = userInfo["tagEnglish"] as? String else {return}
+        self.animateOut()
+        self.tags.tags.append(tag)
+        print("selected tag:\(tag)")
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "AddPageToTagView") {
@@ -115,7 +130,6 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     }
     
     @IBAction func confirmSelection(_ sender: Any) {
-        //pass self.addedRecipe to Realm
         realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
     }
     

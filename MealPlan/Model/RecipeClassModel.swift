@@ -14,10 +14,14 @@ protocol RecipeClass {
     var recipeTitle: [String] {get}
     var recipeImage: [UIImage] {get}
     var childArray: [RecipeClass] {get}
+    var recipeTitleEnglish: [String] {get}
 }
 
 extension RecipeClass {
     var childArray: [RecipeClass] {
+        return []
+    }
+    var recipeTitleEnglish: [String] {
         return []
     }
 }
@@ -30,12 +34,14 @@ struct RecipeClassLayer0: RecipeClass {
 
 struct RecipeClassLayer1_Meat: RecipeClass {
     var recipeTitle: [String] = ["豬肉","牛肉"]
+    var recipeTitleEnglish: [String] = ["pork", "beef"]
     var recipeImage: [UIImage] = [#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cow")]
 }
 
 struct RecipeClassLayer1_Veg: RecipeClass {
     var recipeTitle: [String] = ["高麗菜","菠菜"]
     var recipeImage: [UIImage] = [#imageLiteral(resourceName: "success_green"),#imageLiteral(resourceName: "btn_like_normal")]
+    var recipeTitleEnglish: [String] = ["Cabbage", "spinach"]
 }
 
 struct RecipeClassLayer1_Country: RecipeClass {

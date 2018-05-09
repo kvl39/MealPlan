@@ -82,6 +82,8 @@ class AddPagePopupTableViewController: MPTableViewController {
             vc.recipeClass = self.recipeClass.childArray[indexPath.row]
         } else {
             //add a tag
+            self.navigationController?.popToRootViewController(animated: false)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SelectTag"), object: nil, userInfo:["tag": self.recipeClass.recipeTitle[indexPath.row],"tagEnglish": self.recipeClass.recipeTitleEnglish[indexPath.row]])
         }
         
     }
