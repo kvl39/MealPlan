@@ -19,6 +19,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var tags: AddPageTag = AddPageTag()
     var animationManager = AddPageAnimationController()
     var addPageHistoryController = AddPageHistoryController()
+    var addedRecipe: [RecipeInformation] = []
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,11 +94,15 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
         print("select label:\(selectedRecipe.label)")
+        self.addedRecipe.append(selectedRecipe)
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
     }
     
     func deSelectRecipe(cell: RecipeSearchResultCell, deSelectedRecipe: RecipeInformation) {
         print("deselect lable:\(deSelectedRecipe.label)")
+        if let index = self.addedRecipe.index(where: {$0.label == deSelectedRecipe.label}) {
+            self.addedRecipe.remove(at: index)
+        }
     }
     
     func selectAnimationDidFinish(animationImage: UIImage) {
