@@ -56,7 +56,19 @@ class TestViewController: MPTableViewController {
         if let addButton = addButton {
             addButton.addTarget(self, action: #selector(addButtonInteraction), for: .touchUpInside)
         }
+        
+        typeButton?.addTarget(self, action: #selector(typeButtonInteraction(_:)), for: .touchUpInside)
 
+    }
+    
+    @objc func typeButtonInteraction(_ sender: UIButton) {
+        hideButton()
+        self.addButtonSelected = !self.addButtonSelected
+        performSegue(withIdentifier: "PushToAddPage", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
     
     @objc func addButtonInteraction(_ sender : UIButton) {
