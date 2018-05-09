@@ -19,6 +19,8 @@
 		AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4B20971AFA0083B229 /* CustomCell.swift */; };
 		AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2C8E4D2097558C0083B229 /* CalendarCell.swift */; };
 		AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2C8E4E2097558C0083B229 /* CalendarCell.xib */; };
+		AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD428EE120A2C66700A04A32 /* RealmManager.swift */; };
+		AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD428EE320A2C6C200A04A32 /* RecipeCalendarModel.swift */; };
 		AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E2CF120A14C6300C4573F /* RecipeSearchResultCell.swift */; };
 		AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD4E2CF220A14C6300C4573F /* RecipeSearchResultCell.xib */; };
 		AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */; };
@@ -64,6 +66,8 @@
 		AD2C8E4B20971AFA0083B229 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AD2C8E4D2097558C0083B229 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		AD2C8E4E2097558C0083B229 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		AD428EE120A2C66700A04A32 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		AD428EE320A2C6C200A04A32 /* RecipeCalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCalendarModel.swift; sourceTree = "<group>"; };
 		AD4E2CF120A14C6300C4573F /* RecipeSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchResultCell.swift; sourceTree = "<group>"; };
 		AD4E2CF220A14C6300C4573F /* RecipeSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeSearchResultCell.xib; sourceTree = "<group>"; };
 		AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageAnimationController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		AD2C8E472096EFEB0083B229 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD901C5820A20E5800C88219 /* Database */,
 				AD1D922D209B6B5200B9AFE9 /* MPHttpRequest.swift */,
 				AD1D922F209B737400B9AFE9 /* MPError.swift */,
 				AD1D9231209B759F00B9AFE9 /* MPHttpClient.swift */,
@@ -204,6 +209,15 @@
 				AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */,
 			);
 			path = RecipeTableViewCell;
+			sourceTree = "<group>";
+		};
+		AD901C5820A20E5800C88219 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				AD428EE120A2C66700A04A32 /* RealmManager.swift */,
+				AD428EE320A2C6C200A04A32 /* RecipeCalendarModel.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {
@@ -362,12 +376,16 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,6 +405,7 @@
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
 				ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
+				AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */,
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,
 				AD1D922E209B6B5200B9AFE9 /* MPHttpRequest.swift in Sources */,
@@ -398,6 +417,7 @@
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
 				ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */,
 				AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */,
+				AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */,
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,

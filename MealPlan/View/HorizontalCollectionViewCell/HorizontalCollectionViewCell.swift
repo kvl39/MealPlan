@@ -17,7 +17,13 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("------------------")
+        print("HorizontalCollectionViewCell init")
     }
 
+    deinit {
+        print("------------------")
+        print("HorizontalCollectionViewCell de  de  deinit")
+    }
     
 }

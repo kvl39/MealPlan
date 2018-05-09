@@ -61,7 +61,8 @@ class AddPageHistoryController: MPTableViewController {
         indexPath = IndexPath(item: 0, section: 0)
         cell.viewArray.insert(generateViewWithImage(image: animationImage), at: 0)
         cell.horizontalCollectionView.insertItems(at: [indexPath])
-        cell.horizontalCollectionView.reloadItems(at: [indexPath])
+//        cell.horizontalCollectionView.reloadItems(at: [indexPath])
+//        cell.horizontalCollectionView.reloadData()
 
     }
     

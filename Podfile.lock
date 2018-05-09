@@ -4,23 +4,33 @@ PODS:
     - Charts/Core (= 3.1.1)
   - Charts/Core (3.1.1)
   - JTAppleCalendar (7.1.5)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
 
 DEPENDENCIES:
   - Alamofire
   - Charts
   - JTAppleCalendar (~> 7.0)
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Charts
     - JTAppleCalendar
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
 
-PODFILE CHECKSUM: 730daba8fc2921eb4f9dc0efce36b6fd971ad9ad
+PODFILE CHECKSUM: 921c8f5aa3bb99088f5e4a262b56318064a58c81
 
 COCOAPODS: 1.5.0

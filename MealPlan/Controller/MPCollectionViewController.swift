@@ -9,14 +9,14 @@
 import UIKit
 
 
-class MPCollectionViewController: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MPCollectionViewController: UITableViewCell {
 
     var viewArray: [UIView] = []
     var itemCount: Int = 0
 
 }
 
-extension MPCollectionViewController {
+extension MPCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewArray.count
@@ -24,7 +24,12 @@ extension MPCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as! HorizontalCollectionViewCell
-        cell.collectionViewCell.addSubview(viewArray[indexPath.row])   
+        if let viewWithTag = cell.viewWithTag(2) {
+            viewWithTag.removeFromSuperview()
+        }
+        let subView = viewArray[indexPath.row]
+        subView.tag = 2
+        cell.collectionViewCell.addSubview(subView)
         return cell
     }
     
