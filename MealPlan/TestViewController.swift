@@ -22,6 +22,7 @@ class TestViewController: MPTableViewController {
     var takePictureButtonRightConstraint: NSLayoutConstraint?
     var typeButtonRightConstraint: NSLayoutConstraint?
     var shareButtonRightConstraint: NSLayoutConstraint?
+    let realmManager = RealmManager()
     
     
     override func viewDidLoad() {
@@ -173,6 +174,8 @@ class TestViewController: MPTableViewController {
         guard let userInfo = notification.userInfo,
               let date = userInfo["date"] as? String else {return}
         print(date)
+        let result = self.realmManager.fetchRecipe(in: date)
+        print(result)
     }
     
     
