@@ -14,8 +14,7 @@ class RealmManager {
     let formatter = DateFormatter()
     var dateManager = DataFormatManager()
     
-    func saveAddedRecipe(addedRecipe: [RecipeInformation],
-                         recipeDate: String, completion: @escaping ()->Void) {
+    func saveAddedRecipe(addedRecipe: [RecipeInformation], recipeDate: String) {
         saveQueue.async {
             let realm = try! Realm()
             
@@ -62,9 +61,6 @@ class RealmManager {
                     realm.add(recipeModel)
                 }
             }
-            
-            completion()
-            return
         }
     }
     

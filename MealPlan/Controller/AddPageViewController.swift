@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddPageDelegateProtocol: class {
-    func reloadData()
+    func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String])
 }
 
 class AddPageViewController: UIViewController, SearchViewControllerProtocol, AnimationControllerProtocol {
@@ -24,6 +24,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var animationManager = AddPageAnimationController()
     var addPageHistoryController = AddPageHistoryController()
     var addedRecipe: [RecipeInformation] = []
+    var addedRecipeImageView: [UIImageView] = []
+    var addedRecipeTitle: [String] = []
     var realmManager = RealmManager()
     var addPagePopupTableViewController = UINavigationController()
     var observation: NSKeyValueObservation!
@@ -140,9 +142,10 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     @IBAction func confirmSelection(_ sender: Any) {
         //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
         //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
-        realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate) {
-            self.delegate?.reloadData()
-        }
+        
+        self.delegate?.reloadData(addedRecipeImageView: addedRecipeImageView,
+                                  addedRecipeTitle: addedRecipeTitle)
+        realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
         self.navigationController?.popViewController(animated: true)
         
     }
@@ -150,6 +153,9 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
         print("select label:\(selectedRecipe.label)")
         self.addedRecipe.append(selectedRecipe)
+        self.addedRecipeImageView.append(cell.recipeImage)
+        guard let recipeTitle = cell.recipeTitle.text else {return}
+        self.addedRecipeTitle.append(recipeTitle)
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
     }
     

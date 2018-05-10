@@ -26,6 +26,8 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
     let realmManager = RealmManager()
     var selectedDate = ""
     var dateManager = DataFormatManager()
+    var recipeImageArray = [UIImageView]()
+    var recipeTitleArray = [String]()
     
     
     
@@ -40,8 +42,10 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func reloadData() {
-        self.fetchDataInDate(in: self.selectedDate)
+    func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {
+        self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
+        self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
+        updateDataInTableView()
     }
    
     
@@ -198,6 +202,8 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
     
     @objc func onSelectDate(notification:Notification)
     {
+        self.recipeTitleArray = []
+        self.recipeImageArray = []
         guard let userInfo = notification.userInfo,
               let date = userInfo["date"] as? String else {return}
         print(date)
@@ -210,16 +216,9 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
         print(result)
         //select date -> show data in card
         guard let fetchResult = result else {return}
-        updateDataInTableView(fetchResult: fetchResult)
-    }
-    
-    func updateDataInTableView(fetchResult: [RecipeCalendarRealmModel]) {
-        var imageArray2 = [UIView]()
-        var titleArray = [String]()
-        
         for recipe in fetchResult {
             guard let recipeLabel = recipe.recipeRealmModel?.label,
-                  let recipeImageURL = recipe.recipeRealmModel?.image else {return}
+                let recipeImageURL = recipe.recipeRealmModel?.image else {return}
             
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
             imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (image, error, cacheType, url) in
@@ -227,12 +226,15 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
                 print(error)
             }
             
-            titleArray.append(recipeLabel)
-            imageArray2.append(imageView)
+            self.recipeTitleArray.append(recipeLabel)
+            self.recipeImageArray.append(imageView)
         }
+        updateDataInTableView()
+    }
+    
+    func updateDataInTableView() {
         
-        
-        self.rowArray[1] = .horizontalCollectionViewType(imageArray2,titleArray)
+        self.rowArray[1] = .horizontalCollectionViewType(recipeImageArray,recipeTitleArray)
         
         var indexPath = IndexPath(row: 1, section: 0)
         guard let cell = self.testTable.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
