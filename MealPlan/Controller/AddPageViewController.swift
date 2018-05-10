@@ -32,6 +32,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var recipeDate = ""
     var dateManager = DataFormatManager()
     weak var delegate: AddPageDelegateProtocol?
+    var historyImageArray: [UIImageView] = []
+    var historyTitleArray: [String] = []
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +84,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         } else if (segue.identifier == "AddPageToHistoryView") {
             let vc = segue.destination as! AddPageHistoryController
             self.addPageHistoryController = vc
+            vc.imageArray = self.historyImageArray
+            vc.titleArray = self.historyTitleArray
         } else if (segue.identifier == "AddPageToPopView") {
             let vc = segue.destination as! UINavigationController
             self.addPagePopupTableViewController = vc
@@ -166,8 +170,9 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         }
     }
     
-    func selectAnimationDidFinish(animationImage: UIImage) {
-        addPageHistoryController.selectAnimationDidFinish(animationImage: animationImage)
+    func selectAnimationDidFinish(animationImage: UIImage, title: String) {
+        addPageHistoryController.selectAnimationDidFinish(animationImage: animationImage, animationString: title)
     }
+    
     
 }

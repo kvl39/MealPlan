@@ -87,6 +87,8 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
             let vc = segue.destination as! AddPageViewController
             vc.recipeDate = selectedDate
             vc.delegate = self
+            vc.historyImageArray = self.recipeImageArray
+            vc.historyTitleArray = self.recipeTitleArray
         }
     }
     
