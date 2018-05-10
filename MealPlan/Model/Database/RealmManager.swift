@@ -12,15 +12,19 @@ import RealmSwift
 class RealmManager {
     let saveQueue = DispatchQueue(label: "saveQueue")
     let formatter = DateFormatter()
+    var dateManager = DataFormatManager()
     
-    func saveAddedRecipe(addedRecipe: [RecipeInformation]) {
+    func saveAddedRecipe(addedRecipe: [RecipeInformation],
+                         recipeDate: String, completion: @escaping ()->Void) {
         saveQueue.async {
             let realm = try! Realm()
             
             for recipe in addedRecipe {
                 let recipeModel = RecipeCalendarRealmModel()
                 let currentdate = Date()
-                recipeModel.recipeDay = currentdate
+                //recipeModel.recipeDay = currentdate
+                guard let addDate = self.dateManager.stringToDate(dateString: recipeDate, to: "yyyy MM dd") else {return}
+                recipeModel.recipeDay = addDate
                 
                 let recipeRealmModel = RecipeRealmModel()
                 
@@ -58,7 +62,9 @@ class RealmManager {
                     realm.add(recipeModel)
                 }
             }
- 
+            
+            completion()
+            return
         }
     }
     

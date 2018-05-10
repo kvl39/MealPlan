@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddPageDelegateProtocol: class {
+    func reloadData()
+}
+
 class AddPageViewController: UIViewController, SearchViewControllerProtocol, AnimationControllerProtocol {
     
     @IBOutlet var popupView: UIView!
@@ -25,6 +29,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var observation: NSKeyValueObservation!
     var recipeDate = ""
     var dateManager = DataFormatManager()
+    weak var delegate: AddPageDelegateProtocol?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,8 +138,13 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     }
     
     @IBAction func confirmSelection(_ sender: Any) {
-        realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
+        //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
+        //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
+        realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate) {
+            self.delegate?.reloadData()
+        }
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {

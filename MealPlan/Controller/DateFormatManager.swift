@@ -19,6 +19,7 @@ class DataFormatManager {
         return formatter.date(from: dateString) 
     }
     
+    
     func extractDayFromDate(dateString: String)-> String? {
         
         formatter.dateFormat = "yyyy MM dd"

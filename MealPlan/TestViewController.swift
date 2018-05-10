@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class TestViewController: MPTableViewController {
+class TestViewController: MPTableViewController, AddPageDelegateProtocol{
 
     
     @IBOutlet weak var testTable: UITableView!
@@ -38,6 +38,10 @@ class TestViewController: MPTableViewController {
         configureTableView()
         configureAddButton()
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func reloadData() {
+        self.fetchDataInDate(in: self.selectedDate)
     }
    
     
@@ -78,6 +82,7 @@ class TestViewController: MPTableViewController {
         if (segue.identifier == "PushToAddPage") {
             let vc = segue.destination as! AddPageViewController
             vc.recipeDate = selectedDate
+            vc.delegate = self
         }
     }
     
@@ -196,11 +201,15 @@ class TestViewController: MPTableViewController {
         guard let userInfo = notification.userInfo,
               let date = userInfo["date"] as? String else {return}
         print(date)
+        self.selectedDate = date
+        fetchDataInDate(in: date)
+    }
+    
+    func fetchDataInDate(in date: String) {
         let result = self.realmManager.fetchRecipe(in: date)
         print(result)
         //select date -> show data in card
         guard let fetchResult = result else {return}
-        self.selectedDate = date
         updateDataInTableView(fetchResult: fetchResult)
     }
     
