@@ -150,14 +150,14 @@ class TestViewController: MPTableViewController {
        self.rowArray.append(.horizontalCollectionViewType(imageArray))
         
         
-        var imageArray2 = [UIView]()
-        imageArray2.append(pieChartManager.generateViewWithPieChart(value: 80))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
+//        var imageArray2 = [UIView]()
+//        imageArray2.append(pieChartManager.generateViewWithPieChart(value: 80))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
+//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+//        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
         
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         
@@ -176,6 +176,27 @@ class TestViewController: MPTableViewController {
         print(date)
         let result = self.realmManager.fetchRecipe(in: date)
         print(result)
+        //select date -> show data in card
+        
+        updateDataInTableView()
+
+        
+    }
+    
+    func updateDataInTableView() {
+        var imageArray2 = [UIView]()
+        imageArray2.append(pieChartManager.generateViewWithPieChart(value: 80))
+        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
+        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
+        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
+        self.rowArray[1] = .horizontalCollectionViewType(imageArray2)
+        
+        var indexPath = IndexPath(row: 1, section: 0)
+        guard let cell = self.testTable.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
+        cell.horizontalCollectionView.reloadData()
+        self.testTable.reloadData()
     }
     
     

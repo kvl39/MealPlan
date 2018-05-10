@@ -70,13 +70,12 @@ class RealmManager {
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
+        guard let date = formatter.date(from: dateString) else {return nil}
         
         // Get the current calendar with local time zone
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        guard let date = formatter.date(from: dateString) else {return nil}
-        
-        
+
         // Get today's beginning & end
         let dateFrom = calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
         let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
