@@ -30,7 +30,7 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
         view.addSubview(imageView)
         
         let path = UIBezierPath()
-        path.move(to: cellRect.origin)
+        path.move(to: CGPoint(x: cellRect.origin.x + 20, y: cellRect.origin.y))
         path.addQuadCurve(to: CGPoint(x: 51, y: 60),
                           controlPoint: CGPoint(x: view.frame.width/20, y: -cellRect.origin.y/10))
         let animation = CAKeyframeAnimation(keyPath: "position")
@@ -43,15 +43,10 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
     }
     
     func animationDidStart(_ anim: CAAnimation) {
-        print("AAA")
         self.animatingImageView.append(imageView)
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        print("BBB")
-//        imageView.removeFromSuperview()
-//        guard let animationImage = imageView.image else {return}
-//        delegate?.selectAnimationDidFinish(animationImage: animationImage)
         self.animatingImageView[0].removeFromSuperview()
         guard let animationImage = self.animatingImageView[0].image else {return}
         delegate?.selectAnimationDidFinish(animationImage: animationImage)

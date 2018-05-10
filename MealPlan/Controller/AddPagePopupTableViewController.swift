@@ -25,6 +25,7 @@ class AddPagePopupTableViewController: MPTableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         configureTableView()
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     
