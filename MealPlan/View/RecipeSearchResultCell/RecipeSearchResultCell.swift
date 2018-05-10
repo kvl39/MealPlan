@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipeSearchResultCell: UITableViewCell {
 
@@ -22,6 +23,15 @@ class RecipeSearchResultCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func loadImage(imageURL: String?) {
+        guard let imageURL = imageURL else {return}
+        //recipeImage.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "dish"))
+        recipeImage.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (image, error, cacheType, url) in
+            guard let error = error else {return}
+            print(error)
+        }
     }
 
     

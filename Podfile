@@ -8,5 +8,6 @@ pod 'JTAppleCalendar','~> 7.0'
 pod 'Charts'
 pod 'Alamofire'
 pod 'RealmSwift'
+pod 'SDWebImage'
 
 end

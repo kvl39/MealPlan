@@ -12,7 +12,7 @@ enum MPTableViewCellType {
     case horizontalCollectionViewType([UIView])
     case calendarCollectionViewType
     case recipeCellType(UIImage, String)
-    case recipeSearchCellType(UIImage, String, Bool)
+    case recipeSearchCellType(String?, UIImage?, String, Bool, Bool)
 }
 
 extension MPTableViewCellType {
@@ -22,8 +22,8 @@ extension MPTableViewCellType {
         case .calendarCollectionViewType: return CalendarViewItem()
         case .recipeCellType(let image, let title):
             return RecipeCellItem(image: image, title: title)
-        case .recipeSearchCellType(let image, let title, let selected):
-            return RecipeSearchCellItem(image: image, title: title, selected: selected)
+        case .recipeSearchCellType(let imageURL, let image ,let title, let selected, let isInsertImage):
+            return RecipeSearchCellItem(imageURL: imageURL, image: image, title: title, selected: selected, isInsertImage: isInsertImage)
         }
     }
 }
@@ -73,11 +73,15 @@ struct RecipeSearchCellItem: MPTableViewCellProtocol {
     var image: UIImage?
     var title: String = ""
     var selected: Bool = false
+    var isInsertImage: Bool = false
+    var imageURL: String?
     
-    init(image: UIImage, title: String, selected: Bool) {
+    init(imageURL: String?, image: UIImage?,title: String, selected: Bool, isInsertImage: Bool) {
         self.image = image
+        self.imageURL = imageURL
         self.title = title
         self.selected = selected
+        self.isInsertImage = isInsertImage
     }
 }
 
@@ -127,7 +131,6 @@ extension MPTableViewController {
         case .recipeSearchCellType:
             let cell = cell as! RecipeSearchResultCell
             guard let itemStruct = item.configureCell() as? RecipeSearchCellItem else {return cell}
-            cell.recipeImage.image = itemStruct.image
             cell.recipeTitle.text = itemStruct.title
             cell.selectRecipe.addTarget(self, action: #selector(selectRecipeAction(_:)), for: .touchUpInside)
             cell.selectRecipe.tag = indexPath.row
@@ -136,6 +139,12 @@ extension MPTableViewController {
             } else {
                 cell.selectRecipe.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
             }
+            if itemStruct.isInsertImage{
+                cell.recipeImage.image = itemStruct.image
+            } else {
+                cell.loadImage(imageURL: itemStruct.imageURL)
+            }
+            
             return cell
         }
     }

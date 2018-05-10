@@ -79,7 +79,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
               let cellImage = cell.recipeImage.image,
               let cellTitle = cell.recipeTitle.text else {return}
 
-        self.rowArray[sender.tag] = .recipeSearchCellType(cellImage, cellTitle, !selected)
+        //self.rowArray[sender.tag] = .recipeSearchCellType(cellImage, cellTitle, !selected)
+        self.rowArray[sender.tag] = .recipeSearchCellType(nil, cellImage, cellTitle, !selected, true)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .none)
         self.tableView.endUpdates()
@@ -102,7 +103,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.rowArray = []
         self.searchRecipeModel = products
         for index in 0...products.hits.count-1 {
-            self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), products.hits[index].recipe.label, false))
+            self.rowArray.append(
+            .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, false, false))
         }
         
         DispatchQueue.main.async{

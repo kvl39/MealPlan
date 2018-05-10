@@ -9,12 +9,16 @@ PODS:
   - Realm/Headers (3.5.0)
   - RealmSwift (3.5.0):
     - Realm (= 3.5.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
   - Alamofire
   - Charts
   - JTAppleCalendar (~> 7.0)
   - RealmSwift
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -23,6 +27,7 @@ SPEC REPOS:
     - JTAppleCalendar
     - Realm
     - RealmSwift
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -30,7 +35,8 @@ SPEC CHECKSUMS:
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
   RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 921c8f5aa3bb99088f5e4a262b56318064a58c81
+PODFILE CHECKSUM: 50cdead29b48a99c6d50126fbbf44c80e68a1889
 
 COCOAPODS: 1.5.0
