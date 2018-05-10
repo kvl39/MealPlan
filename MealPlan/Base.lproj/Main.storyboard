@@ -52,9 +52,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu1-Ur-SDL">
                                 <rect key="frame" x="162.5" y="69" width="50" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6m-AZ-akQ">
+                                        <rect key="frame" x="5" y="5" width="40.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.82745098039215681" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="m6m-AZ-akQ" firstAttribute="leading" secondItem="Zu1-Ur-SDL" secondAttribute="leading" constant="5" id="4Xh-G5-vAs"/>
+                                    <constraint firstAttribute="trailing" secondItem="m6m-AZ-akQ" secondAttribute="trailing" constant="5" id="VOT-Dd-mcO"/>
+                                    <constraint firstItem="m6m-AZ-akQ" firstAttribute="top" secondItem="Zu1-Ur-SDL" secondAttribute="top" constant="5" id="feO-8n-3vc"/>
                                     <constraint firstAttribute="height" constant="50" id="h45-le-8De"/>
+                                    <constraint firstAttribute="bottom" secondItem="m6m-AZ-akQ" secondAttribute="bottom" constant="5" id="nB3-dV-MTD"/>
                                     <constraint firstAttribute="width" constant="50" id="wxM-I8-ql9"/>
                                 </constraints>
                             </view>
@@ -158,6 +170,7 @@
                         <viewLayoutGuide key="safeArea" id="kbE-ec-ihG"/>
                     </view>
                     <connections>
+                        <outlet property="dateIndicator" destination="m6m-AZ-akQ" id="ClL-dI-Bz3"/>
                         <outlet property="popupView" destination="qiJ-W1-vpa" id="hc6-fi-pgv"/>
                         <outlet property="visualEffectView" destination="R6I-IV-6Hx" id="Glv-f5-sMo"/>
                     </connections>

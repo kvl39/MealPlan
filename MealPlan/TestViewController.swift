@@ -24,6 +24,9 @@ class TestViewController: MPTableViewController {
     var typeButtonRightConstraint: NSLayoutConstraint?
     var shareButtonRightConstraint: NSLayoutConstraint?
     let realmManager = RealmManager()
+    var selectedDate = ""
+    var dateManager = DataFormatManager()
+    
     
     
     override func viewDidLoad() {
@@ -71,7 +74,11 @@ class TestViewController: MPTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        //PushToAddPage
+        if (segue.identifier == "PushToAddPage") {
+            let vc = segue.destination as! AddPageViewController
+            vc.recipeDate = selectedDate
+        }
     }
     
     @objc func addButtonInteraction(_ sender : UIButton) {
@@ -193,6 +200,7 @@ class TestViewController: MPTableViewController {
         print(result)
         //select date -> show data in card
         guard let fetchResult = result else {return}
+        self.selectedDate = date
         updateDataInTableView(fetchResult: fetchResult)
     }
     

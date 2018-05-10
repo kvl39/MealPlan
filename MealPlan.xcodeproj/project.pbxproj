@@ -29,6 +29,7 @@
 		AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B48209B0545009915F3 /* AddPageHistoryController.swift */; };
 		AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4A209B0649009915F3 /* AddPageViewController.swift */; };
 		AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */; };
+		AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD57814C20A47C5900130388 /* DateFormatManager.swift */; };
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
@@ -77,6 +78,7 @@
 		AD566B48209B0545009915F3 /* AddPageHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageHistoryController.swift; sourceTree = "<group>"; };
 		AD566B4A209B0649009915F3 /* AddPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageViewController.swift; sourceTree = "<group>"; };
 		AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePickupController.swift; sourceTree = "<group>"; };
+		AD57814C20A47C5900130388 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
 				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
+				AD57814C20A47C5900130388 /* DateFormatManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */,
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
+				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
@@ -583,7 +587,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLL3688WWP;
 				INFOPLIST_FILE = MealPlan/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MealPlan.KevinLiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -599,7 +606,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLL3688WWP;
 				INFOPLIST_FILE = MealPlan/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MealPlan.KevinLiao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -11,8 +11,8 @@ import UIKit
 class AddPageViewController: UIViewController, SearchViewControllerProtocol, AnimationControllerProtocol {
     
     @IBOutlet var popupView: UIView!
-    
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    @IBOutlet weak var dateIndicator: UILabel!
     
     var effect: UIVisualEffect!
     var isPopup: Bool = false
@@ -23,6 +23,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     var realmManager = RealmManager()
     var addPagePopupTableViewController = UINavigationController()
     var observation: NSKeyValueObservation!
+    var recipeDate = ""
+    var dateManager = DataFormatManager()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         visualEffectView.alpha = 0
         self.navigationController?.navigationBar.isHidden = true
         configureObserver()
+        self.dateIndicator.text = dateManager.extractDayFromDate(dateString: self.recipeDate)
     }
     
 //    func createFakeData() {
