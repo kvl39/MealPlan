@@ -85,7 +85,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         popupView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             popupView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            popupView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            popupView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -200),
             popupView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height-350),
             popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             ])
