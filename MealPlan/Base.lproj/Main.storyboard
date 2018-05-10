@@ -50,26 +50,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wc-ig-5V7">
-                                <rect key="frame" x="51" y="112" width="240" height="153"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu1-Ur-SDL">
+                                <rect key="frame" x="162.5" y="69" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.82745098039215681" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="153" id="mla-id-u2D"/>
+                                    <constraint firstAttribute="height" constant="50" id="h45-le-8De"/>
+                                    <constraint firstAttribute="width" constant="50" id="wxM-I8-ql9"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wc-ig-5V7">
+                                <rect key="frame" x="20" y="119" width="335" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="mla-id-u2D"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="nP8-Md-6oK" kind="embed" identifier="AddPageToHistoryView" id="xUE-Lu-AO9"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmU-6c-oql">
-                                <rect key="frame" x="0.0" y="313" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="339" width="375" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="JQw-DW-HlE"/>
+                                    <constraint firstAttribute="height" constant="40" id="JQw-DW-HlE"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="QFq-Qn-hh7" kind="embed" identifier="AddPageToTagView" id="9wf-z1-Ed8"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HR-ud-r8d">
-                                <rect key="frame" x="0.0" y="465" width="375" height="122"/>
+                                <rect key="frame" x="0.0" y="409" width="375" height="178"/>
                                 <connections>
                                     <segue destination="mGc-JB-OaZ" kind="embed" identifier="AddPageToSearchView" id="8ud-5E-FWC"/>
                                 </connections>
@@ -125,24 +133,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dmU-6c-oql" firstAttribute="top" secondItem="4Wc-ig-5V7" secondAttribute="bottom" constant="48" id="07h-tJ-UgJ"/>
+                            <constraint firstItem="dmU-6c-oql" firstAttribute="top" secondItem="4Wc-ig-5V7" secondAttribute="bottom" constant="20" id="07h-tJ-UgJ"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="Bap-Kr-KGR" secondAttribute="trailing" constant="50" id="1lE-st-aM1"/>
-                            <constraint firstItem="4Wc-ig-5V7" firstAttribute="leading" secondItem="kbE-ec-ihG" secondAttribute="leading" constant="51" id="7fI-Cf-vc2"/>
+                            <constraint firstItem="Zu1-Ur-SDL" firstAttribute="centerX" secondItem="gfa-SZ-Bpk" secondAttribute="centerX" id="24O-YL-y7r"/>
+                            <constraint firstItem="4Wc-ig-5V7" firstAttribute="leading" secondItem="kbE-ec-ihG" secondAttribute="leading" constant="20" id="7fI-Cf-vc2"/>
                             <constraint firstItem="2Vc-TZ-78M" firstAttribute="top" secondItem="R6I-IV-6Hx" secondAttribute="bottom" constant="5" id="9Zv-Ep-U7l"/>
+                            <constraint firstItem="Zu1-Ur-SDL" firstAttribute="top" secondItem="kbE-ec-ihG" secondAttribute="top" constant="5" id="BSw-ac-0Cy"/>
                             <constraint firstItem="R6I-IV-6Hx" firstAttribute="leading" secondItem="kbE-ec-ihG" secondAttribute="leading" id="JTx-L6-hT3"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="0HR-ud-r8d" secondAttribute="trailing" id="LFj-bV-mRh"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="bottom" secondItem="Bap-Kr-KGR" secondAttribute="bottom" constant="20" id="NH5-KG-2SW"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="bottom" secondItem="Bap-Kr-KGR" secondAttribute="bottom" constant="20" id="P3a-ko-ALz"/>
                             <constraint firstItem="R6I-IV-6Hx" firstAttribute="top" secondItem="kbE-ec-ihG" secondAttribute="top" id="Pm2-8E-kRN"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="dmU-6c-oql" secondAttribute="trailing" id="Snx-n3-X9F"/>
-                            <constraint firstItem="0HR-ud-r8d" firstAttribute="top" secondItem="4Wc-ig-5V7" secondAttribute="bottom" constant="200" id="VmZ-dL-AdR"/>
                             <constraint firstAttribute="bottom" secondItem="2Vc-TZ-78M" secondAttribute="bottom" constant="20" id="Whm-Es-o2J"/>
                             <constraint firstItem="0HR-ud-r8d" firstAttribute="leading" secondItem="kbE-ec-ihG" secondAttribute="leading" id="XvR-Up-hSO"/>
                             <constraint firstItem="dmU-6c-oql" firstAttribute="leading" secondItem="kbE-ec-ihG" secondAttribute="leading" id="cKD-Jy-8DZ"/>
+                            <constraint firstItem="0HR-ud-r8d" firstAttribute="top" secondItem="dmU-6c-oql" secondAttribute="bottom" constant="30" id="ke7-GC-F4b"/>
                             <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="R6I-IV-6Hx" secondAttribute="trailing" id="nGP-U9-8bP"/>
                             <constraint firstItem="2Vc-TZ-78M" firstAttribute="top" secondItem="0HR-ud-r8d" secondAttribute="bottom" constant="30" id="rvl-nv-qn8"/>
-                            <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="4Wc-ig-5V7" secondAttribute="trailing" constant="84" id="sfr-nz-awA"/>
-                            <constraint firstItem="4Wc-ig-5V7" firstAttribute="top" secondItem="kbE-ec-ihG" secondAttribute="top" constant="48" id="usW-fz-zja"/>
+                            <constraint firstItem="kbE-ec-ihG" firstAttribute="trailing" secondItem="4Wc-ig-5V7" secondAttribute="trailing" constant="20" id="sfr-nz-awA"/>
+                            <constraint firstItem="4Wc-ig-5V7" firstAttribute="top" secondItem="kbE-ec-ihG" secondAttribute="top" constant="55" id="usW-fz-zja"/>
                             <constraint firstItem="2Vc-TZ-78M" firstAttribute="leading" secondItem="gfa-SZ-Bpk" secondAttribute="leading" constant="50" id="wCI-AQ-Nx2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kbE-ec-ihG"/>
@@ -169,11 +179,11 @@
             <objects>
                 <viewController id="nP8-Md-6oK" customClass="AddPageHistoryController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OBX-WA-ydR">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="153"/>
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="klY-1F-Txy">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="153"/>
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -249,7 +259,7 @@
             <objects>
                 <viewController id="QFq-Qn-hh7" customClass="MPTagViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWY-mn-zG0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qwp-Fx-iAu"/>
@@ -264,11 +274,11 @@
             <objects>
                 <viewController id="mGc-JB-OaZ" customClass="SearchViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FIn-om-Mh7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CwY-ar-eDe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
