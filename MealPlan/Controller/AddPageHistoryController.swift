@@ -34,7 +34,8 @@ class AddPageHistoryController: MPTableViewController {
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray))
+        var titleArray = ["1","2","3","4","5","6"]
+        self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
         
         
 //        var imageArray2 = [UIView]()
@@ -60,6 +61,7 @@ class AddPageHistoryController: MPTableViewController {
         guard let cell = self.tableView.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
         indexPath = IndexPath(item: 0, section: 0)
         cell.viewArray.insert(generateViewWithImage(image: animationImage), at: 0)
+        cell.titleArray.insert("new", at: 0)
         cell.horizontalCollectionView.insertItems(at: [indexPath])
 //        cell.horizontalCollectionView.reloadItems(at: [indexPath])
 //        cell.horizontalCollectionView.reloadData()

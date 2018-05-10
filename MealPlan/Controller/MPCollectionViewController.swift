@@ -12,6 +12,7 @@ import UIKit
 class MPCollectionViewController: UITableViewCell {
 
     var viewArray: [UIView] = []
+    var titleArray: [String] = []
     var itemCount: Int = 0
 
 }
@@ -39,6 +40,7 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
             subView.topAnchor.constraint(equalTo: cell.collectionViewCell.topAnchor, constant: 10),
             subView.bottomAnchor.constraint(equalTo: cell.cardLabel.topAnchor, constant: -10),
             ])
+        cell.cardLabel.text = titleArray[indexPath.row]
         return cell
     }
     

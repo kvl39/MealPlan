@@ -37,7 +37,8 @@ class AddPagePickupController: MPTableViewController {
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
         imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray.append(.horizontalCollectionViewType(imageArray))
+        var titleArray = ["1","2","3","4","5","6"]
+        self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
         
         
     }

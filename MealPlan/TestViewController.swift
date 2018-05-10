@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TestViewController: MPTableViewController {
 
@@ -141,13 +142,15 @@ class TestViewController: MPTableViewController {
         self.rowArray.append(.calendarCollectionViewType)
        
        var imageArray = [UIView]()
+       imageArray.append(pieChartManager.generateViewWithPieChart(value: 90))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-       self.rowArray.append(.horizontalCollectionViewType(imageArray))
+       var titleArray = ["A","B","C","D","E","F","G"]
+       self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
         
         
 //        var imageArray2 = [UIView]()
@@ -177,21 +180,30 @@ class TestViewController: MPTableViewController {
         let result = self.realmManager.fetchRecipe(in: date)
         print(result)
         //select date -> show data in card
-        
-        updateDataInTableView()
-
-        
+        guard let fetchResult = result else {return}
+        updateDataInTableView(fetchResult: fetchResult)
     }
     
-    func updateDataInTableView() {
+    func updateDataInTableView(fetchResult: [RecipeCalendarRealmModel]) {
         var imageArray2 = [UIView]()
-        imageArray2.append(pieChartManager.generateViewWithPieChart(value: 80))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-        self.rowArray[1] = .horizontalCollectionViewType(imageArray2)
+        var titleArray = [String]()
+        
+        for recipe in fetchResult {
+            guard let recipeLabel = recipe.recipeRealmModel?.label,
+                  let recipeImageURL = recipe.recipeRealmModel?.image else {return}
+            
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+            imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (image, error, cacheType, url) in
+                guard let error = error else {return}
+                print(error)
+            }
+            
+            titleArray.append(recipeLabel)
+            imageArray2.append(imageView)
+        }
+        
+        
+        self.rowArray[1] = .horizontalCollectionViewType(imageArray2,titleArray)
         
         var indexPath = IndexPath(row: 1, section: 0)
         guard let cell = self.testTable.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
