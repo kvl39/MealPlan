@@ -12,6 +12,7 @@ class AddPagePopupTableViewController: MPTableViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var finishedLoadingInitialTableCells = false
+    var animateTableCellIsShown = false
     
     var recipeClass: RecipeClass = RecipeClassLayer0()
     
@@ -38,8 +39,11 @@ class AddPagePopupTableViewController: MPTableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateTableCells()
+        if self.animateTableCellIsShown == false {
+            animateTableCells()
+        }
     }
+    
     
     func animateTableCells() {
         let cells = tableView.visibleCells
@@ -54,6 +58,7 @@ class AddPagePopupTableViewController: MPTableViewController {
                 cells[index].transform = .identity
             })
         }
+        self.animateTableCellIsShown = true
     }
     
     func animateOutTableCells() {
@@ -71,6 +76,8 @@ class AddPagePopupTableViewController: MPTableViewController {
                 cells[index].transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
             })
         }
+        self.animateTableCellIsShown = false
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,6 +87,7 @@ class AddPagePopupTableViewController: MPTableViewController {
             let vc = self.storyboard!.instantiateViewController(withIdentifier: "AddPagePopupTableViewController") as! AddPagePopupTableViewController
             self.navigationController!.pushViewController(vc, animated: true)
             vc.recipeClass = self.recipeClass.childArray[indexPath.row]
+            vc.animateTableCellIsShown = true
         } else {
             //add a tag
             self.navigationController?.popToRootViewController(animated: false)
@@ -88,5 +96,5 @@ class AddPagePopupTableViewController: MPTableViewController {
         
     }
     
-
+    
 }
