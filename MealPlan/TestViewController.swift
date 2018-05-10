@@ -40,10 +40,10 @@ class TestViewController: MPTableViewController {
     
     func configureAddButton() {
         
-        addButton = generateButtonWithConstraint(title: "+", bottomConstraintConstant: -20.0)
-        takePictureButton = generateButtonWithConstraint(title: "takePicture", bottomConstraintConstant: -80.0)
-        typeButton = generateButtonWithConstraint(title: "type", bottomConstraintConstant: -140.0)
-        shareButton = generateButtonWithConstraint(title: "share", bottomConstraintConstant: -200.0)
+        addButton = generateButtonWithConstraint(image: #imageLiteral(resourceName: "plus"), bottomConstraintConstant: -20.0)
+        takePictureButton = generateButtonWithConstraint(image: #imageLiteral(resourceName: "camera"), bottomConstraintConstant: -80.0)
+        typeButton = generateButtonWithConstraint(image: #imageLiteral(resourceName: "select"), bottomConstraintConstant: -140.0)
+        shareButton = generateButtonWithConstraint(image: #imageLiteral(resourceName: "share"), bottomConstraintConstant: -200.0)
         addButtonRightConstraint = NSLayoutConstraint(item: addButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: -20)
         takePictureButtonRightConstraint = NSLayoutConstraint(item: takePictureButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: 100)
         typeButtonRightConstraint = NSLayoutConstraint(item: typeButton, attribute: NSLayoutAttribute.right, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.rightMargin, multiplier: 1.0, constant: 100)
@@ -118,13 +118,25 @@ class TestViewController: MPTableViewController {
         }
     }
     
-    func generateButtonWithConstraint(title: String, bottomConstraintConstant: CGFloat)-> UIButton {
+    func generateButtonWithConstraint(image: UIImage, bottomConstraintConstant: CGFloat)-> UIButton {
         
         let button = UIButton.init(type: .system)
         button.setTitle("", for: .normal)
         //button.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
-        button.setTitle(title, for: .normal)
-        button.backgroundColor = UIColor.black
+        button.setImage(image, for: .normal)
+        //button.setTitle(title, for: .normal)
+        //button.backgroundColor = UIColor.black
+        //button.layer.cornerRadius = button.frame.size.width / 2
+        //button.layer.masksToBounds = true
+        
+        
+//        globeButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
+//        globeButton.layer.shadowOffset = CGSizeMake(0.0, 2.0)
+//        globeButton.layer.shadowOpacity = 1.0
+        
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
         self.view.addSubview(button)
         
         button.translatesAutoresizingMaskIntoConstraints = false
