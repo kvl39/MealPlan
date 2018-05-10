@@ -131,6 +131,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     
     @IBAction func confirmSelection(_ sender: Any) {
         realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
