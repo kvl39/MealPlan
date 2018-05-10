@@ -13,38 +13,17 @@ protocol MPCalendarViewDelegateProtocol: class {
     func calendarDidSelect(date: Date)
 }
 
-class MPCalendarView: UITableViewCell {
+class MPCalendarView: UITableViewCell, JTAppleCalendarViewDelegate {
     
     let formatter = DateFormatter()
     weak var delegate: MPCalendarViewDelegateProtocol?
     //static let notificationName = Notification.Name("myNotificationName")
-}
-
-extension MPCalendarView: JTAppleCalendarViewDataSource {
-    
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
-        
-        let startDate = formatter.date(from: "2017 01 01")! //don't do this in real app
-        let endDate = formatter.date(from: "2017 12 31")!
-        
-        let parameter = ConfigurationParameters(startDate: startDate, endDate: endDate)
-        return parameter
-    }
-    
-}
-
-extension MPCalendarView: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
         let cell = cell as! CalendarCell
         configureCell(cell: cell, cellState: cellState)
         configureTextColor(cell: cell, cellState: cellState)
-        
     }
     
     
@@ -82,7 +61,6 @@ extension MPCalendarView: JTAppleCalendarViewDelegate {
                 cell.dateLabel.textColor = UIColor.gray
             }
         }
-        
     }
     
     
@@ -93,10 +71,9 @@ extension MPCalendarView: JTAppleCalendarViewDelegate {
         validCell.selectedView.isHidden = false
         configureTextColor(cell: validCell, cellState: cellState)
         self.delegate?.calendarDidSelect(date: date)
+        formatter.dateFormat = "yyyy MM dd"
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SelectDate"), object: nil, userInfo:["date": formatter.string(from: date)])
-        
     }
-    
     
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -107,11 +84,25 @@ extension MPCalendarView: JTAppleCalendarViewDelegate {
         
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+    }
+}
+
+extension MPCalendarView: JTAppleCalendarViewDataSource {
     
-//    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-//
-//        configureLabel(visibleDates: visibleDates)
-//
-//    }
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        
+        let startDate = formatter.date(from: "2018 01 01")! //don't do this in real app
+        let endDate = formatter.date(from: "2020 12 31")!
+        
+        let parameter = ConfigurationParameters(startDate: startDate, endDate: endDate)
+        return parameter
+    }
     
 }
+
+

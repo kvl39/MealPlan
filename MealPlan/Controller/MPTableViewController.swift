@@ -52,7 +52,7 @@ struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
 
 struct CalendarViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "CalendarCollectionView"
-    var rowHeight: Int = 246
+    var rowHeight: Int = 280
 }
 
 struct RecipeCellItem: MPTableViewCellProtocol {

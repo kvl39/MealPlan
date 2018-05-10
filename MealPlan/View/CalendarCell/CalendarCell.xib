@@ -26,6 +26,11 @@
                             <constraint firstAttribute="width" constant="33" id="RPf-ae-baA"/>
                             <constraint firstAttribute="height" constant="33" id="Urr-Uy-mzX"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBM-hF-Pdq">
                         <rect key="frame" x="27" y="30" width="42" height="21"/>

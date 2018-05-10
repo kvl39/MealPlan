@@ -32,6 +32,7 @@ class TestViewController: MPTableViewController {
 
         configureTableView()
         configureAddButton()
+        self.navigationController?.navigationBar.isHidden = true
     }
    
     
@@ -133,7 +134,7 @@ class TestViewController: MPTableViewController {
     }
 
     func configureTableView(){
-        
+        self.testTable.separatorStyle = .none
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
         testTable.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         self.rowArray.append(.calendarCollectionViewType)
