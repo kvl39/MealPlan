@@ -13,15 +13,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HorizontalCollectionView" rowHeight="259" id="KGk-i7-Jjw" customClass="HorizontalCollectionView" customModule="MealPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h3Y-2c-4vD">
-                        <rect key="frame" x="0.0" y="10" width="320" height="109.5"/>
+                        <rect key="frame" x="0.0" y="39.5" width="320" height="110"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="110" id="sLS-Hy-dtM"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9eQ-Ea-XKS">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -29,20 +32,38 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxp-CL-RRe">
+                        <rect key="frame" x="16" y="-0.5" width="72" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="35w-PS-jwt"/>
+                            <constraint firstAttribute="width" constant="72" id="msy-7D-U9G"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Today">
+                                <attributes>
+                                    <color key="NSColor" red="0.78823529411764703" green="0.51764705882352935" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="25" name="PingFangTC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="h3Y-2c-4vD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1n2-qL-JTg"/>
+                    <constraint firstItem="h3Y-2c-4vD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="39.5" id="5BB-fg-8dA"/>
+                    <constraint firstItem="pxp-CL-RRe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="XZh-Dr-1db"/>
                     <constraint firstAttribute="trailing" secondItem="h3Y-2c-4vD" secondAttribute="trailing" id="ZrH-vs-sVT"/>
                     <constraint firstAttribute="bottom" secondItem="h3Y-2c-4vD" secondAttribute="bottom" id="c8m-2r-jkl"/>
-                    <constraint firstItem="h3Y-2c-4vD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lLd-Rq-pac"/>
+                    <constraint firstItem="h3Y-2c-4vD" firstAttribute="top" secondItem="pxp-CL-RRe" secondAttribute="bottom" constant="5" id="vGA-cc-Job"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="horizontalCollectionView" destination="h3Y-2c-4vD" id="nnN-Om-BJ8"/>
             </connections>
-            <point key="canvasLocation" x="34" y="161.5"/>
+            <point key="canvasLocation" x="34" y="161"/>
         </tableViewCell>
     </objects>
 </document>

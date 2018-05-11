@@ -37,7 +37,7 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
         
         let path = UIBezierPath()
         path.move(to: CGPoint(x: cellRect.origin.x + 20, y: cellRect.origin.y))
-        path.addQuadCurve(to: CGPoint(x: 51, y: 60),
+        path.addQuadCurve(to: CGPoint(x: 51, y: 100),
                           controlPoint: CGPoint(x: view.frame.width/20, y: -cellRect.origin.y/10))
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.path = path.cgPath

@@ -144,6 +144,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol{
         button.setTitle("", for: .normal)
         //button.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
         button.setImage(image, for: .normal)
+        button.tintColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1.0)
         //button.setTitle(title, for: .normal)
         //button.backgroundColor = UIColor.black
         //button.layer.cornerRadius = button.frame.size.width / 2

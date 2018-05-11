@@ -41,7 +41,7 @@ enum horizontalCollectionViewItemType {
 
 struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "HorizontalCollectionView"
-    var rowHeight: Int = 180
+    var rowHeight: Int = 200
     var viewArray: [UIView] = []
     var titleArray: [String] = []
     
