@@ -19,14 +19,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hJA-Ns-0Xw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MealPlan2" translatesAutoresizingMaskIntoConstraints="NO" id="EdC-Ar-FTP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hJA-Ns-0Xw" firstAttribute="top" secondItem="jA1-yU-ctF" secondAttribute="top" id="Sa8-fV-j7S"/>
+                            <constraint firstItem="EdC-Ar-FTP" firstAttribute="leading" secondItem="jA1-yU-ctF" secondAttribute="leading" id="5q0-NZ-4Y4"/>
+                            <constraint firstItem="hJA-Ns-0Xw" firstAttribute="top" secondItem="jA1-yU-ctF" secondAttribute="top" constant="40" id="Sa8-fV-j7S"/>
                             <constraint firstItem="jA1-yU-ctF" firstAttribute="bottom" secondItem="hJA-Ns-0Xw" secondAttribute="bottom" id="UXc-Ba-AHS"/>
+                            <constraint firstItem="hJA-Ns-0Xw" firstAttribute="top" secondItem="EdC-Ar-FTP" secondAttribute="bottom" id="ZSs-d6-BxN"/>
+                            <constraint firstItem="EdC-Ar-FTP" firstAttribute="top" secondItem="jA1-yU-ctF" secondAttribute="top" id="f6u-Gc-PAd"/>
+                            <constraint firstItem="jA1-yU-ctF" firstAttribute="trailing" secondItem="EdC-Ar-FTP" secondAttribute="trailing" id="tAz-vg-UNg"/>
                             <constraint firstItem="jA1-yU-ctF" firstAttribute="trailing" secondItem="hJA-Ns-0Xw" secondAttribute="trailing" id="yhl-PI-5oZ"/>
                             <constraint firstItem="hJA-Ns-0Xw" firstAttribute="leading" secondItem="jA1-yU-ctF" secondAttribute="leading" id="zNf-cs-4s7"/>
                         </constraints>
@@ -332,6 +339,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MealPlan2" width="600" height="224"/>
         <image name="confirm" width="512" height="512"/>
         <image name="drawer" width="512" height="512"/>
     </resources>

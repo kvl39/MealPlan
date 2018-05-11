@@ -24,7 +24,7 @@ class CalendarCollectionView: MPCalendarView {
         calendarCollectionView.ibCalendarDataSource = self
         calendarCollectionView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
         setupCalendarView()
-        contentView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "calories-chicken-chopping-board-616330"))
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
