@@ -19,6 +19,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="392" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.001" translatesAutoresizingMaskIntoConstraints="NO" id="z4z-eJ-3Uo">
+                        <rect key="frame" x="0.0" y="0.0" width="392" height="299.5"/>
+                    </imageView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7CD-iY-jeg" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                         <rect key="frame" x="0.0" y="70" width="392" height="229.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,16 +102,20 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="lc0-Uz-rRT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="0UB-Fd-z8u"/>
+                    <constraint firstItem="z4z-eJ-3Uo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="38h-c7-DpY"/>
                     <constraint firstAttribute="trailing" secondItem="3Cn-6L-OuV" secondAttribute="trailing" id="9b9-wy-BQN"/>
                     <constraint firstAttribute="trailing" secondItem="7CD-iY-jeg" secondAttribute="trailing" id="CQd-Qo-JNC"/>
                     <constraint firstItem="7CD-iY-jeg" firstAttribute="top" secondItem="3Cn-6L-OuV" secondAttribute="bottom" id="PFM-Ae-fTI"/>
                     <constraint firstItem="3Cn-6L-OuV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Pkz-Nv-cVb"/>
+                    <constraint firstItem="z4z-eJ-3Uo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TUy-qV-b2T"/>
                     <constraint firstItem="7CD-iY-jeg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="70" id="Zcv-KG-dVX"/>
+                    <constraint firstAttribute="bottom" secondItem="z4z-eJ-3Uo" secondAttribute="bottom" id="esm-jq-mNw"/>
                     <constraint firstItem="3Nz-Tq-0XQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="fQn-4N-g8t"/>
                     <constraint firstItem="3Nz-Tq-0XQ" firstAttribute="leading" secondItem="lc0-Uz-rRT" secondAttribute="trailing" constant="27" id="izJ-0e-4LF"/>
                     <constraint firstItem="lc0-Uz-rRT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="lUz-qG-WNb"/>
                     <constraint firstAttribute="bottom" secondItem="7CD-iY-jeg" secondAttribute="bottom" id="nPk-PN-Y4o"/>
                     <constraint firstItem="7CD-iY-jeg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="y7B-9s-KiL"/>
+                    <constraint firstAttribute="trailing" secondItem="z4z-eJ-3Uo" secondAttribute="trailing" id="zVD-of-Tnf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -119,4 +126,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="background.001" width="1024" height="768"/>
+    </resources>
 </document>

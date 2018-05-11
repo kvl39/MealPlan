@@ -24,6 +24,7 @@
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MealPlan2" translatesAutoresizingMaskIntoConstraints="NO" id="EdC-Ar-FTP">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.65490196078431373" green="0.82352941176470584" blue="0.79607843137254897" alpha="0.77579195205479456" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
