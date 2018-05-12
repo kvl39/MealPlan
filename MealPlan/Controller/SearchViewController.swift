@@ -23,9 +23,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     var recipeManager = RecipeManager()
     weak var delegate: SearchViewControllerProtocol?
     var searchRecipeModel: RecipeModel?
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeManager.delegate = self
@@ -34,20 +34,20 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         configureObserver()
         configureTableView()
     }
-    
+
     func configureObserver() {
-        observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, change) in
+        observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
             print(tagArray.tags)
             var searchKeyword = "?q="
             if tagArray.tags.count > 0 {
                 for index in 0...tagArray.tags.count-1 {
                     if index == 0 {
-                        searchKeyword = searchKeyword + tagArray.tags[0]
+                        searchKeyword += tagArray.tags[0]
                     } else {
-                        searchKeyword = searchKeyword + "%26" + tagArray.tags[index]
+                        searchKeyword += "%26" + tagArray.tags[index]
                     }
                 }
-                searchKeyword = searchKeyword + "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=7"
+                searchKeyword += "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=7"
                 self.recipeManager.getRecipe(keyWord: searchKeyword)
             } else {
                 self.rowArray = []
@@ -55,11 +55,11 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             }
         }
     }
-    
+
     func configureTableView() {
-        
+
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
-        
+
         //data for test only
 //        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
 //        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
@@ -69,9 +69,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 //        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
 //        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
     }
-    
-    @objc override func selectRecipeAction(_ sender : UIButton) {
-        
+
+    @objc override func selectRecipeAction(_ sender: UIButton) {
+
         //toggle select button
         guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {return}
         let indexPath = IndexPath(row: sender.tag, section: 0)
@@ -84,7 +84,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .none)
         self.tableView.endUpdates()
-        
+
         //select animation
         guard let searchResult = self.searchRecipeModel,
             let selectedHits = searchResult.hits[sender.tag] as? hits,
@@ -97,8 +97,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             self.delegate?.deSelectRecipe(cell: cell, deSelectedRecipe: selectedRecipe)
         }
     }
-    
-    
+
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
         self.searchRecipeModel = products
@@ -106,14 +105,14 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             self.rowArray.append(
             .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, false, false))
         }
-        
-        DispatchQueue.main.async{
+
+        DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+
     func manager(_ manager: RecipeManager, didFailWith error: MPError) {
-        
+
     }
 
 }

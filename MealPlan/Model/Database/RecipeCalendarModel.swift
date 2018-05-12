@@ -9,11 +9,10 @@
 import Foundation
 import RealmSwift
 
-
 class RecipeCalendarRealmModel: Object {
     @objc dynamic var recipeDay = Date(timeIntervalSince1970: 1)
     //let RecipeRealmModel = List<RecipeRealmModel>()
-    @objc dynamic var recipeRealmModel: RecipeRealmModel? = nil
+    @objc dynamic var recipeRealmModel: RecipeRealmModel?
 }
 
 class RecipeRealmModel: Object {
@@ -33,5 +32,3 @@ class Nutrients: Object {
     @objc dynamic var label = ""
     @objc dynamic var quantity = 0.0
 }
-
-

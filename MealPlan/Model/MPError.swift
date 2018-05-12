@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum MPError: Error {
     case BadURL
     case JSONNotDecodable

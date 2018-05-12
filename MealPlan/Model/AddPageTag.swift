@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class AddPageTag: NSObject {
     @objc dynamic var tags: [String] = []
 }

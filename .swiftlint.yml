@@ -1,0 +1,12 @@
+disabled_rules:
+  - force_try
+  - type_name
+  - identifier_name
+
+
+excluded: 
+  - Pods
+
+line_length: 
+  - 200 #warning
+  - 300 # error

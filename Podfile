@@ -9,5 +9,6 @@ pod 'Charts'
 pod 'Alamofire'
 pod 'RealmSwift'
 pod 'SDWebImage'
+pod 'SwiftLint'
 
 end

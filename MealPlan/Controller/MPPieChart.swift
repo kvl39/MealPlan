@@ -10,8 +10,8 @@ import Foundation
 import Charts
 
 class MPPieChart {
-    
-    func generateViewWithPieChart(value: Double)->UIView {
+
+    func generateViewWithPieChart(value: Double) -> UIView {
         let pieChartView = PieChartView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         let nuitritionEntry = PieChartDataEntry(value: value)
         nuitritionEntry.label = ""
@@ -32,6 +32,5 @@ class MPPieChart {
         //pieChartView.drawSliceTextEnabled = false
         return pieChartView
     }
-    
-}
 
+}

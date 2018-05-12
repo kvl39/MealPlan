@@ -12,20 +12,20 @@ protocol AnimationControllerProtocol: class {
     func selectAnimationDidFinish(animationImage: UIImage, title: String)
 }
 
-class AddPageAnimationController: UIViewController, CAAnimationDelegate{
-    
+class AddPageAnimationController: UIViewController, CAAnimationDelegate {
+
     var imageView = UIImageView()
     var animatingImageView = [UIImageView]()
     var animatingTitle = [String]()
     var titleText: String = ""
     weak var delegate: AnimationControllerProtocol?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     func selectRecipeAnimation(cell: RecipeSearchResultCell, view: UIView, cellRect: CGRect) {
-        
+
         self.imageView = UIImageView(image: cell.recipeImage.image)
         guard let text = cell.recipeTitle.text else {
             return
@@ -34,7 +34,7 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
         imageView.frame = CGRect(origin: cellRect.origin, size: CGSize(width: 40, height: 40))
         print("y:\(cellRect.origin.y)")
         view.addSubview(imageView)
-        
+
         let path = UIBezierPath()
         path.move(to: CGPoint(x: cellRect.origin.x + 20, y: cellRect.origin.y))
         path.addQuadCurve(to: CGPoint(x: 51, y: 100),
@@ -47,12 +47,12 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
         animation.delegate = self
         imageView.layer.add(animation, forKey: "animation")
     }
-    
+
     func animationDidStart(_ anim: CAAnimation) {
         self.animatingImageView.append(imageView)
         self.animatingTitle.append(titleText)
     }
-    
+
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.animatingImageView[0].removeFromSuperview()
         guard let animationImage = self.animatingImageView[0].image else {return}
@@ -60,6 +60,5 @@ class AddPageAnimationController: UIViewController, CAAnimationDelegate{
         self.animatingImageView.remove(at: 0)
         self.animatingTitle.remove(at: 0)
     }
-    
-}
 
+}

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum MPTableViewCellType {
     case horizontalCollectionViewType([UIView], [String])
     case calendarCollectionViewType
@@ -16,13 +15,13 @@ enum MPTableViewCellType {
 }
 
 extension MPTableViewCellType {
-    func configureCell()-> MPTableViewCellProtocol {
+    func configureCell() -> MPTableViewCellProtocol {
         switch (self) {
         case .horizontalCollectionViewType(let imageArray, let titleArray): return HorizontalCollectionViewItem(viewArray: imageArray, titleArray: titleArray)
         case .calendarCollectionViewType: return CalendarViewItem()
         case .recipeCellType(let image, let title):
             return RecipeCellItem(image: image, title: title)
-        case .recipeSearchCellType(let imageURL, let image ,let title, let selected, let isInsertImage):
+        case .recipeSearchCellType(let imageURL, let image, let title, let selected, let isInsertImage):
             return RecipeSearchCellItem(imageURL: imageURL, image: image, title: title, selected: selected, isInsertImage: isInsertImage)
         }
     }
@@ -34,7 +33,7 @@ protocol MPTableViewCellProtocol {
     var rowHeight: Int {get}
 }
 
-enum horizontalCollectionViewItemType {
+enum HorizontalCollectionViewItemType {
     case imageType
     case chartType
 }
@@ -44,13 +43,12 @@ struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
     var rowHeight: Int = 200
     var viewArray: [UIView] = []
     var titleArray: [String] = []
-    
+
     init(viewArray: [UIView] = [], titleArray: [String] = []) {
         self.viewArray = viewArray
         self.titleArray = titleArray
     }
 }
-
 
 struct CalendarViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "CalendarCollectionView"
@@ -62,7 +60,7 @@ struct RecipeCellItem: MPTableViewCellProtocol {
     var rowHeight: Int = 80
     var image: UIImage?
     var title: String = ""
-    
+
     init(image: UIImage, title: String) {
         self.image = image
         self.title = title
@@ -77,8 +75,8 @@ struct RecipeSearchCellItem: MPTableViewCellProtocol {
     var selected: Bool = false
     var isInsertImage: Bool = false
     var imageURL: String?
-    
-    init(imageURL: String?, image: UIImage?,title: String, selected: Bool, isInsertImage: Bool) {
+
+    init(imageURL: String?, image: UIImage?, title: String, selected: Bool, isInsertImage: Bool) {
         self.image = image
         self.imageURL = imageURL
         self.title = title
@@ -97,21 +95,21 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
 }
 
 extension MPTableViewController {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = rowArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.configureCell().reuseIdentifier, for: indexPath)
         switch (item) {
         case .horizontalCollectionViewType:
-            let cell = cell as! HorizontalCollectionView
+            guard let cell = cell as? HorizontalCollectionView else {return UITableViewCell()}
             guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return cell}
             cell.viewArray = itemStruct.viewArray
             cell.titleArray = itemStruct.titleArray
@@ -119,20 +117,20 @@ extension MPTableViewController {
             //cell.layoutIfNeeded()
             return cell
         case .calendarCollectionViewType:
-            let cell = cell as! CalendarCollectionView
+            guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             //cell.delegate = self
             return cell
         case .recipeCellType:
-            let cell = cell as! RecipeTableViewCell
+            guard let cell = cell as? RecipeTableViewCell else {return UITableViewCell()}
             guard let itemStruct = item.configureCell() as? RecipeCellItem else {return cell}
             cell.recipeImage.image = itemStruct.image
             cell.recipeName.text = itemStruct.title
             cell.backgroundColor = UIColor.clear
             return cell
         case .recipeSearchCellType:
-            let cell = cell as! RecipeSearchResultCell
+            guard let cell = cell as? RecipeSearchResultCell else {return UITableViewCell()}
             guard let itemStruct = item.configureCell() as? RecipeSearchCellItem else {return cell}
             cell.recipeTitle.text = itemStruct.title
             cell.selectRecipe.addTarget(self, action: #selector(selectRecipeAction(_:)), for: .touchUpInside)
@@ -142,20 +140,19 @@ extension MPTableViewController {
             } else {
                 cell.selectRecipe.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
             }
-            if itemStruct.isInsertImage{
+            if itemStruct.isInsertImage {
                 cell.recipeImage.image = itemStruct.image
             } else {
                 cell.loadImage(imageURL: itemStruct.imageURL)
             }
-            
+
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
     }
-    
 
 }
 
@@ -167,8 +164,7 @@ extension MPTableViewController {
 //}
 
 extension MPTableViewController {
-    @objc func selectRecipeAction(_ sender : UIButton) {
-        
+    @objc func selectRecipeAction(_ sender: UIButton) {
+
     }
 }
-

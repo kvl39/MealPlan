@@ -13,22 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        
+
         var label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         label.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         self.window?.rootViewController?.view.addSubview(label)
         self.window?.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
-        
-        
-        //設定StatusBarStyle為白色文字表示
-        //UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.window.frame.size.width,20)];
-        //label.backgroundColor = [UIColor blackColor];
-        //建立一個Label並且為全黑底色，高度20px，寬度與整個window同寬
-        //[self.window.rootViewController.view addSubview:label];
-        //self.window.backgroundColor = [UIColor blackColor];
+
         return true
     }
 
@@ -54,6 +45,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-

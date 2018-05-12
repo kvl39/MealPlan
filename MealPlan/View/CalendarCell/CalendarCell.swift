@@ -13,9 +13,9 @@ class CalendarCell: JTAppleCell {
 
     @IBOutlet weak var selectedView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+
     }
 }

@@ -8,9 +8,8 @@
 
 import Foundation
 
-
 struct RecipeModel: Codable {
-    
+
     var more: Bool
     var count: Int
     var hits: [hits]

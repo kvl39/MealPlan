@@ -10,7 +10,7 @@ import Foundation
 
 private enum RecipeAPI: MPHttpRequest {
     case getRecipeWithKeyword(String)
-    
+
     func urlMethod() -> MPHttpMethod {
         switch self {
         case .getRecipeWithKeyword(let keyWord):
@@ -19,9 +19,9 @@ private enum RecipeAPI: MPHttpRequest {
             return .get
         }
     }
-    
+
     func urlParameter() -> String {
-        switch self{
+        switch self {
         case .getRecipeWithKeyword(let keyWord):
             return keyWord
         default:
@@ -30,22 +30,20 @@ private enum RecipeAPI: MPHttpRequest {
     }
 }
 
-
 class RecipeProvider {
-    
+
     private var httpClient = MPHttpClient.httpClient
-    
+
     private let decoder = JSONDecoder()
-    
+
     func getRecipe(keyword: String,
-                   success: @escaping (RecipeModel)->Void,
-                   failure: @escaping (MPError)->Void) {
-        
+                   success: @escaping (RecipeModel) -> Void,
+                   failure: @escaping (MPError) -> Void) {
+
         httpClient.request(RecipeAPI.getRecipeWithKeyword(keyword), success: { (data) in
-            
+
             do {
 
-                
 //                let serializedData = try JSONSerialization.data(withJSONObject: [String: Any].self, options: .prettyPrinted)
 //                let reqString = String(data: serializedData, encoding: .utf8)
 //                let data1 = reqString?.data(using: .utf8)
@@ -54,13 +52,11 @@ class RecipeProvider {
             } catch {
                 failure(.JSONNotDecodable)
             }
-            
-        }) { (error) in
+
+        }) { (_) in
             failure(.RequestFail)
         }
-        
-        
+
     }
-    
-    
+
 }

@@ -11,17 +11,15 @@ import UIKit
 class HorizontalCollectionView: MPCollectionViewController {
 
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
-    
-    var type: horizontalCollectionViewItemType = .chartType
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         configureCollectionView()
     }
-    
-    func configureCollectionView(){
-        
+
+    func configureCollectionView() {
+
         self.horizontalCollectionView.delegate = self
         self.horizontalCollectionView.dataSource = self
         self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
@@ -33,8 +31,5 @@ class HorizontalCollectionView: MPCollectionViewController {
 
         // Configure the view for the selected state
     }
-    
-    
-    
-}
 
+}

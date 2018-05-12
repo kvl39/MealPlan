@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class MPCollectionViewController: UITableViewCell {
 
     var viewArray: [UIView] = []
@@ -18,13 +17,13 @@ class MPCollectionViewController: UITableViewCell {
 }
 
 extension MPCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewArray.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as! HorizontalCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell else {return UICollectionViewCell()}
         if let viewWithTag = cell.viewWithTag(2) {
             viewWithTag.removeFromSuperview()
         }
@@ -38,18 +37,17 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
             subView.leadingAnchor.constraint(equalTo: cell.collectionViewCell.leadingAnchor, constant: 10),
             subView.trailingAnchor.constraint(equalTo: cell.collectionViewCell.trailingAnchor, constant: -10),
             subView.topAnchor.constraint(equalTo: cell.collectionViewCell.topAnchor, constant: 10),
-            subView.bottomAnchor.constraint(equalTo: cell.cardLabel.topAnchor, constant: -10),
+            subView.bottomAnchor.constraint(equalTo: cell.cardLabel.topAnchor, constant: -10)
             ])
         cell.cardLabel.text = titleArray[indexPath.row]
         return cell
     }
-    
+
 }
 
-
-extension MPCollectionViewController: UICollectionViewDelegateFlowLayout{
+extension MPCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         return CGSize(width: 150, height: 160)
     }
 }
