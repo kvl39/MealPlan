@@ -6,15 +6,16 @@
 //  Copyright © 2018年 Kevin Liao. All rights reserved.
 //
 
-//ToDo:
-//1. play animation after retrieving search result
-
 import UIKit
+
+
 
 protocol SearchViewControllerProtocol: class {
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation)
     func deSelectRecipe(cell: RecipeSearchResultCell, deSelectedRecipe: RecipeInformation)
 }
+
+
 
 class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
@@ -26,6 +27,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
     @IBOutlet weak var tableView: UITableView!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeManager.delegate = self
@@ -34,10 +37,11 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         configureObserver()
         configureTableView()
     }
+    
+    
 
     func configureObserver() {
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
-            print(tagArray.tags)
             var searchKeyword = "?q="
             if tagArray.tags.count > 0 {
                 for index in 0...tagArray.tags.count-1 {
@@ -56,30 +60,21 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         }
     }
 
+    
+    
     func configureTableView() {
-
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
-
-        //data for test only
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcell", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "success_green"), "testcel2", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "iTunesArtwork"), "testcel3", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel4", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel5", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel6", false))
-//        self.rowArray.append(.recipeSearchCellType(#imageLiteral(resourceName: "btn_like_normal"), "testcel7", false))
     }
 
+    
+    
     @objc override func selectRecipeAction(_ sender: UIButton) {
-
         //toggle select button
         guard let selected = sender.currentImage?.isEqual(UIImage(imageLiteralResourceName: "success_green")) else {return}
         let indexPath = IndexPath(row: sender.tag, section: 0)
         guard let cell = self.tableView.cellForRow(at: indexPath) as? RecipeSearchResultCell,
               let cellImage = cell.recipeImage.image,
               let cellTitle = cell.recipeTitle.text else {return}
-
-        //self.rowArray[sender.tag] = .recipeSearchCellType(cellImage, cellTitle, !selected)
         self.rowArray[sender.tag] = .recipeSearchCellType(nil, cellImage, cellTitle, !selected, true)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .none)
@@ -98,6 +93,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         }
     }
 
+    
+    
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
         self.searchRecipeModel = products
@@ -110,9 +107,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             self.tableView.reloadData()
         }
     }
+    
+    
 
-    func manager(_ manager: RecipeManager, didFailWith error: MPError) {
-
-    }
-
+    func manager(_ manager: RecipeManager, didFailWith error: MPError) {}
 }

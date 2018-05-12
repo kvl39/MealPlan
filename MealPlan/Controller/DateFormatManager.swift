@@ -20,7 +20,6 @@ class DataFormatManager {
     }
 
     func extractDayFromDate(dateString: String) -> String? {
-
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale

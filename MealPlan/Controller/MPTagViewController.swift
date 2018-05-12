@@ -16,31 +16,31 @@ extension String {
     }
 }
 
+
+
 class MPTagViewController: UIViewController {
 
-    //var dataArray: [String] = ["A", "BBB", "CCCC", "DDDDD", "EEEEEE", "FFFFFFF"]
     var tagArray: AddPageTag!
     var observation: NSKeyValueObservation!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //createTag(onView: self.view, with: tagArray.tags)
         configureObserver()
     }
+    
+    
 
     func configureObserver() {
-
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
-            //print(change)
-            //print(tagArray.tags)
             self.createTag(onView: self.view, with: tagArray.tags)
         }
-
     }
+    
+    
 
     func createTag(onView view: UIView, with array: [String]) {
-
         for tempView in view.subviews {
             if tempView.tag != 0 {
                 tempView.removeFromSuperview()
@@ -83,12 +83,12 @@ class MPTagViewController: UIViewController {
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
             tag += 1
         }
-
     }
 
+    
+    
     @objc func removeTag(_ sender: UIButton) {
         tagArray.tags.remove(at: sender.tag-1)
         createTag(onView: self.view, with: tagArray.tags)
     }
-
 }

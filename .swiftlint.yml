@@ -2,6 +2,8 @@ disabled_rules:
   - force_try
   - type_name
   - identifier_name
+  - trailing_whitespace
+  - vertical_whitespace
 
 
 excluded: 

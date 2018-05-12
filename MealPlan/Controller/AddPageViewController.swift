@@ -12,9 +12,11 @@ protocol AddPageDelegateProtocol: class {
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String])
 }
 
+
+
 class AddPageViewController: UIViewController, SearchViewControllerProtocol, AnimationControllerProtocol {
 
-    @IBOutlet var popupView: UIView!
+    @IBOutlet var popupView: AddPagePopupView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var dateIndicator: UILabel!
 
@@ -37,32 +39,22 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureObserver()
         animationManager.delegate = self
-
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.alpha = 0
         self.navigationController?.navigationBar.isHidden = true
-        configureObserver()
         self.dateIndicator.text = dateManager.extractDayFromDate(dateString: self.recipeDate)
     }
 
-//    func createFakeData() {
-//
-//        let ingre1 = IngredientAPIModel(text: "ingre1", weight: 1.0)
-//        let ingre2 = IngredientAPIModel(text: "ingre2", weight: 2.0)
-//        let nutri1 = NutrientAPIModel(label: "nutre1", quantity: 1.0)
-//        let nutri2 = NutrientAPIModel(label: "nutre2", quantity: 2.0)
-//        let nutri3 = NutrientAPIModel(label: "nutre3", quantity: 3.0)
-//        let totalDaily = TotalDaily(ENERC_KCAL: nutri1, FAT: nutri2, FASAT: nutri3)
-//
-//        let reci1 = RecipeInformation(url: URL(string: "url1")!, image: URL(string: "url1")!, label: "label1", ingredients: [ingre1, ingre2], calories: 33.3, totalDaily: totalDaily)
-//        self.addedRecipe.append(reci1)
-//    }
+    
 
     func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(tagSelected(notification:)), name: NSNotification.Name(rawValue: "SelectTag"), object: nil)
     }
+    
+    
 
     @objc func tagSelected(notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -72,6 +64,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         print("selected tag:\(tag)")
     }
 
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "AddPageToTagView") {
             guard let vc = segue.destination as? MPTagViewController else {return}
@@ -91,18 +85,11 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         }
     }
 
+    
+    
     func animateIn(senderTag: Int) {
-
-        //add container view
         self.view.addSubview(popupView)
-        popupView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            popupView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            popupView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -200),
-            popupView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height-350),
-            popupView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70)
-            ])
-
+        popupView.setupView()
         popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         popupView.alpha = 0
         visualEffectView.alpha = 0
@@ -113,48 +100,46 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
             self.popupView.transform = CGAffineTransform.identity
             self.visualEffectView.alpha = 1
         }
-
         isPopup = true
     }
 
+    
+    
     func animateOut() {
         UIView.animate(withDuration: 0.3, animations: {
             if let popupTableViewController = self.addPagePopupTableViewController.viewControllers.first as? AddPagePopupTableViewController {
                 popupTableViewController.animateOutTableCells()
             }
-//            self.popupView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-//            self.popupView.alpha = 0
             self.visualEffectView.effect = nil
             self.visualEffectView.alpha = 0
         }) { (_: Bool) in
             self.popupView.removeFromSuperview()
         }
-
         isPopup = false
     }
 
+    
+    
     @IBAction func selectByAction(_ sender: UIButton) {
         if isPopup {
-            //self.tags.tags.append("chicken")
             animateOut()
         } else {
             animateIn(senderTag: 0)
         }
     }
 
+    
+    
     @IBAction func confirmSelection(_ sender: Any) {
-        //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe)
-        //realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
-
         self.delegate?.reloadData(addedRecipeImageView: addedRecipeImageView,
                                   addedRecipeTitle: addedRecipeTitle)
         realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
         self.navigationController?.popViewController(animated: true)
-
     }
 
+    
+    
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
-        print("select label:\(selectedRecipe.label)")
         self.addedRecipe.append(selectedRecipe)
         self.addedRecipeImageView.append(cell.recipeImage)
         guard let recipeTitle = cell.recipeTitle.text else {return}
@@ -162,13 +147,16 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)
     }
 
+    
+    
     func deSelectRecipe(cell: RecipeSearchResultCell, deSelectedRecipe: RecipeInformation) {
-        print("deselect lable:\(deSelectedRecipe.label)")
         if let index = self.addedRecipe.index(where: {$0.label == deSelectedRecipe.label}) {
             self.addedRecipe.remove(at: index)
         }
     }
 
+    
+    
     func selectAnimationDidFinish(animationImage: UIImage, title: String) {
         addPageHistoryController.selectAnimationDidFinish(animationImage: animationImage, animationString: title)
     }

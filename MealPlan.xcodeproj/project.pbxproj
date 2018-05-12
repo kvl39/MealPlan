@@ -38,6 +38,7 @@
 		AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */; };
 		AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */; };
 		AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */; };
+		AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
 		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
@@ -87,6 +88,7 @@
 		AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeClassModel.swift; sourceTree = "<group>"; };
+		AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupView.swift; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
 		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				ADAEAC2F20984E56001B44CF /* HorizontalCollectionViewCell */,
 				ADAEAC3920985B25001B44CF /* CalendarView */,
 				ADAEAC2E20984E38001B44CF /* CalendarCell */,
+				AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,
 				AD1D922E209B6B5200B9AFE9 /* MPHttpRequest.swift in Sources */,
+				AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */,
 				ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */,
 				AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */,
 				ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */,
