@@ -40,7 +40,7 @@ struct RecipeClassLayer1_Meat: RecipeClass {
 
 struct RecipeClassLayer1_Veg: RecipeClass {
     var recipeTitle: [String] = ["高麗菜","菠菜"]
-    var recipeImage: [UIImage] = [#imageLiteral(resourceName: "success_green"),#imageLiteral(resourceName: "btn_like_normal")]
+    var recipeImage: [UIImage] = [#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "spinach")]
     var recipeTitleEnglish: [String] = ["Cabbage", "spinach"]
 }
 
