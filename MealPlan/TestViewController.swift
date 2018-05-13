@@ -28,6 +28,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
     var dateManager = DataFormatManager()
     var recipeImageArray = [UIImageView]()
     var recipeTitleArray = [String]()
+    var selectedCollectViewImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +88,9 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
             vc.delegate = self
             vc.historyImageArray = self.recipeImageArray
             vc.historyTitleArray = self.recipeTitleArray
+        } else if (segue.identifier == "PushToDetailPage") {
+            guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
+            vc.displayImage = self.selectedCollectViewImageView.image
         }
     }
 
@@ -180,18 +184,20 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
        var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
        self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
 
-//        var imageArray2 = [UIView]()
-//        imageArray2.append(pieChartManager.generateViewWithPieChart(value: 80))
-//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-//        imageArray2.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-//        self.rowArray.append(.horizontalCollectionViewType(imageArray2))
-
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
 
     }
+    
+    
+    @objc func onSelectCollectionViewItem(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let imageView = userInfo["imageView"] as? UIImageView else {return}
+        self.selectedCollectViewImageView = imageView
+        self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
+    }
+    
+    
 
     func generateViewWithImage(image: UIImage) -> UIView {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
@@ -239,5 +245,12 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
         cell.horizontalCollectionView.reloadData()
         self.testTable.reloadData()
     }
+}
 
+
+extension TestViewController: ZoomingViewController {
+    
+    func zoomingImageView() -> UIImageView? {
+        return self.selectedCollectViewImageView
+    }
 }

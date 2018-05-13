@@ -33,12 +33,14 @@
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
+		AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */; };
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
 		AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */; };
 		AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */; };
 		AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */; };
 		AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */; };
 		AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */; };
+		AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
 		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
@@ -83,12 +85,14 @@
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
+		AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailViewController.swift; sourceTree = "<group>"; };
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
 		AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupTableViewController.swift; sourceTree = "<group>"; };
 		AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
 		AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeClassModel.swift; sourceTree = "<group>"; };
 		AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupView.swift; sourceTree = "<group>"; };
+		AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitionDelegate.swift; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
 		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				ADAEAC3920985B25001B44CF /* CalendarView */,
 				ADAEAC2E20984E38001B44CF /* CalendarCell */,
 				AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */,
+				AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
 				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
 				AD57814C20A47C5900130388 /* DateFormatManager.swift */,
+				AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -289,7 +295,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD2C8E442096EFAF0083B229 /* Build configuration list for PBXNativeTarget "MealPlan" */;
 			buildPhases = (
-				AD94BB3420A7035E00D3B791 /* ShellScript */,
 				1E338DD10BC29A0C57B7B9DF /* [CP] Check Pods Manifest.lock */,
 				AD2C8E2E2096EFAD0083B229 /* Sources */,
 				AD2C8E2F2096EFAD0083B229 /* Frameworks */,
@@ -376,19 +381,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD94BB3420A7035E00D3B791 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-		};
 		F14245C08D98BA4C4952AAC6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +424,7 @@
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
 				AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */,
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
+				AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */,
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,
 				AD1D922E209B6B5200B9AFE9 /* MPHttpRequest.swift in Sources */,
 				AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */,
@@ -445,6 +438,7 @@
 				ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */,
 				AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */,
 				AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */,
+				AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */,
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,

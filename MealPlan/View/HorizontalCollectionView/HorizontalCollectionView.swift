@@ -12,24 +12,31 @@ class HorizontalCollectionView: MPCollectionViewController {
 
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
 
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
         configureCollectionView()
     }
+    
+    
 
     func configureCollectionView() {
-
         self.horizontalCollectionView.delegate = self
         self.horizontalCollectionView.dataSource = self
         self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
         self.itemCount = self.viewArray.count
     }
+    
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+        guard let imageView = self.viewArray[indexPath.row].viewWithTag(2) as? UIImageView else {return}
+        NotificationCenter.default.post(name: Notification.Name("collectionViewItemDidSelect"), object: nil, userInfo: ["imageView": imageView])
     }
-
 }
+
+
+
+

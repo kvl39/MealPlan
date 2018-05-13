@@ -13,7 +13,7 @@ class MPCollectionViewController: UITableViewCell {
     var viewArray: [UIView] = []
     var titleArray: [String] = []
     var itemCount: Int = 0
-
+    var selectedIndexPath: IndexPath!
 }
 
 extension MPCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -42,7 +42,8 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
         cell.cardLabel.text = titleArray[indexPath.row]
         return cell
     }
-
+    
+    
 }
 
 
@@ -53,3 +54,5 @@ extension MPCollectionViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 150, height: 160)
     }
 }
+
+

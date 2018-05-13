@@ -44,6 +44,7 @@
                         <outlet property="testTable" destination="hJA-Ns-0Xw" id="6dd-Ta-E9c"/>
                         <outlet property="topImageView" destination="EdC-Ar-FTP" id="iBq-mS-kRG"/>
                         <segue destination="Esc-KF-OKA" kind="show" identifier="PushToAddPage" id="nfv-KO-0Qi"/>
+                        <segue destination="pZ1-TS-x4o" kind="show" identifier="PushToDetailPage" id="sOr-n7-CZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfm-5E-aJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -320,6 +321,35 @@
             </objects>
             <point key="canvasLocation" x="4248.8000000000002" y="541.52923538230891"/>
         </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="SwX-NT-68W">
+            <objects>
+                <viewController id="pZ1-TS-x4o" customClass="MPRecipeDetailViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QUX-eq-lQM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cG8-wy-4Zf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cG8-wy-4Zf" firstAttribute="top" secondItem="FHk-CZ-nQs" secondAttribute="top" id="2to-Vc-MIj"/>
+                            <constraint firstItem="cG8-wy-4Zf" firstAttribute="leading" secondItem="FHk-CZ-nQs" secondAttribute="leading" id="Hwl-an-KUg"/>
+                            <constraint firstItem="cG8-wy-4Zf" firstAttribute="trailing" secondItem="FHk-CZ-nQs" secondAttribute="trailing" id="IYh-cx-FmJ"/>
+                            <constraint firstItem="FHk-CZ-nQs" firstAttribute="bottom" secondItem="cG8-wy-4Zf" secondAttribute="bottom" id="xzJ-0d-d0V"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FHk-CZ-nQs"/>
+                    </view>
+                    <connections>
+                        <outlet property="recipeImage" destination="cG8-wy-4Zf" id="fkf-H8-HvY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L90-pt-Bhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3502" y="1096"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EXx-cC-1jJ">
             <objects>
@@ -331,10 +361,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="delegate" destination="7Fl-eA-9HQ" id="qKa-Sj-fBr"/>
                         <segue destination="Nme-7q-flW" kind="relationship" relationship="rootViewController" id="b0v-6a-72h"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awk-vc-FnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="7Fl-eA-9HQ" customClass="ZoomTransitionDelegate" customModule="MealPlan" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1229.5999999999999" y="121.88905547226388"/>
         </scene>
