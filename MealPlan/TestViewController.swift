@@ -38,8 +38,12 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
 
         configureTableView()
         configureAddButton()
-        self.navigationController?.navigationBar.isHidden = true
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {

@@ -47,15 +47,18 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         let fromViewController = transitionContext.viewController(forKey: .from)
         let toViewController = transitionContext.viewController(forKey: .to)
         let containerView = transitionContext.containerView
+
+        guard let toViewControllerExist = toViewController,
+            let fromViewControllerExist = fromViewController else {return}
         
-        guard let backgroundViewController = fromViewController,
-            let foregroundViewController = toViewController else {return}
+        var backgroundViewController = fromViewControllerExist
+        var foregroundViewController = toViewControllerExist
         
         if operation == .pop {
-            guard let backgroundViewController = toViewController,
-                let foregroundViewController = fromViewController else {return}
+            backgroundViewController = toViewControllerExist
+            foregroundViewController = fromViewControllerExist
         }
-        
+
         var backgroundZoomingViewController = backgroundViewController as? ZoomingViewController
         var foregroundZoomingViewController = foregroundViewController as? ZoomingViewController
 
@@ -79,7 +82,7 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
 
         var preTransitionState = TransitionState.initial
         var postTransitionState = TransitionState.final
-        
+
         if operation == .pop {
             preTransitionState = TransitionState.final
             postTransitionState = TransitionState.initial
@@ -113,9 +116,6 @@ extension ZoomTransitionDelegate: UINavigationControllerDelegate {
         }
     }
 }
-
-
-
 
 
 
