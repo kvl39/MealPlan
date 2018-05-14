@@ -70,14 +70,14 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         imageViewSnapShot.contentMode = .scaleAspectFill
         imageViewSnapShot.layer.masksToBounds = true
 
-        backgroundImageView.isHidden = true //?
-        foregroundImageView.isHidden = true //?
+        backgroundImageView.isHidden = true
+        foregroundImageView.isHidden = true
         let foregroundViewBackgroundColor = foregroundImageView.backgroundColor
         foregroundImageView.backgroundColor = UIColor.clear
         containerView.backgroundColor = UIColor.white
 
-        containerView.addSubview(backgroundViewController.view)//?
-        containerView.addSubview(foregroundViewController.view)//?
+        containerView.addSubview(backgroundViewController.view)
+        containerView.addSubview(foregroundViewController.view)
         containerView.addSubview(imageViewSnapShot)
 
         var preTransitionState = TransitionState.initial
