@@ -339,6 +339,15 @@
                                     <constraint firstAttribute="height" constant="300" id="d2K-Np-Ksj"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wne-Cx-wV6">
+                                <rect key="frame" x="151.5" y="344" width="71" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UPB-FU-XZz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.78823529411764703" green="0.51764705882352935" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -346,15 +355,18 @@
                             <constraint firstItem="arV-fp-YmD" firstAttribute="leading" secondItem="FHk-CZ-nQs" secondAttribute="leading" id="FgL-bg-JS7"/>
                             <constraint firstItem="cG8-wy-4Zf" firstAttribute="trailing" secondItem="FHk-CZ-nQs" secondAttribute="trailing" id="GKf-cw-3mb"/>
                             <constraint firstItem="arV-fp-YmD" firstAttribute="top" secondItem="FHk-CZ-nQs" secondAttribute="top" id="Qv9-Kw-lAB"/>
+                            <constraint firstItem="wne-Cx-wV6" firstAttribute="centerX" secondItem="QUX-eq-lQM" secondAttribute="centerX" id="RoX-Ox-6Pi"/>
                             <constraint firstItem="cG8-wy-4Zf" firstAttribute="leading" secondItem="FHk-CZ-nQs" secondAttribute="leading" id="YB6-hz-N23"/>
                             <constraint firstItem="cG8-wy-4Zf" firstAttribute="top" secondItem="FHk-CZ-nQs" secondAttribute="top" id="bT6-bQ-PiR"/>
                             <constraint firstItem="FHk-CZ-nQs" firstAttribute="trailing" secondItem="arV-fp-YmD" secondAttribute="trailing" id="ltq-8F-Yej"/>
+                            <constraint firstItem="wne-Cx-wV6" firstAttribute="top" secondItem="FHk-CZ-nQs" secondAttribute="top" constant="280" id="mPz-nr-fvB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FHk-CZ-nQs"/>
                     </view>
                     <connections>
                         <outlet property="recipeDetailTableView" destination="arV-fp-YmD" id="l6A-Qm-w60"/>
                         <outlet property="recipeImage" destination="cG8-wy-4Zf" id="fkf-H8-HvY"/>
+                        <outlet property="recipeTitle" destination="wne-Cx-wV6" id="wYY-HY-sGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L90-pt-Bhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
