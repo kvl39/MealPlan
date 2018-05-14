@@ -18,7 +18,8 @@ enum TransitionState {
 }
 
 class ZoomTransitionDelegate: NSObject {
-    var transitionTime = 0.5
+    var transitionTime = 0.8
+    var damping: CGFloat = 0.6
     var operation: UINavigationControllerOperation = .none
     private let zoomScale = CGFloat(15)
     private let backgroundScale = CGFloat(0.8)
@@ -86,13 +87,16 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         if operation == .pop {
             preTransitionState = TransitionState.final
             postTransitionState = TransitionState.initial
+            damping = 1
+        } else {
+            damping = 0.6
         }
 
         configureView(for: preTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot)
 
         foregroundViewController.view.layoutIfNeeded()
 
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0.0, options: [], animations: {
             self.configureView(for: postTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot)
         }) { (finished) in
             backgroundViewController.view.transform = .identity
