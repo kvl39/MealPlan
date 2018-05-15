@@ -94,11 +94,22 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
             let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
             let context = CIContext()
+            let filter = CIFilter(name: "CIPerspectiveTransform")
+            filter?.setValue(ciImage, forKey: kCIInputImageKey)
+            //filter?.setValue(0.5, forKey: kCIInputIntensityKey)
             
             let imageRect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-            if let image = context.createCGImage(ciImage, from: imageRect) {
+            
+            if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage,
+                let image = context.createCGImage(output, from: imageRect){
                 return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
             }
+            
+            
+            
+//            if let image = context.createCGImage(ciImage, from: imageRect) {
+//                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
+//            }
             
             
         }
