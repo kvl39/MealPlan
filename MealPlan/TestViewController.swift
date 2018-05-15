@@ -75,6 +75,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
         }
 
         typeButton?.addTarget(self, action: #selector(typeButtonInteraction(_:)), for: .touchUpInside)
+        takePictureButton?.addTarget(self, action: #selector(cameraButtonInteraction(_:)), for: .touchUpInside)
 
     }
 
@@ -82,6 +83,11 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
         hideButton()
         self.addButtonSelected = !self.addButtonSelected
         performSegue(withIdentifier: "PushToAddPage", sender: self)
+    }
+    
+    @objc func cameraButtonInteraction(_ sender: UIButton) {
+        hideButton()
+        performSegue(withIdentifier: "PushToCameraPage", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

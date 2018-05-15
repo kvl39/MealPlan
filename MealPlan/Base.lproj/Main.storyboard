@@ -10,6 +10,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="bIU-EO-bac">
+            <objects>
+                <viewController id="3Qn-FN-Pbh" customClass="CameraViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="69c-Ne-dje">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="myf-U6-5XF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YFl-vU-tMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3465" y="-1000"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="B1I-VR-Z8Q">
+            <objects>
+                <viewController storyboardIdentifier="PhotoVC" id="x8m-jb-PgA" customClass="PhotoViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JOu-UV-mSC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lp5-gA-Wuo">
+                                <rect key="frame" x="22" y="57" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="NB4-7l-d2F"/>
+                                    <constraint firstAttribute="height" constant="30" id="ncp-Mq-dUV"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="x8m-jb-PgA" eventType="touchUpInside" id="mLV-5P-uH5"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UlL-l6-UkH">
+                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lp5-gA-Wuo" firstAttribute="leading" secondItem="egA-Ja-T2Y" secondAttribute="leading" constant="22" id="8aO-cF-S8i"/>
+                            <constraint firstItem="UlL-l6-UkH" firstAttribute="top" secondItem="lp5-gA-Wuo" secondAttribute="bottom" constant="20" id="A4a-sf-6Od"/>
+                            <constraint firstItem="UlL-l6-UkH" firstAttribute="leading" secondItem="egA-Ja-T2Y" secondAttribute="leading" id="Wmm-RG-Nnu"/>
+                            <constraint firstItem="egA-Ja-T2Y" firstAttribute="trailing" secondItem="UlL-l6-UkH" secondAttribute="trailing" id="bsU-Ta-LSP"/>
+                            <constraint firstItem="lp5-gA-Wuo" firstAttribute="top" secondItem="egA-Ja-T2Y" secondAttribute="top" constant="37" id="e6K-iB-4yB"/>
+                            <constraint firstItem="egA-Ja-T2Y" firstAttribute="bottom" secondItem="UlL-l6-UkH" secondAttribute="bottom" id="mFZ-F0-d9m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="egA-Ja-T2Y"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="UlL-l6-UkH" id="0wY-dZ-cKY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aZG-hv-6lB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4360" y="-1015"/>
+        </scene>
         <!--Test View Controller-->
         <scene sceneID="oYj-Ew-ajA">
             <objects>
@@ -45,6 +102,7 @@
                         <outlet property="topImageView" destination="EdC-Ar-FTP" id="iBq-mS-kRG"/>
                         <segue destination="Esc-KF-OKA" kind="show" identifier="PushToAddPage" id="nfv-KO-0Qi"/>
                         <segue destination="pZ1-TS-x4o" kind="show" identifier="PushToDetailPage" id="sOr-n7-CZa"/>
+                        <segue destination="3Qn-FN-Pbh" kind="show" identifier="PushToCameraPage" id="bcf-40-KLj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfm-5E-aJY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,7 +332,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aI0-54-Amf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4625" y="-488"/>
+            <point key="canvasLocation" x="4457" y="-488"/>
         </scene>
         <!--Tag View Controller-->
         <scene sceneID="jRI-kb-tUW">
