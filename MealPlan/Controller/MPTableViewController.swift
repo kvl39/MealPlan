@@ -115,6 +115,7 @@ extension MPTableViewController {
             cell.titleArray = itemStruct.titleArray
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
+            cell
             return cell
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}

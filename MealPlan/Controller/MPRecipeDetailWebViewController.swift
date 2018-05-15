@@ -7,29 +7,31 @@
 //
 
 import UIKit
+import WebKit
 
-class MPRecipeDetailWebViewController: UIViewController, UIWebViewDelegate {
-
-    @IBOutlet weak var webView: UIWebView!
-    
-    
+class MPRecipeDetailWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+        
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.delegate = self
-        webView.loadRequest(URLRequest(url: URL(string: "https://google.com.tw")!))
+        webView.navigationDelegate = self
+        webView.uiDelegate = self
+        webView.load(URLRequest(url: URL(string: "https://google.com.tw")!))
+        progressBar.tintColor = UIColor.red
+        progressBar.progress = 0.0
+        self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
     }
     
-    
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressBar.isHidden = webView.estimatedProgress == 1
+            progressBar.setProgress(Float(webView.estimatedProgress), animated: false)
+        }
     }
     
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-    
+
 
     @IBAction func doneWebView(_ sender: Any) {
     }
@@ -48,5 +50,10 @@ class MPRecipeDetailWebViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.webView.removeObserver(self, forKeyPath: "estimatedProgress")
+    }
     
 }

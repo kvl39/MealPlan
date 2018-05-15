@@ -415,25 +415,37 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WA3-zR-SHK">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWW-sA-Vdc">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4Tq-BP-5KC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="K4l-Rq-s6O" firstAttribute="trailing" secondItem="WA3-zR-SHK" secondAttribute="trailing" id="Bpq-rp-veE"/>
+                            <constraint firstItem="GWW-sA-Vdc" firstAttribute="top" secondItem="K4l-Rq-s6O" secondAttribute="top" id="22F-MR-iEp"/>
+                            <constraint firstAttribute="trailing" secondItem="4Tq-BP-5KC" secondAttribute="trailing" id="6sw-dI-kMO"/>
+                            <constraint firstItem="K4l-Rq-s6O" firstAttribute="trailing" secondItem="GWW-sA-Vdc" secondAttribute="trailing" id="CcP-ci-sCi"/>
+                            <constraint firstItem="4Tq-BP-5KC" firstAttribute="top" secondItem="K4l-Rq-s6O" secondAttribute="top" id="IIi-fU-9KQ"/>
+                            <constraint firstItem="GWW-sA-Vdc" firstAttribute="leading" secondItem="K4l-Rq-s6O" secondAttribute="leading" id="SRS-5d-XlR"/>
                             <constraint firstItem="K4l-Rq-s6O" firstAttribute="bottom" secondItem="x55-Jb-Hmc" secondAttribute="bottom" id="Uhp-Fr-Tty"/>
-                            <constraint firstItem="WA3-zR-SHK" firstAttribute="leading" secondItem="K4l-Rq-s6O" secondAttribute="leading" id="VHy-Jp-uSl"/>
-                            <constraint firstItem="WA3-zR-SHK" firstAttribute="top" secondItem="K4l-Rq-s6O" secondAttribute="top" id="Vpm-kH-SAL"/>
                             <constraint firstItem="x55-Jb-Hmc" firstAttribute="trailing" secondItem="K4l-Rq-s6O" secondAttribute="trailing" id="Xie-Pd-5j2"/>
                             <constraint firstItem="x55-Jb-Hmc" firstAttribute="leading" secondItem="K4l-Rq-s6O" secondAttribute="leading" id="ZlS-5T-89Q"/>
-                            <constraint firstItem="x55-Jb-Hmc" firstAttribute="top" secondItem="WA3-zR-SHK" secondAttribute="bottom" id="ykL-xf-nqh"/>
+                            <constraint firstItem="4Tq-BP-5KC" firstAttribute="leading" secondItem="fUB-TF-8tC" secondAttribute="leading" id="a6B-i1-GX9"/>
+                            <constraint firstItem="4Tq-BP-5KC" firstAttribute="centerX" secondItem="fUB-TF-8tC" secondAttribute="centerX" id="aXU-dj-k2n"/>
+                            <constraint firstItem="x55-Jb-Hmc" firstAttribute="top" secondItem="GWW-sA-Vdc" secondAttribute="bottom" id="lxB-ed-ss4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K4l-Rq-s6O"/>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="WA3-zR-SHK" id="Kg5-Wq-q6A"/>
+                        <outlet property="progressBar" destination="4Tq-BP-5KC" id="eVP-9t-f62"/>
+                        <outlet property="webView" destination="GWW-sA-Vdc" id="5Y9-Mi-G6q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUw-WX-x3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
