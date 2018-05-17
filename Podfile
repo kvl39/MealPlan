@@ -10,5 +10,7 @@ pod 'Alamofire'
 pod 'RealmSwift'
 pod 'SDWebImage'
 pod 'SwiftLint'
+pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end

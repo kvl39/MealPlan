@@ -29,6 +29,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
     var recipeImageArray = [UIImageView]()
     var recipeTitleArray = [String]()
     var selectedCollectViewImageView = UIImageView()
+    var firebaseManager = MPFirebaseManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,14 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
 
         typeButton?.addTarget(self, action: #selector(typeButtonInteraction(_:)), for: .touchUpInside)
         takePictureButton?.addTarget(self, action: #selector(cameraButtonInteraction(_:)), for: .touchUpInside)
+        shareButton?.addTarget(self, action: #selector(shareButtonInteraction(_:)), for: .touchUpInside)
 
+    }
+    
+    @objc func shareButtonInteraction(_ sender: UIButton) {
+        hideButton()
+        self.addButtonSelected = !self.addButtonSelected
+        firebaseManager.updateNewMenu(recipeName: ["testRecipe1","testRecipe2"], date: self.selectedDate)
     }
 
     @objc func typeButtonInteraction(_ sender: UIButton) {
@@ -87,6 +95,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
     
     @objc func cameraButtonInteraction(_ sender: UIButton) {
         hideButton()
+        self.addButtonSelected = !self.addButtonSelected
         performSegue(withIdentifier: "PushToCameraPage", sender: self)
     }
 

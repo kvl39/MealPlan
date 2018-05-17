@@ -60,6 +60,8 @@
 		ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC4420985E53001B44CF /* MPCalendarView.swift */; };
 		ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */; };
 		ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */; };
+		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
+		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,8 @@
 		ADAEAC4420985E53001B44CF /* MPCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCalendarView.swift; sourceTree = "<group>"; };
 		ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionView.xib; sourceTree = "<group>"; };
+		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
 		D37309EFBDECF37451CD0041 /* Pods-MealPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +170,7 @@
 				AD2C8E3C2096EFAF0083B229 /* Assets.xcassets */,
 				AD2C8E3E2096EFAF0083B229 /* LaunchScreen.storyboard */,
 				AD2C8E412096EFAF0083B229 /* Info.plist */,
+				ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */,
 			);
 			path = MealPlan;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 		AD2C8E472096EFEB0083B229 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ADF599B020AD393300C73097 /* Firebase */,
 				AD901C5820A20E5800C88219 /* Database */,
 				AD1D922D209B6B5200B9AFE9 /* MPHttpRequest.swift */,
 				AD1D922F209B737400B9AFE9 /* MPError.swift */,
@@ -308,6 +314,14 @@
 			path = CalendarView;
 			sourceTree = "<group>";
 		};
+		ADF599B020AD393300C73097 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				ADF599B120AD394400C73097 /* MPFirebaseManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		B8EDB626E49D95E5CD959838 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +401,7 @@
 			files = (
 				ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */,
 				ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */,
+				ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
 				AD6FB22020A971060000A44F /* RecipeDetailTitle.xib in Resources */,
@@ -429,19 +444,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -485,6 +506,7 @@
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
+				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
