@@ -84,7 +84,13 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
     @objc func shareButtonInteraction(_ sender: UIButton) {
         hideButton()
         self.addButtonSelected = !self.addButtonSelected
-        firebaseManager.updateNewMenu(recipeName: ["testRecipe1","testRecipe2"], date: self.selectedDate)
+        
+        
+        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+        guard let fetchResult = result as? [RecipeCalendarRealmModel] else {return}
+        print(fetchResult[0])
+        
+        firebaseManager.updateNewMenu(recipeName: ["AAA", "BBB"], date: self.selectedDate, recipeInformation: fetchResult)
     }
 
     @objc func typeButtonInteraction(_ sender: UIButton) {

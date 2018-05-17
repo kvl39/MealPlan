@@ -10,16 +10,66 @@ import Foundation
 import Firebase
 
 
+
+
 class MPFirebaseManager {
     lazy var ref: DatabaseReference = Database.database().reference()
     let user = "FakeUser"
     
-    func updateNewMenu(recipeName: [String], date: String) {
+    func updateNewMenu(recipeName: [String], date: String, recipeInformation: [RecipeCalendarRealmModel]) {
         self.ref.child("menu/\(user)/\(date)").setValue([
             "recipes": recipeName
             ])
+        //update menu
+        recipeRealmModelToFirebase(recipeInformation: recipeInformation)
     }
     
+    
+    func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel]) {
+        for recipe in recipeInformation {
+            guard let recipeRealmModel = recipe.recipeRealmModel else {return}
+            //let ingredients = recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmModel.ingredients))
+            let tempDic = ["key1": "value1", "key2": "value2"]
+            let tempArray = [tempDic, tempDic, tempDic]
+            print("===============================")
+            let ingredients = recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmModel.ingredients))
+            let nuitrients = recipeNuitrientRealmModelToDictionary(recipeNuitrients: Array(recipeRealmModel.nutrients))
+            print(ingredients)
+            self.ref.child("recipe/\(recipeRealmModel.label)").setValue([
+                "url": recipeRealmModel.url,
+                "image": recipeRealmModel.image,
+                "ingredients": ingredients,
+                "nuitrients": nuitrients
+                ])
+
+        }
+    }
+    
+    
+    func recipeIngredientRealmModelToDictionary(recipeIngredients: [IngredientRecipeModel])
+        -> [[String: Any]]
+    {
+        var ingredientDictionary = [[String: Any]]()
+        for index in 0...recipeIngredients.count-1 {
+            var tempDictionary = [String: Any]()
+            tempDictionary["name"] = recipeIngredients[index].name
+            tempDictionary["weight"] = recipeIngredients[index].weight
+            ingredientDictionary.append(tempDictionary)
+        }
+        return ingredientDictionary
+    }
+    
+    
+    func recipeNuitrientRealmModelToDictionary(recipeNuitrients: [Nutrients]) -> [[String: Any]] {
+        var nuitrientsDictionary = [[String: Any]]()
+        for index in 0...recipeNuitrients.count-1 {
+            var tempDictionary = [String: Any]()
+            tempDictionary["label"] = recipeNuitrients[index].label
+            tempDictionary["quantity"] = recipeNuitrients[index].quantity
+            nuitrientsDictionary.append(tempDictionary)
+        }
+        return nuitrientsDictionary
+    }
     
     
     func updateRecipe(recipeName: String, recipeInformation: RecipeInformation) {
