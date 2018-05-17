@@ -62,6 +62,8 @@
 		ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
+		ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */; };
+		ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599BA20ADBEA600C73097 /* DiscoverCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +125,8 @@
 		ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionView.xib; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
+		ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCardView.xib; sourceTree = "<group>"; };
+		ADF599BA20ADBEA600C73097 /* DiscoverCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCardView.swift; sourceTree = "<group>"; };
 		D37309EFBDECF37451CD0041 /* Pods-MealPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +199,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ADF599B320ADBD5E00C73097 /* DiscoverCard */,
 				ADAA4DA720AC12D2002F9658 /* RecipeNoteView */,
 				AD6FB22120A9710C0000A44F /* RecipeDetailTitle */,
 				AD4E2CF520A14C6800C4573F /* RecipeSearchResultCell */,
@@ -322,6 +327,15 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		ADF599B320ADBD5E00C73097 /* DiscoverCard */ = {
+			isa = PBXGroup;
+			children = (
+				ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */,
+				ADF599BA20ADBEA600C73097 /* DiscoverCardView.swift */,
+			);
+			path = DiscoverCard;
+			sourceTree = "<group>";
+		};
 		B8EDB626E49D95E5CD959838 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,6 +424,7 @@
 				ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */,
 				AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */,
 				ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */,
+				ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */,
 				AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +519,7 @@
 				AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */,
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
+				ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
