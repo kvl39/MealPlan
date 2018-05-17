@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XdE-kK-kkf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z2B-jV-aZS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -378,6 +378,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCw-q1-HU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4248.8000000000002" y="541.52923538230891"/>
+        </scene>
+        <!--Discovery Page View Controller-->
+        <scene sceneID="uVn-qj-D0s">
+            <objects>
+                <viewController id="z2B-jV-aZS" customClass="DiscoveryPageViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aV6-Jx-i9q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-1b-Pdq" customClass="DiscoverCardView" customModule="MealPlan" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="217" width="300" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Np2-sF-Dne"/>
+                                    <constraint firstAttribute="width" constant="300" id="nAg-SN-HDq"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="RUc-Ef-Sth" appends="YES" id="fWS-qE-oRC"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BOA-1b-Pdq" firstAttribute="centerX" secondItem="aV6-Jx-i9q" secondAttribute="centerX" id="FHR-yi-j4p"/>
+                            <constraint firstAttribute="bottom" secondItem="BOA-1b-Pdq" secondAttribute="bottom" constant="50" id="GuF-s9-QOY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x7B-dc-13W"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardView" destination="BOA-1b-Pdq" id="DMc-Cj-UVc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIB-5F-olW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="RUc-Ef-Sth">
+                    <connections>
+                        <action selector="panCard:" destination="z2B-jV-aZS" id="G5Q-qF-hde"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1537" y="1493"/>
         </scene>
         <!--Recipe Detail View Controller-->
         <scene sceneID="SwX-NT-68W">

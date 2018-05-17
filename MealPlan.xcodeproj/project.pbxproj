@@ -64,6 +64,7 @@
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
 		ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */; };
 		ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599BA20ADBEA600C73097 /* DiscoverCardView.swift */; };
+		ADF599BD20ADC5A100C73097 /* DiscoveryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
 		ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCardView.xib; sourceTree = "<group>"; };
 		ADF599BA20ADBEA600C73097 /* DiscoverCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCardView.swift; sourceTree = "<group>"; };
+		ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryPageViewController.swift; sourceTree = "<group>"; };
 		D37309EFBDECF37451CD0041 /* Pods-MealPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.release.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 				AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */,
 				AD2F274020AA95E900F8CA1B /* PhotoViewController.swift */,
 				AD2F274220AA96CB00F8CA1B /* CameraViewController.swift */,
+				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
 				AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */,
+				ADF599BD20ADC5A100C73097 /* DiscoveryPageViewController.swift in Sources */,
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */,
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,
