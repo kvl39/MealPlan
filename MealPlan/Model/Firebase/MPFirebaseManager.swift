@@ -28,20 +28,14 @@ class MPFirebaseManager {
     func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel]) {
         for recipe in recipeInformation {
             guard let recipeRealmModel = recipe.recipeRealmModel else {return}
-            //let ingredients = recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmModel.ingredients))
-            let tempDic = ["key1": "value1", "key2": "value2"]
-            let tempArray = [tempDic, tempDic, tempDic]
-            print("===============================")
             let ingredients = recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmModel.ingredients))
             let nuitrients = recipeNuitrientRealmModelToDictionary(recipeNuitrients: Array(recipeRealmModel.nutrients))
-            print(ingredients)
             self.ref.child("recipe/\(recipeRealmModel.label)").setValue([
                 "url": recipeRealmModel.url,
                 "image": recipeRealmModel.image,
                 "ingredients": ingredients,
                 "nuitrients": nuitrients
                 ])
-
         }
     }
     
@@ -79,13 +73,17 @@ class MPFirebaseManager {
     
     
     
-    func findRecipe(recipeName: String) {
+    func findRecipe(recipeName: String, completion: @escaping (Bool)->Void)  {
         //find whether this recipe exists in the database or not
-        let localRef = self.ref.child("recipes")
+        let localRef = self.ref.child("recipe")
         let query = localRef.queryOrderedByKey().queryEqual(toValue: recipeName)
         query.observeSingleEvent(of: DataEventType.value) { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                print(result)
+                if result.count > 0 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
             }
         }
     }

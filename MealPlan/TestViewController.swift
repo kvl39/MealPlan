@@ -85,12 +85,15 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
         hideButton()
         self.addButtonSelected = !self.addButtonSelected
         
+//        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+//        guard let fetchResult = result as? [RecipeCalendarRealmModel] else {return}
+//        print(fetchResult[0])
+//
+//        firebaseManager.updateNewMenu(recipeName: ["AAA", "BBB"], date: self.selectedDate, recipeInformation: fetchResult)
         
-        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
-        guard let fetchResult = result as? [RecipeCalendarRealmModel] else {return}
-        print(fetchResult[0])
-        
-        firebaseManager.updateNewMenu(recipeName: ["AAA", "BBB"], date: self.selectedDate, recipeInformation: fetchResult)
+        firebaseManager.findRecipe(recipeName: "Beef Kreplach") { (exist) in
+            print(exist)
+        }
     }
 
     @objc func typeButtonInteraction(_ sender: UIButton) {
