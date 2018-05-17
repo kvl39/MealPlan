@@ -12,6 +12,7 @@ enum MPTableViewCellType {
     case calendarCollectionViewType
     case recipeCellType(UIImage, String)
     case recipeSearchCellType(String?, UIImage?, String, Bool, Bool)
+    case recipeNoteType
 }
 
 extension MPTableViewCellType {
@@ -23,6 +24,8 @@ extension MPTableViewCellType {
             return RecipeCellItem(image: image, title: title)
         case .recipeSearchCellType(let imageURL, let image, let title, let selected, let isInsertImage):
             return RecipeSearchCellItem(imageURL: imageURL, image: image, title: title, selected: selected, isInsertImage: isInsertImage)
+        case .recipeNoteType:
+            return RecipeNoteViewItem()
         }
     }
 }
@@ -85,9 +88,10 @@ struct RecipeSearchCellItem: MPTableViewCellProtocol {
     }
 }
 
-//protocol MPTableViewControllerDelegateProtocol: class {
-//    func MPCalendarCellDidSelect()
-//}
+struct RecipeNoteViewItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeNoteView"
+    var rowHeight: Int = 300
+}
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
@@ -115,7 +119,7 @@ extension MPTableViewController {
             cell.titleArray = itemStruct.titleArray
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
-            cell
+            //cell
             return cell
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}
@@ -146,7 +150,9 @@ extension MPTableViewController {
             } else {
                 cell.loadImage(imageURL: itemStruct.imageURL)
             }
-
+            return cell
+        case .recipeNoteType:
+            guard let cell = cell as? RecipeNoteView else {return UITableViewCell()}
             return cell
         }
     }
@@ -157,12 +163,7 @@ extension MPTableViewController {
 
 }
 
-//extension MPTableViewController: MPCalendarViewDelegateProtocol {
-//    
-//    func calendarDidSelect(date: Date) {
-//        self.delegate?.MPCalendarCellDidSelect()
-//    }
-//}
+
 
 extension MPTableViewController {
     @objc func selectRecipeAction(_ sender: UIButton) {

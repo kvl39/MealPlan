@@ -180,7 +180,9 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
     func configureTableView() {
         self.testTable.separatorStyle = .none
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
-        testTable.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
+        testTable.register(UINib(nibName: "HorizontalCollectionView",
+                                 bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
+        testTable.register(UINib(nibName: "RecipeNoteView", bundle: nil), forCellReuseIdentifier: "RecipeNoteView")
         self.rowArray.append(.calendarCollectionViewType)
 
        var imageArray = [UIView]()
@@ -193,6 +195,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
        var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
        self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
+       self.rowArray.append(.recipeNoteType)
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)

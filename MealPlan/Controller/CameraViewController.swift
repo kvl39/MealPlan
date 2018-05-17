@@ -15,6 +15,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var previewLayer: CALayer!
     var captureDevice: AVCaptureDevice!
     var isTakePhoto = false
+    var filter: CIFilter? = CIFilter(name: "CIColorInvert")//CIFilter!
+    lazy var context: CIContext = {
+        if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
+            let options = [kCIContextWorkingColorSpace: NSNull()]
+            return CIContext(eaglContext: eaglContext, options: options)
+        } else {
+            return CIContext()
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +63,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             print(error.localizedDescription)
         }
         
-        self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        //self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.previewLayer = CALayer()
+        
+        previewLayer.bounds = CGRect(x: 0, y: 0, width: self.view.frame.height-150, height: self.view.frame.size.width)
+        
+        previewLayer.position = CGPoint(x: self.view.frame.size.width / 2.0, y: self.view.frame.size.height / 2.0)
+        
+        previewLayer.setAffineTransform(CGAffineTransform.init(rotationAngle: CGFloat(M_PI/2.0)))
         self.view.layer.addSublayer(self.previewLayer)
-        self.previewLayer.frame = self.view.layer.frame
         captureSession.startRunning()
         
         let dataOutput = AVCaptureVideoDataOutput()
@@ -74,46 +89,44 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if isTakePhoto {
-            isTakePhoto = false
+        
+        if let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
+            var outputImage = CIImage(cvPixelBuffer: imageBuffer)
+            if let filter = filter {
+                filter.setValue(outputImage, forKey: kCIInputImageKey)
+                if let filterOutputImage = filter.outputImage {
+                    outputImage = filterOutputImage
+                }
+            }
+            let cgImage = context.createCGImage(outputImage, from: outputImage.extent)
             
-            if let image = self.getImageFromSampleBuffer(buffer: sampleBuffer) {
-                let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-                photoVC.takenPhoto = image
+            DispatchQueue.main.async {
+                self.previewLayer.contents = cgImage
+            }
+            
+            if isTakePhoto {
+                isTakePhoto = false
                 
-                DispatchQueue.main.async {
-                    self.present(photoVC, animated: true, completion: {
-                        self.stopCaptureSession()
-                    })
+                if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
+                    let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+                    photoVC.takenPhoto = image
+                    
+                    DispatchQueue.main.async {
+                        self.present(photoVC, animated: true, completion: {
+                            self.stopCaptureSession()
+                        })
+                    }
                 }
             }
         }
     }
     
-    func getImageFromSampleBuffer (buffer: CMSampleBuffer) -> UIImage? {
-        if let pixelBuffer = CMSampleBufferGetImageBuffer(buffer) {
-            let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-            let context = CIContext()
-            let filter = CIFilter(name: "CIPerspectiveTransform")
-            filter?.setValue(ciImage, forKey: kCIInputImageKey)
-            //filter?.setValue(0.5, forKey: kCIInputIntensityKey)
-            
-            let imageRect = CGRect(x: 0, y: 0, width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-            
-            if let output = filter?.value(forKey: kCIOutputImageKey) as? CIImage,
-                let image = context.createCGImage(output, from: imageRect){
-                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
-            }
-            
-            
-            
-//            if let image = context.createCGImage(ciImage, from: imageRect) {
-//                return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .right)
-//            }
-            
-            
+    func getImageFromSampleBuffer (cgImage: CGImage?) -> UIImage? {
+        if let outputImage = cgImage {
+            return UIImage(cgImage: outputImage, scale: UIScreen.main.scale, orientation: .right)
+        } else {
+            return nil
         }
-        return nil
     }
     
     func stopCaptureSession() {
