@@ -66,9 +66,15 @@ class MPFirebaseManager {
     }
     
     
-    func updateRecipe(recipeName: String, recipeInformation: RecipeInformation) {
-        //if this recipe already exists in the database, do nothing
-        //if this recipe doesn't exist in the database, add this recipe into firebase
+    func updateRecipe(recipeName: String, recipeInformation: RecipeCalendarRealmModel) {
+        //check this recipe exist or not
+        findRecipe(recipeName: recipeName) { (exist) in
+            if exist == false {
+                //if this recipe doesn't exist in the database, add this recipe into firebase
+                self.recipeRealmModelToFirebase(recipeInformation: [recipeInformation])
+            }
+        }
+        
     }
     
     
