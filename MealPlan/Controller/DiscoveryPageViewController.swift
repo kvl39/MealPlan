@@ -26,6 +26,10 @@ class DiscoveryPageViewController: UIViewController {
             self.configureInitialCardStack()
         }
         configureCardDestination()
+        self.firebaseManager.findRecipe(recipeName: "Sticky Pork") { (exist, recipe) in
+            print("------recipe---------")
+            print(recipe)
+        }
     }
     
     func retrieveAllMenu(completion: @escaping ()->Void) {
