@@ -14,11 +14,25 @@ class DiscoveryPageViewController: UIViewController {
     
     var cardArray: [DiscoverCardView] = []
     var counter = 0
+    lazy var leftDestinationButton = UIButton(frame: CGRect(x: 20, y: 100.0, width: 100.0, height: 100.0))
+    lazy var rightDestinationButton = UIButton(frame: CGRect(x: view.frame.width - 120, y: 100, width: 100, height: 100))
+    lazy var leftDestinationButtonOriginalX = CGFloat(-100)
+    lazy var rightDistinationButtonOriginalX = view.frame.width + 100.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCardDestination()
         configureInitialCardStack()
         addGestureRecognizer()
+    }
+    
+    func configureCardDestination() {
+        leftDestinationButton.setImage(#imageLiteral(resourceName: "btn_like_normal"), for: .normal)
+        rightDestinationButton.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
+        self.view.addSubview(leftDestinationButton)
+        self.view.addSubview(rightDestinationButton)
+        leftDestinationButton.alpha = 0
+        rightDestinationButton.alpha = 0
     }
     
     func configureInitialCardStack() {
@@ -52,9 +66,14 @@ class DiscoveryPageViewController: UIViewController {
         card.frame.origin.y = self.view.center.y - 200 + point.y
         
         if xFromCenter > 0 {
-            
+            let factor = 2 * xFromCenter / view.frame.width
+            rightDestinationButton.alpha = factor
+            rightDestinationButton.transform = CGAffineTransform(scaleX: 5*factor, y: 5*factor)
+            print("factor:\(factor)")
         } else {
-            
+            let factor = 2 * abs(xFromCenter) / view.frame.width
+            leftDestinationButton.alpha = factor
+            leftDestinationButton.transform = CGAffineTransform(scaleX: 5*factor, y: 5*factor)
         }
         
         if sender.state == UIGestureRecognizerState.ended {
@@ -63,6 +82,8 @@ class DiscoveryPageViewController: UIViewController {
                 UIView.animate(withDuration: 0.3) {
                     card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 50)
                     card.alpha = 0
+                    self.rightDestinationButton.alpha = 0
+                    self.leftDestinationButton.alpha = 0
                     self.configureCardTransition()
                 }
                 return
@@ -70,6 +91,8 @@ class DiscoveryPageViewController: UIViewController {
                 UIView.animate(withDuration: 0.3) {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 50)
                      card.alpha = 0
+                    self.rightDestinationButton.alpha = 0
+                    self.leftDestinationButton.alpha = 0
                     self.configureCardTransition()
                 }
                 return
@@ -77,6 +100,8 @@ class DiscoveryPageViewController: UIViewController {
             UIView.animate(withDuration: 0.2) {
                 card.frame.origin.x = self.view.center.x - 150
                 card.frame.origin.y = self.view.center.y - 200
+                self.rightDestinationButton.alpha = 0
+                self.leftDestinationButton.alpha = 0
             }
         }
     }
