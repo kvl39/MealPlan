@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-
+import SDWebImage
 
 
 
@@ -30,6 +30,8 @@ class MPFirebaseManager {
             let nuitrients = recipeNuitrientRealmModelToDictionary(recipeNuitrients: Array(recipeRealmModel.nutrients))
             self.ref.child("recipe/\(recipeRealmModel.label)").setValue([
                 "url": recipeRealmModel.url,
+                "label": recipeRealmModel.label,
+                "calories": recipeRealmModel.calories,
                 "image": recipeRealmModel.image,
                 "ingredients": ingredients,
                 "nuitrients": nuitrients
@@ -92,6 +94,9 @@ class MPFirebaseManager {
         query.observeSingleEvent(of: DataEventType.value) { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 if result.count > 0 {
+                    if let recipeInformation = result[0].value as? [String: Any] {
+                        completion(true)
+                    }
                     completion(true)
                 } else {
                     completion(false)
@@ -118,6 +123,5 @@ class MPFirebaseManager {
             completion(menuArray)
         }
     }
-    
-    
+
 }

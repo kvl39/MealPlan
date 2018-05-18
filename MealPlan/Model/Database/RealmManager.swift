@@ -30,6 +30,7 @@ class RealmManager {
                 recipeRealmModel.image = recipe.image.absoluteString
                 recipeRealmModel.label = recipe.label
                 recipeRealmModel.url = recipe.url.absoluteString
+                recipeRealmModel.calories = recipe.calories
 
                 for ingre in recipe.ingredients {
                     let ingredient = IngredientRecipeModel()
@@ -59,6 +60,13 @@ class RealmManager {
                     realm.add(recipeModel)
                 }
             }
+        }
+    }
+    
+    func removeAllData() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
         }
     }
 

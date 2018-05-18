@@ -19,6 +19,7 @@ class RecipeRealmModel: Object {
     @objc dynamic var url = ""
     @objc dynamic var label = ""
     @objc dynamic var image = ""
+    @objc dynamic var calories = 0.0
     let ingredients = List<IngredientRecipeModel>()
     let nutrients = List<Nutrients>()
 }

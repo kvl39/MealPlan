@@ -9,8 +9,6 @@
 import UIKit
 
 class DiscoveryPageViewController: UIViewController {
-
-    
     
     var cardArray: [DiscoverCardView] = []
     var counter = 0
