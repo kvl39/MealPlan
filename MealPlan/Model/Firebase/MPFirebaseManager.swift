@@ -16,20 +16,15 @@ class MPFirebaseManager {
     lazy var ref: DatabaseReference = Database.database().reference()
     let user = "FakeUser"
     
-    func updateNewMenu(recipeName: [String], date: String, recipeInformation: [RecipeCalendarRealmModel]) {
-        self.ref.child("menu").childByAutoId().setValue([
-            "recipes": recipeName
-        ]) { (error, databaseReference) in
-            self.ref.child("userMenu/\(self.user)").childByAutoId().setValue([
-                "reference": databaseReference.key
-                ])
-        }
-        //update menu
-        recipeRealmModelToFirebase(recipeInformation: recipeInformation)
+    func uploadNewMenu(date: String, recipeInformation: [RecipeCalendarRealmModel]) {
+        recipeRealmModelToFirebase(recipeInformation: recipeInformation, date: date)
     }
     
     
-    func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel]) {
+    func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel], date: String) {
+        
+        var recipeNameArray: [String] = []
+        
         for recipe in recipeInformation {
             guard let recipeRealmModel = recipe.recipeRealmModel else {return}
             let ingredients = recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmModel.ingredients))
@@ -39,6 +34,15 @@ class MPFirebaseManager {
                 "image": recipeRealmModel.image,
                 "ingredients": ingredients,
                 "nuitrients": nuitrients
+                ])
+            recipeNameArray.append(recipeRealmModel.label)
+        }
+        self.ref.child("menu").childByAutoId().setValue([
+            "recipes": recipeNameArray
+        ]) { (error, databaseReference) in
+            self.ref.child("userMenu/\(self.user)").childByAutoId().setValue([
+                "reference": databaseReference.key,
+                "date": date
                 ])
         }
     }
@@ -75,7 +79,7 @@ class MPFirebaseManager {
         findRecipe(recipeName: recipeName) { (exist) in
             if exist == false {
                 //if this recipe doesn't exist in the database, add this recipe into firebase
-                self.recipeRealmModelToFirebase(recipeInformation: [recipeInformation])
+                //self.recipeRealmModelToFirebase(recipeInformation: [recipeInformation])
             }
         }
     }
@@ -101,11 +105,18 @@ class MPFirebaseManager {
     
     func retrieveAllMenu() {
         let localRef = self.ref.child("menu")
-        
-        
+        let query = localRef.queryOrdered(byChild: "recipes")
+        query.observeSingleEvent(of: .value) { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in result {
+                    if let recipesName = child.value as? [String: Any],
+                       let recipeArray = recipesName["recipes"] as? [String]{
+                        //print(recipeArray[0])
+                    }
+                }
+            }
+        }
     }
     
-    
-    //get recipe image url by name
     
 }
