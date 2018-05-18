@@ -386,30 +386,9 @@
                     <view key="view" contentMode="scaleToFill" id="aV6-Jx-i9q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-1b-Pdq" customClass="DiscoverCardView" customModule="MealPlan" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="217" width="300" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="Np2-sF-Dne"/>
-                                    <constraint firstAttribute="width" constant="300" id="nAg-SN-HDq"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="RUc-Ef-Sth" appends="YES" id="fWS-qE-oRC"/>
-                                </connections>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="BOA-1b-Pdq" firstAttribute="centerX" secondItem="aV6-Jx-i9q" secondAttribute="centerX" id="FHR-yi-j4p"/>
-                            <constraint firstAttribute="bottom" secondItem="BOA-1b-Pdq" secondAttribute="bottom" constant="50" id="GuF-s9-QOY"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x7B-dc-13W"/>
                     </view>
-                    <connections>
-                        <outlet property="cardView" destination="BOA-1b-Pdq" id="DMc-Cj-UVc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIB-5F-olW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="RUc-Ef-Sth">
