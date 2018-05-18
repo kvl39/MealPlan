@@ -17,9 +17,13 @@ class MPFirebaseManager {
     let user = "FakeUser"
     
     func updateNewMenu(recipeName: [String], date: String, recipeInformation: [RecipeCalendarRealmModel]) {
-        self.ref.child("menu/\(user)/\(date)").setValue([
+        self.ref.child("menu").childByAutoId().setValue([
             "recipes": recipeName
-            ])
+        ]) { (error, databaseReference) in
+            self.ref.child("userMenu/\(self.user)").childByAutoId().setValue([
+                "reference": databaseReference.key
+                ])
+        }
         //update menu
         recipeRealmModelToFirebase(recipeInformation: recipeInformation)
     }
@@ -74,7 +78,6 @@ class MPFirebaseManager {
                 self.recipeRealmModelToFirebase(recipeInformation: [recipeInformation])
             }
         }
-        
     }
     
     
@@ -93,4 +96,16 @@ class MPFirebaseManager {
             }
         }
     }
+    
+    
+    
+    func retrieveAllMenu() {
+        let localRef = self.ref.child("menu")
+        
+        
+    }
+    
+    
+    //get recipe image url by name
+    
 }
