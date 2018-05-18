@@ -22,7 +22,6 @@ class MPFirebaseManager {
     
     
     func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel], date: String) {
-        
         var recipeNameArray: [String] = []
         
         for recipe in recipeInformation {
@@ -103,18 +102,20 @@ class MPFirebaseManager {
     
     
     
-    func retrieveAllMenu() {
+    func retrieveAllMenu(completion: @escaping ([[String]])->Void) {
         let localRef = self.ref.child("menu")
         let query = localRef.queryOrdered(byChild: "recipes")
+        var menuArray = [[String]]()
         query.observeSingleEvent(of: .value) { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
                     if let recipesName = child.value as? [String: Any],
                        let recipeArray = recipesName["recipes"] as? [String]{
-                        //print(recipeArray[0])
+                        menuArray.append(recipeArray)
                     }
                 }
             }
+            completion(menuArray)
         }
     }
     
