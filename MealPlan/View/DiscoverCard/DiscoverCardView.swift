@@ -12,7 +12,8 @@ class DiscoverCardView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var cardMainImage: UIImageView!
-    
+   
+    @IBOutlet weak var hint: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,6 +30,11 @@ class DiscoverCardView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 10
     }
 
 }
