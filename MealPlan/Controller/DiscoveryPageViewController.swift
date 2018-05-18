@@ -18,12 +18,23 @@ class DiscoveryPageViewController: UIViewController {
     lazy var rightDestinationButton = UIButton(frame: CGRect(x: view.frame.width - 120, y: 100, width: 100, height: 100))
     lazy var leftDestinationButtonOriginalX = CGFloat(-100)
     lazy var rightDistinationButtonOriginalX = view.frame.width + 100.0
+    var firebaseManager = MPFirebaseManager()
+    var menuArray = [[String]]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveAllMenu {
+            self.configureInitialCardStack()
+        }
         configureCardDestination()
-        configureInitialCardStack()
-        addGestureRecognizer()
+    }
+    
+    func retrieveAllMenu(completion: @escaping ()->Void) {
+        firebaseManager.retrieveAllMenu { (menuArray) in
+            self.menuArray = menuArray
+            completion()
+        }
     }
     
     func configureCardDestination() {
@@ -39,11 +50,13 @@ class DiscoveryPageViewController: UIViewController {
         for i in 0...2 {
             let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + CGFloat(i*20), y: view.center.y - 200 + CGFloat(i*20), width: 300, height: 400))
             newCardView.cardMainImage.image = #imageLiteral(resourceName: "pig")
+            newCardView.title.text = self.menuArray[counter][0]
             newCardView.hint.text = "\(counter)"
             counter += 1
             cardArray.append(newCardView)
             self.view.insertSubview(newCardView, at: 0)
         }
+        addGestureRecognizer()
     }
     
     func addGestureRecognizer() {
@@ -69,7 +82,6 @@ class DiscoveryPageViewController: UIViewController {
             let factor = 2 * xFromCenter / view.frame.width
             rightDestinationButton.alpha = factor
             rightDestinationButton.transform = CGAffineTransform(scaleX: 5*factor, y: 5*factor)
-            print("factor:\(factor)")
         } else {
             let factor = 2 * abs(xFromCenter) / view.frame.width
             leftDestinationButton.alpha = factor
@@ -109,20 +121,25 @@ class DiscoveryPageViewController: UIViewController {
     func configureCardTransition() {
         self.cardArray[0].gestureRecognizers?.removeAll()
         self.cardArray.remove(at: 0)
-        addGestureRecognizer()
+        if self.cardArray.count > 0 {
+            addGestureRecognizer()
+        }
         
-        let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + 40, y: view.center.y - 200 + 40, width: 300, height: 400))
-        newCardView.cardMainImage.image = #imageLiteral(resourceName: "pork")
-        newCardView.hint.text = "\(counter)"
-        counter += 1
-        cardArray.append(newCardView)
-        newCardView.alpha = 0
-        self.view.insertSubview(newCardView, at: 0)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.cardArray[0].transform = CGAffineTransform(translationX: -40, y: -40)
-            self.cardArray[1].transform = CGAffineTransform(translationX: -20, y: -20)
-            newCardView.alpha = 1
+        if counter < self.menuArray.count {
+            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + 40, y: view.center.y - 200 + 40, width: 300, height: 400))
+            newCardView.cardMainImage.image = #imageLiteral(resourceName: "pork")
+            newCardView.title.text = self.menuArray[counter][0]
+            newCardView.hint.text = "\(counter)"
+            counter += 1
+            cardArray.append(newCardView)
+            newCardView.alpha = 0
+            self.view.insertSubview(newCardView, at: 0)
+            
+            UIView.animate(withDuration: 0.2) {
+                self.cardArray[0].transform = CGAffineTransform(translationX: -40, y: -40)
+                self.cardArray[1].transform = CGAffineTransform(translationX: -20, y: -20)
+                newCardView.alpha = 1
+            }
         }
     }
     

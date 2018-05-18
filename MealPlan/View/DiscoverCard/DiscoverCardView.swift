@@ -14,6 +14,7 @@ class DiscoverCardView: UIView {
     @IBOutlet weak var cardMainImage: UIImageView!
    
     @IBOutlet weak var hint: UILabel!
+    @IBOutlet weak var title: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
