@@ -12,10 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverCardView" customModule="MealPlan" customModuleProvider="target">
             <connections>
-                <outlet property="cardMainImage" destination="e5f-PG-atZ" id="C2m-lp-irn"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="LnP-0Q-2hT"/>
                 <outlet property="hint" destination="W2j-am-XuV" id="gdI-ub-Fn6"/>
                 <outlet property="title" destination="Juc-P1-mIN" id="dkm-tu-55X"/>
+                <outletCollection property="imageArray" destination="e5f-PG-atZ" collectionClass="NSMutableArray" id="jY9-In-1UO"/>
+                <outletCollection property="imageArray" destination="ZRq-gC-aO2" collectionClass="NSMutableArray" id="Wdl-SP-xh1"/>
+                <outletCollection property="imageArray" destination="xnX-Ee-9Ig" collectionClass="NSMutableArray" id="sq6-Bn-sM1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -43,6 +45,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZRq-gC-aO2">
+                    <rect key="frame" x="30" y="227" width="100" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnX-Ee-9Ig">
+                    <rect key="frame" x="156" y="227" width="100" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

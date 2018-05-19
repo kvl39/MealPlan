@@ -11,10 +11,12 @@ import UIKit
 class DiscoverCardView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var cardMainImage: UIImageView!
-   
     @IBOutlet weak var hint: UILabel!
     @IBOutlet weak var title: UILabel!
+
+    @IBOutlet var imageArray: [UIImageView]!
+    
+ 
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

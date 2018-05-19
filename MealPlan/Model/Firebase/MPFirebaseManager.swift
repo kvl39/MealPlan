@@ -131,8 +131,22 @@ class MPFirebaseManager {
         }
     }
     
-    //firebase to struct
-    //get image
+    
+    func findRecipesInMenu(menu: [String], completion: @escaping ([MPFirebaseRecipeModel])-> Void) {
+        let targetNumber = menu.count
+        var recipeArray: [MPFirebaseRecipeModel] = []
+        for recipeName in menu {
+            findRecipe(recipeName: recipeName) { (exist, recipe) in
+                guard let recipe = recipe else {return}
+                recipeArray.append(recipe)
+                if (recipeArray.count == targetNumber) {
+                    completion(recipeArray)
+                    return
+                }
+            }
+        }
+    }
+    
     //store liked menu into realm
     
     func retrieveAllMenu(completion: @escaping ([[String]])->Void) {
