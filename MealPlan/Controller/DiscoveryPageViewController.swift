@@ -18,6 +18,7 @@ class DiscoveryPageViewController: UIViewController {
     lazy var leftDestinationButtonOriginalX = CGFloat(-100)
     lazy var rightDistinationButtonOriginalX = view.frame.width + 100.0
     var firebaseManager = MPFirebaseManager()
+    var realmManager = RealmManager()
     var menuRecipeNameArray = [[String]]()
     var menuRecipeArray = [[MPFirebaseRecipeModel]]()
     
@@ -109,6 +110,7 @@ class DiscoveryPageViewController: UIViewController {
                      card.alpha = 0
                     self.rightDestinationButton.alpha = 0
                     self.leftDestinationButton.alpha = 0
+                    self.realmManager.saveLikedMenu(menuRecipes: self.menuRecipeArray[0])
                     self.configureCardTransition()
                 }
                 return
@@ -137,6 +139,7 @@ class DiscoveryPageViewController: UIViewController {
     func configureCardTransition() {
         self.cardArray[0].gestureRecognizers?.removeAll()
         self.cardArray.remove(at: 0)
+        self.menuRecipeArray.remove(at: 0)
         if self.cardArray.count > 0 {
             addGestureRecognizer()
         }
@@ -158,6 +161,7 @@ class DiscoveryPageViewController: UIViewController {
             }
         }
     }
+    
     
 
 }

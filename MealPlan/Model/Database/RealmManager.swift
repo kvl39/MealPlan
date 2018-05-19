@@ -13,6 +13,39 @@ class RealmManager {
     let saveQueue = DispatchQueue(label: "saveQueue")
     let formatter = DateFormatter()
     var dateManager = DataFormatManager()
+    
+    func saveLikedMenu(menuRecipes: [MPFirebaseRecipeModel]) {
+        saveQueue.async {
+            let realm = try! Realm()
+            
+            let menu = likedMenuRealmModel()
+            var counter = 0
+            for recipe in menuRecipes {
+                let recipeRealmType = RecipeRealmModel()
+                recipeRealmType.calories = recipe.calories
+                recipeRealmType.image = recipe.image
+                recipeRealmType.label = recipe.label
+                recipeRealmType.url = recipe.url
+                for ingredient in recipe.ingredients {
+                    let recipeIngredientRealmType = IngredientRecipeModel()
+                    recipeIngredientRealmType.name = ingredient.name
+                    recipeIngredientRealmType.weight = ingredient.weight
+                    recipeRealmType.ingredients.append(recipeIngredientRealmType)
+                }
+                for nuitrient in recipe.nuitrients {
+                    let recipeNuitrientRealmType = Nutrients()
+                    recipeNuitrientRealmType.label = nuitrient.label
+                    recipeNuitrientRealmType.quantity = nuitrient.quantity
+                    recipeRealmType.nutrients.append(recipeNuitrientRealmType)
+                }
+                menu.recipes.append(recipeRealmType)
+                counter += 1
+            }
+            try! realm.write {
+                realm.add(menu)
+            }
+        }
+    }
 
     func saveAddedRecipe(addedRecipe: [RecipeInformation], recipeDate: String) {
         saveQueue.async {

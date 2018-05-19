@@ -147,7 +147,6 @@ class MPFirebaseManager {
         }
     }
     
-    //store liked menu into realm
     
     func retrieveAllMenu(completion: @escaping ([[String]])->Void) {
         let localRef = self.ref.child("menu")

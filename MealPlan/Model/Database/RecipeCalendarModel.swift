@@ -9,6 +9,10 @@
 import Foundation
 import RealmSwift
 
+class likedMenuRealmModel: Object {
+    let recipes = List<RecipeRealmModel>()
+}
+
 class RecipeCalendarRealmModel: Object {
     @objc dynamic var recipeDay = Date(timeIntervalSince1970: 1)
     //let RecipeRealmModel = List<RecipeRealmModel>()
