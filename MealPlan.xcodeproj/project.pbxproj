@@ -37,6 +37,7 @@
 		AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477220B01AA400B9C915 /* Discovery.storyboard */; };
 		AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477420B01B0300B9C915 /* MealPlan.storyboard */; };
 		AD59477820B024B500B9C915 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477720B024B500B9C915 /* Login.storyboard */; };
+		AD59477A20B0367500B9C915 /* PopupButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD59477920B0367500B9C915 /* PopupButtonsManager.swift */; };
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
@@ -44,6 +45,7 @@
 		AD6FB21F20A971060000A44F /* RecipeDetailTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */; };
 		AD6FB22020A971060000A44F /* RecipeDetailTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FB21E20A971060000A44F /* RecipeDetailTitle.xib */; };
 		AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */; };
+		AD6FD06620B0680100148414 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FD06520B0680100148414 /* TestViewController.swift */; };
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
 		AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */; };
 		AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */; };
@@ -106,6 +108,7 @@
 		AD59477220B01AA400B9C915 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
 		AD59477420B01B0300B9C915 /* MealPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MealPlan.storyboard; sourceTree = "<group>"; };
 		AD59477720B024B500B9C915 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		AD59477920B0367500B9C915 /* PopupButtonsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupButtonsManager.swift; sourceTree = "<group>"; };
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailTitle.swift; sourceTree = "<group>"; };
 		AD6FB21E20A971060000A44F /* RecipeDetailTitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailTitle.xib; sourceTree = "<group>"; };
 		AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailWebViewController.swift; sourceTree = "<group>"; };
+		AD6FD06520B0680100148414 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
 		AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupTableViewController.swift; sourceTree = "<group>"; };
 		AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,7 +183,6 @@
 				AD2C8E492096EFFE0083B229 /* View */,
 				AD2C8E472096EFEB0083B229 /* Model */,
 				AD59477620B01B3400B9C915 /* Storyboard */,
-				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
 				AD2C8E352096EFAD0083B229 /* AppDelegate.swift */,
 				AD2C8E372096EFAD0083B229 /* ViewController.swift */,
 				AD2C8E4B20971AFA0083B229 /* CustomCell.swift */,
@@ -248,6 +251,9 @@
 				AD2F274220AA96CB00F8CA1B /* CameraViewController.swift */,
 				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
 				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
+				AD59477920B0367500B9C915 /* PopupButtonsManager.swift */,
+				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
+				AD6FD06520B0680100148414 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -554,9 +560,11 @@
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
+				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
+				AD59477A20B0367500B9C915 /* PopupButtonsManager.swift in Sources */,
 				AD53A1F4209FF15D0016E4D1 /* MPTagViewController.swift in Sources */,
 				AD260DDA20AF1FFC007D4C89 /* MPFirebaseModel.swift in Sources */,
 				ADAEAC2D20983CA6001B44CF /* MealPlanViewController.swift in Sources */,
