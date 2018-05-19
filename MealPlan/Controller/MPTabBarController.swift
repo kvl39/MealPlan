@@ -52,7 +52,7 @@ class MPTabBarController: UITabBarController {
             let controller = tab.controller()
             let item = UITabBarItem(
                 title: nil, image: tab.image(), selectedImage: tab.selectedImage())
-            item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0)
+            item.imageInsets = UIEdgeInsetsMake(2, 0, -10, 0)
             controller.tabBarItem = item
             controllers.append(controller)
         }
