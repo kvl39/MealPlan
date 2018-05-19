@@ -56,7 +56,7 @@
 		ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */; };
 		ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
-		ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* TestViewController.swift */; };
+		ADAEAC2D20983CA6001B44CF /* MealPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */; };
 		ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */; };
 		ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC3120984E87001B44CF /* HorizontalCollectionViewCell.xib */; };
 		ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC352098506B001B44CF /* HorizontalCollectionView.swift */; };
@@ -125,7 +125,7 @@
 		ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNoteView.swift; sourceTree = "<group>"; };
 		ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeNoteView.xib; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
-		ADAEAC2C20983CA6001B44CF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewController.swift; sourceTree = "<group>"; };
 		ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADAEAC3120984E87001B44CF /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		ADAEAC352098506B001B44CF /* HorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionView.swift; sourceTree = "<group>"; };
@@ -178,10 +178,10 @@
 				AD2C8E4A2096F0040083B229 /* Controller */,
 				AD2C8E492096EFFE0083B229 /* View */,
 				AD2C8E472096EFEB0083B229 /* Model */,
+				AD59477620B01B3400B9C915 /* Storyboard */,
+				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
 				AD2C8E352096EFAD0083B229 /* AppDelegate.swift */,
 				AD2C8E372096EFAD0083B229 /* ViewController.swift */,
-				AD59477620B01B3400B9C915 /* Storyboard */,
-				ADAEAC2C20983CA6001B44CF /* TestViewController.swift */,
 				AD2C8E4B20971AFA0083B229 /* CustomCell.swift */,
 				AD2C8E3C2096EFAF0083B229 /* Assets.xcassets */,
 				AD2C8E3E2096EFAF0083B229 /* LaunchScreen.storyboard */,
@@ -559,7 +559,7 @@
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
 				AD53A1F4209FF15D0016E4D1 /* MPTagViewController.swift in Sources */,
 				AD260DDA20AF1FFC007D4C89 /* MPFirebaseModel.swift in Sources */,
-				ADAEAC2D20983CA6001B44CF /* TestViewController.swift in Sources */,
+				ADAEAC2D20983CA6001B44CF /* MealPlanViewController.swift in Sources */,
 				AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */,
 				AD1D9232209B759F00B9AFE9 /* MPHttpClient.swift in Sources */,
 				AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */,

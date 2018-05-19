@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class TestViewController: MPTableViewController, AddPageDelegateProtocol {
+class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
     @IBOutlet weak var testTable: UITableView!
     @IBOutlet weak var topImageView: UIImageView!
@@ -271,7 +271,7 @@ class TestViewController: MPTableViewController, AddPageDelegateProtocol {
 }
 
 
-extension TestViewController: ZoomingViewController {
+extension MealPlanViewController: ZoomingViewController {
     
     func zoomingImageView() -> UIImageView? {
         return self.selectedCollectViewImageView

@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="4360" y="-1015"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Meal Plan View Controller-->
         <scene sceneID="xX4-bw-Ute">
             <objects>
-                <viewController id="cUz-YE-dot" customClass="TestViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cUz-YE-dot" customClass="MealPlanViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeK-vd-cdX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,6 +157,9 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vch-gQ-48d">
                                 <rect key="frame" x="0.0" y="409" width="375" height="178"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="178" id="lOS-HA-aci"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="oCb-Kl-eqX" kind="embed" identifier="AddPageToSearchView" id="tB0-22-sEK"/>
                                 </connections>
@@ -185,6 +188,9 @@
                                         <constraint firstAttribute="bottom" secondItem="xOQ-Al-QEz" secondAttribute="bottom" id="xlc-KQ-m00"/>
                                     </constraints>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="548" id="YA4-28-H9c"/>
+                                </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huu-Ex-MHK">
@@ -219,12 +225,11 @@
                             <constraint firstItem="8zr-dF-P5Q" firstAttribute="bottom" secondItem="epd-X7-hYb" secondAttribute="bottom" constant="20" id="DNg-i0-YLi"/>
                             <constraint firstItem="8zr-dF-P5Q" firstAttribute="trailing" secondItem="vch-gQ-48d" secondAttribute="trailing" id="HJL-Cl-0hS"/>
                             <constraint firstItem="vch-gQ-48d" firstAttribute="top" secondItem="aE0-KG-DZN" secondAttribute="bottom" constant="30" id="KOM-in-wzz"/>
-                            <constraint firstAttribute="bottom" secondItem="huu-Ex-MHK" secondAttribute="bottom" constant="20" id="KWD-gb-iRm"/>
+                            <constraint firstItem="8zr-dF-P5Q" firstAttribute="bottom" secondItem="huu-Ex-MHK" secondAttribute="bottom" constant="20" id="KWD-gb-iRm"/>
                             <constraint firstItem="huu-Ex-MHK" firstAttribute="leading" secondItem="z4S-p1-mIv" secondAttribute="leading" constant="50" id="LwT-ZL-bjQ"/>
                             <constraint firstItem="JEw-TW-0Cd" firstAttribute="centerX" secondItem="z4S-p1-mIv" secondAttribute="centerX" id="Od2-LO-reX"/>
                             <constraint firstItem="8zr-dF-P5Q" firstAttribute="trailing" secondItem="epd-X7-hYb" secondAttribute="trailing" constant="50" id="SvO-zf-HPw"/>
                             <constraint firstItem="JEw-TW-0Cd" firstAttribute="top" secondItem="8zr-dF-P5Q" secondAttribute="top" constant="5" id="W5Q-Xs-GTg"/>
-                            <constraint firstItem="huu-Ex-MHK" firstAttribute="top" secondItem="LvM-a9-MC4" secondAttribute="bottom" constant="5" id="Yu5-jY-hqc"/>
                             <constraint firstItem="8zr-dF-P5Q" firstAttribute="trailing" secondItem="dfT-AR-FOU" secondAttribute="trailing" constant="20" id="b6e-UQ-Xzt"/>
                             <constraint firstItem="dfT-AR-FOU" firstAttribute="leading" secondItem="8zr-dF-P5Q" secondAttribute="leading" constant="20" id="cx7-l9-tuV"/>
                             <constraint firstItem="aE0-KG-DZN" firstAttribute="top" secondItem="dfT-AR-FOU" secondAttribute="bottom" constant="20" id="d4C-8D-CeP"/>
@@ -232,7 +237,6 @@
                             <constraint firstItem="LvM-a9-MC4" firstAttribute="leading" secondItem="8zr-dF-P5Q" secondAttribute="leading" id="nb4-JI-yNU"/>
                             <constraint firstItem="LvM-a9-MC4" firstAttribute="top" secondItem="8zr-dF-P5Q" secondAttribute="top" id="oVA-jS-5eU"/>
                             <constraint firstItem="8zr-dF-P5Q" firstAttribute="trailing" secondItem="LvM-a9-MC4" secondAttribute="trailing" id="rAz-0d-LIi"/>
-                            <constraint firstItem="huu-Ex-MHK" firstAttribute="top" secondItem="vch-gQ-48d" secondAttribute="bottom" constant="30" id="sdT-hH-Juq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8zr-dF-P5Q"/>
                     </view>

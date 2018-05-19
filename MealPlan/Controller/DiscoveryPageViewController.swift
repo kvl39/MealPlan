@@ -25,14 +25,14 @@ class DiscoveryPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         retrieveAllMenu {
             self.configureInitialCardStack()
         }
         configureCardDestination()
-        self.firebaseManager.findRecipe(recipeName: "Sticky Pork") { (exist, recipe) in
-            print("------recipe---------")
-            print(recipe)
-        }
     }
     
     func retrieveAllMenu(completion: @escaping ()->Void) {
@@ -129,7 +129,9 @@ class DiscoveryPageViewController: UIViewController {
         self.firebaseManager.findRecipesInMenu(menu: self.menuRecipeNameArray[counter]) { (recipeArray) in
             self.menuRecipeArray.append(recipeArray)
             for j in 0...2{
-                newCardView.imageArray[j].sd_setImage(with: URL(string: recipeArray[j].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
+                if j < recipeArray.count {
+                    newCardView.imageArray[j].sd_setImage(with: URL(string: recipeArray[j].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
+                }
             }
         }
     }
