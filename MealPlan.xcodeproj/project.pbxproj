@@ -33,6 +33,9 @@
 		AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4A209B0649009915F3 /* AddPageViewController.swift */; };
 		AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */; };
 		AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD57814C20A47C5900130388 /* DateFormatManager.swift */; };
+		AD59477120B019D900B9C915 /* MPTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD59477020B019D900B9C915 /* MPTabBarController.swift */; };
+		AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477220B01AA400B9C915 /* Discovery.storyboard */; };
+		AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477420B01B0300B9C915 /* MealPlan.storyboard */; };
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
@@ -98,6 +101,9 @@
 		AD566B4A209B0649009915F3 /* AddPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageViewController.swift; sourceTree = "<group>"; };
 		AD566B4C209B0B6F009915F3 /* AddPagePickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePickupController.swift; sourceTree = "<group>"; };
 		AD57814C20A47C5900130388 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
+		AD59477020B019D900B9C915 /* MPTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTabBarController.swift; sourceTree = "<group>"; };
+		AD59477220B01AA400B9C915 /* Discovery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discovery.storyboard; sourceTree = "<group>"; };
+		AD59477420B01B0300B9C915 /* MealPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MealPlan.storyboard; sourceTree = "<group>"; };
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
@@ -172,7 +178,7 @@
 				AD2C8E472096EFEB0083B229 /* Model */,
 				AD2C8E352096EFAD0083B229 /* AppDelegate.swift */,
 				AD2C8E372096EFAD0083B229 /* ViewController.swift */,
-				AD2C8E392096EFAD0083B229 /* Main.storyboard */,
+				AD59477620B01B3400B9C915 /* Storyboard */,
 				ADAEAC2C20983CA6001B44CF /* TestViewController.swift */,
 				AD2C8E4B20971AFA0083B229 /* CustomCell.swift */,
 				AD2C8E3C2096EFAF0083B229 /* Assets.xcassets */,
@@ -239,6 +245,7 @@
 				AD2F274020AA95E900F8CA1B /* PhotoViewController.swift */,
 				AD2F274220AA96CB00F8CA1B /* CameraViewController.swift */,
 				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
+				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,6 +257,16 @@
 				AD4E2CF220A14C6300C4573F /* RecipeSearchResultCell.xib */,
 			);
 			path = RecipeSearchResultCell;
+			sourceTree = "<group>";
+		};
+		AD59477620B01B3400B9C915 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AD2C8E392096EFAD0083B229 /* Main.storyboard */,
+				AD59477420B01B0300B9C915 /* MealPlan.storyboard */,
+				AD59477220B01AA400B9C915 /* Discovery.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		AD6FB22120A9710C0000A44F /* RecipeDetailTitle */ = {
@@ -424,8 +441,10 @@
 				ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
+				AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */,
 				AD6FB22020A971060000A44F /* RecipeDetailTitle.xib in Resources */,
 				AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */,
+				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
 				ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */,
 				AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */,
@@ -497,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD59477120B019D900B9C915 /* MPTabBarController.swift in Sources */,
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
