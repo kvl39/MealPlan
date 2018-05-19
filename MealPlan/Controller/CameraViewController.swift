@@ -16,6 +16,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var captureDevice: AVCaptureDevice!
     var isTakePhoto = false
     var filter: CIFilter? = CIFilter(name: "CIColorInvert")//CIFilter!
+    var popupButtonManager = PopupButtonManager()
+    var popupButtons = [UIButton]()
     lazy var context: CIContext = {
         if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
             let options = [kCIContextWorkingColorSpace: NSNull()]
@@ -33,7 +35,43 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewWillAppear(animated)
         prepareCamera()
         configureButtons()
+        configurePopupButtons()
     }
+    
+    func configurePopupButtons() {
+        popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork"),#imageLiteral(resourceName: "iTunesArtwork-1")], on: self.view)
+        popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
+        popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
+        popupButtons[2].addTarget(self, action: #selector(popupButton2Action(_:)), for: .touchUpInside)
+        popupButtons[3].addTarget(self, action: #selector(popupButton3Action(_:)), for: .touchUpInside)
+        popupButtons[4].addTarget(self, action: #selector(popupButton4Action(_:)), for: .touchUpInside)
+    }
+    
+    @objc func mainButtonAction(_ sender: UIButton) {
+        popupButtonManager.mainButtonSelected = !popupButtonManager.mainButtonSelected
+        if popupButtonManager.mainButtonSelected {
+            popupButtonManager.showButtons(on: self.view)
+        } else {
+            popupButtonManager.hideButtons(on: self.view)
+        }
+    }
+    
+    @objc func popupButton1Action(_ sender: UIButton) {
+        self.filter = CIFilter(name: "CIVignetteEffect")
+    }
+    
+    @objc func popupButton2Action(_ sender: UIButton) {
+        self.filter = CIFilter(name: "CIPhotoEffectMono")
+    }
+    
+    @objc func popupButton3Action(_ sender: UIButton) {
+        self.filter = CIFilter(name: "CIPhotoEffectChrome")
+    }
+    
+    @objc func popupButton4Action(_ sender: UIButton) {
+        self.filter = nil
+    }
+    
     
     func configureButtons() {
         let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 25, y: self.view.frame.height-50, width: 50, height: 50))
