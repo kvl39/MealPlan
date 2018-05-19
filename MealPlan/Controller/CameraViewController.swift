@@ -29,13 +29,21 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
+        configureButtons()
+        configurePopupButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         prepareCamera()
-        configureButtons()
-        configurePopupButtons()
+        moveButtonsToFront()
+    }
+    
+    func moveButtonsToFront() {
+        for button in self.popupButtons {
+            self.view.bringSubview(toFront: button)
+        }
     }
     
     func configurePopupButtons() {
@@ -146,7 +154,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 isTakePhoto = false
                 
                 if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
-                    let photoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
                     photoVC.takenPhoto = image
                     
                     DispatchQueue.main.async {
