@@ -17,9 +17,9 @@ class AddRecipeInformationViewController: MPTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        
-        
     }
+    
+    
     
     func configureTableView() {
         addRecipeInformationTable.delegate = self

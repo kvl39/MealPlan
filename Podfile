@@ -12,5 +12,6 @@ pod 'SDWebImage'
 pod 'SwiftLint'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'IQKeyboardManagerSwift'
 
 end

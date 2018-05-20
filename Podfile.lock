@@ -25,6 +25,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
+  - IQKeyboardManagerSwift (6.0.2)
   - JTAppleCalendar (7.1.5)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - Charts
   - Firebase/Core
   - Firebase/Database
+  - IQKeyboardManagerSwift
   - JTAppleCalendar (~> 7.0)
   - RealmSwift
   - SDWebImage
@@ -62,6 +64,7 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseInstanceID
     - GoogleToolboxForMac
+    - IQKeyboardManagerSwift
     - JTAppleCalendar
     - leveldb-library
     - nanopb
@@ -79,6 +82,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 5f0bc6134c5c237cf55f9e1249d406770a75eafd
   FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  IQKeyboardManagerSwift: 59d4b0e140bc546c3c76ae5bb35b3dafd10b8172
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -87,6 +91,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: 817921e0bf4ad6bd949f141f58f8931967d62d62
+PODFILE CHECKSUM: 15121f005fd821f42ec8e9a74cad00289170f5d8
 
 COCOAPODS: 1.5.0
