@@ -64,6 +64,7 @@
                                 <state key="normal" title="accept"/>
                                 <connections>
                                     <action selector="acceptPhoto:" destination="4EZ-TU-beT" eventType="touchUpInside" id="3v6-Ya-vft"/>
+                                    <segue destination="cY8-OP-WUA" kind="show" id="AtT-31-INh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -82,6 +83,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJ9-rz-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4360" y="-1015"/>
+        </scene>
+        <!--Add Recipe Information View Controller-->
+        <scene sceneID="6vi-UJ-V4G">
+            <objects>
+                <viewController id="cY8-OP-WUA" customClass="AddRecipeInformationViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bKe-O2-gZe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ie-gz-HHI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Ie-gz-HHI" firstAttribute="leading" secondItem="iV0-Mi-D3q" secondAttribute="leading" id="dSq-v4-lbv"/>
+                            <constraint firstItem="iV0-Mi-D3q" firstAttribute="bottom" secondItem="0Ie-gz-HHI" secondAttribute="bottom" id="klK-9b-URO"/>
+                            <constraint firstItem="0Ie-gz-HHI" firstAttribute="top" secondItem="iV0-Mi-D3q" secondAttribute="top" id="rV2-0m-mru"/>
+                            <constraint firstItem="iV0-Mi-D3q" firstAttribute="trailing" secondItem="0Ie-gz-HHI" secondAttribute="trailing" id="wCk-p5-Hmm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iV0-Mi-D3q"/>
+                    </view>
+                    <connections>
+                        <outlet property="addRecipeInformationTable" destination="0Ie-gz-HHI" id="VZ9-vT-JYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYR-Y2-Var" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5297" y="-1015"/>
         </scene>
         <!--Meal Plan View Controller-->
         <scene sceneID="xX4-bw-Ute">

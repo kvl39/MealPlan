@@ -13,6 +13,7 @@ enum MPTableViewCellType {
     case recipeCellType(UIImage, String)
     case recipeSearchCellType(String?, UIImage?, String, Bool, Bool)
     case recipeNoteType
+    case textFieldType(String, String)
 }
 
 extension MPTableViewCellType {
@@ -26,6 +27,8 @@ extension MPTableViewCellType {
             return RecipeSearchCellItem(imageURL: imageURL, image: image, title: title, selected: selected, isInsertImage: isInsertImage)
         case .recipeNoteType:
             return RecipeNoteViewItem()
+        case .textFieldType(let textFieldLabel, let textFieldPlaceHolder):
+            return TextFieldItem(textFieldLabel: textFieldLabel, textFieldPlaceHolder: textFieldPlaceHolder)
         }
     }
 }
@@ -93,6 +96,18 @@ struct RecipeNoteViewItem: MPTableViewCellProtocol {
     var rowHeight: Int = 300
 }
 
+struct TextFieldItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "AddRecipeInformationTextFieldCell"
+    var rowHeight: Int = 50
+    var textFieldLabel: String = ""
+    var textFieldPlaceHolder: String = ""
+    
+    init(textFieldLabel: String, textFieldPlaceHolder: String) {
+        self.textFieldLabel = textFieldLabel
+        self.textFieldPlaceHolder = textFieldPlaceHolder
+    }
+}
+
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
     //weak var delegate: MPTableViewControllerDelegateProtocol?
@@ -153,6 +168,12 @@ extension MPTableViewController {
             return cell
         case .recipeNoteType:
             guard let cell = cell as? RecipeNoteView else {return UITableViewCell()}
+            return cell
+        case .textFieldType:
+            guard let cell = cell as? AddRecipeInformationTextFieldCell else {return UITableViewCell()}
+            guard let itemStruct = item.configureCell() as? TextFieldItem else {return cell}
+            cell.textFieldLabel.text = itemStruct.textFieldLabel
+            cell.textField.placeholder = itemStruct.textFieldPlaceHolder
             return cell
         }
     }

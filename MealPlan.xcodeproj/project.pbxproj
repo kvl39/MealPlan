@@ -43,10 +43,12 @@
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
 		AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */; };
 		AD6FB21F20A971060000A44F /* RecipeDetailTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */; };
-		AD6FB22020A971060000A44F /* RecipeDetailTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD6FB21E20A971060000A44F /* RecipeDetailTitle.xib */; };
 		AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */; };
 		AD6FD06620B0680100148414 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FD06520B0680100148414 /* TestViewController.swift */; };
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
+		AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */; };
+		AD85E55C20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */; };
+		AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */; };
 		AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */; };
 		AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */; };
 		AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */; };
@@ -114,10 +116,12 @@
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailViewController.swift; sourceTree = "<group>"; };
 		AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailTitle.swift; sourceTree = "<group>"; };
-		AD6FB21E20A971060000A44F /* RecipeDetailTitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailTitle.xib; sourceTree = "<group>"; };
 		AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailWebViewController.swift; sourceTree = "<group>"; };
 		AD6FD06520B0680100148414 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
+		AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationViewController.swift; sourceTree = "<group>"; };
+		AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationTextFieldCell.swift; sourceTree = "<group>"; };
+		AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationTextFieldCell.xib; sourceTree = "<group>"; };
 		AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupTableViewController.swift; sourceTree = "<group>"; };
 		AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD85E55920B1A3F2002B80EB /* AddRecipeInformationTextField */,
 				ADF599B320ADBD5E00C73097 /* DiscoverCard */,
 				ADAA4DA720AC12D2002F9658 /* RecipeNoteView */,
 				AD6FB22120A9710C0000A44F /* RecipeDetailTitle */,
@@ -254,6 +259,7 @@
 				AD59477920B0367500B9C915 /* PopupButtonsManager.swift */,
 				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
 				AD6FD06520B0680100148414 /* TestViewController.swift */,
+				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,9 +288,17 @@
 			isa = PBXGroup;
 			children = (
 				AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */,
-				AD6FB21E20A971060000A44F /* RecipeDetailTitle.xib */,
 			);
 			path = RecipeDetailTitle;
+			sourceTree = "<group>";
+		};
+		AD85E55920B1A3F2002B80EB /* AddRecipeInformationTextField */ = {
+			isa = PBXGroup;
+			children = (
+				AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */,
+				AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */,
+			);
+			path = AddRecipeInformationTextField;
 			sourceTree = "<group>";
 		};
 		AD8A0880209ED65700C3DB84 /* RecipeTableViewCell */ = {
@@ -451,8 +465,8 @@
 				ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
+				AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */,
 				AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */,
-				AD6FB22020A971060000A44F /* RecipeDetailTitle.xib in Resources */,
 				AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */,
 				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
@@ -544,6 +558,7 @@
 				ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */,
 				AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */,
 				ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */,
+				AD85E55C20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift in Sources */,
 				ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */,
 				ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */,
 				AD428EE620A32D1E00A04A32 /* AddPagePopupNavigationController.swift in Sources */,
@@ -560,6 +575,7 @@
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
+				AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */,
 				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
