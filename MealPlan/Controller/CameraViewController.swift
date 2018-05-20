@@ -87,6 +87,16 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.view.addSubview(takePhotoButton)
         takePhotoButton.setImage(#imageLiteral(resourceName: "pig"), for: .normal)
         self.view.bringSubview(toFront: takePhotoButton)
+        
+        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-50, width: 50, height: 50))
+        cancelButton.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
+        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        self.view.addSubview(cancelButton)
+        self.view.bringSubview(toFront: cancelButton)
+    }
+    
+    @objc func cancel(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func prepareCamera() {
@@ -158,9 +168,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     photoVC.takenPhoto = image
                     
                     DispatchQueue.main.async {
-                        self.present(photoVC, animated: true, completion: {
-                            self.stopCaptureSession()
-                        })
+                        self.navigationController?.pushViewController(photoVC, animated: true)
+                        self.stopCaptureSession()
+//                        self.present(photoVC, animated: true, completion: {
+//                            self.stopCaptureSession()
+//                        })
                     }
                 }
             }

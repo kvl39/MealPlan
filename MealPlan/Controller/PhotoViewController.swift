@@ -31,6 +31,19 @@ class PhotoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    @IBAction func cancelPhotoShooting(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    @IBAction func takePhotoAgain(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func acceptPhoto(_ sender: UIButton) {
+    }
+    
 
 }
