@@ -11,6 +11,8 @@ import UIKit
 class AddRecipeInformationTextFieldWithImageCell: UITableViewCell {
 
     
+    @IBOutlet weak var viewForImagePicker: UIView!
+    @IBOutlet weak var viewForTextField: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

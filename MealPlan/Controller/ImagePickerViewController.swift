@@ -10,12 +10,17 @@ import UIKit
 
 class ImagePickerViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    lazy var image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    lazy var image = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         image.image = #imageLiteral(resourceName: "tap")
+        self.view.backgroundColor = UIColor.blue
         self.view.addSubview(image)
+    }
+    
+    func resetFrame() {
+        image.frame = self.view.frame
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

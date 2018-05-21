@@ -189,13 +189,17 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? RecipeStepItem else {return cell}
             let imagePickerViewController = itemStruct.imagePickerViewController
             addChildViewController(imagePickerViewController)
-            cell.addSubview(imagePickerViewController.view)
-            NSLayoutConstraint.activate([
-                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0),
-                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0),
-                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0),
-                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: 0)
-                ])
+            imagePickerViewController.view.frame = cell.viewForImagePicker.frame
+            imagePickerViewController.view.frame.origin.x = 0
+            imagePickerViewController.view.frame.origin.y = 0
+            imagePickerViewController.resetFrame()
+            cell.viewForImagePicker.addSubview(imagePickerViewController.view)
+//            NSLayoutConstraint.activate([
+//                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.viewForImagePicker.trailingAnchor, constant: 0),
+//                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.viewForImagePicker.leadingAnchor, constant: 0),
+//                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
+//                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
+//                ])
             imagePickerViewController.didMove(toParentViewController: self)
             return cell
         }
