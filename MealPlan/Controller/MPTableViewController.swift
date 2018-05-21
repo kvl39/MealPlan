@@ -14,6 +14,7 @@ enum MPTableViewCellType {
     case recipeSearchCellType(String?, UIImage?, String, Bool, Bool)
     case recipeNoteType
     case textFieldType(String, String)
+    case recipeStepType
 }
 
 extension MPTableViewCellType {
@@ -29,6 +30,8 @@ extension MPTableViewCellType {
             return RecipeNoteViewItem()
         case .textFieldType(let textFieldLabel, let textFieldPlaceHolder):
             return TextFieldItem(textFieldLabel: textFieldLabel, textFieldPlaceHolder: textFieldPlaceHolder)
+        case .recipeStepType:
+            return RecipeStepItem()
         }
     }
 }
@@ -108,6 +111,12 @@ struct TextFieldItem: MPTableViewCellProtocol {
     }
 }
 
+struct RecipeStepItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "AddRecipeInformationTextFieldWithImageCell"
+    var rowHeight: Int = 243
+    var imagePickerViewController = ImagePickerViewController()
+}
+
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rowArray: [MPTableViewCellType] = []
     //weak var delegate: MPTableViewControllerDelegateProtocol?
@@ -174,6 +183,20 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? TextFieldItem else {return cell}
             cell.textFieldLabel.text = itemStruct.textFieldLabel
             cell.textField.placeholder = itemStruct.textFieldPlaceHolder
+            return cell
+        case .recipeStepType:
+            guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return UITableViewCell()}
+            guard let itemStruct = item.configureCell() as? RecipeStepItem else {return cell}
+            let imagePickerViewController = itemStruct.imagePickerViewController
+            addChildViewController(imagePickerViewController)
+            cell.addSubview(imagePickerViewController.view)
+            NSLayoutConstraint.activate([
+                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 0),
+                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.topAnchor, constant: 0),
+                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: 0),
+                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.trailingAnchor, constant: 0)
+                ])
+            imagePickerViewController.didMove(toParentViewController: self)
             return cell
         }
     }

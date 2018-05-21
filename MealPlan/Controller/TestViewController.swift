@@ -13,9 +13,16 @@ class TestViewController: UIViewController {
     var popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork")], on: self.view)
+//        popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
+//        popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor.green
         popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork")], on: self.view)
         popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
         popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)

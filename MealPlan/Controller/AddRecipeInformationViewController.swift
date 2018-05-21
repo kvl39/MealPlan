@@ -17,6 +17,7 @@ class AddRecipeInformationViewController: MPTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        //addRecipeInformationTable.allowsSelection = false
     }
     
     
@@ -26,7 +27,10 @@ class AddRecipeInformationViewController: MPTableViewController {
         addRecipeInformationTable.dataSource = self
         self.addRecipeInformationTable.separatorStyle = .none
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldCell")
-        self.rowArray.append(.textFieldType("菜餚名稱：", "holder"))
+        addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldWithImageCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldWithImageCell")
+        self.rowArray.append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
+        self.rowArray.append(.recipeStepType)
+        self.rowArray.append(.recipeStepType)
     }
 
 
