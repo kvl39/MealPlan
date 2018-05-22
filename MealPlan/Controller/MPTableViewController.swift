@@ -15,6 +15,7 @@ enum MPTableViewCellType {
     case recipeNoteType
     case textFieldType(String, String)
     case recipeStepType
+    case sliderType(Float)
 }
 
 extension MPTableViewCellType {
@@ -32,6 +33,8 @@ extension MPTableViewCellType {
             return TextFieldItem(textFieldLabel: textFieldLabel, textFieldPlaceHolder: textFieldPlaceHolder)
         case .recipeStepType:
             return RecipeStepItem()
+        case .sliderType(let sliderMax):
+            return SliderItem(slidermax: sliderMax)
         }
     }
 }
@@ -116,6 +119,17 @@ struct RecipeStepItem: MPTableViewCellProtocol {
     var rowHeight: Int = 243
     var imagePickerViewController = ImagePickerViewController()
     var inputTextViewController = InputTextViewController()
+}
+
+struct SliderItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "AddRecipeInformationSliderCell"
+    var rowHeight: Int = 100
+    var slidermax: Float = 100.0
+    var sliderController = SliderViewController()
+    
+    init(slidermax: Float) {
+        self.slidermax = slidermax
+    }
 }
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
@@ -220,6 +234,20 @@ extension MPTableViewController {
             inputTextViewController.didMove(toParentViewController: self)
             inputTextViewController.serialNumber = indexPath.row
             inputTextViewController.delegate = self
+            return cell
+        case .sliderType:
+            guard let cell = cell as? AddRecipeInformationSliderCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? SliderItem else {return cell}
+            //let sliderController = itemStruct.sliderController
+            let sliderController = SliderViewController()
+            addChildViewController(sliderController)
+            sliderController.view.frame = cell.contentView.frame
+            print(sliderController.view.frame)
+            sliderController.sliderMax = Int(itemStruct.slidermax)
+            sliderController.resetSliderMax()
+            cell.contentView.addSubview(sliderController.view)
+            sliderController.didMove(toParentViewController: self)
             return cell
         }
     }

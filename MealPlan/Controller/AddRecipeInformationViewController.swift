@@ -31,12 +31,15 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.addRecipeInformationTable.separatorStyle = .none
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldCell")
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldWithImageCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldWithImageCell")
+        addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationSliderCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationSliderCell")
         self.rowArray.append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
         self.cellHeight.append(50.0)
         self.rowArray.append(.recipeStepType)
         self.cellHeight.append(243.0)
         self.rowArray.append(.recipeStepType)
         self.cellHeight.append(243.0)
+        self.rowArray.append(.sliderType(133.0))
+        self.cellHeight.append(100.0)
         
     }
     

@@ -38,6 +38,12 @@
 		AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477420B01B0300B9C915 /* MealPlan.storyboard */; };
 		AD59477820B024B500B9C915 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD59477720B024B500B9C915 /* Login.storyboard */; };
 		AD59477A20B0367500B9C915 /* PopupButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD59477920B0367500B9C915 /* PopupButtonsManager.swift */; };
+		AD5D380820B3E42D004B65BF /* MPSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D380720B3E42D004B65BF /* MPSliderViewController.swift */; };
+		AD5D380A20B3E5EF004B65BF /* MPSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5D380920B3E5EF004B65BF /* MPSliderView.xib */; };
+		AD5D380D20B3E6F8004B65BF /* MPSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D380C20B3E6F8004B65BF /* MPSliderView.swift */; };
+		AD5D381120B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D380F20B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift */; };
+		AD5D381220B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5D381020B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib */; };
+		AD5D381420B3F86F004B65BF /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D381320B3F86F004B65BF /* SliderViewController.swift */; };
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
@@ -116,6 +122,12 @@
 		AD59477420B01B0300B9C915 /* MealPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MealPlan.storyboard; sourceTree = "<group>"; };
 		AD59477720B024B500B9C915 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		AD59477920B0367500B9C915 /* PopupButtonsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupButtonsManager.swift; sourceTree = "<group>"; };
+		AD5D380720B3E42D004B65BF /* MPSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSliderViewController.swift; sourceTree = "<group>"; };
+		AD5D380920B3E5EF004B65BF /* MPSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSliderView.xib; sourceTree = "<group>"; };
+		AD5D380C20B3E6F8004B65BF /* MPSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSliderView.swift; sourceTree = "<group>"; };
+		AD5D380F20B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationSliderCell.swift; sourceTree = "<group>"; };
+		AD5D381020B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationSliderCell.xib; sourceTree = "<group>"; };
+		AD5D381320B3F86F004B65BF /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
@@ -229,6 +241,8 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD5D380E20B3EB17004B65BF /* AddRecipeInformationSlider */,
+				AD5D380B20B3E6DB004B65BF /* MPSliderView */,
 				AD85E55E20B1AE0C002B80EB /* AddRecipeInformationTextFieldWithImage */,
 				AD85E55920B1A3F2002B80EB /* AddRecipeInformationTextField */,
 				ADF599B320ADBD5E00C73097 /* DiscoverCard */,
@@ -274,6 +288,8 @@
 				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
 				AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */,
 				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
+				AD5D380720B3E42D004B65BF /* MPSliderViewController.swift */,
+				AD5D381320B3F86F004B65BF /* SliderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -296,6 +312,24 @@
 				AD59477720B024B500B9C915 /* Login.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		AD5D380B20B3E6DB004B65BF /* MPSliderView */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D380920B3E5EF004B65BF /* MPSliderView.xib */,
+				AD5D380C20B3E6F8004B65BF /* MPSliderView.swift */,
+			);
+			path = MPSliderView;
+			sourceTree = "<group>";
+		};
+		AD5D380E20B3EB17004B65BF /* AddRecipeInformationSlider */ = {
+			isa = PBXGroup;
+			children = (
+				AD5D380F20B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift */,
+				AD5D381020B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib */,
+			);
+			path = AddRecipeInformationSlider;
 			sourceTree = "<group>";
 		};
 		AD6ED3F120B2B38E00B194BF /* Extension */ = {
@@ -492,6 +526,7 @@
 			files = (
 				AD59477820B024B500B9C915 /* Login.storyboard in Resources */,
 				ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */,
+				AD5D381220B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib in Resources */,
 				ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */,
 				ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
@@ -506,6 +541,7 @@
 				ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */,
 				ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */,
 				AD85E56220B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib in Resources */,
+				AD5D380A20B3E5EF004B65BF /* MPSliderView.xib in Resources */,
 				AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,18 +634,22 @@
 				ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */,
 				AD428EE620A32D1E00A04A32 /* AddPagePopupNavigationController.swift in Sources */,
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
+				AD5D381120B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift in Sources */,
 				AD6FB21F20A971060000A44F /* RecipeDetailTitle.swift in Sources */,
 				AD2F274320AA96CB00F8CA1B /* CameraViewController.swift in Sources */,
+				AD5D381420B3F86F004B65BF /* SliderViewController.swift in Sources */,
 				ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */,
 				AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */,
 				AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */,
 				AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */,
 				AD85E56120B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.swift in Sources */,
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
+				AD5D380D20B3E6F8004B65BF /* MPSliderView.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
 				ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
+				AD5D380820B3E42D004B65BF /* MPSliderViewController.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
 				AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */,
 				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
