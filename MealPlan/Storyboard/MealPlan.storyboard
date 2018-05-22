@@ -64,7 +64,7 @@
                                 <state key="normal" title="accept"/>
                                 <connections>
                                     <action selector="acceptPhoto:" destination="4EZ-TU-beT" eventType="touchUpInside" id="3v6-Ya-vft"/>
-                                    <segue destination="cY8-OP-WUA" kind="show" id="AtT-31-INh"/>
+                                    <segue destination="cY8-OP-WUA" kind="show" identifier="PushToAddRecipeInformationView" id="AtT-31-INh"/>
                                 </connections>
                             </button>
                         </subviews>

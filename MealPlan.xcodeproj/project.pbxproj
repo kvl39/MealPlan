@@ -44,6 +44,8 @@
 		AD5D381120B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D380F20B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift */; };
 		AD5D381220B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5D381020B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib */; };
 		AD5D381420B3F86F004B65BF /* SliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D381320B3F86F004B65BF /* SliderViewController.swift */; };
+		AD5D381620B41F6A004B65BF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D381520B41F6A004B65BF /* AlertManager.swift */; };
+		AD5D381820B42168004B65BF /* SaveImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5D381720B42168004B65BF /* SaveImageManager.swift */; };
 		AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5B209C284E00039ED4 /* RecipeModel.swift */; };
 		AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5D209C308500039ED4 /* RecipeProvider.swift */; };
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
@@ -128,6 +130,8 @@
 		AD5D380F20B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationSliderCell.swift; sourceTree = "<group>"; };
 		AD5D381020B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationSliderCell.xib; sourceTree = "<group>"; };
 		AD5D381320B3F86F004B65BF /* SliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderViewController.swift; sourceTree = "<group>"; };
+		AD5D381520B41F6A004B65BF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		AD5D381720B42168004B65BF /* SaveImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageManager.swift; sourceTree = "<group>"; };
 		AD679E5B209C284E00039ED4 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		AD679E5D209C308500039ED4 /* RecipeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeProvider.swift; sourceTree = "<group>"; };
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 				AD5D380720B3E42D004B65BF /* MPSliderViewController.swift */,
 				AD5D381320B3F86F004B65BF /* SliderViewController.swift */,
+				AD5D381520B41F6A004B65BF /* AlertManager.swift */,
+				AD5D381720B42168004B65BF /* SaveImageManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -612,6 +618,7 @@
 			files = (
 				AD59477120B019D900B9C915 /* MPTabBarController.swift in Sources */,
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
+				AD5D381820B42168004B65BF /* SaveImageManager.swift in Sources */,
 				AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
@@ -646,6 +653,7 @@
 				AD4E2CF320A14C6300C4573F /* RecipeSearchResultCell.swift in Sources */,
 				AD5D380D20B3E6F8004B65BF /* MPSliderView.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
+				AD5D381620B41F6A004B65BF /* AlertManager.swift in Sources */,
 				ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,

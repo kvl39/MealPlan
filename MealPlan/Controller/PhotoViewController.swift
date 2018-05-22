@@ -45,5 +45,12 @@ class PhotoViewController: UIViewController {
     @IBAction func acceptPhoto(_ sender: UIButton) {
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PushToAddRecipeInformationView" {
+            let destination = segue.destination as? AddRecipeInformationViewController
+            destination?.recipeImage = takenPhoto
+        }
+    }
+    
 
 }

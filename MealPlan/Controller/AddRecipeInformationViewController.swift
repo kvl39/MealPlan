@@ -15,6 +15,10 @@ class AddRecipeInformationViewController: MPTableViewController {
     var cellHeight: [CGFloat] = []
     let popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
+    var alertController = AlertManager()
+    var recipeImage: UIImage?
+    var saveImageManger = SaveImageManager()
+    var recipeTitle: String?
     
     
     override func viewDidLoad() {
@@ -41,32 +45,51 @@ class AddRecipeInformationViewController: MPTableViewController {
     @objc func popupButton1Action(_ sender: UIButton) {
         popupButtonManager.hideButtons(on: self.view)
         popupButtonManager.mainButtonSelected = !popupButtonManager.mainButtonSelected
-        print("finish!")
         
-        var isAnyFieldEmpty = false
+        let textViewIsEmpty = checkTextViewIsEmpty()
+        let textFieldIsEmpty = checkTextFieldIsEmpty()
         
-        for childViewController in self.childViewControllers {
-            if let vc = childViewController as? InputTextViewController {
-                if vc.textView.textColor == UIColor.gray  {
-                    vc.textView.backgroundColor = UIColor.red
-                    print("empty")
-                }
-            }
+        if textViewIsEmpty || textFieldIsEmpty {
+            alertController.showAlert(viewController: self)
         }
         
-        if let cell = addRecipeInformationTable.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeInformationTextFieldCell {
-            if (cell.textField.text?.isEmpty)! {
-                print("empty1")
-                cell.textField.backgroundColor = UIColor.red
-            }
+        if let recipeImage = self.recipeImage, let recipeTitle = self.recipeTitle {
+            let saveImageSuccess = saveImageManger.saveImage(image: recipeImage, imageFileName: recipeTitle)
+            print("success?:\(saveImageSuccess)")
+        } else {
+            print("heeeer")
+            
         }
-        
         
     }
     
-    func checkTextViewIsEmpty() {
-        
+    func checkTextViewIsEmpty()-> Bool {
+        var textViewIsEmpty = false
+        for childViewController in self.childViewControllers {
+            if let vc = childViewController as? InputTextViewController {
+                if vc.textView.textColor == UIColor.gray  {
+                    vc.textView.textColor = UIColor.red
+                    textViewIsEmpty = true
+                }
+            }
+        }
+        return textViewIsEmpty
     }
+    
+    
+    func checkTextFieldIsEmpty()-> Bool {
+        var textFieldIsEmpty = false
+        if let cell = addRecipeInformationTable.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeInformationTextFieldCell {
+            if (cell.textField.text?.isEmpty)! {
+                textFieldIsEmpty = true
+                cell.textField.backgroundColor = UIColor.red
+            } else {
+                self.recipeTitle = cell.textField.text
+            }
+        }
+        return textFieldIsEmpty
+    }
+    
     
     
     
@@ -77,6 +100,7 @@ class AddRecipeInformationViewController: MPTableViewController {
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldCell")
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldWithImageCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldWithImageCell")
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationSliderCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationSliderCell")
+        addRecipeInformationTable.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         self.rowArray.append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
         self.cellHeight.append(50.0)
         self.rowArray.append(.recipeStepType)
