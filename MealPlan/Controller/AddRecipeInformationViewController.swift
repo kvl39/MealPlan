@@ -41,7 +41,31 @@ class AddRecipeInformationViewController: MPTableViewController {
     @objc func popupButton1Action(_ sender: UIButton) {
         popupButtonManager.hideButtons(on: self.view)
         popupButtonManager.mainButtonSelected = !popupButtonManager.mainButtonSelected
-        print("button1 selected")
+        print("finish!")
+        
+        var isAnyFieldEmpty = false
+        
+        for childViewController in self.childViewControllers {
+            if let vc = childViewController as? InputTextViewController {
+                if vc.textView.textColor == UIColor.gray  {
+                    vc.textView.backgroundColor = UIColor.red
+                    print("empty")
+                }
+            }
+        }
+        
+        if let cell = addRecipeInformationTable.cellForRow(at: IndexPath(row: 0, section: 0)) as? AddRecipeInformationTextFieldCell {
+            if (cell.textField.text?.isEmpty)! {
+                print("empty1")
+                cell.textField.backgroundColor = UIColor.red
+            }
+        }
+        
+        
+    }
+    
+    func checkTextViewIsEmpty() {
+        
     }
     
     
