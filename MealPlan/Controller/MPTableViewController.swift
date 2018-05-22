@@ -115,11 +115,13 @@ struct RecipeStepItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "AddRecipeInformationTextFieldWithImageCell"
     var rowHeight: Int = 243
     var imagePickerViewController = ImagePickerViewController()
+    var inputTextViewController = InputTextViewController()
 }
 
-class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
     var rowArray: [MPTableViewCellType] = []
     //weak var delegate: MPTableViewControllerDelegateProtocol?
+    func updateTableView(newHeight: CGFloat, serialNumber: Int) {}
 }
 
 extension MPTableViewController {
@@ -186,6 +188,7 @@ extension MPTableViewController {
             return cell
         case .recipeStepType:
             guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
             guard let itemStruct = item.configureCell() as? RecipeStepItem else {return cell}
             let imagePickerViewController = itemStruct.imagePickerViewController
             addChildViewController(imagePickerViewController)
@@ -194,23 +197,44 @@ extension MPTableViewController {
             imagePickerViewController.view.frame.origin.y = 0
             imagePickerViewController.resetFrame()
             cell.viewForImagePicker.addSubview(imagePickerViewController.view)
-//            NSLayoutConstraint.activate([
-//                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.viewForImagePicker.trailingAnchor, constant: 0),
-//                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.viewForImagePicker.leadingAnchor, constant: 0),
-//                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
-//                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
-//                ])
             imagePickerViewController.didMove(toParentViewController: self)
+            //            NSLayoutConstraint.activate([
+            //                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.viewForImagePicker.trailingAnchor, constant: 0),
+            //                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.viewForImagePicker.leadingAnchor, constant: 0),
+            //                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
+            //                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
+            //                ])
+            let inputTextViewController = itemStruct.inputTextViewController
+            addChildViewController(inputTextViewController)
+            inputTextViewController.view.frame = cell.viewForTextField.frame
+            inputTextViewController.view.frame.origin.x = 0
+            inputTextViewController.view.frame.origin.y = 0
+            inputTextViewController.resetFrame()
+            cell.viewForTextField.addSubview(inputTextViewController.view)
+            NSLayoutConstraint.activate([
+                inputTextViewController.view.trailingAnchor.constraint(equalTo: cell.viewForTextField.trailingAnchor, constant: 0),
+                inputTextViewController.view.leadingAnchor.constraint(equalTo: cell.viewForTextField.leadingAnchor, constant: 0),
+                inputTextViewController.view.topAnchor.constraint(equalTo: cell.viewForTextField.topAnchor, constant: 0),
+                inputTextViewController.view.bottomAnchor.constraint(equalTo: cell.viewForTextField.bottomAnchor, constant: 0)
+                ])
+            inputTextViewController.didMove(toParentViewController: self)
+            inputTextViewController.serialNumber = indexPath.row
+            inputTextViewController.delegate = self
             return cell
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
+
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
     }
 
 }
-
 
 
 extension MPTableViewController {

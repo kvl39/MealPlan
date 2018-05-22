@@ -43,6 +43,7 @@
 		AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD679E5F209C37ED00039ED4 /* RecipeManager.swift */; };
 		AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */; };
 		AD6ED3F320B2B3A600B194BF /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3F220B2B3A600B194BF /* NSLayoutConstraintExtension.swift */; };
+		AD6ED3F520B2B83800B194BF /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6ED3F420B2B83800B194BF /* TextViewController.swift */; };
 		AD6FB21F20A971060000A44F /* RecipeDetailTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */; };
 		AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */; };
 		AD6FD06620B0680100148414 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FD06520B0680100148414 /* TestViewController.swift */; };
@@ -120,6 +121,7 @@
 		AD679E5F209C37ED00039ED4 /* RecipeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeManager.swift; sourceTree = "<group>"; };
 		AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailViewController.swift; sourceTree = "<group>"; };
 		AD6ED3F220B2B3A600B194BF /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
+		AD6ED3F420B2B83800B194BF /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailTitle.swift; sourceTree = "<group>"; };
 		AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailWebViewController.swift; sourceTree = "<group>"; };
 		AD6FD06520B0680100148414 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				AD6FD06520B0680100148414 /* TestViewController.swift */,
 				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
 				AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */,
+				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
+				AD6ED3F520B2B83800B194BF /* TextViewController.swift in Sources */,
 				ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */,
 				AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
