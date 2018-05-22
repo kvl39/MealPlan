@@ -13,6 +13,8 @@ class AddRecipeInformationViewController: MPTableViewController {
 
     @IBOutlet weak var addRecipeInformationTable: UITableView!
     var cellHeight: [CGFloat] = []
+    let popupButtonManager = PopupButtonManager()
+    var popupButtons = [UIButton]()
     
     
     override func viewDidLoad() {
@@ -21,6 +23,25 @@ class AddRecipeInformationViewController: MPTableViewController {
         //addRecipeInformationTable.allowsSelection = false
         addRecipeInformationTable.estimatedRowHeight = 243
         addRecipeInformationTable.rowHeight = UITableViewAutomaticDimension
+        popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork")], on: self.view)
+        popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
+        popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
+    }
+    
+    @objc func mainButtonAction(_ sender: UIButton) {
+        popupButtonManager.mainButtonSelected = !popupButtonManager.mainButtonSelected
+        if popupButtonManager.mainButtonSelected {
+            popupButtonManager.showButtons(on: self.view)
+        } else {
+            popupButtonManager.hideButtons(on: self.view)
+        }
+    }
+    
+    
+    @objc func popupButton1Action(_ sender: UIButton) {
+        popupButtonManager.hideButtons(on: self.view)
+        popupButtonManager.mainButtonSelected = !popupButtonManager.mainButtonSelected
+        print("button1 selected")
     }
     
     

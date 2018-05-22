@@ -6,6 +6,9 @@
 //  Copyright © 2018年 Kevin Liao. All rights reserved.
 //
 
+
+//example for PopupButtonsManager
+
 import UIKit
 
 class TestViewController: UIViewController {
