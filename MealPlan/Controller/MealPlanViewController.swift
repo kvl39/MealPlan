@@ -111,6 +111,9 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         } else if (segue.identifier == "PushToDetailPage") {
             guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
             vc.displayImage = self.selectedCollectViewImageView.image
+        } else if (segue.identifier == "PushToCameraPage") {
+            guard let vc = segue.destination as? CameraViewController else {return}
+            vc.selectedDate = self.selectedDate
         }
     }
 

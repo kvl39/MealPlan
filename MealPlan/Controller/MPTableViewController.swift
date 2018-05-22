@@ -16,6 +16,7 @@ enum MPTableViewCellType {
     case textFieldType(String, String)
     case recipeStepType
     case sliderType(Float)
+    case nutrientsEditType
 }
 
 extension MPTableViewCellType {
@@ -35,6 +36,8 @@ extension MPTableViewCellType {
             return RecipeStepItem()
         case .sliderType(let sliderMax):
             return SliderItem(slidermax: sliderMax)
+        case .nutrientsEditType:
+            return NutrientsEditItem()
         }
     }
 }
@@ -130,6 +133,11 @@ struct SliderItem: MPTableViewCellProtocol {
     init(slidermax: Float) {
         self.slidermax = slidermax
     }
+}
+
+struct NutrientsEditItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "NutrientsEditCell"
+    var rowHeight: Int = 100
 }
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
@@ -248,6 +256,15 @@ extension MPTableViewController {
             sliderController.resetSliderMax()
             cell.contentView.addSubview(sliderController.view)
             sliderController.didMove(toParentViewController: self)
+            return cell
+        case .nutrientsEditType:
+            guard let cell = cell as? NutrientsEditCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
+            let nutrientsEditController = NutrientsEditViewController()
+            addChildViewController(nutrientsEditController)
+            nutrientsEditController.view.frame = cell.contentView.frame
+            cell.contentView.addSubview(nutrientsEditController.view)
+            nutrientsEditController.didMove(toParentViewController: self)
             return cell
         }
     }

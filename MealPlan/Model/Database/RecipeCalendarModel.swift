@@ -17,6 +17,22 @@ class RecipeCalendarRealmModel: Object {
     @objc dynamic var recipeDay = Date(timeIntervalSince1970: 1)
     //let RecipeRealmModel = List<RecipeRealmModel>()
     @objc dynamic var recipeRealmModel: RecipeRealmModel?
+    @objc dynamic var recipeRealmModelWithSteps: RecipeRealmModelWithSteps?
+    @objc dynamic var withSteps = false
+}
+
+class RecipeRealmModelWithSteps: Object {
+    @objc dynamic var label = ""
+    @objc dynamic var image = ""
+    @objc dynamic var calories = 0.0
+    let ingredients = List<IngredientRecipeModel>()
+    let nutrients = List<Nutrients>()
+    let RecipeSteps = List<RecipeStep>()
+}
+
+class RecipeStep: Object {
+    @objc dynamic var imageName = ""
+    @objc dynamic var stepDescription = ""
 }
 
 class RecipeRealmModel: Object {

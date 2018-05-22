@@ -18,6 +18,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var filter: CIFilter? = CIFilter(name: "CIColorInvert")//CIFilter!
     var popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
+    var selectedDate = ""
     lazy var context: CIContext = {
         if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
             let options = [kCIContextWorkingColorSpace: NSNull()]
@@ -166,7 +167,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
                     let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
                     photoVC.takenPhoto = image
-                    
+                    photoVC.selectedDate = self.selectedDate
                     DispatchQueue.main.async {
                         self.navigationController?.pushViewController(photoVC, animated: true)
                         self.stopCaptureSession()

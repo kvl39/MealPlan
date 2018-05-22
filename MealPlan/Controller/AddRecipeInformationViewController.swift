@@ -19,6 +19,14 @@ class AddRecipeInformationViewController: MPTableViewController {
     var recipeImage: UIImage?
     var saveImageManger = SaveImageManager()
     var recipeTitle: String?
+    var selectedDate = ""
+    let formatter = DateFormatter()
+    var dateManager = DataFormatManager()
+    var stepImages = [UIImage]()
+    var stepDescriptions = [String]()
+    var nutrientsValue = [Float]()
+    var ingredientName = [String]()
+    var ingredientWeight = [Float]()
     
     
     override func viewDidLoad() {
@@ -51,16 +59,46 @@ class AddRecipeInformationViewController: MPTableViewController {
         
         if textViewIsEmpty || textFieldIsEmpty {
             alertController.showAlert(viewController: self)
+        } else {
+            //save data into coreData and fileManager
+            saveData()
+            
         }
         
         if let recipeImage = self.recipeImage, let recipeTitle = self.recipeTitle {
             let saveImageSuccess = saveImageManger.saveImage(image: recipeImage, imageFileName: recipeTitle)
             print("success?:\(saveImageSuccess)")
-        } else {
-            print("heeeer")
-            
         }
+    }
+    
+    func saveData() {
+        let recipeModel = RecipeCalendarRealmModel()
+        guard let addDate = self.dateManager.stringToDate(dateString: selectedDate, to: "yyyy MM dd") else {return}
+        recipeModel.recipeDay = addDate
+        recipeModel.withSteps = true
         
+        let recipeRealmModelWithSteps = RecipeRealmModelWithSteps()
+        //recipeRealmModelWithSteps.calories = 
+    }
+    
+    
+    func getDataFromChildViewControllers() {
+        for childViewController in self.childViewControllers {
+            if let vc = childViewControllers as? InputTextViewController {
+                self.stepDescriptions.append(vc.textView.text)
+            } else if let vc = childViewControllers as? ImagePickerViewController {
+                if let image = vc.image.image {
+                    self.stepImages.append(image)
+                }
+            } else if let vc = childViewController as? SliderViewController {
+                switch vc.sliderView.sliderDescription.text {
+                case "卡路里":
+                    self.nutrientsValue.append(vc.sliderView.slider.value)
+                default:
+                    print("case is not completed")
+                }
+            } //else if let vc = childViewController as?
+        }
     }
     
     func checkTextViewIsEmpty()-> Bool {
@@ -101,6 +139,7 @@ class AddRecipeInformationViewController: MPTableViewController {
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldWithImageCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldWithImageCell")
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationSliderCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationSliderCell")
         addRecipeInformationTable.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
+        addRecipeInformationTable.register(UINib(nibName: "NutrientsEditCell", bundle: nil), forCellReuseIdentifier: "NutrientsEditCell")
         self.rowArray.append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
         self.cellHeight.append(50.0)
         self.rowArray.append(.recipeStepType)
@@ -109,7 +148,8 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.cellHeight.append(243.0)
         self.rowArray.append(.sliderType(133.0))
         self.cellHeight.append(100.0)
-        
+        self.rowArray.append(.nutrientsEditType)
+        self.cellHeight.append(100.0)
     }
     
     

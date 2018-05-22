@@ -13,6 +13,7 @@ class PhotoViewController: UIViewController {
     
     @IBOutlet weak var photoImageView: UIImageView!
     var takenPhoto: UIImage?
+    var selectedDate = ""
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -49,6 +50,7 @@ class PhotoViewController: UIViewController {
         if segue.identifier == "PushToAddRecipeInformationView" {
             let destination = segue.destination as? AddRecipeInformationViewController
             destination?.recipeImage = takenPhoto
+            destination?.selectedDate = self.selectedDate
         }
     }
     
