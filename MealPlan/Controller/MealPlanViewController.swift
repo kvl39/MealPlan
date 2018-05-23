@@ -30,6 +30,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     var recipeTitleArray = [String]()
     var selectedCollectViewImageView = UIImageView()
     var firebaseManager = MPFirebaseManager()
+    var saveImageManager = SaveImageManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -260,17 +261,28 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         //select date -> show data in card
         guard let fetchResult = result else {return}
         for recipe in fetchResult {
-            guard let recipeLabel = recipe.recipeRealmModel?.label,
-                let recipeImageURL = recipe.recipeRealmModel?.image else {return}
-
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
-            imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
-                guard let error = error else {return}
-                print(error)
+            if recipe.withSteps == false {
+                guard let recipeLabel = recipe.recipeRealmModel?.label,
+                    let recipeImageURL = recipe.recipeRealmModel?.image else {return}
+                
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+                imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
+                    guard let error = error else {return}
+                    print(error)
+                }
+                
+                self.recipeTitleArray.append(recipeLabel)
+                self.recipeImageArray.append(imageView)
+            } else {
+                guard let recipeLabel = recipe.recipeRealmModelWithSteps?.label,
+                      let recipeImageName = recipe.recipeRealmModelWithSteps?.image else {return}
+                let recipeImage = self.saveImageManager.getSavedImage(imageFileName: recipeImageName)
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+                imageView.image = recipeImage
+                self.recipeTitleArray.append(recipeLabel)
+                self.recipeImageArray.append(imageView)
             }
-
-            self.recipeTitleArray.append(recipeLabel)
-            self.recipeImageArray.append(imageView)
+            
         }
         updateDataInTableView()
     }

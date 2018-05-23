@@ -6,6 +6,9 @@
 //  Copyright © 2018年 Kevin Liao. All rights reserved.
 //
 
+//problem: check recipe title cell when this cell appears in the screen
+
+
 import UIKit
 import IQKeyboardManagerSwift
 
