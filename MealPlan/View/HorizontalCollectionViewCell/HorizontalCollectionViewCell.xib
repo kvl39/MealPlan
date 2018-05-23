@@ -21,20 +21,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-j3-80G">
                         <rect key="frame" x="8" y="8" width="83" height="83.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvz-cC-Br5">
-                                <rect key="frame" x="8" y="63" width="67" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Gvz-cC-Br5" firstAttribute="leading" secondItem="PAN-j3-80G" secondAttribute="leading" constant="8" id="ngB-x1-bEe"/>
-                            <constraint firstAttribute="bottom" secondItem="Gvz-cC-Br5" secondAttribute="bottom" id="tzu-LT-mOy"/>
-                            <constraint firstAttribute="trailing" secondItem="Gvz-cC-Br5" secondAttribute="trailing" constant="8" id="uRj-xy-Tgj"/>
-                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -46,7 +33,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="cardLabel" destination="Gvz-cC-Br5" id="Fdh-It-OWo"/>
                 <outlet property="collectionViewCell" destination="PAN-j3-80G" id="w6W-s0-3SH"/>
             </connections>
             <point key="canvasLocation" x="-71.5" y="149.5"/>

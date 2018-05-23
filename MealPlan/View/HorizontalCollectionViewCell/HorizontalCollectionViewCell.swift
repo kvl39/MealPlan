@@ -10,7 +10,7 @@ import UIKit
 
 class HorizontalCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var cardLabel: UILabel!
+    
     @IBOutlet weak var collectionViewCell: UIView!
 
     override func awakeFromNib() {
@@ -23,6 +23,7 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
         collectionViewCell.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
         collectionViewCell.layer.shadowOffset = CGSize(width: 0, height: 0)
         collectionViewCell.layer.shadowOpacity = 0.8
+        collectionViewCell.backgroundColor = UIColor.green
 
     }
 
