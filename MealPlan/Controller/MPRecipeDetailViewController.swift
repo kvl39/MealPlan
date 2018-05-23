@@ -17,6 +17,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var newHeaderLayer: CAShapeLayer!
     let originImageHeight: CGFloat = 300.0
     var originTitleY: CGFloat = 300.0
+    var recipeData: RecipeCalendarRealmModel!
     
     
     

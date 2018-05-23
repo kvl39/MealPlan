@@ -34,7 +34,7 @@ class HorizontalCollectionView: MPCollectionViewController {
         self.selectedIndexPath = indexPath
         //guard let imageView = self.viewArray[indexPath.row].viewWithTag(2) as? UIImageView else {return}
         guard let imageView = self.viewArray[indexPath.row] as? UIImageView else {return}
-        NotificationCenter.default.post(name: Notification.Name("collectionViewItemDidSelect"), object: nil, userInfo: ["imageView": imageView])
+        NotificationCenter.default.post(name: Notification.Name("collectionViewItemDidSelect"), object: nil, userInfo: ["imageView": imageView, "row": indexPath.row])
     }
 }
 

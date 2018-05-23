@@ -28,9 +28,11 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     var dateManager = DataFormatManager()
     var recipeImageArray = [UIImageView]()
     var recipeTitleArray = [String]()
+    var recipeToday: [RecipeCalendarRealmModel] = []
     var selectedCollectViewImageView = UIImageView()
     var firebaseManager = MPFirebaseManager()
     var saveImageManager = SaveImageManager()
+    var selectedRow = 0
     lazy var addedButtonSubView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
 
     override func viewDidLoad() {
@@ -50,6 +52,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -68,6 +71,10 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
         self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
         updateDataInTableView()
+        
+        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+        guard let fetchResult = result else {return}
+        self.recipeToday = fetchResult
     }
 
     func configureAddButton() {
@@ -128,6 +135,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         } else if (segue.identifier == "PushToDetailPage") {
             guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
             vc.displayImage = self.selectedCollectViewImageView.image
+            vc.recipeData = self.recipeToday[self.selectedRow]
         } else if (segue.identifier == "PushToCameraPage") {
             guard let vc = segue.destination as? CameraViewController else {return}
             vc.selectedDate = self.selectedDate
@@ -247,8 +255,11 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     
     @objc func onSelectCollectionViewItem(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let imageView = userInfo["imageView"] as? UIImageView else {return}
+            let imageView = userInfo["imageView"] as? UIImageView,
+            let selectedRow = userInfo["row"] as? Int else {return}
         self.selectedCollectViewImageView = imageView
+        self.selectedRow = selectedRow
+        print("selected:\(self.selectedRow)")
         self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
     }
     
@@ -268,13 +279,16 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         print(date)
         self.selectedDate = date
         fetchDataInDate(in: date)
+        updateDataInTableView()
     }
-
+    
+    
     func fetchDataInDate(in date: String) {
         let result = self.realmManager.fetchRecipe(in: date)
-        print(result)
+        //print(result)
         //select date -> show data in card
         guard let fetchResult = result else {return}
+        self.recipeToday = fetchResult
         for recipe in fetchResult {
             if recipe.withSteps == false {
                 guard let recipeLabel = recipe.recipeRealmModel?.label,
@@ -299,7 +313,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
             }
             
         }
-        updateDataInTableView()
+        
     }
 
     func updateDataInTableView() {
