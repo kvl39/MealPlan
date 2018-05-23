@@ -148,6 +148,8 @@ struct NutrientsEditItem: MPTableViewCellProtocol {
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
     var rowArray: [MPTableViewCellType] = []
+    var rowControllerArray : [[UIViewController]] = []
+    var rowControllerIndexDic : [Int: Int] = [:]
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, serialNumber: Int) {}
 }
@@ -218,7 +220,18 @@ extension MPTableViewController {
             guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return UITableViewCell()}
             cell.selectionStyle = .none
             guard let itemStruct = item.configureCell() as? RecipeStepItem else {return cell}
-            let imagePickerViewController = itemStruct.imagePickerViewController
+            var imagePickerViewController = itemStruct.imagePickerViewController
+            var inputTextViewController = itemStruct.inputTextViewController
+            if let index = self.rowControllerIndexDic[indexPath.row],
+                let storedimagePickerViewController = self.rowControllerArray[index][0] as? ImagePickerViewController,
+                let storedinputTextViewController = self.rowControllerArray[index][1] as? InputTextViewController {
+                imagePickerViewController = storedimagePickerViewController
+                inputTextViewController = storedinputTextViewController
+            } else {
+                let controllerArray = [imagePickerViewController, inputTextViewController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath.row] = self.rowControllerArray.count-1
+            }
             addChildViewController(imagePickerViewController)
             imagePickerViewController.view.frame = cell.viewForImagePicker.frame
             imagePickerViewController.view.frame.origin.x = 0
@@ -232,7 +245,7 @@ extension MPTableViewController {
             //                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
             //                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
             //                ])
-            let inputTextViewController = itemStruct.inputTextViewController
+            
             addChildViewController(inputTextViewController)
             inputTextViewController.view.frame = cell.viewForTextField.frame
             inputTextViewController.view.frame.origin.x = 0
@@ -254,7 +267,15 @@ extension MPTableViewController {
             cell.selectionStyle = .none
             guard let itemStruct = item.configureCell() as? SliderItem else {return cell}
             //let sliderController = itemStruct.sliderController
-            let sliderController = SliderViewController()
+            var sliderController = SliderViewController()
+            if let index = self.rowControllerIndexDic[indexPath.row],
+                let storedSliderViewController = self.rowControllerArray[index][0] as? SliderViewController {
+                sliderController = storedSliderViewController
+            } else {
+                let controllerArray = [sliderController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath.row] = rowControllerArray.count-1
+            }
             addChildViewController(sliderController)
             sliderController.view.frame = cell.contentView.frame
             print(sliderController.view.frame)
@@ -268,7 +289,15 @@ extension MPTableViewController {
         case .nutrientsEditType:
             guard let cell = cell as? NutrientsEditCell else {return UITableViewCell()}
             cell.selectionStyle = .none
-            let nutrientsEditController = NutrientsEditViewController()
+            var nutrientsEditController = NutrientsEditViewController()
+            if let index = self.rowControllerIndexDic[indexPath.row],
+                let storedNutrientsEditController = self.rowControllerArray[index][0] as? NutrientsEditViewController {
+                nutrientsEditController = storedNutrientsEditController
+            } else {
+                let controllerArray = [nutrientsEditController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath.row] = self.rowControllerArray.count-1
+            }
             addChildViewController(nutrientsEditController)
             nutrientsEditController.view.frame = cell.contentView.frame
             cell.contentView.addSubview(nutrientsEditController.view)
@@ -285,6 +314,16 @@ extension MPTableViewController {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let index = self.rowControllerIndexDic[indexPath.row] {
+            for controller in self.rowControllerArray[index] {
+                controller.willMove(toParentViewController: nil)
+                controller.view.removeFromSuperview()
+                controller.removeFromParentViewController()
+            }
+        }
     }
 
 }
