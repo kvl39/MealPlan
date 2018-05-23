@@ -57,7 +57,7 @@ enum HorizontalCollectionViewItemType {
 
 struct HorizontalCollectionViewItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "HorizontalCollectionView"
-    var rowHeight: Int = 200
+    var rowHeight: Int = 250
     var viewArray: [UIView] = []
     var titleArray: [String] = []
 
@@ -176,6 +176,7 @@ extension MPTableViewController {
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             //cell
+            cell.selectionStyle = .none
             return cell
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}
