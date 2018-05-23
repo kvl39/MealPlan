@@ -24,14 +24,19 @@ class ZoomTransitionDelegate: NSObject {
     private let zoomScale = CGFloat(15)
     private let backgroundScale = CGFloat(0.8)
 
-    func configureView(for state: TransitionState, container: UIView, backgroundViewController: UIViewController, backgroundImageView: UIImageView, foregroundViewController: UIViewController, foregroundImageView: UIImageView, snapShotView: UIImageView) {
+    func configureView(for state: TransitionState, container: UIView, backgroundViewController: UIViewController, backgroundImageView: UIImageView, foregroundViewController: UIViewController, foregroundImageView: UIImageView, snapShotView: UIImageView,
+        isPop: Bool) {
         switch state {
         case .initial:
             backgroundViewController.view.transform = .identity
+            foregroundViewController.view.alpha = 0
             backgroundViewController.view.alpha = 1
             snapShotView.frame = container.convert(backgroundImageView.frame, from: backgroundImageView.superview)
         case .final:
             backgroundViewController.view.transform = CGAffineTransform(scaleX: backgroundScale, y: backgroundScale)
+            if !isPop {
+                foregroundViewController.view.alpha = 1
+            }
             backgroundViewController.view.alpha = 0
             snapShotView.frame = container.convert(foregroundImageView.frame, from: foregroundImageView.superview)
         }
@@ -48,6 +53,7 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         let fromViewController = transitionContext.viewController(forKey: .from)
         let toViewController = transitionContext.viewController(forKey: .to)
         let containerView = transitionContext.containerView
+        var isPop = false
 
         guard let toViewControllerExist = toViewController,
             let fromViewControllerExist = fromViewController else {return}
@@ -58,6 +64,7 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         if operation == .pop {
             backgroundViewController = toViewControllerExist
             foregroundViewController = fromViewControllerExist
+            isPop = true
         }
 
         var backgroundZoomingViewController = backgroundViewController as? ZoomingViewController
@@ -89,15 +96,15 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
             postTransitionState = TransitionState.initial
             damping = 1
         } else {
-            damping = 0.6
+            damping = 1
         }
 
-        configureView(for: preTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot)
+        configureView(for: preTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot, isPop: isPop)
 
         foregroundViewController.view.layoutIfNeeded()
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0.0, options: [], animations: {
-            self.configureView(for: postTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot)
+            self.configureView(for: postTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot, isPop: isPop)
         }) { (finished) in
             backgroundViewController.view.transform = .identity
             imageViewSnapShot.removeFromSuperview()
