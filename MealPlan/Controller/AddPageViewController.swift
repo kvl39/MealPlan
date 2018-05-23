@@ -131,8 +131,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     
     
     @IBAction func confirmSelection(_ sender: Any) {
-        self.delegate?.reloadData(addedRecipeImageView: addedRecipeImageView,
-                                  addedRecipeTitle: addedRecipeTitle)
+        self.delegate?.reloadData(addedRecipeImageView: addedRecipeImageView, addedRecipeTitle: addedRecipeTitle)
         realmManager.saveAddedRecipe(addedRecipe: self.addedRecipe, recipeDate: self.recipeDate)
         self.navigationController?.popViewController(animated: true)
     }

@@ -31,6 +31,8 @@ class AddRecipeInformationViewController: MPTableViewController {
     let realmManager = RealmManager()
     
     
+    //key: AddRecipeInformationTextFieldDidEndEditing
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -40,6 +42,13 @@ class AddRecipeInformationViewController: MPTableViewController {
         popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork")], on: self.view)
         popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
         popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(getTitle(notification:)), name: NSNotification.Name(rawValue: "AddRecipeInformationTextFieldDidEndEditing"), object: nil)
+    }
+    
+    @objc func getTitle(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let text = userInfo["text"] as? String else {return}
+        self.recipeTitle = text
     }
     
     @objc func mainButtonAction(_ sender: UIButton) {
@@ -68,6 +77,11 @@ class AddRecipeInformationViewController: MPTableViewController {
             if let recipeCalendarModel = recipe {
                 realmManager.saveUserCreatedRecipe(createdRecipe: recipeCalendarModel)
             }
+            if let image = self.recipeImage, let title = self.recipeTitle {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil, userInfo: ["createdRecipeImage": image, "createdRecipeTitle": title])
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+            
         }
         
         
@@ -125,31 +139,60 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.ingredientName = []
         self.ingredientWeight = []
         self.nutrientsValue = [0.0, 0.0]
-        for childViewController in self.childViewControllers {
-            if let vc = childViewController as? InputTextViewController {
-                self.stepDescriptions.append(vc.textView.text)
-            } else if let vc = childViewController as? ImagePickerViewController {
-                if let image = vc.image.image {
-                    self.stepImages.append(image)
-                }
-            } else if let vc = childViewController as? SliderViewController {
-                switch vc.sliderView.sliderDescription.text {
-                case "卡路里":
-                    self.nutrientsValue[0] = vc.sliderView.slider.value
-                case "脂肪":
-                    self.nutrientsValue[1] = vc.sliderView.slider.value
-                default:
-                    print("case is not completed")
-                }
-            } else if let vc = childViewController as? NutrientsEditViewController {
-                if let ingredientName = vc.nutrientsEditView.ingredientTextField.text,
-                    let ingredientWeightText = vc.nutrientsEditView.weightTextField.text,
-                    let ingredientWeight = Float(ingredientWeightText) {
-                    self.ingredientName.append(ingredientName)
-                    self.ingredientWeight.append(ingredientWeight)
+        
+        for index1 in 0...self.rowControllerArray.count-1 {
+            for childViewController in self.rowControllerArray[index1] {
+                if let vc = childViewController as? InputTextViewController {
+                    self.stepDescriptions.append(vc.textView.text)
+                } else if let vc = childViewController as? ImagePickerViewController {
+                    if let image = vc.image.image {
+                        self.stepImages.append(image)
+                    }
+                } else if let vc = childViewController as? SliderViewController {
+                    switch vc.sliderView.sliderDescription.text {
+                    case "卡路里":
+                        self.nutrientsValue[0] = vc.sliderView.slider.value
+                    case "脂肪":
+                        self.nutrientsValue[1] = vc.sliderView.slider.value
+                    default:
+                        print("case is not completed")
+                    }
+                } else if let vc = childViewController as? NutrientsEditViewController {
+                    if let ingredientName = vc.nutrientsEditView.ingredientTextField.text,
+                        let ingredientWeightText = vc.nutrientsEditView.weightTextField.text,
+                        let ingredientWeight = Float(ingredientWeightText) {
+                        self.ingredientName.append(ingredientName)
+                        self.ingredientWeight.append(ingredientWeight)
+                    }
                 }
             }
         }
+        
+//        for childViewController in self.childViewControllers {
+//            if let vc = childViewController as? InputTextViewController {
+//                self.stepDescriptions.append(vc.textView.text)
+//            } else if let vc = childViewController as? ImagePickerViewController {
+//                if let image = vc.image.image {
+//                    self.stepImages.append(image)
+//                }
+//            } else if let vc = childViewController as? SliderViewController {
+//                switch vc.sliderView.sliderDescription.text {
+//                case "卡路里":
+//                    self.nutrientsValue[0] = vc.sliderView.slider.value
+//                case "脂肪":
+//                    self.nutrientsValue[1] = vc.sliderView.slider.value
+//                default:
+//                    print("case is not completed")
+//                }
+//            } else if let vc = childViewController as? NutrientsEditViewController {
+//                if let ingredientName = vc.nutrientsEditView.ingredientTextField.text,
+//                    let ingredientWeightText = vc.nutrientsEditView.weightTextField.text,
+//                    let ingredientWeight = Float(ingredientWeightText) {
+//                    self.ingredientName.append(ingredientName)
+//                    self.ingredientWeight.append(ingredientWeight)
+//                }
+//            }
+//        }
     }
     
     func checkTextViewIsEmpty()-> Bool {

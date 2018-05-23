@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddRecipeInformationTextFieldCell: UITableViewCell {
+class AddRecipeInformationTextFieldCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var textFieldLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -16,7 +16,13 @@ class AddRecipeInformationTextFieldCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        textField.delegate = self
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AddRecipeInformationTextFieldDidEndEditing"), object: nil, userInfo: ["text": text])
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

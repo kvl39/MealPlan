@@ -46,7 +46,19 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
-
+    
+    
+    @objc func createRecipe(notification: Notification) {
+        //guard let userInfo = notification.userInfo,
+//            let date = userInfo["date"] as? String else {return}
+        guard let userInfo = notification.userInfo,
+              let image = userInfo["createdRecipeImage"] as? UIImage,
+              let title = userInfo["createdRecipeTitle"] as? String else {return}
+        let imageView = UIImageView(image: image)
+        reloadData(addedRecipeImageView: [imageView], addedRecipeTitle: [title])
+    }
+    
+    
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {
         self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
         self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
@@ -212,6 +224,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(createRecipe(notification:)), name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil)
 
     }
     
