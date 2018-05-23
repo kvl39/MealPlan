@@ -217,7 +217,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     func configureTableView() {
         self.testTable.separatorStyle = .none
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
-        backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
+        //backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
+        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background.001"))
         self.testTable.backgroundView = backgroundView
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
         testTable.register(UINib(nibName: "HorizontalCollectionView",
@@ -235,7 +236,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
        var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
        self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
-       self.rowArray.append(.recipeNoteType)
+       //self.rowArray.append(.recipeNoteType)
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)

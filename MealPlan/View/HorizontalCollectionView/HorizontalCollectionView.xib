@@ -21,7 +21,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h3Y-2c-4vD">
                         <rect key="frame" x="0.0" y="39.5" width="320" height="110"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="110" id="sLS-Hy-dtM"/>
                         </constraints>
@@ -50,6 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="h3Y-2c-4vD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1n2-qL-JTg"/>
                     <constraint firstItem="h3Y-2c-4vD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="39.5" id="5BB-fg-8dA"/>
@@ -59,6 +60,7 @@
                     <constraint firstItem="h3Y-2c-4vD" firstAttribute="top" secondItem="pxp-CL-RRe" secondAttribute="bottom" constant="5" id="vGA-cc-Job"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="horizontalCollectionView" destination="h3Y-2c-4vD" id="nnN-Om-BJ8"/>

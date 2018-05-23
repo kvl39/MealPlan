@@ -19,12 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="392" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.001" translatesAutoresizingMaskIntoConstraints="NO" id="z4z-eJ-3Uo">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z4z-eJ-3Uo">
                         <rect key="frame" x="0.0" y="0.0" width="392" height="299.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7CD-iY-jeg" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
                         <rect key="frame" x="0.0" y="70" width="392" height="229.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mgp-lP-ZGY">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -100,6 +101,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="lc0-Uz-rRT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="0UB-Fd-z8u"/>
                     <constraint firstItem="z4z-eJ-3Uo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="38h-c7-DpY"/>
@@ -118,6 +120,7 @@
                     <constraint firstAttribute="trailing" secondItem="z4z-eJ-3Uo" secondAttribute="trailing" id="zVD-of-Tnf"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="calendarCollectionView" destination="7CD-iY-jeg" id="6D0-yq-xUm"/>
@@ -126,7 +129,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="background.001" width="1024" height="768"/>
-    </resources>
 </document>
