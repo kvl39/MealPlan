@@ -15,7 +15,7 @@ enum MPTableViewCellType {
     case recipeNoteType
     case textFieldType(String, String)
     case recipeStepType
-    case sliderType(Float)
+    case sliderType(Float, String, String)
     case nutrientsEditType
 }
 
@@ -34,8 +34,10 @@ extension MPTableViewCellType {
             return TextFieldItem(textFieldLabel: textFieldLabel, textFieldPlaceHolder: textFieldPlaceHolder)
         case .recipeStepType:
             return RecipeStepItem()
-        case .sliderType(let sliderMax):
-            return SliderItem(slidermax: sliderMax)
+        case .sliderType(let sliderMax, let sliderDescription, let sliderUnit):
+            return SliderItem(slidermax: sliderMax,
+                              sliderDescription: sliderDescription,
+                              sliderUnit: sliderUnit)
         case .nutrientsEditType:
             return NutrientsEditItem()
         }
@@ -129,9 +131,13 @@ struct SliderItem: MPTableViewCellProtocol {
     var rowHeight: Int = 100
     var slidermax: Float = 100.0
     var sliderController = SliderViewController()
+    var sliderDescription = ""
+    var sliderUnit = ""
     
-    init(slidermax: Float) {
+    init(slidermax: Float, sliderDescription: String, sliderUnit: String) {
         self.slidermax = slidermax
+        self.sliderDescription = sliderDescription
+        self.sliderUnit = sliderUnit
     }
 }
 
@@ -253,6 +259,8 @@ extension MPTableViewController {
             sliderController.view.frame = cell.contentView.frame
             print(sliderController.view.frame)
             sliderController.sliderMax = Int(itemStruct.slidermax)
+            sliderController.sliderView.sliderUnit.text = itemStruct.sliderUnit
+            sliderController.sliderView.sliderDescription.text = itemStruct.sliderDescription
             sliderController.resetSliderMax()
             cell.contentView.addSubview(sliderController.view)
             sliderController.didMove(toParentViewController: self)

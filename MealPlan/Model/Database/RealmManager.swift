@@ -46,6 +46,16 @@ class RealmManager {
             }
         }
     }
+    
+    
+    func saveUserCreatedRecipe(createdRecipe: RecipeCalendarRealmModel) {
+        saveQueue.async {
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(createdRecipe)
+            }
+        }
+    }
 
     func saveAddedRecipe(addedRecipe: [RecipeInformation], recipeDate: String) {
         saveQueue.async {

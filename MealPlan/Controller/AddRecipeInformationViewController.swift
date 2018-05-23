@@ -24,9 +24,11 @@ class AddRecipeInformationViewController: MPTableViewController {
     var dateManager = DataFormatManager()
     var stepImages = [UIImage]()
     var stepDescriptions = [String]()
-    var nutrientsValue = [Float]()
+    var nutrientsValue: [Float] = [0.0, 0.0]
+    var nutrientsName = ["卡路里", "脂肪"]
     var ingredientName = [String]()
     var ingredientWeight = [Float]()
+    let realmManager = RealmManager()
     
     
     override func viewDidLoad() {
@@ -61,43 +63,92 @@ class AddRecipeInformationViewController: MPTableViewController {
             alertController.showAlert(viewController: self)
         } else {
             //save data into coreData and fileManager
-            saveData()
-            
+            getDataFromChildViewControllers()
+            let recipe = saveData()
+            if let recipeCalendarModel = recipe {
+                realmManager.saveUserCreatedRecipe(createdRecipe: recipeCalendarModel)
+            }
         }
         
-        if let recipeImage = self.recipeImage, let recipeTitle = self.recipeTitle {
-            let saveImageSuccess = saveImageManger.saveImage(image: recipeImage, imageFileName: recipeTitle)
-            print("success?:\(saveImageSuccess)")
-        }
+        
     }
     
-    func saveData() {
+    func saveData()-> RecipeCalendarRealmModel? {
         let recipeModel = RecipeCalendarRealmModel()
-        guard let addDate = self.dateManager.stringToDate(dateString: selectedDate, to: "yyyy MM dd") else {return}
+        guard let addDate = self.dateManager.stringToDate(dateString: selectedDate, to: "yyyy MM dd") else {return nil}
         recipeModel.recipeDay = addDate
         recipeModel.withSteps = true
         
         let recipeRealmModelWithSteps = RecipeRealmModelWithSteps()
-        //recipeRealmModelWithSteps.calories = 
+        if let recipeTitle = self.recipeTitle {
+            recipeRealmModelWithSteps.label = recipeTitle
+            if let recipeImage = self.recipeImage {
+                self.saveImageManger.saveImage(image: recipeImage, imageFileName: "\(recipeTitle)_RecipeImage")
+                recipeRealmModelWithSteps.image = "\(recipeTitle)_RecipeImage"
+            }
+            
+            for index in 0...self.stepDescriptions.count - 1 {
+                let step = RecipeStep()
+                step.stepDescription = stepDescriptions[index]
+                step.imageName = "\(recipeTitle)_StepImage_\(index)"
+                self.saveImageManger.saveImage(image: self.stepImages[index], imageFileName: "\(recipeTitle)_StepImage_\(index)")
+                recipeRealmModelWithSteps.RecipeSteps.append(step)
+            }
+        }
+        
+        recipeRealmModelWithSteps.calories = Double(self.nutrientsValue[0])
+        
+        for index in 0...self.ingredientName.count-1 {
+            let ingredient = IngredientRecipeModel()
+            ingredient.name = self.ingredientName[index]
+            ingredient.weight = Double(self.ingredientWeight[index])
+            recipeRealmModelWithSteps.ingredients.append(ingredient)
+        }
+        
+        
+        for index in 0...self.nutrientsValue.count-1 {
+            let nutrient = Nutrients()
+            nutrient.label = self.nutrientsName[index]
+            nutrient.quantity = Double(self.nutrientsValue[index])
+            recipeRealmModelWithSteps.nutrients.append(nutrient)
+        }
+        
+        recipeModel.recipeRealmModelWithSteps = recipeRealmModelWithSteps
+        
+        return recipeModel
     }
     
     
     func getDataFromChildViewControllers() {
+        self.stepDescriptions = []
+        self.stepImages = []
+        self.ingredientName = []
+        self.ingredientWeight = []
+        self.nutrientsValue = [0.0, 0.0]
         for childViewController in self.childViewControllers {
-            if let vc = childViewControllers as? InputTextViewController {
+            if let vc = childViewController as? InputTextViewController {
                 self.stepDescriptions.append(vc.textView.text)
-            } else if let vc = childViewControllers as? ImagePickerViewController {
+            } else if let vc = childViewController as? ImagePickerViewController {
                 if let image = vc.image.image {
                     self.stepImages.append(image)
                 }
             } else if let vc = childViewController as? SliderViewController {
                 switch vc.sliderView.sliderDescription.text {
                 case "卡路里":
-                    self.nutrientsValue.append(vc.sliderView.slider.value)
+                    self.nutrientsValue[0] = vc.sliderView.slider.value
+                case "脂肪":
+                    self.nutrientsValue[1] = vc.sliderView.slider.value
                 default:
                     print("case is not completed")
                 }
-            } //else if let vc = childViewController as?
+            } else if let vc = childViewController as? NutrientsEditViewController {
+                if let ingredientName = vc.nutrientsEditView.ingredientTextField.text,
+                    let ingredientWeightText = vc.nutrientsEditView.weightTextField.text,
+                    let ingredientWeight = Float(ingredientWeightText) {
+                    self.ingredientName.append(ingredientName)
+                    self.ingredientWeight.append(ingredientWeight)
+                }
+            }
         }
     }
     
@@ -146,7 +197,9 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.cellHeight.append(243.0)
         self.rowArray.append(.recipeStepType)
         self.cellHeight.append(243.0)
-        self.rowArray.append(.sliderType(133.0))
+        self.rowArray.append(.sliderType(500.0, "卡路里", "大卡"))
+        self.cellHeight.append(100.0)
+        self.rowArray.append(.sliderType(500.0, "脂肪", "克"))
         self.cellHeight.append(100.0)
         self.rowArray.append(.nutrientsEditType)
         self.cellHeight.append(100.0)

@@ -35,9 +35,9 @@ struct IngredientAPIModel: Codable {
 }
 
 struct TotalDaily: Codable {
-    var ENERC_KCAL: NutrientAPIModel
-    var FAT: NutrientAPIModel
-    var FASAT: NutrientAPIModel
+    var ENERC_KCAL: NutrientAPIModel //熱量 千卡
+    var FAT: NutrientAPIModel   //脂肪 克
+    var FASAT: NutrientAPIModel //飽和脂肪 克
 }
 
 struct NutrientAPIModel: Codable {
