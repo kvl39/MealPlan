@@ -232,7 +232,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         testTable.register(UINib(nibName: "HorizontalCollectionView",
                                  bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         testTable.register(UINib(nibName: "RecipeNoteView", bundle: nil), forCellReuseIdentifier: "RecipeNoteView")
-        self.rowArray.append(.calendarCollectionViewType)
+        self.rowArray.append([])
+        self.rowArray[0].append(.calendarCollectionViewType)
 
        var imageArray = [UIView]()
        imageArray.append(pieChartManager.generateViewWithPieChart(value: 90))
@@ -243,7 +244,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
        imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
        var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
-       self.rowArray.append(.horizontalCollectionViewType(imageArray, titleArray))
+       
+       self.rowArray[0].append(.horizontalCollectionViewType(imageArray, titleArray))
        //self.rowArray.append(.recipeNoteType)
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
@@ -318,7 +320,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
     func updateDataInTableView() {
 
-        self.rowArray[1] = .horizontalCollectionViewType(recipeImageArray, recipeTitleArray)
+        self.rowArray[0][1] = .horizontalCollectionViewType(recipeImageArray, recipeTitleArray)
 
         var indexPath = IndexPath(row: 1, section: 0)
         guard let cell = self.testTable.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}

@@ -41,15 +41,15 @@ class MPRecipeDetailViewController: MPTableViewController {
         /////////////////fake data
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
 
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray.append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
     }
     
     

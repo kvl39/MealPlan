@@ -147,7 +147,8 @@ struct NutrientsEditItem: MPTableViewCellProtocol {
 }
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
-    var rowArray: [MPTableViewCellType] = []
+    var sectionArray: [String] = []
+    var rowArray: [[MPTableViewCellType]] = []
     var rowControllerArray : [[UIViewController]] = []
     var rowControllerIndexDic : [Int: Int] = [:]
     //weak var delegate: MPTableViewControllerDelegateProtocol?
@@ -155,17 +156,25 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
 }
 
 extension MPTableViewController {
-
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if sectionArray.count > 0 {
+            return sectionArray[section]
+        } else {
+            return nil
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return max(sectionArray.count, 1)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowArray.count
+        return max(rowArray[section].count, 1)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = rowArray[indexPath.row]
+        let item = rowArray[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.configureCell().reuseIdentifier, for: indexPath)
         switch (item) {
         case .horizontalCollectionViewType:
@@ -309,12 +318,12 @@ extension MPTableViewController {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
+        return CGFloat(rowArray[indexPath.section][indexPath.row].configureCell().rowHeight)
 
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(rowArray[indexPath.row].configureCell().rowHeight)
+        return CGFloat(rowArray[indexPath.section][indexPath.row].configureCell().rowHeight)
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
