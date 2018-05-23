@@ -140,7 +140,8 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     
     func selectRecipeAnimation(cell: RecipeSearchResultCell, cellRect: CGRect, selectedRecipe: RecipeInformation) {
         self.addedRecipe.append(selectedRecipe)
-        self.addedRecipeImageView.append(cell.recipeImage)
+        let imageView = UIImageView(image: cell.recipeImage.image)
+        self.addedRecipeImageView.append(imageView)
         guard let recipeTitle = cell.recipeTitle.text else {return}
         self.addedRecipeTitle.append(recipeTitle)
         animationManager.selectRecipeAnimation(cell: cell, view: self.view, cellRect: cellRect)

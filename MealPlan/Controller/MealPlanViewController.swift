@@ -296,6 +296,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         cell.horizontalCollectionView.reloadData()
         self.testTable.reloadData()
     }
+    
+    
 }
 
 
