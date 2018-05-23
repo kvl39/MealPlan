@@ -31,6 +31,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     var selectedCollectViewImageView = UIImageView()
     var firebaseManager = MPFirebaseManager()
     var saveImageManager = SaveImageManager()
+    lazy var addedButtonSubView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,9 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         configureTableView()
         configureAddButton()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+        self.view.addSubview(addedButtonSubView)
+        addedButtonSubView.alpha = 0
+        self.view.bringSubview(toFront: addedButtonSubView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,7 +144,11 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
 
     func showButton() {
-
+        addedButtonSubView.alpha = 1
+        self.view.bringSubview(toFront: addButton!)
+        self.view.bringSubview(toFront: typeButton!)
+        self.view.bringSubview(toFront: shareButton!)
+        self.view.bringSubview(toFront: takePictureButton!)
         UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.takePictureButton?.alpha = 1
             self.takePictureButtonRightConstraint?.constant = -20
@@ -162,6 +170,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
 
     func hideButton() {
+        addedButtonSubView.alpha = 0
         UIView.animate(withDuration: 0.5) {
             self.takePictureButton?.alpha = 0
             self.typeButton?.alpha = 0
@@ -295,6 +304,14 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         guard let cell = self.testTable.cellForRow(at: indexPath) as? HorizontalCollectionView else {return}
         cell.horizontalCollectionView.reloadData()
         self.testTable.reloadData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        var touch: UITouch? = touches.first
+        if touch?.view == addedButtonSubView {
+            hideButton()
+            self.addButtonSelected = !self.addButtonSelected
+        }
     }
     
     

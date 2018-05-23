@@ -36,6 +36,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
     weak var delegate: AddPageDelegateProtocol?
     var historyImageArray: [UIImageView] = []
     var historyTitleArray: [String] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
