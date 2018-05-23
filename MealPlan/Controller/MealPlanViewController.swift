@@ -216,6 +216,9 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
     func configureTableView() {
         self.testTable.separatorStyle = .none
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
+        backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
+        self.testTable.backgroundView = backgroundView
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
         testTable.register(UINib(nibName: "HorizontalCollectionView",
                                  bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
