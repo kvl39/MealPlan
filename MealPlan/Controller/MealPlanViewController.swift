@@ -191,9 +191,11 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         button.setImage(image, for: .normal)
         button.tintColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1.0)
         //button.setTitle(title, for: .normal)
-        //button.backgroundColor = UIColor.black
-        //button.layer.cornerRadius = button.frame.size.width / 2
-        //button.layer.masksToBounds = true
+        button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = button.frame.size.width / 2
+        button.layer.masksToBounds = true
+        //button.clipsToBounds = true
 
 //        globeButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
 //        globeButton.layer.shadowOffset = CGSizeMake(0.0, 2.0)
@@ -205,8 +207,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         self.view.addSubview(button)
 
         button.translatesAutoresizingMaskIntoConstraints = false
-        let heightConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 40)
-        let widthConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 40)
+        let heightConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 50)
+        let widthConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 50)
         let bottomConstraint = NSLayoutConstraint(item: button, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottomMargin, multiplier: 1.0, constant: bottomConstraintConstant)
         view.addConstraints([heightConstraint, widthConstraint, bottomConstraint])
         return button
