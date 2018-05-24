@@ -38,23 +38,24 @@ class MPRecipeDetailViewController: MPTableViewController {
         updateImage(height: 0.0)
         
         //information to display: label, nutrient, ingredient(String)
-        self.sectionArray = []
+        self.sectionArray = ["材料","營養成分"]
         configureData()
+        configureTableView()
         
         
         /////////////////fake data
-        recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
-        
-        rowArray.append([])
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+//
+//        rowArray.append([])
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
     }
     
     
@@ -68,8 +69,11 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     func configureTableView() {
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
-        
-        
+        recipeDetailTableView.register(UINib(nibName: "RecipeDetailIngredientCell", bundle: nil), forCellReuseIdentifier: "RecipeDetailIngredientCell")
+        rowArray.append([])
+        rowArray[0].append(.recipeIngredientType("ingredient test1"))
+        rowArray.append([])
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
     }
     
     

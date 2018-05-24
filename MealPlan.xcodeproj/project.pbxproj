@@ -60,6 +60,8 @@
 		AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */; };
 		AD6FD06620B0680100148414 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FD06520B0680100148414 /* TestViewController.swift */; };
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
+		AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */; };
+		AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */; };
 		AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */; };
 		AD85E55C20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */; };
 		AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */; };
@@ -150,6 +152,8 @@
 		AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailWebViewController.swift; sourceTree = "<group>"; };
 		AD6FD06520B0680100148414 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
+		AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientCell.swift; sourceTree = "<group>"; };
+		AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailIngredientCell.xib; sourceTree = "<group>"; };
 		AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationViewController.swift; sourceTree = "<group>"; };
 		AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationTextFieldCell.swift; sourceTree = "<group>"; };
 		AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationTextFieldCell.xib; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */,
 				AD5D382020B45516004B65BF /* AddRecipeInformationNutrientsEditCell */,
 				AD5D381920B44FC6004B65BF /* MPNutrientsEditView */,
 				AD5D380E20B3EB17004B65BF /* AddRecipeInformationSliderCell */,
@@ -380,6 +385,15 @@
 				AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */,
 			);
 			path = RecipeDetailTitle;
+			sourceTree = "<group>";
+		};
+		AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */ = {
+			isa = PBXGroup;
+			children = (
+				AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */,
+				AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */,
+			);
+			path = RecipeDetailIngredients;
 			sourceTree = "<group>";
 		};
 		AD85E55920B1A3F2002B80EB /* AddRecipeInformationTextField */ = {
@@ -571,6 +585,7 @@
 				AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */,
 				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
+				AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */,
 				ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */,
 				AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */,
 				ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */,
@@ -650,6 +665,7 @@
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD5D381820B42168004B65BF /* SaveImageManager.swift in Sources */,
 				AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */,
+				AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
 				AD6ED3F520B2B83800B194BF /* TextViewController.swift in Sources */,

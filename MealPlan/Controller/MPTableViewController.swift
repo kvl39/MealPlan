@@ -17,6 +17,7 @@ enum MPTableViewCellType {
     case recipeStepType
     case sliderType(Float, String, String)
     case nutrientsEditType
+    case recipeIngredientType(String)
 }
 
 extension MPTableViewCellType {
@@ -40,6 +41,8 @@ extension MPTableViewCellType {
                               sliderUnit: sliderUnit)
         case .nutrientsEditType:
             return NutrientsEditItem()
+        case .recipeIngredientType(let ingredientText):
+            return RecipeIngredientItem(ingredientText: ingredientText)
         }
     }
 }
@@ -144,6 +147,16 @@ struct SliderItem: MPTableViewCellProtocol {
 struct NutrientsEditItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "NutrientsEditCell"
     var rowHeight: Int = 100
+}
+
+struct RecipeIngredientItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeDetailIngredientCell"
+    var rowHeight: Int = 52
+    var ingredientText: String = ""
+    
+    init(ingredientText: String) {
+        self.ingredientText = ingredientText
+    }
 }
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
@@ -317,6 +330,12 @@ extension MPTableViewController {
             nutrientsEditController.view.frame = cell.contentView.frame
             cell.contentView.addSubview(nutrientsEditController.view)
             nutrientsEditController.didMove(toParentViewController: self)
+            return cell
+        case .recipeIngredientType:
+            guard let cell = cell as? RecipeDetailIngredientCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return cell}
+            cell.ingredientLabel.text = itemStruct.ingredientText
             return cell
         }
     }
