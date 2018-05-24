@@ -439,12 +439,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-vp-dHK">
-                                <rect key="frame" x="0.0" y="114" width="375" height="513"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background002" translatesAutoresizingMaskIntoConstraints="NO" id="v6a-vp-dHK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lcf-A9-CPd">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-AV-S09">
                                 <rect key="frame" x="20" y="74" width="335" height="300"/>
@@ -478,7 +479,7 @@
                                 <state key="normal" title="Steps"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="6Vp-ZY-xT5" secondAttribute="bottom" constant="10" id="0mc-zH-1Sn"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="10" id="9jZ-wu-As4"/>
@@ -487,20 +488,20 @@
                             <constraint firstItem="sXk-uT-oFX" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="HWg-Pa-xVb"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Le9-nA-KeG"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" constant="-20" id="OX2-GK-eyc"/>
+                            <constraint firstItem="v6a-vp-dHK" firstAttribute="top" secondItem="mei-bv-pQG" secondAttribute="top" id="PXx-Ya-ji0"/>
                             <constraint firstItem="v6a-vp-dHK" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="QOP-bU-7Pj"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="Lcf-A9-CPd" secondAttribute="trailing" id="Qeg-aX-aap"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="HLs-9H-nf3" secondAttribute="trailing" constant="20" id="XDq-Gx-8He"/>
                             <constraint firstItem="v6a-vp-dHK" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="bfx-sC-Qa7"/>
                             <constraint firstItem="sXk-uT-oFX" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="bo5-Gn-ePw"/>
+                            <constraint firstAttribute="bottom" secondItem="v6a-vp-dHK" secondAttribute="bottom" id="d2e-M1-umB"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="6Vp-ZY-xT5" secondAttribute="trailing" constant="10" id="dg9-uc-dgW"/>
                             <constraint firstItem="6Vp-ZY-xT5" firstAttribute="top" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="10" id="frM-RW-pzQ"/>
                             <constraint firstItem="HLs-9H-nf3" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="10" id="hGZ-m8-Qmt"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="50" id="nbb-KH-U1u"/>
-                            <constraint firstItem="6Vp-ZY-xT5" firstAttribute="top" secondItem="v6a-vp-dHK" secondAttribute="bottom" id="oO9-vU-1jt"/>
                             <constraint firstItem="HLs-9H-nf3" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="100" id="pg5-Cw-vD1"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qPA-Je-MZU"/>
                             <constraint firstItem="sXk-uT-oFX" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qh1-kz-NC5"/>
-                            <constraint firstItem="v6a-vp-dHK" firstAttribute="top" secondItem="sXk-uT-oFX" secondAttribute="bottom" id="y1R-6D-iWI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8vG-UF-dgM"/>
                     </view>
@@ -607,6 +608,7 @@
     </scenes>
     <resources>
         <image name="MealPlan3" width="600" height="224"/>
+        <image name="background002" width="1024" height="768"/>
         <image name="confirm" width="512" height="512"/>
         <image name="drawer" width="512" height="512"/>
     </resources>

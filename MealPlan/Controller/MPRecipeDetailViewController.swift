@@ -44,21 +44,10 @@ class MPRecipeDetailViewController: MPTableViewController {
         self.sectionArray = ["材料","營養成分"]
         configureData()
         configureTableView()
-
         
-        /////////////////fake data
-//        recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
-//
-//        rowArray.append([])
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
-//        rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
+        //self.navigationController?.navigationBar.isHidden = true
+        
+
     }
     
     
@@ -101,9 +90,11 @@ class MPRecipeDetailViewController: MPTableViewController {
     }
     
     func configureTableViewBackground(){
+        recipeDetailTableView.backgroundColor = UIColor.clear
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.recipeDetailTableView.bounds.size.width, height: self.recipeDetailTableView.bounds.size.height))
         //backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
-        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background002"))
+        //backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background002"))
+        backgroundView.backgroundColor = UIColor.clear
         self.recipeDetailTableView.backgroundView = backgroundView
     }
     
