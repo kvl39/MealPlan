@@ -444,7 +444,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-AV-S09">
-                                <rect key="frame" x="0.0" y="64" width="375" height="300"/>
+                                <rect key="frame" x="20" y="64" width="335" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="ey7-nB-FTa"/>
                                 </constraints>
@@ -481,11 +481,11 @@
                         <constraints>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="6Vp-ZY-xT5" secondAttribute="bottom" id="0mc-zH-1Sn"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="9jZ-wu-As4"/>
-                            <constraint firstItem="wA2-AV-S09" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="B2y-Oe-BsI"/>
+                            <constraint firstItem="wA2-AV-S09" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="20" id="B2y-Oe-BsI"/>
                             <constraint firstItem="6Vp-ZY-xT5" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="GyI-Qr-PfV"/>
                             <constraint firstItem="sXk-uT-oFX" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="HWg-Pa-xVb"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Le9-nA-KeG"/>
-                            <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="OX2-GK-eyc"/>
+                            <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" constant="-20" id="OX2-GK-eyc"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="Lcf-A9-CPd" secondAttribute="trailing" id="Qeg-aX-aap"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="HLs-9H-nf3" secondAttribute="trailing" constant="20" id="XDq-Gx-8He"/>
                             <constraint firstItem="sXk-uT-oFX" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="bo5-Gn-ePw"/>

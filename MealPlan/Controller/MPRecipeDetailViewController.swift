@@ -18,8 +18,8 @@ class MPRecipeDetailViewController: MPTableViewController {
     let originImageHeight: CGFloat = 300.0
     var originTitleY: CGFloat = 300.0
     var recipeData: RecipeCalendarRealmModel!
-    
-    
+    var firebaseManager = MPFirebaseManager()
+    var recipeIngredients = [[String: Any]]()
     
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class MPRecipeDetailViewController: MPTableViewController {
         self.sectionArray = ["材料","營養成分"]
         configureData()
         configureTableView()
-        
+
         
         /////////////////fake data
 //        recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
@@ -62,17 +62,37 @@ class MPRecipeDetailViewController: MPTableViewController {
     func configureData() {
         if self.recipeData.withSteps {
             self.recipeTitle.text = self.recipeData.recipeRealmModelWithSteps?.label
+            if let recipeRealmIngredient = recipeData.recipeRealmModelWithSteps?.ingredients {
+                self.recipeIngredients = firebaseManager.recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmIngredient))
+            }
+            
         } else {
             self.recipeTitle.text = self.recipeData.recipeRealmModel?.label
+            if let recipeRealmIngredient = recipeData.recipeRealmModel?.ingredients {
+                self.recipeIngredients = firebaseManager.recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmIngredient))
+            }
         }
     }
     
     func configureTableView() {
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         recipeDetailTableView.register(UINib(nibName: "RecipeDetailIngredientCell", bundle: nil), forCellReuseIdentifier: "RecipeDetailIngredientCell")
+        
+        
         rowArray.append([])
-        rowArray[0].append(.recipeIngredientType("ingredient test1"))
+        for ingredient in self.recipeIngredients{
+            if let ingredientName = ingredient["name"] as? String {
+                rowArray[0].append(.recipeIngredientType(ingredientName))
+                print(ingredientName)
+            }
+        }
         rowArray.append([])
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        rowArray[1].append(.recipeIngredientType("ingredient test2"))
         rowArray[1].append(.recipeIngredientType("ingredient test2"))
     }
     
@@ -90,7 +110,14 @@ class MPRecipeDetailViewController: MPTableViewController {
         newHeaderLayer.path = cutDirection.cgPath
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print(UITableViewAutomaticDimension)
+        return UITableViewAutomaticDimension
+    }
     
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 
@@ -106,10 +133,11 @@ extension MPRecipeDetailViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = 300 - (recipeDetailTableView.contentOffset.y + 300)
         let height = min(max(y, 60), 400)
+        recipeDetailTableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         let titleY = max(self.originTitleY - recipeDetailTableView.contentOffset.y, 60)
         let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
         
-        recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: height)
+        recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width-40, height: height)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         updateImage(height: height)
