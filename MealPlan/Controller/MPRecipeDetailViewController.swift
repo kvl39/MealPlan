@@ -38,9 +38,12 @@ class MPRecipeDetailViewController: MPTableViewController {
         updateImage(height: 0.0)
         
         
+        
+        
         /////////////////fake data
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
-
+        
+        rowArray.append([])
         rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "pig"), "pig"))
         rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
         rowArray[0].append(.recipeCellType(#imageLiteral(resourceName: "spinach"), "vegatable"))
@@ -53,15 +56,23 @@ class MPRecipeDetailViewController: MPTableViewController {
     }
     
     
+    func configureTableView() {
+        recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
+        
+        
+    }
+    
+    
     
     func updateImage(height: CGFloat) {
-        let controlY = recipeImage.frame.height*1.5 - self.originImageHeight*0.5
+        //let controlY = recipeImage.frame.height*1.5 - self.originImageHeight*0.5
+        let controlY = recipeImage.frame.height + 10
         let cutDirection = UIBezierPath()
-        cutDirection.move(to: CGPoint(x: 0, y: recipeImage.frame.height))
+        cutDirection.move(to: CGPoint(x: 0, y: recipeImage.frame.height-20))
         cutDirection.addLine(to: CGPoint(x: 0, y: 0))
         cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: 0))
-        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: recipeImage.frame.height))
-        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: recipeImage.frame.height), controlPoint: CGPoint(x: view.frame.width/2, y: max(30,controlY)))
+        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: recipeImage.frame.height-20))
+        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: recipeImage.frame.height-20), controlPoint: CGPoint(x: view.frame.width/2, y: controlY))
         newHeaderLayer.path = cutDirection.cgPath
     }
     

@@ -27,6 +27,7 @@ class AddPageHistoryController: MPTableViewController {
     
     func configureTableView() {
         tableView.register(UINib(nibName: "HorizontalCollectionView", bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
+        self.rowArray.append([])
         self.rowArray[0].append(.horizontalCollectionViewType(imageArray, titleArray))
     }
 
