@@ -33,6 +33,7 @@ class MPNutrientsEditView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.weightTextField.keyboardType = .numberPad
     }
 
 }
