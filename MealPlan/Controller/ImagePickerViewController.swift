@@ -15,7 +15,7 @@ class ImagePickerViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         image.image = #imageLiteral(resourceName: "tap")
-        self.view.backgroundColor = UIColor.blue
+        //self.view.backgroundColor = UIColor.blue
         self.view.addSubview(image)
     }
     

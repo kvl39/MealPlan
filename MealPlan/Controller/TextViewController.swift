@@ -24,7 +24,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         textView.delegate = self
         textView.text = "填入步驟說明"
-        textView.textColor = UIColor.gray
+        //textView.textColor = UIColor.gray
         self.view.addSubview(textView)
         textView.isScrollEnabled = false
 //        NSLayoutConstraint.activate([

@@ -42,42 +42,62 @@
                                     <constraint firstAttribute="height" constant="516" id="gG3-7G-FKq"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8at-iZ-PxX">
-                                <rect key="frame" x="33" y="598" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelPhotoShooting:" destination="4EZ-TU-beT" eventType="touchUpInside" id="1oo-eE-dIt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-rn-Kfp">
-                                <rect key="frame" x="135" y="598" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="take again"/>
-                                <connections>
-                                    <action selector="takePhotoAgain:" destination="4EZ-TU-beT" eventType="touchUpInside" id="JUe-c7-8WN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxZ-ID-ap2">
-                                <rect key="frame" x="282" y="598" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="accept"/>
-                                <connections>
-                                    <action selector="acceptPhoto:" destination="4EZ-TU-beT" eventType="touchUpInside" id="3v6-Ya-vft"/>
-                                    <segue destination="cY8-OP-WUA" kind="show" identifier="PushToAddRecipeInformationView" id="AtT-31-INh"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="vYP-Nn-0ox">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8at-iZ-PxX">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="6qH-lR-urs"/>
+                                            <constraint firstAttribute="height" constant="60" id="RuT-jZ-emp"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelPhotoShooting:" destination="4EZ-TU-beT" eventType="touchUpInside" id="1oo-eE-dIt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-rn-Kfp">
+                                        <rect key="frame" x="137.5" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="1xg-bg-9SD"/>
+                                            <constraint firstAttribute="width" constant="60" id="uoV-DR-HO7"/>
+                                        </constraints>
+                                        <state key="normal" title="take again"/>
+                                        <connections>
+                                            <action selector="takePhotoAgain:" destination="4EZ-TU-beT" eventType="touchUpInside" id="JUe-c7-8WN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxZ-ID-ap2">
+                                        <rect key="frame" x="275" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="j6a-gN-82V"/>
+                                            <constraint firstAttribute="width" constant="60" id="xp7-ph-X1C"/>
+                                        </constraints>
+                                        <state key="normal" title="accept"/>
+                                        <connections>
+                                            <action selector="acceptPhoto:" destination="4EZ-TU-beT" eventType="touchUpInside" id="3v6-Ya-vft"/>
+                                            <segue destination="cY8-OP-WUA" kind="show" identifier="PushToAddRecipeInformationView" id="AtT-31-INh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jo2-hJ-ow7" firstAttribute="leading" secondItem="xNF-Ke-w2B" secondAttribute="leading" id="0W2-uR-yBL"/>
                             <constraint firstItem="xNF-Ke-w2B" firstAttribute="trailing" secondItem="Jo2-hJ-ow7" secondAttribute="trailing" id="8pJ-m9-sLe"/>
+                            <constraint firstItem="vYP-Nn-0ox" firstAttribute="leading" secondItem="xNF-Ke-w2B" secondAttribute="leading" constant="20" id="edS-gC-zhv"/>
                             <constraint firstItem="Jo2-hJ-ow7" firstAttribute="top" secondItem="xNF-Ke-w2B" secondAttribute="top" id="k2C-UP-k3Z"/>
+                            <constraint firstItem="xNF-Ke-w2B" firstAttribute="bottom" secondItem="vYP-Nn-0ox" secondAttribute="bottom" constant="20" id="oYj-Zm-8Ru"/>
+                            <constraint firstItem="xNF-Ke-w2B" firstAttribute="trailing" secondItem="vYP-Nn-0ox" secondAttribute="trailing" constant="20" id="uFd-dV-eIK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xNF-Ke-w2B"/>
                     </view>
                     <connections>
+                        <outlet property="acceptButton" destination="LxZ-ID-ap2" id="fUV-Bb-zjI"/>
+                        <outlet property="cancelButton" destination="8at-iZ-PxX" id="d3R-IV-mPX"/>
                         <outlet property="photoImageView" destination="Jo2-hJ-ow7" id="3Ji-Ye-ikW"/>
+                        <outlet property="retakeButton" destination="jOy-rn-Kfp" id="VrU-Ts-dqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJ9-rz-bnW" userLabel="First Responder" sceneMemberID="firstResponder"/>

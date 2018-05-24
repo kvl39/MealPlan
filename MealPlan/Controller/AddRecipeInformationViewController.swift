@@ -237,6 +237,7 @@ class AddRecipeInformationViewController: MPTableViewController {
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationSliderCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationSliderCell")
         addRecipeInformationTable.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         addRecipeInformationTable.register(UINib(nibName: "NutrientsEditCell", bundle: nil), forCellReuseIdentifier: "NutrientsEditCell")
+        self.rowArray.append([])
         self.rowArray[0].append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
         self.cellHeight.append(50.0)
         self.rowArray[0].append(.recipeStepType)
