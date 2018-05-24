@@ -170,7 +170,12 @@ extension MPTableViewController {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return max(rowArray[section].count, 1)
+        //return max(rowArray[section].count, 1)
+        if rowArray.count > 0 {
+            return rowArray[section].count
+        } else {
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
