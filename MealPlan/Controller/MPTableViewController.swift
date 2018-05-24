@@ -276,7 +276,7 @@ extension MPTableViewController {
             inputTextViewController.view.frame = cell.viewForTextField.frame
             inputTextViewController.view.frame.origin.x = 0
             inputTextViewController.view.frame.origin.y = 0
-            inputTextViewController.resetFrame()
+            //inputTextViewController.resetFrame()
             cell.viewForTextField.addSubview(inputTextViewController.view)
             NSLayoutConstraint.activate([
                 inputTextViewController.view.trailingAnchor.constraint(equalTo: cell.viewForTextField.trailingAnchor, constant: 0),
@@ -284,6 +284,8 @@ extension MPTableViewController {
                 inputTextViewController.view.topAnchor.constraint(equalTo: cell.viewForTextField.topAnchor, constant: 0),
                 inputTextViewController.view.bottomAnchor.constraint(equalTo: cell.viewForTextField.bottomAnchor, constant: 0)
                 ])
+            cell.layoutIfNeeded()
+            inputTextViewController.resetFrame()
             inputTextViewController.didMove(toParentViewController: self)
             inputTextViewController.section = indexPath.section
             inputTextViewController.row = indexPath.row

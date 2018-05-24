@@ -25,7 +25,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         textView.delegate = self
         textView.text = "填入步驟說明"
-        //textView.textColor = UIColor.gray
+        textView.textColor = UIColor.gray
         self.view.addSubview(textView)
         textView.isScrollEnabled = false
 //        NSLayoutConstraint.activate([
@@ -34,9 +34,11 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
 //            textView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
 //            textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
 //            ])
-        textView.backgroundColor = UIColor.brown
-        self.view.backgroundColor = UIColor.yellow
+//        textView.backgroundColor = UIColor.brown
+//        self.view.backgroundColor = UIColor.yellow
         resetFrame()
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.borderWidth = 1
     }
     
     
