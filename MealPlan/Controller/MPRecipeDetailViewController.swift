@@ -37,7 +37,9 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeImage.layer.mask = newHeaderLayer
         updateImage(height: 0.0)
         
-        
+        //information to display: label, nutrient, ingredient(String)
+        self.sectionArray = []
+        configureData()
         
         
         /////////////////fake data
@@ -56,6 +58,14 @@ class MPRecipeDetailViewController: MPTableViewController {
     }
     
     
+    func configureData() {
+        if self.recipeData.withSteps {
+            self.recipeTitle.text = self.recipeData.recipeRealmModelWithSteps?.label
+        } else {
+            self.recipeTitle.text = self.recipeData.recipeRealmModel?.label
+        }
+    }
+    
     func configureTableView() {
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         
@@ -68,11 +78,11 @@ class MPRecipeDetailViewController: MPTableViewController {
         //let controlY = recipeImage.frame.height*1.5 - self.originImageHeight*0.5
         let controlY = recipeImage.frame.height + 10
         let cutDirection = UIBezierPath()
-        cutDirection.move(to: CGPoint(x: 0, y: recipeImage.frame.height-20))
+        cutDirection.move(to: CGPoint(x: 0, y: recipeImage.frame.height-10))
         cutDirection.addLine(to: CGPoint(x: 0, y: 0))
         cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: 0))
-        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: recipeImage.frame.height-20))
-        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: recipeImage.frame.height-20), controlPoint: CGPoint(x: view.frame.width/2, y: controlY))
+        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: recipeImage.frame.height-10))
+        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: recipeImage.frame.height-10), controlPoint: CGPoint(x: view.frame.width/2, y: controlY))
         newHeaderLayer.path = cutDirection.cgPath
     }
     
@@ -93,9 +103,11 @@ extension MPRecipeDetailViewController {
         let y = 300 - (recipeDetailTableView.contentOffset.y + 300)
         let height = min(max(y, 60), 400)
         let titleY = max(self.originTitleY - recipeDetailTableView.contentOffset.y, 60)
+        let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
         
         recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: height)
-        recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
+        //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
+        //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         updateImage(height: height)
     }
 }
