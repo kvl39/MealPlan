@@ -19,6 +19,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
     var selectedDate = ""
+    var drawCameraLineManager = DrawCameraLineManager()
     lazy var context: CIContext = {
         if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
             let options = [kCIContextWorkingColorSpace: NSNull()]
@@ -40,6 +41,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewWillAppear(animated)
         prepareCamera()
         moveButtonsToFront()
+        configureCameraLines()
+    }
+    
+    func configureCameraLines() {
+        drawCameraLineManager.addCameraLines(on: self.previewLayer)
     }
     
     func moveButtonsToFront() {

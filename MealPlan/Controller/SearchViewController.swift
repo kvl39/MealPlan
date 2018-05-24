@@ -99,6 +99,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.rowArray = []
         self.searchRecipeModel = products
         for index in 0...products.hits.count-1 {
+            if self.rowArray.count == 0 {
+                self.rowArray.append([])
+            }
             self.rowArray[0].append(
             .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, false, false))
         }
