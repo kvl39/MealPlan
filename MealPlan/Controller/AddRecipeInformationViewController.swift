@@ -16,6 +16,7 @@ class AddRecipeInformationViewController: MPTableViewController {
 
     @IBOutlet weak var addRecipeInformationTable: UITableView!
     @IBOutlet weak var backgroundView: UIImageView!
+    @IBOutlet weak var topImage: UIImageView!
     var cellHeight: [[CGFloat]] = []
     let popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
@@ -48,6 +49,7 @@ class AddRecipeInformationViewController: MPTableViewController {
         popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(getTitle(notification:)), name: NSNotification.Name(rawValue: "AddRecipeInformationTextFieldDidEndEditing"), object: nil)
         backgroundView.image = self.recipeImage
+        topImage.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
     }
     
     @objc func getTitle(notification: Notification) {
@@ -172,32 +174,6 @@ class AddRecipeInformationViewController: MPTableViewController {
                 }
             }
         }
-        
-//        for childViewController in self.childViewControllers {
-//            if let vc = childViewController as? InputTextViewController {
-//                self.stepDescriptions.append(vc.textView.text)
-//            } else if let vc = childViewController as? ImagePickerViewController {
-//                if let image = vc.image.image {
-//                    self.stepImages.append(image)
-//                }
-//            } else if let vc = childViewController as? SliderViewController {
-//                switch vc.sliderView.sliderDescription.text {
-//                case "卡路里":
-//                    self.nutrientsValue[0] = vc.sliderView.slider.value
-//                case "脂肪":
-//                    self.nutrientsValue[1] = vc.sliderView.slider.value
-//                default:
-//                    print("case is not completed")
-//                }
-//            } else if let vc = childViewController as? NutrientsEditViewController {
-//                if let ingredientName = vc.nutrientsEditView.ingredientTextField.text,
-//                    let ingredientWeightText = vc.nutrientsEditView.weightTextField.text,
-//                    let ingredientWeight = Float(ingredientWeightText) {
-//                    self.ingredientName.append(ingredientName)
-//                    self.ingredientWeight.append(ingredientWeight)
-//                }
-//            }
-//        }
     }
     
     func checkTextViewIsEmpty()-> Bool {
@@ -265,12 +241,6 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.cellHeight[2].append(100.0)
         self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
         self.cellHeight[2].append(100.0)
-        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
-        self.cellHeight[2].append(100.0)
-        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
-        self.cellHeight[2].append(100.0)
-        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
-        self.cellHeight[2].append(100.0)
         
         self.rowArray.append([])
         self.cellHeight.append([])
@@ -292,6 +262,8 @@ class AddRecipeInformationViewController: MPTableViewController {
         }
     }
 
-
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
+    }
 
 }
