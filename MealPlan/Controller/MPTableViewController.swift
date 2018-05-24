@@ -178,6 +178,11 @@ extension MPTableViewController {
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return max(sectionArray.count, 1)
     }

@@ -42,6 +42,7 @@
                                         <constraint firstItem="LrY-m1-bty" firstAttribute="leading" secondItem="oOh-66-n9U" secondAttribute="leading" constant="5" id="tbC-NC-Ir3"/>
                                     </constraints>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
@@ -54,6 +55,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="x4F-Od-B9v" secondAttribute="bottom" constant="10" id="ABL-1L-3Os"/>
                     <constraint firstAttribute="trailing" secondItem="x4F-Od-B9v" secondAttribute="trailing" constant="10" id="SS1-uF-WYJ"/>
@@ -61,8 +63,10 @@
                     <constraint firstItem="x4F-Od-B9v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zFT-Y4-4ib"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="blurEffect" destination="V3E-QB-XO5" id="VS9-kK-0aX"/>
                 <outlet property="ingredientLabel" destination="LrY-m1-bty" id="fjs-G6-OAu"/>
             </connections>
             <point key="canvasLocation" x="34" y="70"/>
