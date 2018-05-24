@@ -15,6 +15,7 @@ import IQKeyboardManagerSwift
 class AddRecipeInformationViewController: MPTableViewController {
 
     @IBOutlet weak var addRecipeInformationTable: UITableView!
+    @IBOutlet weak var backgroundView: UIImageView!
     var cellHeight: [[CGFloat]] = []
     let popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
@@ -46,6 +47,7 @@ class AddRecipeInformationViewController: MPTableViewController {
         popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
         popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(getTitle(notification:)), name: NSNotification.Name(rawValue: "AddRecipeInformationTextFieldDidEndEditing"), object: nil)
+        backgroundView.image = self.recipeImage
     }
     
     @objc func getTitle(notification: Notification) {
@@ -225,12 +227,19 @@ class AddRecipeInformationViewController: MPTableViewController {
         return textFieldIsEmpty
     }
     
-    
+    func configureTableViewBackground() {
+        addRecipeInformationTable.backgroundColor = UIColor.clear
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.addRecipeInformationTable.bounds.size.width, height: self.addRecipeInformationTable.bounds.size.height))
+        backgroundView.backgroundColor = UIColor.clear
+        self.addRecipeInformationTable.backgroundView = backgroundView
+    }
     
     
     func configureTableView() {
         addRecipeInformationTable.delegate = self
         addRecipeInformationTable.dataSource = self
+        configureTableViewBackground()
+        
         self.sectionArray = ["菜餚", "步驟", "營養成分", "成分"]
         self.addRecipeInformationTable.separatorStyle = .none
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldCell")

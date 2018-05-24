@@ -15,7 +15,6 @@ class NutrientsEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
-        self.view.backgroundColor = UIColor.blue
         self.view.addSubview(nutrientsEditView)
         nutrientsEditView.frame = self.view.frame
     }

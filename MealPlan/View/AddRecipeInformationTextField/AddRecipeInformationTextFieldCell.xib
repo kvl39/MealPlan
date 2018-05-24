@@ -32,6 +32,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="aSn-sK-NmH" firstAttribute="leading" secondItem="Xkd-vd-oTe" secondAttribute="trailing" constant="15" id="1Zq-TQ-8sk"/>
                     <constraint firstItem="Xkd-vd-oTe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6TC-6c-jRG"/>
@@ -40,6 +41,7 @@
                     <constraint firstAttribute="trailing" secondItem="aSn-sK-NmH" secondAttribute="trailing" constant="15" id="qTN-w2-tw8"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="textField" destination="aSn-sK-NmH" id="qc2-rf-M22"/>
