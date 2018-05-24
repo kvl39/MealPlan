@@ -15,7 +15,7 @@ import IQKeyboardManagerSwift
 class AddRecipeInformationViewController: MPTableViewController {
 
     @IBOutlet weak var addRecipeInformationTable: UITableView!
-    var cellHeight: [CGFloat] = []
+    var cellHeight: [[CGFloat]] = []
     let popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
     var alertController = AlertManager()
@@ -231,6 +231,7 @@ class AddRecipeInformationViewController: MPTableViewController {
     func configureTableView() {
         addRecipeInformationTable.delegate = self
         addRecipeInformationTable.dataSource = self
+        self.sectionArray = ["菜餚", "步驟", "營養成分", "成分"]
         self.addRecipeInformationTable.separatorStyle = .none
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldCell")
         addRecipeInformationTable.register(UINib(nibName: "AddRecipeInformationTextFieldWithImageCell", bundle: nil), forCellReuseIdentifier: "AddRecipeInformationTextFieldWithImageCell")
@@ -238,28 +239,38 @@ class AddRecipeInformationViewController: MPTableViewController {
         addRecipeInformationTable.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
         addRecipeInformationTable.register(UINib(nibName: "NutrientsEditCell", bundle: nil), forCellReuseIdentifier: "NutrientsEditCell")
         self.rowArray.append([])
+        self.cellHeight.append([])
         self.rowArray[0].append(.textFieldType("菜餚名稱：", "例如：蔥爆牛肉"))
-        self.cellHeight.append(50.0)
-        self.rowArray[0].append(.recipeStepType)
-        self.cellHeight.append(243.0)
-        self.rowArray[0].append(.recipeStepType)
-        self.cellHeight.append(243.0)
-        self.rowArray[0].append(.sliderType(500.0, "卡路里", "大卡"))
-        self.cellHeight.append(100.0)
-        self.rowArray[0].append(.sliderType(500.0, "脂肪", "克"))
-        self.cellHeight.append(100.0)
-        self.rowArray[0].append(.nutrientsEditType)
-        self.cellHeight.append(100.0)
+        self.cellHeight[0].append(50.0)
+        
+        self.rowArray.append([])
+        self.cellHeight.append([])
+        self.rowArray[1].append(.recipeStepType)
+        self.cellHeight[1].append(243.0)
+        self.rowArray[1].append(.recipeStepType)
+        self.cellHeight[1].append(243.0)
+        
+        self.rowArray.append([])
+        self.cellHeight.append([])
+        self.rowArray[2].append(.sliderType(500.0, "卡路里", "大卡"))
+        self.cellHeight[2].append(100.0)
+        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
+        self.cellHeight[2].append(100.0)
+        
+        self.rowArray.append([])
+        self.cellHeight.append([])
+        self.rowArray[3].append(.nutrientsEditType)
+        self.cellHeight[3].append(100.0)
     }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.cellHeight[indexPath.row]
+        return self.cellHeight[indexPath.section][indexPath.row]
     }
     
     
-    override func updateTableView(newHeight: CGFloat, serialNumber: Int) {
-        self.cellHeight[serialNumber] = newHeight
+    override func updateTableView(newHeight: CGFloat, section: Int, row: Int) {
+        self.cellHeight[section][row] = newHeight
         UIView.performWithoutAnimation {
             self.addRecipeInformationTable.beginUpdates()
             self.addRecipeInformationTable.endUpdates()

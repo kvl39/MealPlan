@@ -165,7 +165,7 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
     var rowControllerArray : [[UIViewController]] = []
     var rowControllerIndexDic : [Int: Int] = [:]
     //weak var delegate: MPTableViewControllerDelegateProtocol?
-    func updateTableView(newHeight: CGFloat, serialNumber: Int) {}
+    func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
 }
 
 extension MPTableViewController {
@@ -195,6 +195,11 @@ extension MPTableViewController {
             return 0
         }
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let item = rowArray[indexPath.section][indexPath.row]
+//        
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = rowArray[indexPath.section][indexPath.row]
@@ -292,7 +297,8 @@ extension MPTableViewController {
                 inputTextViewController.view.bottomAnchor.constraint(equalTo: cell.viewForTextField.bottomAnchor, constant: 0)
                 ])
             inputTextViewController.didMove(toParentViewController: self)
-            inputTextViewController.serialNumber = indexPath.row
+            inputTextViewController.section = indexPath.section
+            inputTextViewController.row = indexPath.row
             inputTextViewController.delegate = self
             return cell
         case .sliderType:

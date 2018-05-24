@@ -10,7 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 
 protocol InputTextViewControllerDelegate: class {
-    func updateTableView(newHeight: CGFloat, serialNumber: Int)
+    func updateTableView(newHeight: CGFloat, section: Int, row: Int)
 }
 
 
@@ -18,7 +18,8 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
 
     let textView = UITextView()
     weak var delegate: InputTextViewControllerDelegate?
-    var serialNumber = 0
+    var section = 0
+    var row = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +78,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
             self.view.frame.size = textView.frame.size
             self.view.layoutIfNeeded()
             IQKeyboardManager.shared.reloadLayoutIfNeeded()
-            self.delegate?.updateTableView(newHeight: 243 + heightDiff, serialNumber: self.serialNumber)
+            self.delegate?.updateTableView(newHeight: 243 + heightDiff, section: self.section, row: self.row)
         }
     }
     
