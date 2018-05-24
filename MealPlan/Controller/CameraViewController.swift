@@ -31,6 +31,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         configureButtons()
         configurePopupButtons()
     }
@@ -48,7 +49,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func configurePopupButtons() {
-        popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "camera"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork"),#imageLiteral(resourceName: "iTunesArtwork-1")], on: self.view)
+        popupButtons = popupButtonManager.addButton(with: [#imageLiteral(resourceName: "instagram"),#imageLiteral(resourceName: "pig"),#imageLiteral(resourceName: "cabbage"),#imageLiteral(resourceName: "iTunesArtwork"),#imageLiteral(resourceName: "iTunesArtwork-1")], on: self.view)
         popupButtons[0].addTarget(self, action: #selector(mainButtonAction(_:)), for: .touchUpInside)
         popupButtons[1].addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         popupButtons[2].addTarget(self, action: #selector(popupButton2Action(_:)), for: .touchUpInside)
@@ -83,15 +84,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     func configureButtons() {
-        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 25, y: self.view.frame.height-50, width: 50, height: 50))
+        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 30, y: self.view.frame.height-100, width: 60, height: 60))
         takePhotoButton.addTarget(self, action: #selector(takePhoto(_:)), for: .touchUpInside)
         self.view.addSubview(takePhotoButton)
-        takePhotoButton.setImage(#imageLiteral(resourceName: "pig"), for: .normal)
+        takePhotoButton.setImage(#imageLiteral(resourceName: "shutter"), for: .normal)
         self.view.bringSubview(toFront: takePhotoButton)
         
-        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-50, width: 50, height: 50))
+        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-105, width: 50, height: 50))
         cancelButton.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
-        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        cancelButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         self.view.addSubview(cancelButton)
         self.view.bringSubview(toFront: cancelButton)
     }
@@ -125,9 +126,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         previewLayer.bounds = CGRect(x: 0, y: 0, width: self.view.frame.height-150, height: self.view.frame.size.width)
         
-        previewLayer.position = CGPoint(x: self.view.frame.size.width / 2.0, y: self.view.frame.size.height / 2.0)
+        //previewLayer.position = CGPoint(x: self.view.frame.size.width / 2.0, y: self.view.frame.size.height / 2.0)
+        
         
         previewLayer.setAffineTransform(CGAffineTransform.init(rotationAngle: CGFloat(M_PI/2.0)))
+        previewLayer.frame.origin = CGPoint(x: 0, y: 0)
         self.view.layer.addSublayer(self.previewLayer)
         captureSession.startRunning()
         

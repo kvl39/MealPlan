@@ -30,6 +30,9 @@ class AddPagePopupTableViewController: MPTableViewController {
     func configureTableView() {
         tableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         for index in 0...recipeClass.recipeTitle.count-1 {
+            if self.rowArray.count == 0 {
+                self.rowArray.append([])
+            }
             self.rowArray[0].append(.recipeCellType(recipeClass.recipeImage[index], recipeClass.recipeTitle[index]))
         }
     }
