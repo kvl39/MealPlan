@@ -163,7 +163,7 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
     var sectionArray: [String] = []
     var rowArray: [[MPTableViewCellType]] = []
     var rowControllerArray : [[UIViewController]] = []
-    var rowControllerIndexDic : [Int: Int] = [:]
+    var rowControllerIndexDic : [IndexPath : Int] = [:]
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
 }
@@ -196,41 +196,32 @@ extension MPTableViewController {
         }
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let item = rowArray[indexPath.section][indexPath.row]
-//        
-//    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let item = rowArray[indexPath.section][indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.configureCell().reuseIdentifier, for: indexPath)
         switch (item) {
         case .horizontalCollectionViewType:
-            guard let cell = cell as? HorizontalCollectionView else {return UITableViewCell()}
-            guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return cell}
+            guard let cell = cell as? HorizontalCollectionView else {return }
+            guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return}
             cell.viewArray = itemStruct.viewArray
             cell.titleArray = itemStruct.titleArray
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             //cell
             cell.selectionStyle = .none
-            return cell
         case .calendarCollectionViewType:
-            guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}
+            guard let cell = cell as? CalendarCollectionView else {return}
             //cell.frame = tableView.bounds
             //cell.layoutIfNeeded()
             //cell.delegate = self
-            return cell
         case .recipeCellType:
-            guard let cell = cell as? RecipeTableViewCell else {return UITableViewCell()}
-            guard let itemStruct = item.configureCell() as? RecipeCellItem else {return cell}
+            guard let cell = cell as? RecipeTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? RecipeCellItem else {return }
             cell.recipeImage.image = itemStruct.image
             cell.recipeName.text = itemStruct.title
             cell.backgroundColor = UIColor.clear
-            return cell
         case .recipeSearchCellType:
-            guard let cell = cell as? RecipeSearchResultCell else {return UITableViewCell()}
-            guard let itemStruct = item.configureCell() as? RecipeSearchCellItem else {return cell}
+            guard let cell = cell as? RecipeSearchResultCell else {return}
+            guard let itemStruct = item.configureCell() as? RecipeSearchCellItem else {return}
             cell.recipeTitle.text = itemStruct.title
             cell.selectRecipe.addTarget(self, action: #selector(selectRecipeAction(_:)), for: .touchUpInside)
             cell.selectRecipe.tag = indexPath.row
@@ -244,23 +235,20 @@ extension MPTableViewController {
             } else {
                 cell.loadImage(imageURL: itemStruct.imageURL)
             }
-            return cell
         case .recipeNoteType:
-            guard let cell = cell as? RecipeNoteView else {return UITableViewCell()}
-            return cell
+            guard let cell = cell as? RecipeNoteView else {return}
         case .textFieldType:
-            guard let cell = cell as? AddRecipeInformationTextFieldCell else {return UITableViewCell()}
-            guard let itemStruct = item.configureCell() as? TextFieldItem else {return cell}
+            guard let cell = cell as? AddRecipeInformationTextFieldCell else {return}
+            guard let itemStruct = item.configureCell() as? TextFieldItem else {return}
             cell.textFieldLabel.text = itemStruct.textFieldLabel
             cell.textField.placeholder = itemStruct.textFieldPlaceHolder
-            return cell
         case .recipeStepType:
-            guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return UITableViewCell()}
+            guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return}
             cell.selectionStyle = .none
-            guard let itemStruct = item.configureCell() as? RecipeStepItem else {return cell}
+            guard let itemStruct = item.configureCell() as? RecipeStepItem else {return}
             var imagePickerViewController = itemStruct.imagePickerViewController
             var inputTextViewController = itemStruct.inputTextViewController
-            if let index = self.rowControllerIndexDic[indexPath.row],
+            if let index = self.rowControllerIndexDic[indexPath],
                 let storedimagePickerViewController = self.rowControllerArray[index][0] as? ImagePickerViewController,
                 let storedinputTextViewController = self.rowControllerArray[index][1] as? InputTextViewController {
                 imagePickerViewController = storedimagePickerViewController
@@ -268,7 +256,7 @@ extension MPTableViewController {
             } else {
                 let controllerArray = [imagePickerViewController, inputTextViewController]
                 self.rowControllerArray.append(controllerArray)
-                self.rowControllerIndexDic[indexPath.row] = self.rowControllerArray.count-1
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
             }
             addChildViewController(imagePickerViewController)
             imagePickerViewController.view.frame = cell.viewForImagePicker.frame
@@ -300,53 +288,86 @@ extension MPTableViewController {
             inputTextViewController.section = indexPath.section
             inputTextViewController.row = indexPath.row
             inputTextViewController.delegate = self
-            return cell
         case .sliderType:
-            guard let cell = cell as? AddRecipeInformationSliderCell else {return UITableViewCell()}
+            print("section:\(indexPath.section), row:\(indexPath.row), step-------")
+            guard let cell = cell as? AddRecipeInformationSliderCell else {return}
             cell.selectionStyle = .none
-            guard let itemStruct = item.configureCell() as? SliderItem else {return cell}
+            guard let itemStruct = item.configureCell() as? SliderItem else {return}
             //let sliderController = itemStruct.sliderController
             var sliderController = SliderViewController()
-            if let index = self.rowControllerIndexDic[indexPath.row],
+            if let index = self.rowControllerIndexDic[indexPath],
                 let storedSliderViewController = self.rowControllerArray[index][0] as? SliderViewController {
                 sliderController = storedSliderViewController
             } else {
                 let controllerArray = [sliderController]
                 self.rowControllerArray.append(controllerArray)
-                self.rowControllerIndexDic[indexPath.row] = rowControllerArray.count-1
+                self.rowControllerIndexDic[indexPath] = rowControllerArray.count-1
             }
             addChildViewController(sliderController)
             sliderController.view.frame = cell.contentView.frame
-            print(sliderController.view.frame)
             sliderController.sliderMax = Int(itemStruct.slidermax)
             sliderController.sliderView.sliderUnit.text = itemStruct.sliderUnit
             sliderController.sliderView.sliderDescription.text = itemStruct.sliderDescription
             sliderController.resetSliderMax()
             cell.contentView.addSubview(sliderController.view)
             sliderController.didMove(toParentViewController: self)
-            return cell
         case .nutrientsEditType:
-            guard let cell = cell as? NutrientsEditCell else {return UITableViewCell()}
+            guard let cell = cell as? NutrientsEditCell else {return}
             cell.selectionStyle = .none
             var nutrientsEditController = NutrientsEditViewController()
-            if let index = self.rowControllerIndexDic[indexPath.row],
+            if let index = self.rowControllerIndexDic[indexPath],
                 let storedNutrientsEditController = self.rowControllerArray[index][0] as? NutrientsEditViewController {
                 nutrientsEditController = storedNutrientsEditController
             } else {
                 let controllerArray = [nutrientsEditController]
                 self.rowControllerArray.append(controllerArray)
-                self.rowControllerIndexDic[indexPath.row] = self.rowControllerArray.count-1
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
             }
             addChildViewController(nutrientsEditController)
             nutrientsEditController.view.frame = cell.contentView.frame
             cell.contentView.addSubview(nutrientsEditController.view)
             nutrientsEditController.didMove(toParentViewController: self)
+        case .recipeIngredientType:
+            guard let cell = cell as? RecipeDetailIngredientCell else {return}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
+            cell.ingredientLabel.text = itemStruct.ingredientText
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = rowArray[indexPath.section][indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.configureCell().reuseIdentifier, for: indexPath)
+        switch (item) {
+        case .horizontalCollectionViewType:
+            guard let cell = cell as? HorizontalCollectionView else {return UITableViewCell()}
+            return cell
+        case .calendarCollectionViewType:
+            guard let cell = cell as? CalendarCollectionView else {return UITableViewCell()}
+            return cell
+        case .recipeCellType:
+            guard let cell = cell as? RecipeTableViewCell else {return UITableViewCell()}
+            return cell
+        case .recipeSearchCellType:
+            guard let cell = cell as? RecipeSearchResultCell else {return UITableViewCell()}
+            return cell
+        case .recipeNoteType:
+            guard let cell = cell as? RecipeNoteView else {return UITableViewCell()}
+            return cell
+        case .textFieldType:
+            guard let cell = cell as? AddRecipeInformationTextFieldCell else {return UITableViewCell()}
+            return cell
+        case .recipeStepType:
+            guard let cell = cell as? AddRecipeInformationTextFieldWithImageCell else {return UITableViewCell()}
+            return cell
+        case .sliderType:
+            guard let cell = cell as? AddRecipeInformationSliderCell else {return UITableViewCell()}
+            return cell
+        case .nutrientsEditType:
+            guard let cell = cell as? NutrientsEditCell else {return UITableViewCell()}
             return cell
         case .recipeIngredientType:
             guard let cell = cell as? RecipeDetailIngredientCell else {return UITableViewCell()}
-            cell.selectionStyle = .none
-            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return cell}
-            cell.ingredientLabel.text = itemStruct.ingredientText
             return cell
         }
     }
@@ -362,7 +383,7 @@ extension MPTableViewController {
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let index = self.rowControllerIndexDic[indexPath.row] {
+        if let index = self.rowControllerIndexDic[indexPath] {
             for controller in self.rowControllerArray[index] {
                 controller.willMove(toParentViewController: nil)
                 controller.view.removeFromSuperview()

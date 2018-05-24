@@ -15,7 +15,7 @@ class SliderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.view.frame)
+        //print(self.view.frame)
         self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
         //self.view.backgroundColor = UIColor.blue
         self.view.addSubview(sliderView)

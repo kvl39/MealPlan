@@ -256,6 +256,12 @@ class AddRecipeInformationViewController: MPTableViewController {
         self.cellHeight[2].append(100.0)
         self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
         self.cellHeight[2].append(100.0)
+        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
+        self.cellHeight[2].append(100.0)
+        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
+        self.cellHeight[2].append(100.0)
+        self.rowArray[2].append(.sliderType(500.0, "脂肪", "克"))
+        self.cellHeight[2].append(100.0)
         
         self.rowArray.append([])
         self.cellHeight.append([])
