@@ -59,7 +59,12 @@ class DiscoveryPageViewController: UIViewController {
     
     func configureInitialCardStack() {
         for i in 0...2 {
-            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + CGFloat(i*20), y: view.center.y - 200 + CGFloat(i*20), width: 300, height: 400))
+            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + CGFloat(i*5), y: view.center.y - 200 + CGFloat(i*20) - 40, width: 300, height: 400))
+            newCardView.transform = CGAffineTransform(scaleX: 1 - CGFloat(Double(i)*0.2), y: 1).translatedBy(x: 0, y: CGFloat(-10*i))
+            
+//            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + 10, y: view.center.y - 200 + 40 - 40, width: 300, height: 400))
+//            newCardView.transform = CGAffineTransform(scaleX: 0.6, y: 1).translatedBy(x: 0, y: -20)
+            
             attachCardInformation(newCardView: newCardView)
             newCardView.title.text = self.menuRecipeNameArray[counter][0]
             newCardView.hint.text = "\(counter)"
@@ -88,7 +93,7 @@ class DiscoveryPageViewController: UIViewController {
         
         //card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
         card.frame.origin.x = self.view.center.x - 150 + point.x
-        card.frame.origin.y = self.view.center.y - 200 + point.y
+        card.frame.origin.y = self.view.center.y - 200 + point.y - 40
         
         if xFromCenter > 0 {
             let factor = 2 * xFromCenter / view.frame.width
@@ -124,7 +129,8 @@ class DiscoveryPageViewController: UIViewController {
             }
             UIView.animate(withDuration: 0.2) {
                 card.frame.origin.x = self.view.center.x - 150
-                card.frame.origin.y = self.view.center.y - 200
+                card.frame.origin.y = self.view.center.y - 200 - 40
+                print("y:\(self.view.center.y)")
                 self.rightDestinationButton.alpha = 0
                 self.leftDestinationButton.alpha = 0
             }
@@ -154,7 +160,8 @@ class DiscoveryPageViewController: UIViewController {
         }
         
         if counter < self.menuRecipeNameArray.count {
-            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + 40, y: view.center.y - 200 + 40, width: 300, height: 400))
+            let newCardView = DiscoverCardView(frame: CGRect(x: view.center.x - 150 + 10, y: view.center.y - 200 + 40 - 40, width: 300, height: 400))
+            newCardView.transform = CGAffineTransform(scaleX: 0.6, y: 1).translatedBy(x: 0, y: -20)
             attachCardInformation(newCardView: newCardView)
             newCardView.title.text = self.menuRecipeNameArray[counter][0]
             newCardView.hint.text = "\(counter)"
@@ -165,10 +172,16 @@ class DiscoveryPageViewController: UIViewController {
             mainBackgroundImageView.insertSubview(newCardView, at: 0)
             
             UIView.animate(withDuration: 0.2) {
-                self.cardArray[0].transform = CGAffineTransform(translationX: -40, y: -40)
-                self.cardArray[1].transform = CGAffineTransform(translationX: -20, y: -20)
+                if self.counter == 4 {
+                    self.cardArray[0].transform = CGAffineTransform(translationX: 0, y: -20).scaledBy(x: 1.0, y: 1.0)
+                } else {
+                    self.cardArray[0].transform = CGAffineTransform(translationX: 0, y: -40).scaledBy(x: 1.0, y: 1.0)
+                }
+                
+                self.cardArray[1].transform = CGAffineTransform(translationX: 0, y: -30).scaledBy(x: 0.8, y: 1)
                 newCardView.alpha = 1
             }
+            
         }
     }
     
