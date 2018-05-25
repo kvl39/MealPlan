@@ -17,9 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="SpI-38-2lx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MealPlan3" translatesAutoresizingMaskIntoConstraints="NO" id="32S-ZA-W30">
+                                <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dja-Nr-5Xd"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.001" translatesAutoresizingMaskIntoConstraints="NO" id="foa-C2-I8S">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="trailing" secondItem="32S-ZA-W30" secondAttribute="trailing" id="4o5-zm-Cem"/>
+                            <constraint firstItem="32S-ZA-W30" firstAttribute="leading" secondItem="KJD-66-jgC" secondAttribute="leading" id="Mhp-W7-nq7"/>
+                            <constraint firstItem="foa-C2-I8S" firstAttribute="top" secondItem="32S-ZA-W30" secondAttribute="bottom" id="XgY-QK-Tyq"/>
+                            <constraint firstItem="32S-ZA-W30" firstAttribute="top" secondItem="KJD-66-jgC" secondAttribute="top" id="XhV-9a-GCn"/>
+                            <constraint firstItem="foa-C2-I8S" firstAttribute="leading" secondItem="KJD-66-jgC" secondAttribute="leading" id="ZRV-iM-r5x"/>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="bottom" secondItem="foa-C2-I8S" secondAttribute="bottom" id="gs4-pv-tOk"/>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="trailing" secondItem="foa-C2-I8S" secondAttribute="trailing" id="yau-JK-nCe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KJD-66-jgC"/>
                     </view>
+                    <connections>
+                        <outlet property="mainBackgroundImageView" destination="foa-C2-I8S" id="ih9-zk-4ll"/>
+                        <outlet property="topImageView" destination="32S-ZA-W30" id="moq-ll-VT1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2U-S0-q6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="xHO-PN-rLe">
@@ -46,4 +70,8 @@
             <point key="canvasLocation" x="1415" y="2214"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MealPlan3" width="600" height="224"/>
+        <image name="background.001" width="1024" height="768"/>
+    </resources>
 </document>

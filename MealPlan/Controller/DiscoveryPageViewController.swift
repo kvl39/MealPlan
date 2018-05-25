@@ -11,6 +11,10 @@ import SDWebImage
 
 class DiscoveryPageViewController: UIViewController {
     
+    @IBOutlet weak var topImageView: UIImageView!
+    
+    @IBOutlet weak var mainBackgroundImageView: UIImageView!
+    
     var cardArray: [DiscoverCardView] = []
     var counter = 0
     lazy var leftDestinationButton = UIButton(frame: CGRect(x: 20, y: 100.0, width: 100.0, height: 100.0))
@@ -25,6 +29,8 @@ class DiscoveryPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+        mainBackgroundImageView.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +65,8 @@ class DiscoveryPageViewController: UIViewController {
             newCardView.hint.text = "\(counter)"
             counter += 1
             cardArray.append(newCardView)
-            self.view.insertSubview(newCardView, at: 0)
+            //self.view.insertSubview(newCardView, at: 0)
+            mainBackgroundImageView.insertSubview(newCardView, at: 0)
         }
         addGestureRecognizer()
     }
@@ -154,7 +161,8 @@ class DiscoveryPageViewController: UIViewController {
             counter += 1
             cardArray.append(newCardView)
             newCardView.alpha = 0
-            self.view.insertSubview(newCardView, at: 0)
+            //self.view.insertSubview(newCardView, at: 0)
+            mainBackgroundImageView.insertSubview(newCardView, at: 0)
             
             UIView.animate(withDuration: 0.2) {
                 self.cardArray[0].transform = CGAffineTransform(translationX: -40, y: -40)
