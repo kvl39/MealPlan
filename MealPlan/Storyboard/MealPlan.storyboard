@@ -521,6 +521,9 @@
                                 <rect key="frame" x="10" y="627" width="355" height="30"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.82745098039999998" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Steps"/>
+                                <connections>
+                                    <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Tgu-9C-LrK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

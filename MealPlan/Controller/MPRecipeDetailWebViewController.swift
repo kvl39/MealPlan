@@ -13,12 +13,13 @@ class MPRecipeDetailWebViewController: UIViewController, WKNavigationDelegate, W
         
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var progressBar: UIProgressView!
+    var urlString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
         webView.uiDelegate = self
-        webView.load(URLRequest(url: URL(string: "https://google.com.tw")!))
+        webView.load(URLRequest(url: URL(string: urlString)!))
         progressBar.tintColor = UIColor.red
         progressBar.progress = 0.0
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)

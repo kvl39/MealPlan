@@ -23,6 +23,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var recipeData: RecipeCalendarRealmModel!
     var firebaseManager = MPFirebaseManager()
     var recipeIngredients = [[String: Any]]()
+    var recipeURLString = ""
     
     
     override func viewDidLoad() {
@@ -120,6 +121,28 @@ class MPRecipeDetailViewController: MPTableViewController {
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    
+    @IBAction func pushToStepPage(_ sender: UIButton) {
+        if self.recipeData.withSteps {
+            
+        } else {
+            if let url = self.recipeData.recipeRealmModel?.url {
+                self.recipeURLString = url
+            }
+            performSegue(withIdentifier: "PushToWebView", sender: self)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PushToWebView" {
+            let vc = segue.destination as? MPRecipeDetailWebViewController
+            vc?.urlString = self.recipeURLString
+        }
+    }
+    
+    
 }
 
 
