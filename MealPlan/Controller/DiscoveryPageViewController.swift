@@ -35,8 +35,11 @@ class DiscoveryPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        retrieveAllMenu {
-            self.configureInitialCardStack()
+        if self.cardArray.count == 0 {
+            counter = 0
+            retrieveAllMenu {
+                self.configureInitialCardStack()
+            }
         }
         configureCardDestination()
     }
