@@ -30,10 +30,22 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
         horizontalScrollView.horizontalScrollView.contentSize.width = self.view.frame.width * CGFloat(numberOfScrolls)
         for index in 0...numberOfScrolls-1 {
             let view = UIView(frame: CGRect(x: 10 + self.view.frame.width * CGFloat(index), y: 40, width: self.view.frame.width - 20, height: horizontalScrollView.horizontalScrollView.frame.height-40))
-            view.backgroundColor = UIColor.red
             view.tag = index + viewTagOffset
             self.horizontalScrollView.horizontalScrollView.addSubview(view)
             
+            //tag controller
+            let tagController = MPSelectionTagViewController()
+            tagController.createTag(with: ["AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB"])
+            addChildViewController(tagController)
+            view.addSubview(tagController.view)
+            tagController.view.frame.size = CGSize(width: view.frame.width - 40, height: view.frame.height)
+            tagController.view.frame.origin = CGPoint(x: tagController.view.frame.origin.x + CGFloat(20), y: 0)
+            print("center:\(view.center.x)")
+            
+            //tagController.view.frame.origin = CGPoint(x: view.frame.origin.x + 20, y: 0)
+            tagController.didMove(toParentViewController: self)
+            
+            //label
             let label = UILabel(frame: CGRect(x: 0, y: 5, width: 0, height: 40))
             label.text = scrollViewLabel[index]
             label.font = UIFont(name: "PingFangTC-Light ", size: 30)

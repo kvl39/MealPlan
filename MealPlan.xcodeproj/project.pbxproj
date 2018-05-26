@@ -94,6 +94,7 @@
 		ADB6169020B9581A00B637D6 /* MPHorizontalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */; };
 		ADB6169320B958E500B637D6 /* MPHorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6169220B958E500B637D6 /* MPHorizontalScrollView.swift */; };
 		ADB6169520B9590600B637D6 /* MPHorizontalScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADB6169420B9590600B637D6 /* MPHorizontalScrollView.xib */; };
+		ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */; };
 		ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
@@ -193,6 +194,7 @@
 		ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPHorizontalScrollViewController.swift; sourceTree = "<group>"; };
 		ADB6169220B958E500B637D6 /* MPHorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPHorizontalScrollView.swift; sourceTree = "<group>"; };
 		ADB6169420B9590600B637D6 /* MPHorizontalScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPHorizontalScrollView.xib; sourceTree = "<group>"; };
+		ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSelectionTagViewController.swift; sourceTree = "<group>"; };
 		ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailStepsViewController.swift; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				AD566B4A209B0649009915F3 /* AddPageViewController.swift */,
 				AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */,
 				AD53A1F3209FF15D0016E4D1 /* MPTagViewController.swift */,
+				ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */,
 				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
 				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
@@ -766,6 +769,7 @@
 				AD1D9232209B759F00B9AFE9 /* MPHttpClient.swift in Sources */,
 				AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */,
 				ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */,
+				ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */,
 				AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */,
 				AD2F274120AA95E900F8CA1B /* PhotoViewController.swift in Sources */,
 			);
