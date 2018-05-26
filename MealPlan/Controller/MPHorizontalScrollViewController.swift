@@ -38,6 +38,10 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             label.font = UIFont.boldSystemFont(ofSize: 30)
             label.sizeToFit()
             label.tag = 10 + index + viewTagOffset
+            label.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapTitle(sender:)))
+            
+            label.addGestureRecognizer(tap)
             if index == 0 {
                 label.center.x = view.center.x
             } else {
@@ -45,6 +49,24 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.horizontalScrollView.horizontalScrollView.addSubview(label)
+        }
+    }
+    
+    @objc func tapTitle(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let locationx = sender.location(in: self.view).x
+            print("sender location:\(locationx)")
+            let originalContentOffset = horizontalScrollView.horizontalScrollView.contentOffset
+            if locationx < 50 {
+                print("go left")
+                let moveTo = CGPoint(x: originalContentOffset.x - horizontalScrollView.horizontalScrollView.frame.width, y: originalContentOffset.y)
+                self.horizontalScrollView.horizontalScrollView.setContentOffset(moveTo, animated: true)
+            } else if locationx > self.view.frame.width - 50 {
+                print("go right")
+                let moveTo = CGPoint(x: originalContentOffset.x + horizontalScrollView.horizontalScrollView.frame.width, y: originalContentOffset.y)
+                self.horizontalScrollView.horizontalScrollView.setContentOffset(moveTo, animated: true)
+            }
+            
         }
     }
     
