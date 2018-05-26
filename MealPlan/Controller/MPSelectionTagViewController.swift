@@ -32,10 +32,11 @@ class MPSelectionTagViewController: UIViewController {
         for data in array {
             let width = data.widthOfString(using: UIFont(name: "Verdana", size: 13.0)!)
             let checkWholeWidth = xPos + width + 13.0 + 25.5 - offset + 10
-            if checkWholeWidth > UIScreen.main.bounds.size.width - 30.0 {
+            if checkWholeWidth > UIScreen.main.bounds.width - 60.0 {
                 xPos = 15.0
                 yPos += 29.0 + 8.0
             }
+
             
             let bgView = UIButton(frame: CGRect(x: xPos, y: yPos, width: width + 17.0 + 38.5 - offset, height: 29.0))
             bgView.layer.cornerRadius = 14.5

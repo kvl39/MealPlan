@@ -55,11 +55,11 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             //tag controller
             let tagController = MPSelectionTagViewController()
             self.tagControllers.append(tagController)
-            tagController.createTag(with: tagData[index])
             addChildViewController(tagController)
             view.addSubview(tagController.view)
             tagController.view.frame.size = CGSize(width: view.frame.width - 40, height: view.frame.height)
             tagController.view.frame.origin = CGPoint(x: tagController.view.frame.origin.x + CGFloat(20), y: 0)
+            tagController.createTag(with: tagData[index])
             tagController.didMove(toParentViewController: self)
             
             //label
