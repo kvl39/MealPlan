@@ -219,9 +219,7 @@ extension MPTableViewController {
             }
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return}
-            //cell.frame = tableView.bounds
-            //cell.layoutIfNeeded()
-            //cell.delegate = self
+            cell.selectionStyle = .none
         case .recipeCellType:
             guard let cell = cell as? RecipeTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? RecipeCellItem else {return }
