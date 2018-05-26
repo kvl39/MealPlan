@@ -34,7 +34,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         recipeManager.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        configureObserver()
+        //configureObserver()
         configureTableView()
     }
     
@@ -42,6 +42,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
     func configureObserver() {
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
+            
+            
             var searchKeyword = "?q="
             if tagArray.tags.count > 0 {
                 for index in 0...tagArray.tags.count-1 {
@@ -58,6 +60,33 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    
+    func generateSearchPath() ->String? {
+        var searchKeyword = "?q="
+        if tagArray.tags.count > 0 {
+            for index in 0...tagArray.tags.count-1 {
+                if index == 0 {
+                    searchKeyword += tagArray.tags[0]
+                } else {
+                    searchKeyword += "%26" + tagArray.tags[index]
+                }
+            }
+            searchKeyword += "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=7"
+            return searchKeyword
+        }
+        return nil
+    }
+    
+    func startSearching() {
+        if let searchPath = generateSearchPath() {
+            self.recipeManager.getRecipe(keyWord: searchPath)
+        } else {
+            self.rowArray = []
+            self.tableView.reloadData()
+        }
+        
     }
 
     

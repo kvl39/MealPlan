@@ -13,17 +13,33 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
     let horizontalScrollView = MPHorizontalScrollView()
     let viewArray = [UIView]()
     let numberOfScrolls = 3
-    let scrollViewLabel = ["肉類", "蔬菜", "水果"]
+    let scrollViewLabel = ["Meat", "Vegatable", "Fruit"]
     let viewTagOffset = 50
-    let fakeData = [
-        ["AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB"],
-        ["CCC", "CCCCCCC","CDDCD", "CCCC", "DDDD"], ["HOHOHOHO","PPPPPPPP"]]
+    var tagControllers = [MPSelectionTagViewController]()
+    var selectedTags = [String]()
+    let tagData = [
+        ["pork", "beef", "chicken", "fish", "lamb", "turkey", "shrimp"],
+        ["cabbage", "spinach", "broccoli", "brussel sprout", "beans", "celery", "potato", "trunip", "carrot"],
+        ["banana","apple","orange"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
         configureScrollView()
         self.view.backgroundColor = UIColor.clear
+    }
+    
+    
+    func getSelectedTags() {
+        selectedTags = []
+        for index in 0..<tagControllers.count {
+            for tagNumber in tagControllers[index].seletedTags {
+                 selectedTags.append(tagData[index][tagNumber-10])
+            }
+        }
+        if let parentVC = self.parent as? AddByClassificationViewController{
+            parentVC.selectedTags = selectedTags
+        }
     }
 
     func configureScrollView() {
@@ -38,7 +54,8 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             
             //tag controller
             let tagController = MPSelectionTagViewController()
-            tagController.createTag(with: fakeData[index])
+            self.tagControllers.append(tagController)
+            tagController.createTag(with: tagData[index])
             addChildViewController(tagController)
             view.addSubview(tagController.view)
             tagController.view.frame.size = CGSize(width: view.frame.width - 40, height: view.frame.height)
