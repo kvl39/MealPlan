@@ -20,6 +20,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
         configureScrollView()
+        self.view.backgroundColor = UIColor.clear
     }
 
     func configureScrollView() {
@@ -35,7 +36,9 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             
             let label = UILabel(frame: CGRect(x: 0, y: 5, width: 0, height: 40))
             label.text = scrollViewLabel[index]
-            label.font = UIFont.boldSystemFont(ofSize: 30)
+            label.font = UIFont(name: "PingFangTC-Light ", size: 30)
+            label.font = UIFont.boldSystemFont(ofSize: 25.0)
+            label.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
             label.sizeToFit()
             label.tag = 10 + index + viewTagOffset
             label.isUserInteractionEnabled = true

@@ -31,5 +31,7 @@ class MPHorizontalScrollView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.horizontalScrollView.isPagingEnabled = true
+        self.backgroundColor = UIColor.clear
+        self.contentView.backgroundColor = UIColor.clear
     }
 }
