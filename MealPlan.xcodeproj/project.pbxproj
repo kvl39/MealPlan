@@ -89,6 +89,7 @@
 		ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC4420985E53001B44CF /* MPCalendarView.swift */; };
 		ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */; };
 		ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */; };
+		ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
 		ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */; };
@@ -182,6 +183,7 @@
 		ADAEAC4420985E53001B44CF /* MPCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCalendarView.swift; sourceTree = "<group>"; };
 		ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionView.xib; sourceTree = "<group>"; };
+		ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailStepsViewController.swift; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
 		ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCardView.xib; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				AD5D381520B41F6A004B65BF /* AlertManager.swift */,
 				AD5D381720B42168004B65BF /* SaveImageManager.swift */,
 				AD5380F220B724D900B63062 /* DrawCameraLineManager.swift */,
+				ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */,
 				AD5D381820B42168004B65BF /* SaveImageManager.swift in Sources */,
 				AD4E2CF720A175E700C4573F /* AddPageAnimationController.swift in Sources */,
+				ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */,
 				AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */,
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,

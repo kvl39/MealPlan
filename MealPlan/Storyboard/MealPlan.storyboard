@@ -632,6 +632,36 @@
             </objects>
             <point key="canvasLocation" x="4526" y="1095"/>
         </scene>
+        <!--Recipe Detail Steps View Controller-->
+        <scene sceneID="LLC-0V-aPN">
+            <objects>
+                <viewController id="JSl-D7-nSg" customClass="MPRecipeDetailStepsViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VS5-Rh-0oU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7FN-RJ-4L3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7FN-RJ-4L3" firstAttribute="leading" secondItem="QxK-ar-snB" secondAttribute="leading" id="1kN-4d-WyS"/>
+                            <constraint firstItem="QxK-ar-snB" firstAttribute="bottom" secondItem="7FN-RJ-4L3" secondAttribute="bottom" id="5Og-Gg-UJS"/>
+                            <constraint firstItem="7FN-RJ-4L3" firstAttribute="trailing" secondItem="QxK-ar-snB" secondAttribute="trailing" id="HK3-U0-vI3"/>
+                            <constraint firstItem="7FN-RJ-4L3" firstAttribute="top" secondItem="QxK-ar-snB" secondAttribute="top" id="keF-MZ-M5k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QxK-ar-snB"/>
+                    </view>
+                    <connections>
+                        <outlet property="stepsTable" destination="7FN-RJ-4L3" id="YHI-4b-Gyw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VAn-N3-jTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4548" y="1887"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jBY-a3-3ee">
             <objects>
