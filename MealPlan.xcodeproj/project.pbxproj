@@ -89,6 +89,7 @@
 		ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC4420985E53001B44CF /* MPCalendarView.swift */; };
 		ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */; };
 		ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */; };
+		ADB6168920B90C2A00B637D6 /* HintLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6168820B90C2A00B637D6 /* HintLabels.swift */; };
 		ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
@@ -183,6 +184,7 @@
 		ADAEAC4420985E53001B44CF /* MPCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCalendarView.swift; sourceTree = "<group>"; };
 		ADAEAC462098670A001B44CF /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		ADAEAC472098670A001B44CF /* CalendarCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionView.xib; sourceTree = "<group>"; };
+		ADB6168820B90C2A00B637D6 /* HintLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintLabels.swift; sourceTree = "<group>"; };
 		ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailStepsViewController.swift; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		AD2C8E342096EFAD0083B229 /* MealPlan */ = {
 			isa = PBXGroup;
 			children = (
+				ADB6168720B90C1100B637D6 /* Support */,
 				AD6ED3F120B2B38E00B194BF /* Extension */,
 				AD2C8E4A2096F0040083B229 /* Controller */,
 				AD2C8E492096EFFE0083B229 /* View */,
@@ -483,6 +486,14 @@
 			path = CalendarView;
 			sourceTree = "<group>";
 		};
+		ADB6168720B90C1100B637D6 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6168820B90C2A00B637D6 /* HintLabels.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		ADF599B020AD393300C73097 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +691,7 @@
 				AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
 				AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */,
+				ADB6168920B90C2A00B637D6 /* HintLabels.swift in Sources */,
 				ADF599BD20ADC5A100C73097 /* DiscoveryPageViewController.swift in Sources */,
 				AD566B4B209B0649009915F3 /* AddPageViewController.swift in Sources */,
 				AD6C0C5620A7FBB100EE49CA /* MPRecipeDetailViewController.swift in Sources */,

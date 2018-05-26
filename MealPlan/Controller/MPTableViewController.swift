@@ -164,6 +164,7 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
     var rowArray: [[MPTableViewCellType]] = []
     var rowControllerArray : [[UIViewController]] = []
     var rowControllerIndexDic : [IndexPath : Int] = [:]
+    var hintLabels = HintLabels()
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
 }
@@ -208,6 +209,14 @@ extension MPTableViewController {
             //cell.layoutIfNeeded()
             //cell
             cell.selectionStyle = .none
+            if itemStruct.viewArray.count == 0 {
+                cell.hintView.alpha = 1
+                let randomIndex = Int(arc4random_uniform(UInt32(hintLabels.hintLabels.count)))
+                cell.hintViewLabel.text = hintLabels.hintLabels[randomIndex]
+                print(randomIndex)
+            } else {
+                cell.hintView.alpha = 0
+            }
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return}
             //cell.frame = tableView.bounds

@@ -42,7 +42,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         testTable.dataSource = self
 
         configureTableView()
-        configureAddButton()
+        //configureAddButton()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         self.view.addSubview(addedButtonSubView)
         addedButtonSubView.alpha = 0
@@ -195,19 +195,12 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
         let button = UIButton.init(type: .system)
         button.setTitle("", for: .normal)
-        //button.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
         button.setImage(image, for: .normal)
         button.tintColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1.0)
-        //button.setTitle(title, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = button.frame.size.width / 2
         button.layer.masksToBounds = true
-        //button.clipsToBounds = true
-
-//        globeButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
-//        globeButton.layer.shadowOffset = CGSizeMake(0.0, 2.0)
-//        globeButton.layer.shadowOpacity = 1.0
 
         button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
@@ -225,35 +218,28 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     func configureTableView() {
         self.testTable.separatorStyle = .none
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
-        //backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
         backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background.001"))
         self.testTable.backgroundView = backgroundView
-        testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
+        
+        testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")
         testTable.register(UINib(nibName: "HorizontalCollectionView",
                                  bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         testTable.register(UINib(nibName: "RecipeNoteView", bundle: nil), forCellReuseIdentifier: "RecipeNoteView")
         self.rowArray.append([])
         self.rowArray[0].append(.calendarCollectionViewType)
-
-       var imageArray = [UIView]()
-       imageArray.append(pieChartManager.generateViewWithPieChart(value: 90))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-       var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
        
-       self.rowArray[0].append(.horizontalCollectionViewType(imageArray, titleArray))
-       //self.rowArray.append(.recipeNoteType)
+       self.rowArray[0].append(.horizontalCollectionViewType([], []))
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(createRecipe(notification:)), name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil)
-
+        //collectionViewHintButtonDidPressed
+        NotificationCenter.default.addObserver(self, selector: #selector(startPlanning(notification:)), name: NSNotification.Name(rawValue: "collectionViewHintButtonDidPressed"), object: nil)
     }
     
+    @objc func startPlanning(notification: Notification) {
+        performSegue(withIdentifier: "PushToAddPage", sender: self)
+    }
     
     @objc func onSelectCollectionViewItem(notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -264,8 +250,6 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         print("selected:\(self.selectedRow)")
         self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
     }
-    
-    
 
     func generateViewWithImage(image: UIImage) -> UIView {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
@@ -319,7 +303,6 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
 
     func updateDataInTableView() {
-
         self.rowArray[0][1] = .horizontalCollectionViewType(recipeImageArray, recipeTitleArray)
 
         var indexPath = IndexPath(row: 1, section: 0)
