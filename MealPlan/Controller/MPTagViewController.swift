@@ -22,15 +22,23 @@ class MPTagViewController: UIViewController {
 
     var tagArray: AddPageTag!
     var observation: NSKeyValueObservation!
-
+    lazy var hintLabel = UILabel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureObserver()
+        //configureObserver()
+        configureHints()
+
     }
     
-    
+    func configureHints() {
+        hintLabel.text = "Choose some tags..."
+        hintLabel.textColor = UIColor.black
+        hintLabel.font = UIFont(name: "PingFangTC-Light ", size: 13.5)
+        hintLabel.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
+        self.view.addSubview(hintLabel)
+    }
 
     func configureObserver() {
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
