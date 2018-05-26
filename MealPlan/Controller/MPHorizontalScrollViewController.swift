@@ -14,7 +14,10 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
     let viewArray = [UIView]()
     let numberOfScrolls = 3
     let scrollViewLabel = ["肉類", "蔬菜", "水果"]
-    let viewTagOffset = 10
+    let viewTagOffset = 50
+    let fakeData = [
+        ["AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB"],
+        ["CCC", "CCCCCCC","CDDCD", "CCCC", "DDDD"], ["HOHOHOHO","PPPPPPPP"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +38,11 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             
             //tag controller
             let tagController = MPSelectionTagViewController()
-            tagController.createTag(with: ["AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB","AAA","VBBB"])
+            tagController.createTag(with: fakeData[index])
             addChildViewController(tagController)
             view.addSubview(tagController.view)
             tagController.view.frame.size = CGSize(width: view.frame.width - 40, height: view.frame.height)
             tagController.view.frame.origin = CGPoint(x: tagController.view.frame.origin.x + CGFloat(20), y: 0)
-            print("center:\(view.center.x)")
-            
-            //tagController.view.frame.origin = CGPoint(x: view.frame.origin.x + 20, y: 0)
             tagController.didMove(toParentViewController: self)
             
             //label

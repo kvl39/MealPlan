@@ -9,6 +9,9 @@
 import UIKit
 
 class MPSelectionTagViewController: UIViewController {
+    
+    var unSelectedTags = [Int]()
+    var seletedTags = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class MPSelectionTagViewController: UIViewController {
         
         var xPos: CGFloat = 15.0
         var yPos: CGFloat = 20.0
-        var tag: Int = 500
+        var tag: Int = 10
         let offset: CGFloat = 15.0
         
         for data in array {
@@ -36,31 +39,40 @@ class MPSelectionTagViewController: UIViewController {
             
             let bgView = UIButton(frame: CGRect(x: xPos, y: yPos, width: width + 17.0 + 38.5 - offset, height: 29.0))
             bgView.layer.cornerRadius = 14.5
-            bgView.backgroundColor = UIColor(red: 33.0/255.0, green: 135.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+            //bgView.backgroundColor = UIColor.clear
+            bgView.layer.borderWidth = 2
+            bgView.layer.borderColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1).cgColor
+            bgView.addTarget(self, action: #selector(tagDidTouch(sender:)), for: .touchUpInside)
             bgView.tag = tag
+            unSelectedTags.append(tag)
             
             let textLabel = UILabel(frame: CGRect(x: 17.0, y: 0.0, width: width, height: bgView.frame.size.height))
+            //textLabel.isUserInteractionEnabled = true
             textLabel.font = UIFont(name: "Verdana", size: 13.0)
             textLabel.text = data
-            textLabel.textColor = UIColor.white
+            textLabel.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
             bgView.addSubview(textLabel)
             
-//            let button = UIButton(type: .custom)
-//            button.frame = CGRect(x: bgView.frame.size.width - 2.0 - 23.0,
-//                                  y: 3.0, width: 23.0, height: 23.0)
-//            button.backgroundColor = UIColor.white
-//            button.layer.cornerRadius =  CGFloat(button.frame.size.width)/CGFloat(2.0)
-//            button.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
-//            button.tag = tag
-//            button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
-//            bgView.addSubview(button)
             self.view.addSubview(bgView)
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
             tag += 1
         }
     }
     
-    
+    @objc func tagDidTouch(sender: UIButton) {
+       
+        if let index =  unSelectedTags.index(of: sender.tag){
+            //not selected -> selected
+            seletedTags.append(sender.tag)
+            unSelectedTags.remove(at: index)
+            sender.backgroundColor = UIColor.yellow
+        } else if let index = seletedTags.index(of: sender.tag){
+            //selected -> unselected
+            unSelectedTags.append(sender.tag)
+            seletedTags.remove(at: index)
+            sender.backgroundColor = UIColor.clear
+        }
+    }
     
     @objc func removeTag(_ sender: UIButton) {
         //tagArray.tags.remove(at: sender.tag-1)
