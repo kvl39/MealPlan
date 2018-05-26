@@ -29,12 +29,12 @@ class MPTagViewController: UIViewController {
         super.viewDidLoad()
         //configureObserver()
         configureHints()
-
+        self.view.backgroundColor = UIColor.clear
     }
     
     func configureHints() {
         hintLabel.text = "Choose some tags..."
-        hintLabel.textColor = UIColor.black
+        hintLabel.textColor = UIColor.gray
         hintLabel.font = UIFont(name: "PingFangTC-Light ", size: 13.5)
         hintLabel.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
         self.view.addSubview(hintLabel)
@@ -91,6 +91,7 @@ class MPTagViewController: UIViewController {
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
             tag += 1
         }
+        self.hintLabel.alpha = 0
     }
 
     
@@ -98,5 +99,8 @@ class MPTagViewController: UIViewController {
     @objc func removeTag(_ sender: UIButton) {
         tagArray.tags.remove(at: sender.tag-1)
         createTag(onView: self.view, with: tagArray.tags)
+        if self.tagArray.tags.count == 0 {
+            self.hintLabel.alpha = 1
+        }
     }
 }
