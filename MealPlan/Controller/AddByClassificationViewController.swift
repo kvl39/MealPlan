@@ -11,11 +11,17 @@ import UIKit
 class AddByClassificationViewController: UIViewController {
 
     @IBOutlet weak var topImageView: UIImageView!
-    
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    var effect: UIVisualEffect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+        initialConfigureVisualEffect()
+    }
+    
+    func initialConfigureVisualEffect() {
+        effect = visualEffectView.effect
     }
 
     

@@ -33,7 +33,7 @@ class MPTagViewController: UIViewController {
     }
     
     func configureHints() {
-        hintLabel.text = "Choose some tags..."
+        hintLabel.text = "選擇材料..."
         hintLabel.textColor = UIColor.gray
         hintLabel.font = UIFont(name: "PingFangTC-Light ", size: 13.5)
         hintLabel.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
