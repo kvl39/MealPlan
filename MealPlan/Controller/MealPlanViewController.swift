@@ -13,6 +13,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
     @IBOutlet weak var testTable: UITableView!
     @IBOutlet weak var topImageView: UIImageView!
+    @IBOutlet weak var editPlanButton: UIButton!
+    
     let pieChartManager = MPPieChart()
     var addButtonSelected = true
     var addButton: UIButton?
@@ -42,6 +44,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         testTable.dataSource = self
 
         configureTableView()
+        configureTopButtons()
         //configureAddButton()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         self.view.addSubview(addedButtonSubView)
@@ -55,6 +58,15 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    
+    @IBAction func editButtonDidPressed(_ sender: UIButton) {
+        startPlanning(notification: nil)
+    }
+    
+    
+    func configureTopButtons() {
+        editPlanButton.setImage(#imageLiteral(resourceName: "pencil"), for: .normal)
+    }
     
     @objc func createRecipe(notification: Notification) {
         //guard let userInfo = notification.userInfo,
@@ -237,7 +249,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(startPlanning(notification:)), name: NSNotification.Name(rawValue: "collectionViewHintButtonDidPressed"), object: nil)
     }
     
-    @objc func startPlanning(notification: Notification) {
+    @objc func startPlanning(notification: Notification?) {
         performSegue(withIdentifier: "PushToAddPage", sender: self)
     }
     

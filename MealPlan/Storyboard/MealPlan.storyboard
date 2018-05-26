@@ -174,14 +174,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MealPlan3" translatesAutoresizingMaskIntoConstraints="NO" id="Yef-kS-zsS">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-nS-kn5">
+                                <rect key="frame" x="295" y="72" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="2OS-rf-UIr"/>
+                                    <constraint firstAttribute="height" constant="20" id="9VQ-K4-zIb"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="editButtonDidPressed:" destination="cUz-YE-dot" eventType="touchUpInside" id="GbB-Cl-VZg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZDh-lO-jyl" firstAttribute="top" secondItem="wvY-mU-ooX" secondAttribute="top" constant="40" id="3mm-ZS-hai"/>
                             <constraint firstItem="ZDh-lO-jyl" firstAttribute="leading" secondItem="wvY-mU-ooX" secondAttribute="leading" id="6r3-cU-JCd"/>
+                            <constraint firstItem="wvY-mU-ooX" firstAttribute="trailing" secondItem="ywH-nS-kn5" secondAttribute="trailing" constant="60" id="O3K-we-Onw"/>
                             <constraint firstItem="wvY-mU-ooX" firstAttribute="trailing" secondItem="ZDh-lO-jyl" secondAttribute="trailing" id="RC5-OD-BHb"/>
                             <constraint firstItem="Yef-kS-zsS" firstAttribute="top" secondItem="wvY-mU-ooX" secondAttribute="top" id="Vg7-F9-1Im"/>
                             <constraint firstItem="wvY-mU-ooX" firstAttribute="trailing" secondItem="Yef-kS-zsS" secondAttribute="trailing" id="c8Q-o0-zfv"/>
+                            <constraint firstItem="ywH-nS-kn5" firstAttribute="top" secondItem="wvY-mU-ooX" secondAttribute="top" constant="8" id="kUC-V2-iEC"/>
                             <constraint firstItem="Yef-kS-zsS" firstAttribute="leading" secondItem="wvY-mU-ooX" secondAttribute="leading" id="qlu-os-3dR"/>
                             <constraint firstItem="wvY-mU-ooX" firstAttribute="bottom" secondItem="ZDh-lO-jyl" secondAttribute="bottom" id="ueh-Nd-no9"/>
                             <constraint firstItem="ZDh-lO-jyl" firstAttribute="top" secondItem="Yef-kS-zsS" secondAttribute="bottom" id="z4R-BU-J5e"/>
@@ -190,6 +202,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QUU-VF-LJC"/>
                     <connections>
+                        <outlet property="editPlanButton" destination="ywH-nS-kn5" id="0Xh-kv-QeL"/>
                         <outlet property="testTable" destination="ZDh-lO-jyl" id="Aj5-tg-lqg"/>
                         <outlet property="topImageView" destination="Yef-kS-zsS" id="yJc-yP-R5R"/>
                         <segue destination="3ge-nm-NUA" kind="show" identifier="PushToAddPage" id="ENS-uP-iF4"/>
