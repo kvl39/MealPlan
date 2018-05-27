@@ -46,7 +46,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         configureTableView()
         configureTopButtons()
         //configureAddButton()
-        topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
         self.view.addSubview(addedButtonSubView)
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
@@ -239,7 +239,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     func configureTableView() {
         self.testTable.separatorStyle = .none
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
-        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background.001"))
+        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
         self.testTable.backgroundView = backgroundView
         
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")
