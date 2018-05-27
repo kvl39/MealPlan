@@ -23,6 +23,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var recipeData: RecipeCalendarRealmModel!
     var firebaseManager = MPFirebaseManager()
     var recipeIngredients = [[String: Any]]()
+    var recipeNutrients = [[String: Any]]()
     var recipeURLString = ""
     
     
@@ -31,7 +32,7 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeImage.image = displayImage
         recipeImage.clipsToBounds = true
         self.navigationController?.navigationBar.isHidden = false
-        recipeDetailTableView.contentInset = UIEdgeInsets(top: 320, left: 0, bottom: 0, right: 0)
+        recipeDetailTableView.contentInset = UIEdgeInsets(top: 340, left: 0, bottom: 0, right: 0)
         recipeDetailTableView.delegate = self
         recipeDetailTableView.dataSource = self
         originTitleY = self.recipeTitle.frame.origin.y
@@ -42,7 +43,7 @@ class MPRecipeDetailViewController: MPTableViewController {
 //        updateImage(height: 0.0)
         
         //information to display: label, nutrient, ingredient(String)
-        self.sectionArray = ["材料","營養成分"]
+        self.sectionArray = ["Ingredient","Nutrient"]
         configureData()
         configureTableView()
         
@@ -64,6 +65,9 @@ class MPRecipeDetailViewController: MPTableViewController {
             if let recipeRealmIngredient = recipeData.recipeRealmModel?.ingredients {
                 self.recipeIngredients = firebaseManager.recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmIngredient))
             }
+            if let recipeRealmNutrient = recipeData.recipeRealmModel?.nutrients {
+                self.recipeNutrients = firebaseManager.recipeNuitrientRealmModelToDictionary(recipeNuitrients: Array(recipeRealmNutrient))
+            }
         }
     }
     
@@ -81,13 +85,20 @@ class MPRecipeDetailViewController: MPTableViewController {
             }
         }
         rowArray.append([])
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
-        rowArray[1].append(.recipeIngredientType("ingredient test2"))
+        for nutrient in self.recipeNutrients {
+            if let nutrientLabel = nutrient["label"] as? String,
+                let nutrientQuantity = nutrient["quantity"] as? Double {
+                switch (nutrientLabel) {
+                case "Energy":
+                    rowArray[1].append(.recipeIngredientType("Energy: \(nutrientQuantity)"))
+                case "Saturated":
+                    rowArray[1].append(.recipeIngredientType("Saturated Fat: \(nutrientQuantity)"))
+                case "Fat":
+                    rowArray[1].append(.recipeIngredientType("Fat: \(nutrientQuantity)"))
+                default: return
+                }
+            }
+        }
     }
     
     func configureTableViewBackground(){
@@ -162,7 +173,7 @@ extension MPRecipeDetailViewController {
         let titleY = max(self.originTitleY - recipeDetailTableView.contentOffset.y, 60)
         let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
         
-        recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: height)
+        //recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: height)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)
