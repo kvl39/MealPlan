@@ -20,6 +20,7 @@ class AddByClassificationViewController: MPTableViewController {
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var containerForScrollView: UIView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
     
     
     var selectedTags = [String]()
@@ -36,7 +37,8 @@ class AddByClassificationViewController: MPTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
+        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
+        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
     }
