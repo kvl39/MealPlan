@@ -20,6 +20,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var newHeaderLayer: CAShapeLayer!
     let originImageHeight: CGFloat = 300.0
     var originTitleY: CGFloat = 300.0
+    var originTableViewY: CGFloat = 300.0
     var recipeData: RecipeCalendarRealmModel!
     var firebaseManager = MPFirebaseManager()
     var recipeIngredients = [[String: Any]]()
@@ -50,6 +51,11 @@ class MPRecipeDetailViewController: MPTableViewController {
         //self.navigationController?.navigationBar.isHidden = true
         
 
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.originTableViewY = self.recipeDetailTableView.frame.origin.y
     }
     
     
@@ -172,8 +178,12 @@ extension MPRecipeDetailViewController {
         recipeDetailTableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         let titleY = max(self.originTitleY - recipeDetailTableView.contentOffset.y, 60)
         let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
+        //recipeDetailTableView.layoutIfNeeded()
         
-        //recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: height)
+        let distance = 340 - y
+        let imageHeight = max(300 - distance, 50)
+
+        recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: imageHeight)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)
