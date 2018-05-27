@@ -50,12 +50,13 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         self.view.addSubview(addedButtonSubView)
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = false
+        //self.tabBarController?.tabBar.isHidden = false
     }
     
     

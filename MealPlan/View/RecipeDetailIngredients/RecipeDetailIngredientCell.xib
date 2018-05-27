@@ -22,36 +22,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4F-Od-B9v">
                         <rect key="frame" x="10" y="10" width="300" height="55.5"/>
                         <subviews>
-                            <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3E-QB-XO5">
-                                <rect key="frame" x="1" y="1" width="298" height="53.5"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oOh-66-n9U">
-                                    <rect key="frame" x="0.0" y="0.0" width="298" height="53.5"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-m1-bty">
-                                            <rect key="frame" x="5" y="1" width="288" height="51"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="LrY-m1-bty" firstAttribute="top" secondItem="oOh-66-n9U" secondAttribute="top" constant="1" id="E92-Aj-4ep"/>
-                                        <constraint firstAttribute="bottom" secondItem="LrY-m1-bty" secondAttribute="bottom" constant="1" id="cMg-qa-sCb"/>
-                                        <constraint firstAttribute="trailing" secondItem="LrY-m1-bty" secondAttribute="trailing" constant="5" id="dSE-sD-OYm"/>
-                                        <constraint firstItem="LrY-m1-bty" firstAttribute="leading" secondItem="oOh-66-n9U" secondAttribute="leading" constant="5" id="tbC-NC-Ir3"/>
-                                    </constraints>
-                                </view>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-m1-bty">
+                                <rect key="frame" x="2" y="2" width="296" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="V3E-QB-XO5" secondAttribute="bottom" constant="1" id="MFc-Jc-N0N"/>
-                            <constraint firstItem="V3E-QB-XO5" firstAttribute="top" secondItem="x4F-Od-B9v" secondAttribute="top" constant="1" id="MQP-VN-mLz"/>
-                            <constraint firstAttribute="trailing" secondItem="V3E-QB-XO5" secondAttribute="trailing" constant="1" id="lky-lG-65D"/>
-                            <constraint firstItem="V3E-QB-XO5" firstAttribute="leading" secondItem="x4F-Od-B9v" secondAttribute="leading" constant="1" id="qnT-a7-BeT"/>
+                            <constraint firstAttribute="trailing" secondItem="LrY-m1-bty" secondAttribute="trailing" constant="2" id="BJ1-LA-lpF"/>
+                            <constraint firstItem="LrY-m1-bty" firstAttribute="leading" secondItem="x4F-Od-B9v" secondAttribute="leading" constant="2" id="Okk-V1-Rzq"/>
+                            <constraint firstItem="LrY-m1-bty" firstAttribute="top" secondItem="x4F-Od-B9v" secondAttribute="top" constant="2" id="XEU-lc-B1a"/>
+                            <constraint firstAttribute="bottom" secondItem="LrY-m1-bty" secondAttribute="bottom" constant="2" id="a8A-yv-ZYa"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -66,7 +49,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="blurEffect" destination="V3E-QB-XO5" id="VS9-kK-0aX"/>
                 <outlet property="ingredientLabel" destination="LrY-m1-bty" id="fjs-G6-OAu"/>
             </connections>
             <point key="canvasLocation" x="34" y="70"/>

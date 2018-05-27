@@ -16,6 +16,9 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     @IBOutlet weak var showStepButton: UIButton!
     
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    
+    
     var displayImage: UIImage!
     var newHeaderLayer: CAShapeLayer!
     let originImageHeight: CGFloat = 300.0
@@ -182,8 +185,8 @@ extension MPRecipeDetailViewController {
         
         let distance = 340 - y
         let imageHeight = max(300 - distance, 50)
-
-        recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: imageHeight)
+        imageViewHeight.constant = imageHeight
+        //recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width, height: imageHeight)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)

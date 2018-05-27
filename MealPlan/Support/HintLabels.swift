@@ -11,8 +11,9 @@ import Foundation
 
 struct HintLabels {
     var hintLabels = [
-        "「先說你要成為什麼樣的人，接著做你必須做的事。」– 愛比克泰德 (哲學家)",
-        "「如果你完成了所有你為自己計畫的事，你計畫得還不夠多。」– 愛德華‧艾佛雷特‧海爾 ",
-        "「製作一個明確的計畫，來完成你的渴望並立即開始，不管你是否已準備好執行此計畫。」– 拿破崙‧希爾 "
+        "All you need is the plan, the road map, and the courage to press on to your destination. - Earl Nightingale",
+        "You were born to win, but to be a winner, you must plan to win, prepare to win, and expect to win. - Zig Ziglar",
+        "Plan your work for today and every day, then work your plan. - Margaret Thatcher",
+        "Everyone has a plan 'till they get punched in the mouth. - Mike Tyson"
     ]
 }
