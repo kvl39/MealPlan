@@ -35,21 +35,22 @@ class MPRecipeDetailWebViewController: UIViewController, WKNavigationDelegate, W
 
 
     @IBAction func doneWebView(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     
-    @IBAction func refreshWebView(_ sender: Any) {
-        webView.reload()
-    }
-    
-    
-    
-    @IBAction func backWebView(_ sender: Any) {
-        if webView.canGoBack {
-            webView.goBack()
-        }
-    }
+//    @IBAction func refreshWebView(_ sender: Any) {
+//        webView.reload()
+//    }
+//
+//
+//
+//    @IBAction func backWebView(_ sender: Any) {
+//        if webView.canGoBack {
+//            webView.goBack()
+//        }
+//    }
     
     
     override func viewWillDisappear(_ animated: Bool) {

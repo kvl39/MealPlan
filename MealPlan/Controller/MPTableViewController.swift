@@ -243,6 +243,7 @@ extension MPTableViewController {
                 cell.loadImage(imageURL: itemStruct.imageURL)
             }
             cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = .none
         case .recipeNoteType:
             guard let cell = cell as? RecipeNoteView else {return}
         case .textFieldType:

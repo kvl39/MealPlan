@@ -18,6 +18,10 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var topImageView: UIImageView!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
     
     var displayImage: UIImage!
     var newHeaderLayer: CAShapeLayer!
@@ -41,6 +45,7 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeDetailTableView.dataSource = self
         originTitleY = self.recipeTitle.frame.origin.y
         
+        backButton.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
 //        newHeaderLayer = CAShapeLayer()
 //        newHeaderLayer.fillColor = UIColor.black.cgColor
 //        recipeImage.layer.mask = newHeaderLayer
@@ -52,8 +57,8 @@ class MPRecipeDetailViewController: MPTableViewController {
         configureTableView()
         
         //self.navigationController?.navigationBar.isHidden = true
-        
-
+        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,13 +102,14 @@ class MPRecipeDetailViewController: MPTableViewController {
         for nutrient in self.recipeNutrients {
             if let nutrientLabel = nutrient["label"] as? String,
                 let nutrientQuantity = nutrient["quantity"] as? Double {
+                let quantityTwoDecimal = String(format: "%.2f", nutrientQuantity)
                 switch (nutrientLabel) {
                 case "Energy":
-                    rowArray[1].append(.recipeIngredientType("Energy: \(nutrientQuantity)"))
+                    rowArray[1].append(.recipeIngredientType("Energy: \(quantityTwoDecimal) kcal"))
                 case "Saturated":
-                    rowArray[1].append(.recipeIngredientType("Saturated Fat: \(nutrientQuantity)"))
+                    rowArray[1].append(.recipeIngredientType("Saturated Fat: \(quantityTwoDecimal) g"))
                 case "Fat":
-                    rowArray[1].append(.recipeIngredientType("Fat: \(nutrientQuantity)"))
+                    rowArray[1].append(.recipeIngredientType("Fat: \(quantityTwoDecimal) g"))
                 default: return
                 }
             }
@@ -163,6 +169,11 @@ class MPRecipeDetailViewController: MPTableViewController {
     }
     
     
+    @IBAction func backButtonDidPressed(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
 }
 
 
@@ -191,6 +202,9 @@ extension MPRecipeDetailViewController {
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)
     }
+    
+    
+    
 }
 
 

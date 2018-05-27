@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        var label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        var label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: statusBarHeight))
         label.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
         self.window?.rootViewController?.view.addSubview(label)
         //self.window?.backgroundColor = UIColor(red: 242/255.0, green: 211/255.0, blue: 136/255.0, alpha: 1.0)
