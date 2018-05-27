@@ -24,6 +24,11 @@ class AddByClassificationViewController: MPTableViewController {
         super.viewDidLoad()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         print("child count: \(self.childViewControllers.count)")
+        initialConfigueViews()
+    }
+    
+    func initialConfigueViews() {
+        stopActivityIndicator()
         hideSearchTable()
         configureHintView(isShown: true, text: "Choose tags then start searching")
     }
@@ -51,7 +56,7 @@ class AddByClassificationViewController: MPTableViewController {
     
     func didGetSearchResult() {
         stopActivityIndicator()
-        showSearchTable()
+        hideSearchTable()
         configureHintView(isShown: false, text: "")
         UIView.animate(withDuration: 0.4) {
             self.showSearchTable()

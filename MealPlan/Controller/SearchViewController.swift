@@ -86,6 +86,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         } else {
             self.rowArray = []
             self.tableView.reloadData()
+            if let parentVC = self.parent as? AddByClassificationViewController {
+                parentVC.initialConfigueViews()
+            }
         }
         
     }
