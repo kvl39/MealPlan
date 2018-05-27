@@ -36,10 +36,10 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeDetailTableView.dataSource = self
         originTitleY = self.recipeTitle.frame.origin.y
         
-        newHeaderLayer = CAShapeLayer()
-        newHeaderLayer.fillColor = UIColor.black.cgColor
-        recipeImage.layer.mask = newHeaderLayer
-        updateImage(height: 0.0)
+//        newHeaderLayer = CAShapeLayer()
+//        newHeaderLayer.fillColor = UIColor.black.cgColor
+//        recipeImage.layer.mask = newHeaderLayer
+//        updateImage(height: 0.0)
         
         //information to display: label, nutrient, ingredient(String)
         self.sectionArray = ["材料","營養成分"]
@@ -165,7 +165,7 @@ extension MPRecipeDetailViewController {
         recipeImage.frame = CGRect(x: 20, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width-40, height: height)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
-        updateImage(height: height)
+        //updateImage(height: height)
     }
 }
 
