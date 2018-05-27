@@ -11,6 +11,8 @@ import UIKit
 class AddByClassificationViewController: MPTableViewController {
 
     @IBOutlet weak var topImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
     
@@ -27,6 +29,7 @@ class AddByClassificationViewController: MPTableViewController {
         //get search tags
         //start search and progress indicator
         
+        startActivityIndicator()
         for childVC in childViewControllers {
             if let childVC = childVC as? MPHorizontalScrollViewController {
                 childVC.getSelectedTags()
@@ -43,7 +46,13 @@ class AddByClassificationViewController: MPTableViewController {
         
     }
     
+    func startActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
     
+    func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+    }
     
 
 }

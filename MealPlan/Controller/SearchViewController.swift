@@ -137,10 +137,21 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            if let parentVC = self.parent as? AddByClassificationViewController {
+                parentVC.stopActivityIndicator()
+            }
         }
+        
     }
     
     
 
-    func manager(_ manager: RecipeManager, didFailWith error: MPError) {}
+    func manager(_ manager: RecipeManager, didFailWith error: MPError) {
+        //show no results!
+        DispatchQueue.main.async {
+            if let parentVC = self.parent as? AddByClassificationViewController {
+                parentVC.stopActivityIndicator()
+            }
+        }
+    }
 }

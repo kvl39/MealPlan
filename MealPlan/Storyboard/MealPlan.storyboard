@@ -531,6 +531,10 @@
                                     <segue destination="1cB-SP-rhz" kind="embed" id="cRa-a1-aBK"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lWC-qS-5m9">
+                                <rect key="frame" x="283" y="320" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -554,6 +558,7 @@
                         <viewLayoutGuide key="safeArea" id="tSh-rV-F9D"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="lWC-qS-5m9" id="Pzq-9S-R94"/>
                         <outlet property="topImageView" destination="jTn-nx-rpA" id="hfg-4r-CJd"/>
                     </connections>
                 </viewController>
@@ -803,6 +808,7 @@
                             <constraint firstItem="Auj-Zu-0wj" firstAttribute="top" secondItem="7Yc-yP-Qe0" secondAttribute="top" id="TN4-v0-ar3"/>
                             <constraint firstAttribute="bottom" secondItem="Auj-Zu-0wj" secondAttribute="bottom" id="qtl-lN-h5H"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="CoO-VV-ZbZ"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Auj-Zu-0wj" id="Aq7-cs-Xrf"/>
