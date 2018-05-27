@@ -18,6 +18,8 @@ class AddByClassificationViewController: MPTableViewController {
     
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
+    var selectedRecipesName: [String] = []
+    var selectedRecipes: [RecipeInformation] = []
     
     
     override func viewDidLoad() {
@@ -96,6 +98,14 @@ class AddByClassificationViewController: MPTableViewController {
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PushToSearchResult" {
+            let vc = segue.destination as? SearchViewController
+            vc?.selecteRecipeName = self.selectedRecipesName
+            vc?.selectedRecipes = self.selectedRecipes
+        }
     }
     
 

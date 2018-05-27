@@ -24,6 +24,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     var recipeManager = RecipeManager()
     weak var delegate: SearchViewControllerProtocol?
     var searchRecipeModel: RecipeModel?
+    var selecteRecipeName = [String]()
+    var selectedRecipes = [RecipeInformation]()
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -38,7 +40,6 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         configureTableView()
         self.view.backgroundColor = UIColor.clear
     }
-    
     
 
     func configureObserver() {
@@ -111,22 +112,40 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         guard let cell = self.tableView.cellForRow(at: indexPath) as? RecipeSearchResultCell,
               let cellImage = cell.recipeImage.image,
               let cellTitle = cell.recipeTitle.text else {return}
+        if self.rowArray.count == 0 {
+            self.rowArray.append([])
+        }
         self.rowArray[0][sender.tag] = .recipeSearchCellType(nil, cellImage, cellTitle, !selected, true)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .none)
         self.tableView.endUpdates()
-
-        //select animation
+        
         guard let searchResult = self.searchRecipeModel,
             let selectedHits = searchResult.hits[sender.tag] as? hits,
             let selectedRecipe = selectedHits.recipe as? RecipeInformation else {return}
-        if !selected {
-            let cellRectInTable = tableView.rectForRow(at: indexPath)
-            let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
-            self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView, selectedRecipe: selectedRecipe)
+        
+        if selected { //remove from selected
+            guard let index = self.selecteRecipeName.index(of: cellTitle) else {return}
+            self.selecteRecipeName.remove(at: index)
+            self.selectedRecipes.remove(at: index)
         } else {
-            self.delegate?.deSelectRecipe(cell: cell, deSelectedRecipe: selectedRecipe)
+            self.selecteRecipeName.append(cellTitle)
+            self.selectedRecipes.append(selectedRecipe)
         }
+        print(self.selecteRecipeName)
+        
+        
+        //select animation
+//        guard let searchResult = self.searchRecipeModel,
+//            let selectedHits = searchResult.hits[sender.tag] as? hits,
+//            let selectedRecipe = selectedHits.recipe as? RecipeInformation else {return}
+//        if !selected {
+//            let cellRectInTable = tableView.rectForRow(at: indexPath)
+//            let cellInSuperView = tableView.convert(cellRectInTable, to: nil)
+//            self.delegate?.selectRecipeAnimation(cell: cell, cellRect: cellInSuperView, selectedRecipe: selectedRecipe)
+//        } else {
+//            self.delegate?.deSelectRecipe(cell: cell, deSelectedRecipe: selectedRecipe)
+//        }
     }
 
     
@@ -134,12 +153,16 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
         self.searchRecipeModel = products
-        for index in 0...products.hits.count-1 {
+        for index in 0..<products.hits.count {
             if self.rowArray.count == 0 {
                 self.rowArray.append([])
             }
+            var cellSelected = false
+            if self.selecteRecipeName.contains(products.hits[index].recipe.label) {
+                cellSelected = true
+            }
             self.rowArray[0].append(
-            .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, false, false))
+            .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, cellSelected, false))
         }
 
         DispatchQueue.main.async {
