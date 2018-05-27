@@ -36,6 +36,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         tableView.dataSource = self
         //configureObserver()
         configureTableView()
+        self.view.backgroundColor = UIColor.clear
     }
     
     
@@ -73,7 +74,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                     searchKeyword += "%26" + tagArray.tags[index]
                 }
             }
-            searchKeyword += "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f&to=7"
+            searchKeyword += "&app_id=f15e641c&app_key=cf64c20f394531bb6c9669f48bb0932f"
             return searchKeyword
         }
         return nil
@@ -93,6 +94,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     
     func configureTableView() {
         tableView.register(UINib(nibName: "RecipeSearchResultCell", bundle: nil), forCellReuseIdentifier: "RecipeSearchResultCell")
+        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
+        backgroundView.backgroundColor = UIColor.clear
+        self.tableView.backgroundView = backgroundView
     }
 
     
@@ -138,7 +142,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             if let parentVC = self.parent as? AddByClassificationViewController {
-                parentVC.stopActivityIndicator()
+                parentVC.didGetSearchResult()
             }
         }
         
@@ -150,7 +154,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         //show no results!
         DispatchQueue.main.async {
             if let parentVC = self.parent as? AddByClassificationViewController {
-                parentVC.stopActivityIndicator()
+                parentVC.failToGetSearchResult()
             }
         }
     }

@@ -26,8 +26,8 @@
                             <constraint firstAttribute="height" constant="60" id="FEO-ch-v1u"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGi-26-aRR">
-                        <rect key="frame" x="90" y="29" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGi-26-aRR">
+                        <rect key="frame" x="90" y="15" width="292" height="49.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,15 +41,19 @@
                         <state key="normal" title="Button" image="success_black"/>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="dJf-JG-NiY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3KO-hN-ktn"/>
                     <constraint firstItem="dJf-JG-NiY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="5cx-kB-xUF"/>
                     <constraint firstAttribute="trailing" secondItem="do1-qY-0Ug" secondAttribute="trailing" constant="20" id="HyC-So-0On"/>
+                    <constraint firstAttribute="bottom" secondItem="eGi-26-aRR" secondAttribute="bottom" constant="15" id="Iwg-mb-OBX"/>
                     <constraint firstItem="eGi-26-aRR" firstAttribute="leading" secondItem="dJf-JG-NiY" secondAttribute="trailing" constant="10" id="P5d-Km-Fj0"/>
-                    <constraint firstItem="eGi-26-aRR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SI2-4k-PdA"/>
+                    <constraint firstItem="do1-qY-0Ug" firstAttribute="leading" secondItem="eGi-26-aRR" secondAttribute="trailing" constant="20" id="Toc-7J-WNI"/>
                     <constraint firstItem="do1-qY-0Ug" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZX8-9G-wYK"/>
+                    <constraint firstItem="eGi-26-aRR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="tkY-0V-9gQ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="recipeImage" destination="dJf-JG-NiY" id="DYD-em-8Wy"/>

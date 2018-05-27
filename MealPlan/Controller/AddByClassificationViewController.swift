@@ -13,6 +13,9 @@ class AddByClassificationViewController: MPTableViewController {
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var hintView: UIView!
+    @IBOutlet weak var hintLabel: UILabel!
+    
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
     
@@ -21,9 +24,45 @@ class AddByClassificationViewController: MPTableViewController {
         super.viewDidLoad()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         print("child count: \(self.childViewControllers.count)")
+        hideSearchTable()
+        configureHintView(isShown: true, text: "Choose tags then start searching")
     }
     
+    func configureHintView(isShown: Bool, text: String) {
+        hintLabel.text = text
+        hintView.alpha = isShown ? 1:0
+    }
     
+    func hideSearchTable() {
+        for childVC in childViewControllers {
+            if let childVC = childVC as? SearchViewController {
+                childVC.view.alpha = 0
+            }
+        }
+    }
+    
+    func showSearchTable() {
+        for childVC in childViewControllers {
+            if let childVC = childVC as? SearchViewController {
+                childVC.view.alpha = 1
+            }
+        }
+    }
+    
+    func didGetSearchResult() {
+        stopActivityIndicator()
+        showSearchTable()
+        configureHintView(isShown: false, text: "")
+        UIView.animate(withDuration: 0.4) {
+            self.showSearchTable()
+        }
+    }
+    
+    func failToGetSearchResult() {
+        stopActivityIndicator()
+        hideSearchTable()
+        configureHintView(isShown: true, text: "No results. Please choose other tag combinations")
+    }
 
     @IBAction func startSearchButtonDidPressed(_ sender: UIButton) {
         //get search tags
