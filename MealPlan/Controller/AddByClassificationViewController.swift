@@ -12,21 +12,33 @@ class AddByClassificationViewController: MPTableViewController {
 
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var hintView: UIView!
     @IBOutlet weak var hintLabel: UILabel!
+    @IBOutlet weak var containerForScrollView: UIView!
+    @IBOutlet weak var searchButton: UIButton!
+    
     
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
     var selectedRecipesName: [String] = []
     var selectedRecipes: [RecipeInformation] = []
-    
+    var originalScrollViewY: CGFloat = 0.0
+    var originalContainerDifference: CGFloat = 0.0
+    var originalSearchButtonViewY: CGFloat = 0.0
+    var originalIndicatorViewY: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        originalScrollViewY = containerForScrollView.frame.origin.y
+        originalSearchButtonViewY = searchButton.frame.origin.y
+        originalIndicatorViewY = activityIndicator.frame.origin.y
     }
     
     func initialConfigueViews() {
@@ -106,6 +118,13 @@ class AddByClassificationViewController: MPTableViewController {
             vc?.selecteRecipeName = self.selectedRecipesName
             vc?.selectedRecipes = self.selectedRecipes
         }
+    }
+    
+    func adjustView(contentInsetY: CGFloat) {
+        //let newHeight = min(contentInsetY-200, originalScrollViewY)
+        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: originalScrollViewY - contentInsetY)
+        searchButton.frame.origin = CGPoint(x: searchButton.frame.origin.x, y: originalSearchButtonViewY - contentInsetY)
+        activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: originalIndicatorViewY - contentInsetY)
     }
     
 

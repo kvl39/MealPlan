@@ -19,7 +19,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
     var selectedTags = [String]()
     let tagData = [
         ["pork", "beef", "chicken", "fish", "lamb", "turkey", "shrimp"],
-        ["cabbage", "spinach", "broccoli", "brussel sprout", "beans", "celery", "potato", "trunip", "carrot"],
+        ["cabbage", "spinach", "broccoli", "brussel sprout", "beans", "celery", "potato"],
         ["banana","apple","orange"]]
     
     override func viewDidLoad() {
