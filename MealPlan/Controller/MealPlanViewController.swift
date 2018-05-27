@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
+class MealPlanViewController: MPTableViewController, AddByClassificationDelegateProtocol {
 
     @IBOutlet weak var testTable: UITableView!
     @IBOutlet weak var topImageView: UIImageView!
@@ -80,8 +80,10 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     
     
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {
-        self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
-        self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
+        //self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
+        //self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
+        self.recipeImageArray = addedRecipeImageView
+        self.recipeTitleArray = addedRecipeTitle
         updateDataInTableView()
         
         let result = self.realmManager.fetchRecipe(in: self.selectedDate)
@@ -141,7 +143,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         if (segue.identifier == "PushToAddPage") {
             guard let vc = segue.destination as? AddPageViewController else {return}
             vc.recipeDate = selectedDate
-            vc.delegate = self
+            //vc.delegate = self
             vc.historyImageArray = self.recipeImageArray
             vc.historyTitleArray = self.recipeTitleArray
         } else if (segue.identifier == "PushToDetailPage") {
@@ -151,6 +153,13 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         } else if (segue.identifier == "PushToCameraPage") {
             guard let vc = segue.destination as? CameraViewController else {return}
             vc.selectedDate = self.selectedDate
+        } else if (segue.identifier == "PushToAddByClassificationPage") {
+            guard let vc = segue.destination as? AddByClassificationViewController else {return}
+            vc.selectedRecipes = self.recipeToday
+            vc.selectedRecipesName = self.recipeTitleArray
+            vc.recipeDate = selectedDate
+            vc.selectedRecipeImage = self.recipeImageArray
+            vc.delegate = self
         }
     }
 
@@ -250,7 +259,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
     
     @objc func startPlanning(notification: Notification?) {
-        performSegue(withIdentifier: "PushToAddPage", sender: self)
+        performSegue(withIdentifier: "PushToAddByClassificationPage", sender: self)
     }
     
     @objc func onSelectCollectionViewItem(notification: Notification) {

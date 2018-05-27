@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zgV-ly-Iwx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WEV-W8-2VX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -208,7 +208,7 @@
                         <segue destination="3ge-nm-NUA" kind="show" identifier="PushToAddPage" id="ENS-uP-iF4"/>
                         <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="Woe-Rb-AIh"/>
                         <segue destination="03z-n1-Fj4" kind="show" identifier="PushToCameraPage" id="fPz-Le-eH4"/>
-                        <segue destination="zgV-ly-Iwx" kind="show" id="tNK-5G-dKM"/>
+                        <segue destination="zgV-ly-Iwx" kind="show" identifier="PushToAddByClassificationPage" id="tNK-5G-dKM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frj-fP-CZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -555,6 +555,13 @@
                                     <constraint firstAttribute="height" constant="40" id="HRT-af-B2Z"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-Qx-zDR">
+                                <rect key="frame" x="270" y="69" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="ConfirmButtonDidPressed:" destination="zgV-ly-Iwx" eventType="touchUpInside" id="w3r-Ek-YHY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -569,15 +576,18 @@
                             <constraint firstItem="lWC-qS-5m9" firstAttribute="leading" secondItem="rOw-PT-SvL" secondAttribute="trailing" constant="20" id="KFB-WK-hvu"/>
                             <constraint firstItem="jTn-nx-rpA" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" id="LTw-hZ-faa"/>
                             <constraint firstItem="rOw-PT-SvL" firstAttribute="top" secondItem="SnV-gz-hna" secondAttribute="bottom" constant="20" id="OG2-fy-gVH"/>
+                            <constraint firstItem="AWE-Qx-zDR" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" constant="5" id="Po0-n6-6fr"/>
                             <constraint firstItem="SnV-gz-hna" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="Sti-uE-C17"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="Rnn-8h-mUR" secondAttribute="trailing" id="bYe-4C-4BD"/>
                             <constraint firstItem="Rnn-8h-mUR" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="cMy-Oq-KS3"/>
                             <constraint firstItem="218-sN-3VX" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" constant="10" id="g2j-GZ-BUn"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="bottom" secondItem="Rnn-8h-mUR" secondAttribute="bottom" id="js9-Qf-XiR"/>
+                            <constraint firstItem="Rnn-8h-mUR" firstAttribute="top" secondItem="AWE-Qx-zDR" secondAttribute="bottom" constant="5" id="k0w-rP-0DL"/>
                             <constraint firstItem="fGm-IY-2mi" firstAttribute="top" secondItem="rOw-PT-SvL" secondAttribute="bottom" constant="23" id="pic-De-3Gp"/>
                             <constraint firstItem="rOw-PT-SvL" firstAttribute="centerX" secondItem="TcU-yA-tZU" secondAttribute="centerX" id="rPA-gC-jGS"/>
                             <constraint firstItem="218-sN-3VX" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="tIW-4I-3hA"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="jTn-nx-rpA" secondAttribute="trailing" id="vOc-gL-GZw"/>
+                            <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="AWE-Qx-zDR" secondAttribute="trailing" constant="68" id="yCO-1I-0Sv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tSh-rV-F9D"/>
                     </view>

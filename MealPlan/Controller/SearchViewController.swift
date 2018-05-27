@@ -22,10 +22,14 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     var tagArray: AddPageTag!
     var observation: NSKeyValueObservation!
     var recipeManager = RecipeManager()
-    weak var delegate: SearchViewControllerProtocol?
+    //weak var delegate: SearchViewControllerProtocol?
     var searchRecipeModel: RecipeModel?
     var selecteRecipeName = [String]()
-    var selectedRecipes = [RecipeInformation]()
+    var selectedRecipeImage = [UIImageView]()
+    var selectedRecipes = [RecipeCalendarRealmModel]()
+    var realmManager = RealmManager()
+    var selectedDate = ""
+    weak var delegate: AddByClassificationDelegateProtocol?
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -44,8 +48,6 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 
     func configureObserver() {
         observation = tagArray.observe(\.tags, options: [.new, .old]) { (tagArray, _) in
-            
-            
             var searchKeyword = "?q="
             if tagArray.tags.count > 0 {
                 for index in 0...tagArray.tags.count-1 {
@@ -123,15 +125,22 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         
         guard let searchResult = self.searchRecipeModel,
             let selectedHits = searchResult.hits[sender.tag] as? hits,
-            let selectedRecipe = selectedHits.recipe as? RecipeInformation else {return}
+            let selectedRecipe = selectedHits.recipe as? RecipeInformation,
+            let selectedRecipeInCalendarFormat = self.realmManager.recipeFormatTranslation(from: selectedRecipe, in: self.selectedDate) else {return}
+        
+        
         
         if selected { //remove from selected
             guard let index = self.selecteRecipeName.index(of: cellTitle) else {return}
             self.selecteRecipeName.remove(at: index)
             self.selectedRecipes.remove(at: index)
+            self.selectedRecipeImage.remove(at: index)
         } else {
             self.selecteRecipeName.append(cellTitle)
-            self.selectedRecipes.append(selectedRecipe)
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+            imageView.image = cellImage
+            self.selectedRecipeImage.append(imageView)
+            self.selectedRecipes.append(selectedRecipeInCalendarFormat)
         }
         print(self.selecteRecipeName)
         
@@ -184,6 +193,15 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
                 parentVC.failToGetSearchResult()
             }
         }
+    }
+    
+    
+    
+    func confirmSelection() {
+        var selectedRecipeCache = [RecipeCalendarRealmModel]()
+        selectedRecipeCache = self.selectedRecipes
+        self.realmManager.updateRecipe(recipeArray: self.selectedRecipes, dateString: self.selectedDate)
+        self.delegate?.reloadData(addedRecipeImageView: self.selectedRecipeImage, addedRecipeTitle: self.selecteRecipeName)
     }
 }
 

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddByClassificationDelegateProtocol: class {
+    func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String])
+}
+
 class AddByClassificationViewController: MPTableViewController {
 
     @IBOutlet weak var topImageView: UIImageView!
@@ -21,11 +25,14 @@ class AddByClassificationViewController: MPTableViewController {
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
     var selectedRecipesName: [String] = []
-    var selectedRecipes: [RecipeInformation] = []
+    var selectedRecipeImage: [UIImageView] = []
+    var selectedRecipes: [RecipeCalendarRealmModel] = []
     var originalScrollViewY: CGFloat = 0.0
     var originalContainerDifference: CGFloat = 0.0
     var originalSearchButtonViewY: CGFloat = 0.0
     var originalIndicatorViewY: CGFloat = 0.0
+    var recipeDate = ""
+    weak var delegate: AddByClassificationDelegateProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +124,9 @@ class AddByClassificationViewController: MPTableViewController {
             let vc = segue.destination as? SearchViewController
             vc?.selecteRecipeName = self.selectedRecipesName
             vc?.selectedRecipes = self.selectedRecipes
+            vc?.selectedDate = self.recipeDate
+            vc?.delegate = self.delegate
+            vc?.selectedRecipeImage = self.selectedRecipeImage
         }
     }
     
@@ -126,6 +136,17 @@ class AddByClassificationViewController: MPTableViewController {
         searchButton.frame.origin = CGPoint(x: searchButton.frame.origin.x, y: originalSearchButtonViewY - contentInsetY)
         activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: originalIndicatorViewY - contentInsetY)
     }
+    
+    
+    @IBAction func ConfirmButtonDidPressed(_ sender: UIButton) {
+        for childVC in childViewControllers {
+            if let childVC = childVC as? SearchViewController {
+                childVC.confirmSelection()
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
     
 
 }
