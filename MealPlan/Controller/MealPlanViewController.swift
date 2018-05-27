@@ -302,6 +302,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
                     let recipeImageURL = recipe.recipeRealmModel?.image else {return}
                 
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+                imageView.contentMode = .scaleAspectFill
                 imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
                     guard let error = error else {return}
                     print(error)

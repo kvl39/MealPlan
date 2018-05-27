@@ -18,7 +18,7 @@ enum TransitionState {
 }
 
 class ZoomTransitionDelegate: NSObject {
-    var transitionTime = 0.8
+    var transitionTime = 0.5
     var damping: CGFloat = 0.6
     var operation: UINavigationControllerOperation = .none
     private let zoomScale = CGFloat(15)
