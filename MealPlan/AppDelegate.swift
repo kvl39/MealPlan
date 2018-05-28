@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController?.view.addSubview(label)
         //self.window?.backgroundColor = UIColor(red: 242/255.0, green: 211/255.0, blue: 136/255.0, alpha: 1.0)
         IQKeyboardManager.shared.enable = true
+        Fabric.with([Crashlytics.self])
         return true
     }
 
