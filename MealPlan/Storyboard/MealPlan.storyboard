@@ -557,8 +557,11 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-Qx-zDR">
-                                <rect key="frame" x="270" y="93" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
+                                <rect key="frame" x="278" y="88" width="47" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="ConfirmButtonDidPressed:" destination="zgV-ly-Iwx" eventType="touchUpInside" id="w3r-Ek-YHY"/>
                                 </connections>
@@ -578,7 +581,7 @@
                             <constraint firstItem="5Dg-Rm-gn4" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="Kck-H3-54A"/>
                             <constraint firstItem="jTn-nx-rpA" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" id="LTw-hZ-faa"/>
                             <constraint firstItem="rOw-PT-SvL" firstAttribute="top" secondItem="SnV-gz-hna" secondAttribute="bottom" constant="20" id="OG2-fy-gVH"/>
-                            <constraint firstItem="AWE-Qx-zDR" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" constant="5" id="Po0-n6-6fr"/>
+                            <constraint firstItem="AWE-Qx-zDR" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" id="Po0-n6-6fr"/>
                             <constraint firstItem="SnV-gz-hna" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="Sti-uE-C17"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="5Dg-Rm-gn4" secondAttribute="trailing" id="VF9-fP-zwC"/>
                             <constraint firstAttribute="bottom" secondItem="5Dg-Rm-gn4" secondAttribute="bottom" id="dcN-cB-bKa"/>
@@ -587,7 +590,7 @@
                             <constraint firstItem="rOw-PT-SvL" firstAttribute="centerX" secondItem="TcU-yA-tZU" secondAttribute="centerX" id="rPA-gC-jGS"/>
                             <constraint firstItem="218-sN-3VX" firstAttribute="top" secondItem="jTn-nx-rpA" secondAttribute="bottom" id="tIW-4I-3hA"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="jTn-nx-rpA" secondAttribute="trailing" id="vOc-gL-GZw"/>
-                            <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="AWE-Qx-zDR" secondAttribute="trailing" constant="68" id="yCO-1I-0Sv"/>
+                            <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="AWE-Qx-zDR" secondAttribute="trailing" constant="50" id="yCO-1I-0Sv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tSh-rV-F9D"/>
                     </view>
