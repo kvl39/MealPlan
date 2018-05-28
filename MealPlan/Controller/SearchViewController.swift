@@ -163,24 +163,34 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     func manager(_ manager: RecipeManager, didGet products: RecipeModel) {
         self.rowArray = []
         self.searchRecipeModel = products
-        for index in 0..<products.hits.count {
-            if self.rowArray.count == 0 {
-                self.rowArray.append([])
+        if products.hits.count == 0 {
+            print("no products")
+            DispatchQueue.main.async {
+                if let parentVC = self.parent as? AddByClassificationViewController {
+                    parentVC.failToGetSearchResult()
+                }
             }
-            var cellSelected = false
-            if self.selecteRecipeName.contains(products.hits[index].recipe.label) {
-                cellSelected = true
+        } else {
+            for index in 0..<products.hits.count {
+                if self.rowArray.count == 0 {
+                    self.rowArray.append([])
+                }
+                var cellSelected = false
+                if self.selecteRecipeName.contains(products.hits[index].recipe.label) {
+                    cellSelected = true
+                }
+                self.rowArray[0].append(
+                    .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, cellSelected, false))
             }
-            self.rowArray[0].append(
-            .recipeSearchCellType(products.hits[index].recipe.image.absoluteString, nil, products.hits[index].recipe.label, cellSelected, false))
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                if let parentVC = self.parent as? AddByClassificationViewController {
+                    parentVC.didGetSearchResult()
+                }
+            }
         }
-
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            if let parentVC = self.parent as? AddByClassificationViewController {
-                parentVC.didGetSearchResult()
-            }
-        }
+        
         
     }
     
