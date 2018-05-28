@@ -8,6 +8,9 @@
 
 import UIKit
 import SDWebImage
+import Crashlytics
+import Firebase
+
 
 class MealPlanViewController: MPTableViewController, AddByClassificationDelegateProtocol {
 
@@ -51,7 +54,10 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
         self.tabBarController?.tabBar.isHidden = true
+        
+
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +68,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     
     @IBAction func editButtonDidPressed(_ sender: UIButton) {
         startPlanning(notification: nil)
+        Analytics.logEvent("EditButtonDidPressed", parameters: nil)
     }
     
     
