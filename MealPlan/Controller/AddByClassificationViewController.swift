@@ -155,6 +155,9 @@ class AddByClassificationViewController: MPTableViewController {
         if subViewMoveDistance > 0 {
             searchButton.isUserInteractionEnabled = false
             containerForScrollView.isUserInteractionEnabled = false
+        } else {
+            searchButton.isUserInteractionEnabled = true
+            containerForScrollView.isUserInteractionEnabled = true
         }
     }
     

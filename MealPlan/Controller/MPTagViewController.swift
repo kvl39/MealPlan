@@ -59,17 +59,19 @@ class MPTagViewController: UIViewController {
     
 
     func createTag(onView view: UIView, with array: [String]) {
-        if array.count == 0 {
-            showHints()
-        } else {
-            hideHints()
-        }
-        
         for tempView in view.subviews {
             if tempView.tag != 0 {
                 tempView.removeFromSuperview()
             }
         }
+        
+        if array.count == 0 {
+            showHints()
+            return
+        } else {
+            hideHints()
+        }
+        
         
         tags = array
         var xPos: CGFloat = 15.0
@@ -123,7 +125,6 @@ class MPTagViewController: UIViewController {
         if let parent = self.parent as? AddByClassificationViewController {
             parent.updateHeightOfTagView(newHeight: yPos + 20.0)
         }
-        self.hintLabel.alpha = 0
     }
 
     
