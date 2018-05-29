@@ -63,6 +63,8 @@
 		AD7044242099A5590022E15D /* MPPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7044232099A5590022E15D /* MPPieChart.swift */; };
 		AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */; };
 		AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */; };
+		AD81675920BD4E9300C61849 /* MPScrollNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */; };
+		AD81675B20BD500100C61849 /* CreateRecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */; };
 		AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */; };
 		AD85E55C20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */; };
 		AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */; };
@@ -163,6 +165,8 @@
 		AD7044232099A5590022E15D /* MPPieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPieChart.swift; sourceTree = "<group>"; };
 		AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientCell.swift; sourceTree = "<group>"; };
 		AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailIngredientCell.xib; sourceTree = "<group>"; };
+		AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollNavigationViewController.swift; sourceTree = "<group>"; };
+		AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeStepsViewController.swift; sourceTree = "<group>"; };
 		AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationViewController.swift; sourceTree = "<group>"; };
 		AD85E55A20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationTextFieldCell.swift; sourceTree = "<group>"; };
 		AD85E55B20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationTextFieldCell.xib; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */,
 				ADB6168A20B91F7800B637D6 /* AddByClassificationViewController.swift */,
 				ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */,
+				AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */,
+				AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
+				AD81675B20BD500100C61849 /* CreateRecipeStepsViewController.swift in Sources */,
 				AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */,
 				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
 				AD5D381B20B45003004B65BF /* MPNutrientsEditView.swift in Sources */,
@@ -783,6 +790,7 @@
 				AD1D9232209B759F00B9AFE9 /* MPHttpClient.swift in Sources */,
 				AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */,
 				ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */,
+				AD81675920BD4E9300C61849 /* MPScrollNavigationViewController.swift in Sources */,
 				ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */,
 				AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */,
 				AD2F274120AA95E900F8CA1B /* PhotoViewController.swift in Sources */,
