@@ -129,18 +129,23 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             let selectedRecipeInCalendarFormat = self.realmManager.recipeFormatTranslation(from: selectedRecipe, in: self.selectedDate) else {return}
         
         
-        
+        var hintText = ""
         if selected { //remove from selected
             guard let index = self.selecteRecipeName.index(of: cellTitle) else {return}
             self.selecteRecipeName.remove(at: index)
             self.selectedRecipes.remove(at: index)
             self.selectedRecipeImage.remove(at: index)
+            hintText = "\(cellTitle) is removed from the menu"
         } else {
             self.selecteRecipeName.append(cellTitle)
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
             imageView.image = cellImage
             self.selectedRecipeImage.append(imageView)
             self.selectedRecipes.append(selectedRecipeInCalendarFormat)
+            hintText = "\(cellTitle) is added to the menu"
+        }
+        if let parentVC = self.parent as? AddByClassificationViewController {
+            parentVC.updateHintArray(newHintText: hintText)
         }
         print(self.selecteRecipeName)
         

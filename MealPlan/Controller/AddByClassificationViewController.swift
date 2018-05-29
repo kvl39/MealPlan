@@ -23,7 +23,11 @@ class AddByClassificationViewController: MPTableViewController {
     @IBOutlet weak var searchResultViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightOfTagView: NSLayoutConstraint!
     @IBOutlet weak var searchButtonLabel: UILabel!
+    @IBOutlet weak var hintView: UIView!
+    @IBOutlet weak var hintLabel: UILabel!
     
+    var hintTextArray = [String]()
+    var isShowingHint = false
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
     var selectedRecipesName: [String] = []
@@ -42,6 +46,13 @@ class AddByClassificationViewController: MPTableViewController {
         backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
+        initialConfigureHintView()
+    }
+    
+    func initialConfigureHintView() {
+        hintView.alpha = 0
+        hintView.layer.cornerRadius = 10
+        hintView.layer.masksToBounds = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -57,8 +68,33 @@ class AddByClassificationViewController: MPTableViewController {
             self.heightOfTagView.constant = newHeight
             self.view.layoutIfNeeded()
         }
-        
-        
+    }
+    
+    func updateHintArray(newHintText: String) {
+        self.hintTextArray.append(newHintText)
+        if isShowingHint == false {
+            showHint()
+        }
+    }
+    
+    
+    func showHint() {
+        if self.hintTextArray.count > 0 {
+            hintLabel.text = self.hintTextArray[0]
+            self.isShowingHint = true
+            UIView.animate(withDuration: 0.5, animations: {
+                self.hintView.alpha = 1
+            }) { (showViewComplete) in
+                self.hintTextArray.remove(at: 0)
+                UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
+                    self.hintView.alpha = 0
+                }, completion: { (hideViewComplete) in
+                    self.showHint()
+                })
+            }
+        } else {
+            self.isShowingHint = false
+        }
     }
     
     func initialConfigueViews() {
