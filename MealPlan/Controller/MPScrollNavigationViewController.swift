@@ -52,6 +52,9 @@ class MPScrollNavigationViewController: UIViewController {
     
     @objc func tapStep2(sender: UITapGestureRecognizer) {
         print("tapped2")
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.scrollToLeft()
+        }
     }
     
     @objc func tapStep3(sender: UITapGestureRecognizer) {

@@ -19,7 +19,8 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     var currentStep = 1
     var numberOfSteps = 4
     var stepIndicationWidth: CGFloat = 0.0
-    var controllersArray: [ViewController] = []
+    var controllersArray: [UIViewController] = []
+    var capturedPhoto: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +40,37 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             self.scrollStepsView.addSubview(view)
         }
         
-//        var cameraViewController = CameraViewController()
-//        addChildViewController(cameraViewController)
-//        cameraViewController.view.frame = CGRect(x: 0, y: 120, width: self.view.frame.width, height: self.view.frame.height-120)
-        //self.view.addSubview(cameraViewController.view)
-//        didMove(toParentViewController: cameraViewController)
+        addCameraViewController()
+        addPhotoViewController()
         
         
+    }
+    
+    func addCameraViewController() {
+        var cameraViewController = CameraViewController()
+        addChildViewController(cameraViewController)
+        cameraViewController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        self.scrollStepsView.addSubview(cameraViewController.view)
+        didMove(toParentViewController: cameraViewController)
+        self.controllersArray.append(cameraViewController)
+    }
+    
+    func addPhotoViewController() {
+        
+        guard let photoViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as? PhotoViewController else {return}
+        addChildViewController(photoViewController)
+        photoViewController.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        self.scrollStepsView.addSubview(photoViewController.view)
+        didMove(toParentViewController: photoViewController)
+        self.controllersArray.append(photoViewController)
+    }
+    
+    func scrollToLeft() {
+        //scrollView.setContentOffset(CGPoint(x: x, y: y), animated: true)
+        if let photoVC = self.controllersArray[1] as? PhotoViewController {
+            photoVC.takenPhoto = self.capturedPhoto
+        }
+        self.scrollStepsView.setContentOffset(CGPoint(x: self.scrollStepsView.contentOffset.x+self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
     }
 
 }

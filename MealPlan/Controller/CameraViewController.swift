@@ -90,31 +90,31 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     func configureButtons() {
-        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 30, y: self.view.frame.height-80, width: 60, height: 60))
+        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 30, y: self.view.frame.height-80-120, width: 60, height: 60))
         takePhotoButton.addTarget(self, action: #selector(takePhoto(_:)), for: .touchUpInside)
         self.view.addSubview(takePhotoButton)
         takePhotoButton.setImage(#imageLiteral(resourceName: "shutter"), for: .normal)
         self.view.bringSubview(toFront: takePhotoButton)
         
-        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85, width: 50, height: 50))
+        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85-120, width: 50, height: 50))
         cancelButton.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         cancelButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         self.view.addSubview(cancelButton)
         self.view.bringSubview(toFront: cancelButton)
         
-        let focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130, width: 30, height: 30))
+        let focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130-120, width: 30, height: 30))
         focusFilterButton.addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         focusFilterButton.setImage(#imageLiteral(resourceName: "focus"), for: .normal)
         self.view.addSubview(focusFilterButton)
         self.view.bringSubview(toFront: focusFilterButton)
         
-        let blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130, width: 30, height: 30))
+        let blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130-120, width: 30, height: 30))
         blackFilterButton.addTarget(self, action: #selector(popupButton2Action(_:)), for: .touchUpInside)
         blackFilterButton.setImage(#imageLiteral(resourceName: "two-circles-sign-one-black-other-white"), for: .normal)
         self.view.addSubview(blackFilterButton)
         self.view.bringSubview(toFront: blackFilterButton)
         
-        let lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130, width: 30, height: 30))
+        let lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130-120, width: 30, height: 30))
         lightFilterButton.addTarget(self, action: #selector(popupButton3Action(_:)), for: .touchUpInside)
         lightFilterButton.setImage(#imageLiteral(resourceName: "light-bulb"), for: .normal)
         self.view.addSubview(lightFilterButton)
@@ -192,11 +192,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 isTakePhoto = false
                 
                 if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
-                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-                    photoVC.takenPhoto = image
-                    photoVC.selectedDate = self.selectedDate
+//                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
+//                    photoVC.takenPhoto = image
+//                    photoVC.selectedDate = self.selectedDate
                     DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(photoVC, animated: true)
+                        //self.navigationController?.pushViewController(photoVC, animated: true)
+                        if let parentVC = self.parent as? CreateRecipeStepsViewController {
+                            parentVC.capturedPhoto = image
+                            parentVC.scrollToLeft()
+                        }
                         self.stopCaptureSession()
 //                        self.present(photoVC, animated: true, completion: {
 //                            self.stopCaptureSession()
