@@ -78,6 +78,9 @@ class MPSelectionTagViewController: UIViewController {
                 subView.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
             }
         }
+        if let parentVC = self.parent as? MPHorizontalScrollViewController {
+            parentVC.getSelectedTags()
+        }
     }
     
     @objc func removeTag(_ sender: UIButton) {

@@ -39,6 +39,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
         }
         if let parentVC = self.parent as? AddByClassificationViewController{
             parentVC.selectedTags = selectedTags
+            parentVC.updateTagView()
         }
     }
 

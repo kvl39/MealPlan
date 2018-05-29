@@ -21,8 +21,10 @@ extension String {
 class MPTagViewController: UIViewController {
 
     var tagArray: AddPageTag!
+    var tags: [String] = []
     var observation: NSKeyValueObservation!
     lazy var hintLabel = UILabel()
+    
     
     
     override func viewDidLoad() {
@@ -33,11 +35,19 @@ class MPTagViewController: UIViewController {
     }
     
     func configureHints() {
-        hintLabel.text = "選擇材料..."
+        hintLabel.text = "Choose Tags then start searching recipes"
         hintLabel.textColor = UIColor.gray
         hintLabel.font = UIFont(name: "PingFangTC-Light ", size: 13.5)
         hintLabel.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
         self.view.addSubview(hintLabel)
+    }
+    
+    func showHints() {
+        hintLabel.alpha = 1
+    }
+    
+    func hideHints() {
+        hintLabel.alpha = 0
     }
 
     func configureObserver() {
@@ -49,17 +59,25 @@ class MPTagViewController: UIViewController {
     
 
     func createTag(onView view: UIView, with array: [String]) {
+        if array.count == 0 {
+            showHints()
+        } else {
+            hideHints()
+        }
+        
         for tempView in view.subviews {
             if tempView.tag != 0 {
                 tempView.removeFromSuperview()
             }
         }
-
+        
+        tags = array
         var xPos: CGFloat = 15.0
         var yPos: CGFloat = 20.0
         var tag: Int = 1
 
         for data in array {
+            //recover to original height first
             let width = data.widthOfString(using: UIFont(name: "Verdana", size: 13.0)!)
             let checkWholeWidth = xPos + width + 13.0 + 25.5
             if checkWholeWidth > UIScreen.main.bounds.size.width - 30.0 {
@@ -77,6 +95,7 @@ class MPTagViewController: UIViewController {
             textLabel.text = data
             textLabel.textColor = UIColor.white
             bgView.addSubview(textLabel)
+            
 
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: bgView.frame.size.width - 2.0 - 23.0,
@@ -91,16 +110,22 @@ class MPTagViewController: UIViewController {
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
             tag += 1
         }
+        //increase view height
+        if let parent = self.parent as? AddByClassificationViewController {
+            parent.updateHeightOfTagView(newHeight: yPos + 20.0)
+        }
         self.hintLabel.alpha = 0
     }
 
     
     
     @objc func removeTag(_ sender: UIButton) {
-        tagArray.tags.remove(at: sender.tag-1)
-        createTag(onView: self.view, with: tagArray.tags)
-        if self.tagArray.tags.count == 0 {
+        //tagArray.tags.remove(at: sender.tag-1)
+        tags.remove(at: sender.tag-1)
+        createTag(onView: self.view, with: self.tags)
+        if self.tags.count == 0 {
             self.hintLabel.alpha = 1
         }
+        
     }
 }

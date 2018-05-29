@@ -219,12 +219,13 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = -1 * tableView.contentOffset.y
-        let height = min(max(y,100), 260)
-        tableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
+        let height = min(max(y,200), 260)
+        //tableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         let moveDistance = 260 - y
         print("offset:\(y)")
+        print("height:\(height)")
         if let parentVC = self.parent as? AddByClassificationViewController {
-            parentVC.adjustView(contentInsetY: moveDistance)
+            parentVC.adjustView(subViewMoveDistance: moveDistance)
         }
     }
 }

@@ -21,7 +21,9 @@ class AddByClassificationViewController: MPTableViewController {
     @IBOutlet weak var containerForScrollView: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
-    
+    @IBOutlet weak var searchResultContainerView: UIView!
+    @IBOutlet weak var searchResultViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightOfTagView: NSLayoutConstraint!
     
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
@@ -48,6 +50,16 @@ class AddByClassificationViewController: MPTableViewController {
         originalScrollViewY = containerForScrollView.frame.origin.y
         originalSearchButtonViewY = searchButton.frame.origin.y
         originalIndicatorViewY = activityIndicator.frame.origin.y
+    }
+    
+    
+    func updateHeightOfTagView(newHeight: CGFloat){
+        UIView.animate(withDuration: 0.2) {
+            self.heightOfTagView.constant = newHeight
+            self.view.layoutIfNeeded()
+        }
+        
+        
     }
     
     func initialConfigueViews() {
@@ -110,7 +122,6 @@ class AddByClassificationViewController: MPTableViewController {
                 childVC.startSearching()
             }
         }
-        
     }
     
     func startActivityIndicator() {
@@ -132,11 +143,19 @@ class AddByClassificationViewController: MPTableViewController {
         }
     }
     
-    func adjustView(contentInsetY: CGFloat) {
+    func adjustView(subViewMoveDistance: CGFloat) {
         //let newHeight = min(contentInsetY-200, originalScrollViewY)
-        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: originalScrollViewY - contentInsetY)
-        searchButton.frame.origin = CGPoint(x: searchButton.frame.origin.x, y: originalSearchButtonViewY - contentInsetY)
-        activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: originalIndicatorViewY - contentInsetY)
+//        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: originalScrollViewY - contentInsetY)
+//        searchButton.frame.origin = CGPoint(x: searchButton.frame.origin.x, y: originalSearchButtonViewY - contentInsetY)
+//        activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: originalIndicatorViewY - contentInsetY)
+        //searchResultViewTopConstraint.constant = contentInsetY
+        //self.view.layoutIfNeeded()
+        searchButton.alpha = 1 - subViewMoveDistance/30
+        containerForScrollView.alpha = 1 - subViewMoveDistance/90
+        if subViewMoveDistance > 0 {
+            searchButton.isUserInteractionEnabled = false
+            containerForScrollView.isUserInteractionEnabled = false
+        }
     }
     
     
@@ -149,6 +168,12 @@ class AddByClassificationViewController: MPTableViewController {
         }
     }
     
-    
+    func updateTagView() {
+        for childVC in childViewControllers {
+            if let childVC = childVC as? MPTagViewController {
+                childVC.createTag(onView: childVC.view, with: self.selectedTags)
+            }
+        }
+    }
 
 }
