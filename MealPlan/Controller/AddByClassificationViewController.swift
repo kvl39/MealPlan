@@ -16,14 +16,13 @@ class AddByClassificationViewController: MPTableViewController {
 
     @IBOutlet weak var topImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var hintView: UIView!
-    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var containerForScrollView: UIView!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var searchResultContainerView: UIView!
     @IBOutlet weak var searchResultViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightOfTagView: NSLayoutConstraint!
+    @IBOutlet weak var searchButtonLabel: UILabel!
     
     var selectedTags = [String]()
     var tags: AddPageTag = AddPageTag()
@@ -65,13 +64,8 @@ class AddByClassificationViewController: MPTableViewController {
     func initialConfigueViews() {
         stopActivityIndicator()
         hideSearchTable()
-        configureHintView(isShown: true, text: "Choose tags then start searching")
     }
-    
-    func configureHintView(isShown: Bool, text: String) {
-        hintLabel.text = text
-        hintView.alpha = isShown ? 1:0
-    }
+
     
     func hideSearchTable() {
         for childVC in childViewControllers {
@@ -92,7 +86,6 @@ class AddByClassificationViewController: MPTableViewController {
     func didGetSearchResult() {
         stopActivityIndicator()
         hideSearchTable()
-        configureHintView(isShown: false, text: "")
         UIView.animate(withDuration: 0.4) {
             self.showSearchTable()
         }
@@ -101,7 +94,6 @@ class AddByClassificationViewController: MPTableViewController {
     func failToGetSearchResult() {
         stopActivityIndicator()
         hideSearchTable()
-        configureHintView(isShown: true, text: "No results. Please choose other tag combinations")
     }
 
     @IBAction func startSearchButtonDidPressed(_ sender: UIButton) {
@@ -126,10 +118,12 @@ class AddByClassificationViewController: MPTableViewController {
     
     func startActivityIndicator() {
         activityIndicator.startAnimating()
+        searchButtonLabel.alpha = 0
     }
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
+        searchButtonLabel.alpha = 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,7 +144,7 @@ class AddByClassificationViewController: MPTableViewController {
 //        activityIndicator.frame.origin = CGPoint(x: activityIndicator.frame.origin.x, y: originalIndicatorViewY - contentInsetY)
         //searchResultViewTopConstraint.constant = contentInsetY
         //self.view.layoutIfNeeded()
-        searchButton.alpha = 1 - subViewMoveDistance/30
+        //searchButton.alpha = 1 - subViewMoveDistance/30
         containerForScrollView.alpha = 1 - subViewMoveDistance/90
         if subViewMoveDistance > 0 {
             searchButton.isUserInteractionEnabled = false

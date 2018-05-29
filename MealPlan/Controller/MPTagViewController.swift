@@ -38,12 +38,15 @@ class MPTagViewController: UIViewController {
         hintLabel.text = "Choose Tags then start searching recipes"
         hintLabel.textColor = UIColor.gray
         hintLabel.font = UIFont(name: "PingFangTC-Light ", size: 13.5)
-        hintLabel.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
+        hintLabel.frame = CGRect(x: 10, y: 10, width: 250, height: 40)
         self.view.addSubview(hintLabel)
     }
     
     func showHints() {
         hintLabel.alpha = 1
+        if let parent = self.parent as? AddByClassificationViewController {
+
+        }
     }
     
     func hideHints() {
