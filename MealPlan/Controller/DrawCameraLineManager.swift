@@ -16,27 +16,28 @@ class DrawCameraLineManager {
         
         drawOneLine(on: layer,
                     startPoint: CGPoint(x: 0, y: cameraHeight/3),
-                    stopPoint: CGPoint(x: cameraWidth, y: cameraHeight/3))
+                    stopPoint: CGPoint(x: cameraWidth, y: cameraHeight/3), color: UIColor.white.cgColor)
         drawOneLine(on: layer,
                     startPoint: CGPoint(x: 0, y: cameraHeight*2/3),
-                    stopPoint: CGPoint(x: cameraWidth, y: cameraHeight*2/3))
+                    stopPoint: CGPoint(x: cameraWidth, y: cameraHeight*2/3), color: UIColor.white.cgColor)
         drawOneLine(on: layer,
                     startPoint: CGPoint(x: cameraWidth/3, y: 0),
-                    stopPoint: CGPoint(x: cameraWidth/3, y: cameraHeight))
+                    stopPoint: CGPoint(x: cameraWidth/3, y: cameraHeight), color: UIColor.white.cgColor)
         drawOneLine(on: layer,
                     startPoint: CGPoint(x: cameraWidth*2/3, y: 0),
-                    stopPoint: CGPoint(x: cameraWidth*2/3, y: cameraHeight))
+                    stopPoint: CGPoint(x: cameraWidth*2/3, y: cameraHeight), color: UIColor.white.cgColor)
     }
     
-    func drawOneLine(on layer: CALayer, startPoint: CGPoint, stopPoint: CGPoint) {
+    func drawOneLine(on layer: CALayer, startPoint: CGPoint, stopPoint: CGPoint, color: CGColor)           -> CAShapeLayer {
         let line = CAShapeLayer()
         let linePath = UIBezierPath()
         linePath.move(to: startPoint)
         linePath.addLine(to: stopPoint)
         line.path = linePath.cgPath
-        line.strokeColor = UIColor.white.cgColor
+        line.strokeColor = color
         line.lineWidth = 1
         line.lineJoin = kCALineJoinRound
         layer.addSublayer(line)
+        return line
     }
 }

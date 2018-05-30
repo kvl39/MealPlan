@@ -66,12 +66,15 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addStepInformationViewController() {
-        guard let addStepInformationViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "AddRecipeInformationViewController") as? AddRecipeInformationViewController else {return}
-        addChildViewController(addStepInformationViewController)
-        addStepInformationViewController.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
-        self.scrollStepsView.addSubview(addStepInformationViewController.view)
-        didMove(toParentViewController: addStepInformationViewController)
-        self.controllersArray.append(addStepInformationViewController)
+        guard let addRecipeStepsViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "AddRecipeStepsViewController") as? AddRecipeStepsViewController else {return}
+        addChildViewController(addRecipeStepsViewController)
+        addRecipeStepsViewController.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
+        self.scrollStepsView.addSubview(addRecipeStepsViewController.view)
+        didMove(toParentViewController: addRecipeStepsViewController)
+        self.controllersArray.append(addRecipeStepsViewController)
+        addRecipeStepsViewController.titleTextViewHints = "Recipe Title"
+        addRecipeStepsViewController.configureTextViewHints()
+        addRecipeStepsViewController.resetFrame()
     }
     
     func updatePhotoView() {

@@ -20,11 +20,14 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     weak var delegate: InputTextViewControllerDelegate?
     var section = 0
     var row = 0
+    var textViewHint = ""
+    var drawLineManager = DrawCameraLineManager()
+    var separationLine = CAShapeLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
-        textView.text = "填入步驟說明"
+        textView.text = textViewHint
         textView.textColor = UIColor.gray
         self.view.addSubview(textView)
         textView.isScrollEnabled = false
@@ -37,14 +40,24 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
 //        textView.backgroundColor = UIColor.brown
 //        self.view.backgroundColor = UIColor.yellow
         resetFrame()
-        textView.layer.borderColor = UIColor.black.cgColor
-        textView.layer.borderWidth = 1
+        //textView.layer.borderColor = UIColor.black.cgColor
+        //textView.layer.borderWidth = 1
+        textView.font = UIFont(name: "PingFang TC", size: 17)
+        //self.textView.layer.addSublayer(separationLine)
     }
     
     
     
     func resetFrame() {
         textView.frame = self.view.frame
+        drawSeperation()
+    }
+    
+    func drawSeperation() {
+        separationLine.removeFromSuperlayer()
+        separationLine = drawLineManager.drawOneLine(on: self.textView.layer,
+                                    startPoint: CGPoint(x: 0, y: self.view.frame.height),
+                                    stopPoint: CGPoint(x: self.view.frame.width, y: self.view.frame.height), color: UIColor.gray.cgColor)
     }
     
     
@@ -59,8 +72,12 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        configureTextFieldEmpty()
+    }
+    
+    func configureTextFieldEmpty() {
         if textView.text.isEmpty {
-            textView.text = "填入步驟說明"
+            textView.text = textViewHint
             textView.textColor = UIColor.gray
         }
     }
@@ -81,6 +98,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
             self.view.layoutIfNeeded()
             IQKeyboardManager.shared.reloadLayoutIfNeeded()
             self.delegate?.updateTableView(newHeight: 243 + heightDiff, section: self.section, row: self.row)
+            drawSeperation()
         }
     }
     
