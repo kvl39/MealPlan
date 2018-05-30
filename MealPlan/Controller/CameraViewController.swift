@@ -39,6 +39,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureViewWillAppear()
+    }
+    
+    func configureViewWillAppear() {
         prepareCamera()
         moveButtonsToFront()
         configureCameraLines()
@@ -190,23 +194,36 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             if isTakePhoto {
                 isTakePhoto = false
+                if let parentVC = self.parent as? CreateRecipeStepsViewController {
+                    if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
+                        parentVC.capturedPhoto = image
+                        DispatchQueue.main.async {
+                            parentVC.scrollToRight()
+                            parentVC.updatePhotoView()
+                        }
+                        self.stopCaptureSession()
+                    }
+                }
                 
-                if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
+                //if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
 //                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
 //                    photoVC.takenPhoto = image
 //                    photoVC.selectedDate = self.selectedDate
-                    DispatchQueue.main.async {
+                    //if let parentVC = self.parent as? CreateRecipeStepsViewController{
+//                        parentVC.capturedPhoto = image
+//                    DispatchQueue.main.async {
                         //self.navigationController?.pushViewController(photoVC, animated: true)
-                        if let parentVC = self.parent as? CreateRecipeStepsViewController {
-                            parentVC.capturedPhoto = image
-                            parentVC.scrollToLeft()
-                        }
-                        self.stopCaptureSession()
+                        //if let parentVC = self.parent as? CreateRecipeStepsViewController {
+                            //parentVC.capturedPhoto = image
+                            //parentVC.scrollToLeft()
+                        //}
+                        //self.stopCaptureSession()
 //                        self.present(photoVC, animated: true, completion: {
 //                            self.stopCaptureSession()
 //                        })
-                    }
-                }
+                    //}
+                    //}
+                //}
             }
         }
     }

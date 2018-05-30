@@ -42,7 +42,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         
         addCameraViewController()
         addPhotoViewController()
-        
+        addStepInformationViewController()
         
     }
     
@@ -56,7 +56,6 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addPhotoViewController() {
-        
         guard let photoViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as? PhotoViewController else {return}
         addChildViewController(photoViewController)
         photoViewController.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
@@ -65,11 +64,34 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         self.controllersArray.append(photoViewController)
     }
     
-    func scrollToLeft() {
-        //scrollView.setContentOffset(CGPoint(x: x, y: y), animated: true)
+    func addStepInformationViewController() {
+        guard let addStepInformationViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "AddRecipeInformationViewController") as? AddRecipeInformationViewController else {return}
+        addChildViewController(addStepInformationViewController)
+        addStepInformationViewController.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        self.scrollStepsView.addSubview(addStepInformationViewController.view)
+        didMove(toParentViewController: addStepInformationViewController)
+        self.controllersArray.append(addStepInformationViewController)
+    }
+    
+    func updatePhotoView() {
         if let photoVC = self.controllersArray[1] as? PhotoViewController {
             photoVC.takenPhoto = self.capturedPhoto
+            photoVC.updatePhoto()
         }
+    }
+    
+    func reTakePicture() {
+        if let cameraVC = self.controllersArray[0] as? CameraViewController {
+            cameraVC.configureViewWillAppear()
+        }
+       scrollToLeft()
+    }
+    
+    func scrollToLeft() {
+        self.scrollStepsView.setContentOffset(CGPoint(x: self.scrollStepsView.contentOffset.x-self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
+    }
+    
+    func scrollToRight() {
         self.scrollStepsView.setContentOffset(CGPoint(x: self.scrollStepsView.contentOffset.x+self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
     }
 
