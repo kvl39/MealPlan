@@ -79,6 +79,8 @@
 		AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */; };
 		ADA38AA820BF000100DE86F6 /* AddRecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */; };
 		ADA38AAA20BF1EDB00DE86F6 /* AddRecipeStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */; };
+		ADA38AAE20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA38AAC20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift */; };
+		ADA38AAF20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA38AAD20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
 		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
 		ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA469FC20BE40F800A80F25 /* GradientImageView.swift */; };
@@ -185,6 +187,8 @@
 		AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitionDelegate.swift; sourceTree = "<group>"; };
 		ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepsViewController.swift; sourceTree = "<group>"; };
 		ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepViewController.swift; sourceTree = "<group>"; };
+		ADA38AAC20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepTableViewCell.swift; sourceTree = "<group>"; };
+		ADA38AAD20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeStepTableViewCell.xib; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
 		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ADA469FC20BE40F800A80F25 /* GradientImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ADA38AAB20BF2C9D00DE86F6 /* RecipeStepCell */,
 				ADB6169120B958C700B637D6 /* MPHorizontalScrollView */,
 				AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */,
 				AD5D382020B45516004B65BF /* AddRecipeInformationNutrientsEditCell */,
@@ -472,6 +477,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		ADA38AAB20BF2C9D00DE86F6 /* RecipeStepCell */ = {
+			isa = PBXGroup;
+			children = (
+				ADA38AAC20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift */,
+				ADA38AAD20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib */,
+			);
+			path = RecipeStepCell;
+			sourceTree = "<group>";
+		};
 		ADAA4DA720AC12D2002F9658 /* RecipeNoteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +656,7 @@
 				AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */,
 				AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */,
 				AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */,
+				ADA38AAF20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib in Resources */,
 				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
 				AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */,
@@ -745,6 +760,7 @@
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
 				AD6ED3F520B2B83800B194BF /* TextViewController.swift in Sources */,
 				ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */,
+				ADA38AAE20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift in Sources */,
 				AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */,
 				AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */,
 				AD428EE420A2C6C200A04A32 /* RecipeCalendarModel.swift in Sources */,

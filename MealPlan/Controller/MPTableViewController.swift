@@ -18,6 +18,7 @@ enum MPTableViewCellType {
     case sliderType(Float, String, String)
     case nutrientsEditType
     case recipeIngredientType(String)
+    case recipeStepTableViewCellType(String, UIImage)
 }
 
 extension MPTableViewCellType {
@@ -43,6 +44,8 @@ extension MPTableViewCellType {
             return NutrientsEditItem()
         case .recipeIngredientType(let ingredientText):
             return RecipeIngredientItem(ingredientText: ingredientText)
+        case .recipeStepTableViewCellType(let recipeDescription, let recipeStepImage):
+            return RecipeStepTableViewItem(recipeStepDescription: recipeDescription, recipeStepImage: recipeStepImage)
         }
     }
 }
@@ -129,6 +132,18 @@ struct RecipeStepItem: MPTableViewCellProtocol {
     var inputTextViewController = InputTextViewController()
 }
 
+struct RecipeStepTableViewItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeStepTableViewCell"
+    var rowHeight: Int = 250
+    var recipeStepDescription = ""
+    var recipeStepImage = UIImage()
+    
+    init(recipeStepDescription: String, recipeStepImage: UIImage) {
+        self.recipeStepDescription = recipeStepDescription
+        self.recipeStepImage = recipeStepImage
+    }
+}
+
 struct SliderItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "AddRecipeInformationSliderCell"
     var rowHeight: Int = 100
@@ -158,6 +173,8 @@ struct RecipeIngredientItem: MPTableViewCellProtocol {
         self.ingredientText = ingredientText
     }
 }
+
+
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
     var sectionArray: [String] = []
@@ -343,6 +360,12 @@ extension MPTableViewController {
             cell.selectionStyle = .none
             guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
             cell.ingredientLabel.text = itemStruct.ingredientText
+        case .recipeStepTableViewCellType:
+            guard let cell = cell as? RecipeStepTableViewCell else {return}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? RecipeStepTableViewItem else {return}
+            cell.recipeStepDescription.text = itemStruct.recipeStepDescription
+            cell.recipeStepImage.image = itemStruct.recipeStepImage
         }
     }
 
@@ -379,6 +402,9 @@ extension MPTableViewController {
             return cell
         case .recipeIngredientType:
             guard let cell = cell as? RecipeDetailIngredientCell else {return UITableViewCell()}
+            return cell
+        case .recipeStepTableViewCellType:
+            guard let cell = cell as? RecipeStepTableViewCell else {return UITableViewCell()}
             return cell
         }
     }

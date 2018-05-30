@@ -1125,7 +1125,7 @@
                                 <color key="tintColor" red="0.9137254901960784" green="0.96078431372549022" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Add step"/>
                                 <connections>
-                                    <segue destination="UyE-tw-Loa" kind="show" id="JcS-ka-NPB"/>
+                                    <action selector="addRecipeButtonDidPressed:" destination="b01-dh-onU" eventType="touchUpInside" id="kB7-DN-0Uq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1148,7 +1148,9 @@
                         <viewLayoutGuide key="safeArea" id="Mes-af-CNo"/>
                     </view>
                     <connections>
+                        <outlet property="recipeStepTableView" destination="rcN-bD-Dpk" id="zzL-NO-CH5"/>
                         <outlet property="recipeTitleTextViewHeight" destination="noa-7u-CWO" id="Mkk-LN-DqY"/>
+                        <segue destination="UyE-tw-Loa" kind="show" identifier="ShowRecipeStepEditor" id="Bb1-w9-7Yd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tN-Ia-d46" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1186,14 +1188,23 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <color key="tintColor" red="0.91372549020000005" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Finish"/>
+                                <connections>
+                                    <action selector="finishEditingRecipeStep:" destination="UyE-tw-Loa" eventType="touchUpInside" id="TVO-yk-a68"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L1F-tG-cQQ">
-                                <rect key="frame" x="0.0" y="60" width="375" height="307"/>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpt-2I-oZZ">
                                 <rect key="frame" x="0.0" y="367" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="uoO-1f-VVz"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="oMU-Uw-lio" kind="embed" identifier="EmbeddedRecipeStepDescription" id="3hf-M6-VZ8"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQz-2a-UHP">
+                                <rect key="frame" x="0.0" y="60" width="375" height="307"/>
+                                <connections>
+                                    <segue destination="aaS-ej-Sai" kind="embed" identifier="EmbeddedRecipeStepImage" id="Ruv-6T-1Ee"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -1205,11 +1216,10 @@
                             <constraint firstItem="lfb-uj-Mo8" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" id="DF5-ps-UQe"/>
                             <constraint firstItem="Mpt-2I-oZZ" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" id="HZl-5n-bEc"/>
                             <constraint firstItem="FLG-je-PTq" firstAttribute="trailing" secondItem="Mpt-2I-oZZ" secondAttribute="trailing" id="Ogt-8r-nGB"/>
-                            <constraint firstItem="Mpt-2I-oZZ" firstAttribute="top" secondItem="L1F-tG-cQQ" secondAttribute="bottom" id="jXv-CL-mnH"/>
-                            <constraint firstItem="lfb-uj-Mo8" firstAttribute="top" secondItem="L1F-tG-cQQ" secondAttribute="bottom" constant="250" id="nV9-8b-ERd"/>
-                            <constraint firstItem="L1F-tG-cQQ" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" id="ni0-UR-26q"/>
-                            <constraint firstItem="FLG-je-PTq" firstAttribute="trailing" secondItem="L1F-tG-cQQ" secondAttribute="trailing" id="tmj-XW-2JC"/>
-                            <constraint firstItem="L1F-tG-cQQ" firstAttribute="top" secondItem="FLG-je-PTq" secondAttribute="top" constant="40" id="uk3-7R-zua"/>
+                            <constraint firstItem="FLG-je-PTq" firstAttribute="trailing" secondItem="wQz-2a-UHP" secondAttribute="trailing" id="T8h-C4-bka"/>
+                            <constraint firstItem="Mpt-2I-oZZ" firstAttribute="top" secondItem="wQz-2a-UHP" secondAttribute="bottom" id="XxY-p4-KWQ"/>
+                            <constraint firstItem="wQz-2a-UHP" firstAttribute="top" secondItem="FLG-je-PTq" secondAttribute="top" constant="40" id="pjH-Ae-VR3"/>
+                            <constraint firstItem="wQz-2a-UHP" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" id="y21-I7-RCj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FLG-je-PTq"/>
                     </view>
@@ -1230,7 +1240,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRz-LI-7yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7726" y="-1995"/>
+            <point key="canvasLocation" x="7706" y="-1646"/>
+        </scene>
+        <!--Image Picker View Controller-->
+        <scene sceneID="IRe-RO-zDo">
+            <objects>
+                <viewController id="aaS-ej-Sai" customClass="ImagePickerViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oCy-bC-jCd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3x7-b5-TdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7676" y="-1982"/>
         </scene>
     </scenes>
     <resources>

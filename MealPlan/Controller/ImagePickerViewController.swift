@@ -15,10 +15,8 @@ class ImagePickerViewController: UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         image.image = #imageLiteral(resourceName: "tap")
-        //self.view.backgroundColor = UIColor.blue
+        image.contentMode = .scaleAspectFit
         self.view.addSubview(image)
-        image.layer.borderWidth = 1
-        image.layer.borderColor = UIColor.black.cgColor
     }
     
     func resetFrame() {
