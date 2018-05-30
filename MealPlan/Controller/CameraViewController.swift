@@ -15,7 +15,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var previewLayer: CALayer!
     var captureDevice: AVCaptureDevice!
     var isTakePhoto = false
-    var filter: CIFilter? = CIFilter(name: "CIColorInvert")//CIFilter!
+    var filter: CIFilter? = CIFilter(name: "CIBokehBlur")//CIFilter!
     var popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
     var selectedDate = ""
@@ -212,6 +212,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             var outputImage = CIImage(cvPixelBuffer: imageBuffer)
             if let filter = filter {
                 filter.setValue(outputImage, forKey: kCIInputImageKey)
+                filter.setValue(2, forKey: kCIInputRadiusKey)
+                filter.setValue(10, forKey: "inputRingAmount")
+                filter.setValue(5, forKey: "inputRingSize")
+                filter.setValue(1, forKey: "inputSoftness")
+                /// - parameter inputRadius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. defaultValue = 20.
+                /// - parameter inputRingAmount: The amount of extra emphasis at the ring of the bokeh. defaultValue = 0.
+                /// - parameter inputRingSize: The size of extra emphasis at the ring of the bokeh defaultValue = 0.1.
+                /// - parameter inputSoftness:  defaultValue = 1.
                 if let filterOutputImage = filter.outputImage {
                     outputImage = filterOutputImage
                 }
@@ -234,26 +242,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                         self.stopCaptureSession()
                     }
                 }
-                
-                //if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
-//                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-//                    photoVC.takenPhoto = image
-//                    photoVC.selectedDate = self.selectedDate
-                    //if let parentVC = self.parent as? CreateRecipeStepsViewController{
-//                        parentVC.capturedPhoto = image
-//                    DispatchQueue.main.async {
-                        //self.navigationController?.pushViewController(photoVC, animated: true)
-                        //if let parentVC = self.parent as? CreateRecipeStepsViewController {
-                            //parentVC.capturedPhoto = image
-                            //parentVC.scrollToLeft()
-                        //}
-                        //self.stopCaptureSession()
-//                        self.present(photoVC, animated: true, completion: {
-//                            self.stopCaptureSession()
-//                        })
-                    //}
-                    //}
-                //}
             }
         }
     }
