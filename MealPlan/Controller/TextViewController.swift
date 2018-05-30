@@ -23,6 +23,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     var textViewHint = ""
     var drawLineManager = DrawCameraLineManager()
     var separationLine = CAShapeLayer()
+    var showSeparationLine = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +56,11 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     
     func drawSeperation() {
         separationLine.removeFromSuperlayer()
-        separationLine = drawLineManager.drawOneLine(on: self.view.layer,
-                                    startPoint: CGPoint(x: 0, y: self.view.frame.height),
-                                    stopPoint: CGPoint(x: self.view.frame.width, y: self.view.frame.height), color: UIColor.gray.cgColor)
+        if self.showSeparationLine {
+            separationLine = drawLineManager.drawOneLine(on: self.view.layer,
+                                                         startPoint: CGPoint(x: 0, y: self.view.frame.height),
+                                                         stopPoint: CGPoint(x: self.view.frame.width, y: self.view.frame.height), color: UIColor.gray.cgColor)
+        }
     }
     
     

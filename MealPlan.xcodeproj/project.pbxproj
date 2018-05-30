@@ -78,6 +78,7 @@
 		AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */; };
 		AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */; };
 		ADA38AA820BF000100DE86F6 /* AddRecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */; };
+		ADA38AAA20BF1EDB00DE86F6 /* AddRecipeStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
 		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
 		ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA469FC20BE40F800A80F25 /* GradientImageView.swift */; };
@@ -183,6 +184,7 @@
 		AD94BB3520A71D6600D3B791 /* AddPagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupView.swift; sourceTree = "<group>"; };
 		AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitionDelegate.swift; sourceTree = "<group>"; };
 		ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepsViewController.swift; sourceTree = "<group>"; };
+		ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeStepViewController.swift; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
 		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ADA469FC20BE40F800A80F25 /* GradientImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				AD6FD06520B0680100148414 /* TestViewController.swift */,
 				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
 				ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */,
+				ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */,
 				AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */,
 				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 				AD5D381320B3F86F004B65BF /* SliderViewController.swift */,
@@ -803,6 +806,7 @@
 				AD679E60209C37ED00039ED4 /* RecipeManager.swift in Sources */,
 				ADAEAC4520985E53001B44CF /* MPCalendarView.swift in Sources */,
 				AD81675920BD4E9300C61849 /* MPScrollNavigationViewController.swift in Sources */,
+				ADA38AAA20BF1EDB00DE86F6 /* AddRecipeStepViewController.swift in Sources */,
 				ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */,
 				AD566B4D209B0B6F009915F3 /* AddPagePickupController.swift in Sources */,
 				AD2F274120AA95E900F8CA1B /* PhotoViewController.swift in Sources */,
