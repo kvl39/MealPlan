@@ -17,11 +17,25 @@ class AddRecipeStepViewController: UIViewController {
     var embeddedViewControllers: [UIViewController] = [] //0:textView, 1: imagePicker
     weak var delegate: AddRecipeStepProtocol?
     var row: Int = 0
+    var presetImage: UIImage?
+    var presetDescription: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resetFrame()
         configureTextViewHints()
+        configurePresets()
+    }
+    
+    func configurePresets() {
+        if let image = presetImage, let description = presetDescription {
+            if let vc = embeddedViewControllers[0] as? InputTextViewController {
+                vc.textView.text = description
+            }
+            if let vc = embeddedViewControllers[1] as? ImagePickerViewController{
+                vc.image.image = image
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

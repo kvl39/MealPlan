@@ -13,6 +13,9 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
     var embeddedViewControllers: [UIViewController] = []
     var titleTextViewHints = ""
     var stepInEditing = 0
+    var presetInformation = false
+    var selectedImage: UIImage = UIImage()
+    var selectedDescription: String = ""
     
     @IBOutlet weak var recipeTitleTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var recipeStepTableView: UITableView!
@@ -33,6 +36,10 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
             if let vc = segue.destination as? AddRecipeStepViewController {
                 vc.delegate = self
                 vc.row = self.stepInEditing
+                if self.presetInformation {
+                    vc.presetDescription = selectedDescription
+                    vc.presetImage = selectedImage
+                }
             }
         }
     }
@@ -68,15 +75,24 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
             self.rowArray[0][row] = .recipeStepTableViewCellType(stepDescription, stepImage)
         }
         
-//        recipeStepTableView.beginUpdates()
-//        //recipeStepTableView.reloadRows(at: [IndexPath(row: row, section: 0)], with: .none)
-//        recipeStepTableView.endUpdates()
         recipeStepTableView.reloadData()
     }
     
     
     @IBAction func addRecipeButtonDidPressed(_ sender: UIButton) {
         self.stepInEditing = rowArray[0].count
+        presetInformation = false
+        performSegue(withIdentifier: "ShowRecipeStepEditor", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.stepInEditing = indexPath.row
+        presetInformation = true
+        guard let cell = recipeStepTableView.cellForRow(at: indexPath) as? RecipeStepTableViewCell,
+            let image = cell.recipeStepImage.image,
+            let description = cell.recipeStepDescription.text else {return}
+        selectedImage = image
+        selectedDescription = description
         performSegue(withIdentifier: "ShowRecipeStepEditor", sender: self)
     }
     
