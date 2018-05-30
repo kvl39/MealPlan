@@ -21,12 +21,17 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
         ["pork", "beef", "chicken", "fish", "lamb", "turkey", "shrimp"],
         ["cabbage", "spinach", "broccoli", "beans", "celery", "potato"],
         ["banana","apple","orange"]]
+    var rightButton = UIButton()
+    var leftButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
         configureScrollView()
         self.view.backgroundColor = UIColor.clear
+        addLeftRightIndicator()
+        leftButton.alpha = 0
+        rightButton.alpha = 1
     }
     
     
@@ -56,6 +61,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             //tag controller
             let tagController = MPSelectionTagViewController()
             self.tagControllers.append(tagController)
+           
             addChildViewController(tagController)
             view.addSubview(tagController.view)
             tagController.view.frame.size = CGSize(width: view.frame.width - 40, height: view.frame.height)
@@ -74,6 +80,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             label.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapTitle(sender:)))
             
+            
             label.addGestureRecognizer(tap)
             if index == 0 {
                 label.center.x = view.center.x
@@ -83,6 +90,30 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             
             self.horizontalScrollView.horizontalScrollView.addSubview(label)
         }
+    }
+    
+    func addLeftRightIndicator() {
+        rightButton = UIButton(frame: CGRect(x: view.frame.width - 15, y: view.frame.height/2, width: 20, height: 20))
+        rightButton.setImage(#imageLiteral(resourceName: "right-arrow"), for: .normal)
+        rightButton.addTarget(self, action: #selector(toRight(sender:)), for: .touchUpInside)
+        self.view.addSubview(rightButton)
+        
+        leftButton = UIButton(frame: CGRect(x: 15, y: view.frame.height/2, width: 20, height: 20))
+        leftButton.setImage(#imageLiteral(resourceName: "left-arrow"), for: .normal)
+        leftButton.addTarget(self, action: #selector(toLeft(sender:)), for: .touchUpInside)
+        self.view.addSubview(leftButton)
+    }
+    
+    @objc func toRight(sender: UIButton) {
+        let originalContentOffset = horizontalScrollView.horizontalScrollView.contentOffset
+        let moveTo = CGPoint(x: originalContentOffset.x + horizontalScrollView.horizontalScrollView.frame.width, y: originalContentOffset.y)
+        self.horizontalScrollView.horizontalScrollView.setContentOffset(moveTo, animated: true)
+    }
+    
+    @objc func toLeft(sender: UIButton) {
+        let originalContentOffset = horizontalScrollView.horizontalScrollView.contentOffset
+        let moveTo = CGPoint(x: originalContentOffset.x - horizontalScrollView.horizontalScrollView.frame.width, y: originalContentOffset.y)
+        self.horizontalScrollView.horizontalScrollView.setContentOffset(moveTo, animated: true)
     }
     
     @objc func tapTitle(sender: UITapGestureRecognizer) {
@@ -113,6 +144,18 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
                 var viewOffsets = (view.center.x - horizontalScrollView.horizontalScrollView.bounds.width / 4) - scrollContentOffset
                 label.center.x = scrollContentOffset - ((horizontalScrollView.horizontalScrollView.bounds.width/4 - viewOffsets)/2)
                 
+            }
+            let paging = Int((horizontalScrollView.horizontalScrollView.contentOffset.x + horizontalScrollView.horizontalScrollView.frame.width)/self.view.frame.width)
+            print("sss paging:\(paging)")
+            if paging == 0 {
+                leftButton.alpha = 0
+                rightButton.alpha = 1
+            } else if paging == numberOfScrolls-1 {
+                leftButton.alpha = 1
+                rightButton.alpha = 0
+            } else {
+                leftButton.alpha = 1
+                rightButton.alpha = 1
             }
         }
     }

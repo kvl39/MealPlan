@@ -547,10 +547,10 @@
                                 <rect key="frame" x="290" y="114" width="80" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOw-PT-SvL">
-                                        <rect key="frame" x="0.0" y="10" width="80" height="30"/>
+                                        <rect key="frame" x="20" y="10" width="60" height="30"/>
                                         <color key="backgroundColor" red="0.78823529411764703" green="0.51764705882352935" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="C0B-Wu-alB"/>
+                                            <constraint firstAttribute="width" constant="60" id="C0B-Wu-alB"/>
                                         </constraints>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -560,14 +560,14 @@
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lWC-qS-5m9">
-                                        <rect key="frame" x="30" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="40" y="15" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="7sL-Fi-olh"/>
                                             <constraint firstAttribute="width" constant="20" id="ezM-dK-2Wo"/>
                                         </constraints>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btO-8X-0OQ">
-                                        <rect key="frame" x="13.5" y="14" width="53.5" height="21"/>
+                                        <rect key="frame" x="23.5" y="14" width="53.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -575,12 +575,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="lWC-qS-5m9" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" id="KlS-aI-KgS"/>
-                                    <constraint firstItem="rOw-PT-SvL" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" id="SSY-G7-cQh"/>
+                                    <constraint firstItem="lWC-qS-5m9" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" constant="10" id="KlS-aI-KgS"/>
+                                    <constraint firstItem="rOw-PT-SvL" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" constant="10" id="SSY-G7-cQh"/>
                                     <constraint firstAttribute="bottom" secondItem="lWC-qS-5m9" secondAttribute="bottom" constant="5" id="SsY-NX-XIF"/>
                                     <constraint firstAttribute="bottom" secondItem="rOw-PT-SvL" secondAttribute="bottom" id="e6N-u0-sza"/>
                                     <constraint firstAttribute="height" constant="40" id="rPP-5x-FFI"/>
-                                    <constraint firstItem="btO-8X-0OQ" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" id="rlm-JE-Xn8"/>
+                                    <constraint firstItem="btO-8X-0OQ" firstAttribute="centerX" secondItem="GA0-hf-JNM" secondAttribute="centerX" constant="10" id="rlm-JE-Xn8"/>
                                     <constraint firstAttribute="bottom" secondItem="btO-8X-0OQ" secondAttribute="bottom" constant="5" id="t5x-8J-KB5"/>
                                 </constraints>
                             </view>
