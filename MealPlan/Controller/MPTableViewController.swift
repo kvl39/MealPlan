@@ -89,7 +89,7 @@ struct RecipeCellItem: MPTableViewCellProtocol {
 
 struct RecipeSearchCellItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "RecipeSearchResultCell"
-    var rowHeight: Int = 80
+    var rowHeight: Int = 300
     var image: UIImage?
     var title: String = ""
     var selected: Bool = false

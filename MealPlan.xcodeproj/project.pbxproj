@@ -79,6 +79,7 @@
 		AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */; };
 		ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342320A03C6E002C7148 /* AddPageTag.swift */; };
 		ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4342520A04B16002C7148 /* SearchViewController.swift */; };
+		ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA469FC20BE40F800A80F25 /* GradientImageView.swift */; };
 		ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */; };
 		ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
@@ -182,6 +183,7 @@
 		AD94BB3720A7E7CE00D3B791 /* ZoomTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomTransitionDelegate.swift; sourceTree = "<group>"; };
 		ADA4342320A03C6E002C7148 /* AddPageTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPageTag.swift; sourceTree = "<group>"; };
 		ADA4342520A04B16002C7148 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		ADA469FC20BE40F800A80F25 /* GradientImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNoteView.swift; sourceTree = "<group>"; };
 		ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeNoteView.xib; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				ADB6168820B90C2A00B637D6 /* HintLabels.swift */,
+				ADA469FC20BE40F800A80F25 /* GradientImageView.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				AD81675B20BD500100C61849 /* CreateRecipeStepsViewController.swift in Sources */,
 				AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */,
 				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
+				ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */,
 				AD5D381B20B45003004B65BF /* MPNutrientsEditView.swift in Sources */,
 				AD6ED3F320B2B3A600B194BF /* NSLayoutConstraintExtension.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
