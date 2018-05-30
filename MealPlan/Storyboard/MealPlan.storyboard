@@ -585,7 +585,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="218-sN-3VX">
-                                <rect key="frame" x="10" y="164" width="355" height="493"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="1cB-SP-rhz" kind="embed" identifier="PushToSearchResult" id="cRa-a1-aBK"/>
@@ -602,7 +602,7 @@
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnV-gz-hna">
                                 <rect key="frame" x="0.0" y="164" width="375" height="200"/>
-                                <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="C6Y-uG-h6j"/>
                                 </constraints>
@@ -652,9 +652,9 @@
                         <constraints>
                             <constraint firstItem="jTn-nx-rpA" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" id="1Hg-Jq-Cfc"/>
                             <constraint firstItem="218-sN-3VX" firstAttribute="top" secondItem="j72-z4-RkG" secondAttribute="bottom" constant="20" id="1f3-rm-mOH"/>
-                            <constraint firstItem="tSh-rV-F9D" firstAttribute="bottom" secondItem="218-sN-3VX" secondAttribute="bottom" constant="10" id="2rJ-CJ-bNi"/>
+                            <constraint firstItem="tSh-rV-F9D" firstAttribute="bottom" secondItem="218-sN-3VX" secondAttribute="bottom" id="2rJ-CJ-bNi"/>
                             <constraint firstItem="5Dg-Rm-gn4" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" id="6GV-Qs-Z87"/>
-                            <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="218-sN-3VX" secondAttribute="trailing" constant="10" id="71k-Z1-NOZ"/>
+                            <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="218-sN-3VX" secondAttribute="trailing" id="71k-Z1-NOZ"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="j72-z4-RkG" secondAttribute="trailing" constant="100" id="771-J6-bDf"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="SnV-gz-hna" secondAttribute="trailing" id="I6o-dp-YTR"/>
                             <constraint firstItem="SnV-gz-hna" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" id="JHp-4s-o9U"/>
@@ -666,7 +666,7 @@
                             <constraint firstItem="j72-z4-RkG" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" constant="10" id="YKL-14-HNO"/>
                             <constraint firstItem="x34-y4-M8R" firstAttribute="top" secondItem="tSh-rV-F9D" secondAttribute="top" constant="40" id="dM9-7V-swO"/>
                             <constraint firstAttribute="bottom" secondItem="5Dg-Rm-gn4" secondAttribute="bottom" id="dcN-cB-bKa"/>
-                            <constraint firstItem="218-sN-3VX" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" constant="10" id="g2j-GZ-BUn"/>
+                            <constraint firstItem="218-sN-3VX" firstAttribute="leading" secondItem="tSh-rV-F9D" secondAttribute="leading" id="g2j-GZ-BUn"/>
                             <constraint firstItem="GA0-hf-JNM" firstAttribute="bottom" secondItem="j72-z4-RkG" secondAttribute="bottom" constant="10" id="gHw-Ez-iqw"/>
                             <constraint firstItem="SnV-gz-hna" firstAttribute="top" secondItem="j72-z4-RkG" secondAttribute="bottom" constant="20" id="hab-UU-xR8"/>
                             <constraint firstItem="tSh-rV-F9D" firstAttribute="trailing" secondItem="GA0-hf-JNM" secondAttribute="trailing" constant="5" id="rzt-Pr-nsc"/>
@@ -936,11 +936,11 @@
             <objects>
                 <viewController id="1cB-SP-rhz" customClass="SearchViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Yc-yP-Qe0">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="493"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-Zu-0wj">
-                                <rect key="frame" x="0.0" y="0.0" width="355" height="493"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>

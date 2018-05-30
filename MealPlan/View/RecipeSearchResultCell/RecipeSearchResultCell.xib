@@ -23,11 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="452" height="299.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGi-26-aRR">
-                        <rect key="frame" x="50" y="184.5" width="372" height="100"/>
+                        <rect key="frame" x="50" y="154.5" width="372" height="130"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="hiN-m5-al2"/>
+                            <constraint firstAttribute="height" constant="130" id="hiN-m5-al2"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="28"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

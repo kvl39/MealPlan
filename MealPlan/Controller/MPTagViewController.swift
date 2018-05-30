@@ -92,7 +92,7 @@ class MPTagViewController: UIViewController {
 
             let bgView = UIView(frame: CGRect(x: xPos + 5, y: yPos, width: width + 17.0 + 38.5 - 30.0, height: 29.0))
             bgView.layer.cornerRadius = 14.5
-            bgView.backgroundColor = UIColor(red: 33.0/255.0, green: 135.0/255.0, blue: 199.0/255.0, alpha: 1.0)
+            bgView.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
             bgView.tag = tag
 
             let textLabel = UILabel(frame: CGRect(x: 17.0, y: 0.0, width: width, height: bgView.frame.size.height))
@@ -101,7 +101,7 @@ class MPTagViewController: UIViewController {
             
             if tag > 1 {
                 let andView = UILabel(frame: CGRect(x: xPos, y: yPos - 16.0, width: width, height: bgView.frame.size.height))
-                andView.text = "&"
+                andView.text = "+"
                 view.addSubview(andView)
                 andView.tag = tag
             }
