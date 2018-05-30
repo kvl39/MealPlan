@@ -43,7 +43,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
         //textView.layer.borderColor = UIColor.black.cgColor
         //textView.layer.borderWidth = 1
         textView.font = UIFont(name: "PingFang TC", size: 17)
-        //self.textView.layer.addSublayer(separationLine)
+        textView.textContainerInset = UIEdgeInsets(top: 5, left: 15, bottom: 0, right: 0)
     }
     
     
@@ -55,7 +55,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     
     func drawSeperation() {
         separationLine.removeFromSuperlayer()
-        separationLine = drawLineManager.drawOneLine(on: self.textView.layer,
+        separationLine = drawLineManager.drawOneLine(on: self.view.layer,
                                     startPoint: CGPoint(x: 0, y: self.view.frame.height),
                                     stopPoint: CGPoint(x: self.view.frame.width, y: self.view.frame.height), color: UIColor.gray.cgColor)
     }
