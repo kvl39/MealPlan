@@ -35,8 +35,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         scrollStepsView.isPagingEnabled = true
         
         for index in 0..<numberOfSteps {
-            let view = UIView(frame: CGRect(x: 10 + self.view.frame.width * CGFloat(index), y: 0, width: self.view.frame.width - 20, height: self.view.frame.height))
-            view.backgroundColor = UIColor.red
+            let view = UIView(frame: CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: self.view.frame.width, height: self.view.frame.height))
             self.scrollStepsView.addSubview(view)
         }
         

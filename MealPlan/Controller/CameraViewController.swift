@@ -20,6 +20,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var popupButtons = [UIButton]()
     var selectedDate = ""
     var drawCameraLineManager = DrawCameraLineManager()
+    var focusFilterButton = UIButton()
+    var blackFilterButton = UIButton()
+    var lightFilterButton = UIButton()
+    var filterButtonsIsShown = false
     lazy var context: CIContext = {
         if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
             let options = [kCIContextWorkingColorSpace: NSNull()]
@@ -100,29 +104,55 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         takePhotoButton.setImage(#imageLiteral(resourceName: "shutter"), for: .normal)
         self.view.bringSubview(toFront: takePhotoButton)
         
-        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85-120, width: 50, height: 50))
+        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85-120+10, width: 40, height: 40))
         cancelButton.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         cancelButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         self.view.addSubview(cancelButton)
         self.view.bringSubview(toFront: cancelButton)
         
-        let focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130-120, width: 30, height: 30))
+        let filterButton = UIButton(frame: CGRect(x: self.view.frame.width - 20 - 60, y: self.view.frame.height-85-120+10, width: 40, height: 40))
+        filterButton.addTarget(self, action: #selector(filterButtonDidPressed(_:)), for: .touchUpInside)
+        filterButton.setImage(#imageLiteral(resourceName: "instagram"), for: .normal)
+        self.view.addSubview(filterButton)
+        self.view.bringSubview(toFront: filterButton)
+        
+        focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130-120, width: 30, height: 30))
         focusFilterButton.addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         focusFilterButton.setImage(#imageLiteral(resourceName: "focus"), for: .normal)
         self.view.addSubview(focusFilterButton)
         self.view.bringSubview(toFront: focusFilterButton)
+        focusFilterButton.alpha = 0
         
-        let blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130-120, width: 30, height: 30))
+        blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130-120, width: 30, height: 30))
         blackFilterButton.addTarget(self, action: #selector(popupButton2Action(_:)), for: .touchUpInside)
         blackFilterButton.setImage(#imageLiteral(resourceName: "two-circles-sign-one-black-other-white"), for: .normal)
         self.view.addSubview(blackFilterButton)
         self.view.bringSubview(toFront: blackFilterButton)
+        blackFilterButton.alpha = 0
         
-        let lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130-120, width: 30, height: 30))
+        lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130-120, width: 30, height: 30))
         lightFilterButton.addTarget(self, action: #selector(popupButton3Action(_:)), for: .touchUpInside)
         lightFilterButton.setImage(#imageLiteral(resourceName: "light-bulb"), for: .normal)
         self.view.addSubview(lightFilterButton)
         self.view.bringSubview(toFront: lightFilterButton)
+        lightFilterButton.alpha = 0
+    }
+    
+    @objc func filterButtonDidPressed(_ sender: UIButton) {
+        if self.filterButtonsIsShown {
+            UIView.animate(withDuration: 0.3) {
+                self.focusFilterButton.alpha = 0
+                self.blackFilterButton.alpha = 0
+                self.lightFilterButton.alpha = 0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.focusFilterButton.alpha = 1
+                self.blackFilterButton.alpha = 1
+                self.lightFilterButton.alpha = 1
+            }
+        }
+        self.filterButtonsIsShown = !self.filterButtonsIsShown
     }
     
     @objc func cancel(_ sender: UIButton) {

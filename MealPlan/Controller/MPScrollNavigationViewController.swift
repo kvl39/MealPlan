@@ -22,7 +22,7 @@ class MPScrollNavigationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGestureToStepLabels()
-        scrollBar.backgroundColor = UIColor.red
+        scrollBar.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
         scrollBar.frame = CGRect(x: 30, y: 33, width: ((self.view.frame.width-150)/4), height: 5)
         self.view.addSubview(scrollBar)
         step1Label.textColor = UIColor.black
