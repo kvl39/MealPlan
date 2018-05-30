@@ -183,7 +183,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.previewLayer = CALayer()
         
         previewLayer.bounds = CGRect(x: 0, y: 0, width: self.view.frame.height-150, height: self.view.frame.size.width)
-        
+        print("camera view height:\(self.view.frame.height)")
         //previewLayer.position = CGPoint(x: self.view.frame.size.width / 2.0, y: self.view.frame.size.height / 2.0)
         
         

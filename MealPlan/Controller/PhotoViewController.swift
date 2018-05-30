@@ -30,7 +30,7 @@ class PhotoViewController: UIViewController {
             photoImageView.image = availableImage
         }
         configureButtons()
-        
+        photoImageView.contentMode = .scaleToFill
     }
     
     func updatePhoto() {

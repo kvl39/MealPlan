@@ -48,7 +48,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     func addCameraViewController() {
         var cameraViewController = CameraViewController()
         addChildViewController(cameraViewController)
-        cameraViewController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        cameraViewController.view.frame = CGRect(x: 0, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
         self.scrollStepsView.addSubview(cameraViewController.view)
         didMove(toParentViewController: cameraViewController)
         self.controllersArray.append(cameraViewController)
@@ -57,16 +57,18 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     func addPhotoViewController() {
         guard let photoViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as? PhotoViewController else {return}
         addChildViewController(photoViewController)
-        photoViewController.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        photoViewController.view.frame = CGRect(x: self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
+        photoViewController.view.layoutIfNeeded()
         self.scrollStepsView.addSubview(photoViewController.view)
         didMove(toParentViewController: photoViewController)
         self.controllersArray.append(photoViewController)
+        print("photo view height:\(self.scrollStepsView.frame.height)")
     }
     
     func addStepInformationViewController() {
         guard let addStepInformationViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "AddRecipeInformationViewController") as? AddRecipeInformationViewController else {return}
         addChildViewController(addStepInformationViewController)
-        addStepInformationViewController.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height-120)
+        addStepInformationViewController.view.frame = CGRect(x: 2*self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
         self.scrollStepsView.addSubview(addStepInformationViewController.view)
         didMove(toParentViewController: addStepInformationViewController)
         self.controllersArray.append(addStepInformationViewController)
@@ -75,6 +77,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     func updatePhotoView() {
         if let photoVC = self.controllersArray[1] as? PhotoViewController {
             photoVC.takenPhoto = self.capturedPhoto
+            print("photo height:\(photoVC.takenPhoto?.size.height)")
             photoVC.updatePhoto()
         }
     }
