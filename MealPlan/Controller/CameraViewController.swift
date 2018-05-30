@@ -174,7 +174,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func beginSession() {
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession.addInput(captureDeviceInput)
+            if captureSession.inputs.isEmpty {
+                captureSession.addInput(captureDeviceInput)
+            }
         } catch {
             print(error.localizedDescription)
         }
