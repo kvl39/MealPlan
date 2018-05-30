@@ -99,6 +99,9 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
             IQKeyboardManager.shared.reloadLayoutIfNeeded()
             self.delegate?.updateTableView(newHeight: 243 + heightDiff, section: self.section, row: self.row)
             drawSeperation()
+            if let parentVC = self.parent as? AddRecipeStepsViewController {
+                parentVC.setRecipeTitleTextViewHeight(newHeight: newSize.height)
+            }
         }
     }
     

@@ -1111,6 +1111,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mes-af-CNo"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeTitleTextViewHeight" destination="noa-7u-CWO" id="Mkk-LN-DqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tN-Ia-d46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

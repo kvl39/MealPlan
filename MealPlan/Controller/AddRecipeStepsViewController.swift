@@ -13,6 +13,9 @@ class AddRecipeStepsViewController: UIViewController {
     var embeddedViewControllers: [UIViewController] = []
     var titleTextViewHints = ""
     
+    @IBOutlet weak var recipeTitleTextViewHeight: NSLayoutConstraint!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,6 +39,11 @@ class AddRecipeStepsViewController: UIViewController {
         if let vc = embeddedViewControllers[0] as? InputTextViewController {
             vc.resetFrame()
         }
+    }
+    
+    func setRecipeTitleTextViewHeight(newHeight: CGFloat) {
+        self.recipeTitleTextViewHeight.constant = newHeight
+        self.view.layoutIfNeeded()
     }
 
 }
