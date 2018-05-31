@@ -376,6 +376,9 @@ extension MPTableViewController {
             cell.selectionStyle = .none
             guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
             cell.ingredientLabel.text = itemStruct.ingredientText
+            if (indexPath.row%2 == 0) {
+                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+            }
         case .recipeStepTableViewCellType:
             guard let cell = cell as? RecipeStepTableViewCell else {return}
             cell.selectionStyle = .none
