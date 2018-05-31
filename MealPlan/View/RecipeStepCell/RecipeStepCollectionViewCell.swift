@@ -16,6 +16,9 @@ class RecipeStepCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        recipeStepImage.clipsToBounds = true
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
     }
 
 }

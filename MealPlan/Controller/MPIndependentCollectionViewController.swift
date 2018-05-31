@@ -30,7 +30,7 @@ protocol MPIndependentCollectionViewCellProtocol {
 
 struct RecipeStepCollectionViewItem: MPIndependentCollectionViewCellProtocol {
     var reuseIdentifier: String = "RecipeStepCollectionViewCell"
-    var rowSize: CGSize = CGSize(width: 120.0, height: 250.0)
+    var rowSize: CGSize = CGSize(width: 130.0, height: 250.0)
     var recipeStepImage = UIImage()
     var recipeStepDescription = ""
     
@@ -81,6 +81,6 @@ extension MPIndependentCollectionViewController: UICollectionViewDelegate, UICol
 
 extension MPIndependentCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 250)
+        return CGSize(width: 130, height: 250)
     }
 }
