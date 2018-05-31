@@ -404,6 +404,10 @@ extension MPTableViewController {
             ingredientWeightTextViewController.resetFrame()
             cell.ingredientWeightView.addSubview(ingredientWeightTextViewController.view)
             ingredientWeightTextViewController.didMove(toParentViewController: self)
+            ingredientWeightTextViewController.textViewHint = "gram"
+            ingredientWeightTextViewController.configureTextFieldEmpty()
+            ingredientWeightTextViewController.useNumberKeyboard = true
+            ingredientWeightTextViewController.resetKeyboard()
             
             addChildViewController(ingredientTitleTextViewController)
             ingredientTitleTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientTitleView.frame.width, height: 50.0)
@@ -411,6 +415,8 @@ extension MPTableViewController {
             ingredientTitleTextViewController.resetFrame()
             cell.ingredientTitleView.addSubview(ingredientTitleTextViewController.view)
             ingredientTitleTextViewController.didMove(toParentViewController: self)
+            ingredientTitleTextViewController.textViewHint = "Enter ingredient"
+            ingredientTitleTextViewController.configureTextFieldEmpty()
             
             ingredientTitleTextViewController.delegate = self
             ingredientWeightTextViewController.delegate = self

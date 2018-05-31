@@ -25,6 +25,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     var separationLine = CAShapeLayer()
     var showSeparationLine = true
     var hasPresetColor = false
+    var useNumberKeyboard = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,11 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
         textView.textContainerInset = UIEdgeInsets(top: 5, left: 15, bottom: 0, right: 0)
     }
     
-    
+    func resetKeyboard() {
+        if self.useNumberKeyboard {
+            self.textView.keyboardType = UIKeyboardType.decimalPad
+        }
+    }
     
     func resetFrame() {
         textView.frame = self.view.frame

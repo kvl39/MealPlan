@@ -18,22 +18,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="372" height="144.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-qy-9ud">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="144.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="250" id="Wxo-qt-pxX"/>
-                        </constraints>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRg-qd-R1s">
-                        <rect key="frame" x="250" y="0.0" width="0.5" height="144.5"/>
+                        <rect key="frame" x="260" y="0.0" width="0.5" height="144.5"/>
                         <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="RrZ-Rh-CJT"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-qy-9ud">
+                        <rect key="frame" x="5" y="5" width="250" height="134.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="250" id="FWG-AO-irH"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7H-uW-0az">
-                        <rect key="frame" x="250.5" y="0.0" width="121.5" height="144.5"/>
+                        <rect key="frame" x="265.5" y="5" width="101.5" height="134.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIV-8i-9dJ">
@@ -52,21 +52,21 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qoO-qy-9ud" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AK1-Qk-jGt"/>
+                    <constraint firstItem="qoO-qy-9ud" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="AK1-Qk-jGt"/>
                     <constraint firstItem="wIV-8i-9dJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Bo0-jS-8zF"/>
-                    <constraint firstItem="t7H-uW-0az" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GjO-fr-aAn"/>
-                    <constraint firstAttribute="bottom" secondItem="t7H-uW-0az" secondAttribute="bottom" id="Lhs-yM-4xn"/>
-                    <constraint firstItem="t7H-uW-0az" firstAttribute="leading" secondItem="jRg-qd-R1s" secondAttribute="trailing" id="XDa-XR-1Pu"/>
-                    <constraint firstItem="qoO-qy-9ud" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zsb-rM-kMm"/>
+                    <constraint firstItem="t7H-uW-0az" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="GjO-fr-aAn"/>
+                    <constraint firstAttribute="bottom" secondItem="t7H-uW-0az" secondAttribute="bottom" constant="5" id="Lhs-yM-4xn"/>
+                    <constraint firstItem="t7H-uW-0az" firstAttribute="leading" secondItem="jRg-qd-R1s" secondAttribute="trailing" constant="5" id="XDa-XR-1Pu"/>
+                    <constraint firstItem="qoO-qy-9ud" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Zsb-rM-kMm"/>
                     <constraint firstItem="uni-mc-lg3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="asj-4N-1th"/>
-                    <constraint firstItem="jRg-qd-R1s" firstAttribute="leading" secondItem="qoO-qy-9ud" secondAttribute="trailing" id="eY1-60-PM6"/>
+                    <constraint firstItem="jRg-qd-R1s" firstAttribute="leading" secondItem="qoO-qy-9ud" secondAttribute="trailing" constant="5" id="eY1-60-PM6"/>
                     <constraint firstAttribute="bottom" secondItem="wIV-8i-9dJ" secondAttribute="bottom" id="grN-Rj-brp"/>
                     <constraint firstAttribute="trailing" secondItem="uni-mc-lg3" secondAttribute="trailing" id="kGQ-7G-x9n"/>
                     <constraint firstItem="jRg-qd-R1s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pQo-er-dzk"/>
                     <constraint firstAttribute="trailing" secondItem="wIV-8i-9dJ" secondAttribute="trailing" id="q7r-fU-tbm"/>
                     <constraint firstAttribute="bottom" secondItem="jRg-qd-R1s" secondAttribute="bottom" id="rl9-Iq-waV"/>
-                    <constraint firstAttribute="bottom" secondItem="qoO-qy-9ud" secondAttribute="bottom" id="uBo-Uh-I66"/>
-                    <constraint firstAttribute="trailing" secondItem="t7H-uW-0az" secondAttribute="trailing" id="vaa-6A-3dR"/>
+                    <constraint firstAttribute="bottom" secondItem="qoO-qy-9ud" secondAttribute="bottom" constant="5" id="uBo-Uh-I66"/>
+                    <constraint firstAttribute="trailing" secondItem="t7H-uW-0az" secondAttribute="trailing" constant="5" id="vaa-6A-3dR"/>
                     <constraint firstItem="uni-mc-lg3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wej-vF-FOO"/>
                 </constraints>
             </tableViewCellContentView>
