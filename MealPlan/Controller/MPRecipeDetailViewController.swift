@@ -10,15 +10,16 @@ import UIKit
 
 class MPRecipeDetailViewController: MPTableViewController {
 
-    @IBOutlet weak var recipeImage: UIImageView!
+    
+    @IBOutlet weak var recipeImage: GradientImageViewUpSideDown!
+    
+    
     @IBOutlet weak var recipeDetailTableView: UITableView!
     @IBOutlet weak var recipeTitle: UILabel!
     
     @IBOutlet weak var showStepButton: UIButton!
     
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var topImageView: UIImageView!
     
     @IBOutlet weak var backButton: UIButton!
     
@@ -57,7 +58,6 @@ class MPRecipeDetailViewController: MPTableViewController {
         configureTableView()
         
         //self.navigationController?.navigationBar.isHidden = true
-        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -189,15 +189,19 @@ extension MPRecipeDetailViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = 300 - (recipeDetailTableView.contentOffset.y + 300)
         let height = min(max(y, 60), 400)
-        recipeDetailTableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
+        //recipeDetailTableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         let titleY = max(self.originTitleY - recipeDetailTableView.contentOffset.y, 60)
         let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
         //recipeDetailTableView.layoutIfNeeded()
         
         let distance = 340 - y
         let imageHeight = max(300 - distance, 50)
-        imageViewHeight.constant = imageHeight
-        //recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top+10, width: UIScreen.main.bounds.size.width, height: imageHeight)
+        //imageViewHeight.constant = imageHeight
+        
+        //recipeImage.gradientLayer.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: imageHeight)
+        recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: imageHeight)
+        //recipeImage.layoutIfNeeded()
+        
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)

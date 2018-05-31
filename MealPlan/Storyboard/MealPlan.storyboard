@@ -524,37 +524,12 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-AV-S09">
-                                <rect key="frame" x="0.0" y="40" width="375" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-AV-S09" customClass="GradientImageViewUpSideDown" customModule="MealPlan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="ey7-nB-FTa"/>
                                 </constraints>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-uT-oFX">
-                                <rect key="frame" x="0.0" y="40" width="375" height="50"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jEr-YS-8m6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLs-9H-nf3">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
-                                            <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="15"/>
-                                            <color key="textColor" red="0.52941176470588236" green="0.29803921568627451" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="HLs-9H-nf3" secondAttribute="trailing" constant="10" id="2tX-II-K38"/>
-                                        <constraint firstItem="HLs-9H-nf3" firstAttribute="leading" secondItem="jEr-YS-8m6" secondAttribute="leading" id="QPK-WU-mj6"/>
-                                        <constraint firstItem="HLs-9H-nf3" firstAttribute="top" secondItem="jEr-YS-8m6" secondAttribute="top" id="VpE-QD-5sh"/>
-                                        <constraint firstAttribute="bottom" secondItem="HLs-9H-nf3" secondAttribute="bottom" id="kpe-qk-5h7"/>
-                                    </constraints>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="EpK-IP-FEE"/>
-                                </constraints>
-                                <blurEffect style="extraLight"/>
-                            </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vp-ZY-xT5">
                                 <rect key="frame" x="10" y="563" width="355" height="30"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.82745098039999998" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -563,12 +538,6 @@
                                     <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Tgu-9C-LrK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MealPlan3" translatesAutoresizingMaskIntoConstraints="NO" id="o1d-du-0JJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="VGc-g7-G3D"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-0k-aSV">
                                 <rect key="frame" x="29" y="4" width="30" height="30"/>
                                 <constraints>
@@ -579,28 +548,29 @@
                                     <action selector="backButtonDidPressed:" destination="t4C-j5-CjG" eventType="touchUpInside" id="DH0-bh-Qez"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLs-9H-nf3">
+                                <rect key="frame" x="5" y="238" width="365" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="15"/>
+                                <color key="textColor" red="0.52941176470588236" green="0.29803921568627451" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="6Vp-ZY-xT5" secondAttribute="bottom" constant="10" id="0mc-zH-1Sn"/>
-                            <constraint firstItem="o1d-du-0JJ" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="79D-ZL-B1p"/>
-                            <constraint firstItem="wA2-AV-S09" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="40" id="9jZ-wu-As4"/>
+                            <constraint firstItem="wA2-AV-S09" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="9jZ-wu-As4"/>
                             <constraint firstItem="4fA-0k-aSV" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="4" id="9pC-yk-6Nk"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="B2y-Oe-BsI"/>
                             <constraint firstItem="6Vp-ZY-xT5" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="10" id="GyI-Qr-PfV"/>
-                            <constraint firstItem="sXk-uT-oFX" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="40" id="HWg-Pa-xVb"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Le9-nA-KeG"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="OX2-GK-eyc"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="Lcf-A9-CPd" secondAttribute="trailing" id="Qeg-aX-aap"/>
-                            <constraint firstItem="o1d-du-0JJ" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Rj4-uI-dSm"/>
                             <constraint firstItem="4fA-0k-aSV" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="29" id="bcy-El-icH"/>
-                            <constraint firstItem="sXk-uT-oFX" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="bo5-Gn-ePw"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="6Vp-ZY-xT5" secondAttribute="trailing" constant="10" id="dg9-uc-dgW"/>
                             <constraint firstItem="6Vp-ZY-xT5" firstAttribute="top" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="10" id="frM-RW-pzQ"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="50" id="nbb-KH-U1u"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qPA-Je-MZU"/>
-                            <constraint firstItem="sXk-uT-oFX" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qh1-kz-NC5"/>
-                            <constraint firstItem="o1d-du-0JJ" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="zvg-IY-S1S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8vG-UF-dgM"/>
                     </view>
@@ -608,10 +578,9 @@
                         <outlet property="backButton" destination="4fA-0k-aSV" id="vG2-O4-Ho2"/>
                         <outlet property="imageViewHeight" destination="ey7-nB-FTa" id="Tjw-Gl-o6W"/>
                         <outlet property="recipeDetailTableView" destination="Lcf-A9-CPd" id="YDE-Rc-Kr4"/>
-                        <outlet property="recipeImage" destination="wA2-AV-S09" id="Z0f-kC-rsf"/>
+                        <outlet property="recipeImage" destination="wA2-AV-S09" id="bEG-KJ-P0H"/>
                         <outlet property="recipeTitle" destination="HLs-9H-nf3" id="PBl-XI-iwh"/>
                         <outlet property="showStepButton" destination="6Vp-ZY-xT5" id="HJj-0f-DaG"/>
-                        <outlet property="topImageView" destination="o1d-du-0JJ" id="hVK-HP-nqj"/>
                         <segue destination="Q2U-Q4-zZO" kind="show" identifier="PushToWebView" id="fG4-2E-XXK"/>
                     </connections>
                 </viewController>
