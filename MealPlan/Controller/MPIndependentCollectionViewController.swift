@@ -76,11 +76,29 @@ extension MPIndependentCollectionViewController: UICollectionViewDelegate, UICol
             return cell
         }
     }
+    
+    
 }
 
 
 extension MPIndependentCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 250)
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        var cellWidth = (screenWidth-16)/3
+        var cellHeight = cellWidth * 237 / 130
+        
+//        if screenWidth < 375 {
+//            cellWidth = screenWidth
+//            cellHeight = cellWidth * 114 / 185
+//        }
+        
+        return CGSize(width: cellWidth, height: cellHeight)
+        
+        //return CGSize(width: 130, height: 250)
     }
+    
 }
+
+

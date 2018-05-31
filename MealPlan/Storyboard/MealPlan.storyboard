@@ -1126,9 +1126,9 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uhZ-tb-STS">
-                                <rect key="frame" x="10" y="140" width="355" height="477"/>
+                                <rect key="frame" x="4" y="140" width="367" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XtD-Z0-q9Y">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="XtD-Z0-q9Y">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1159,8 +1159,8 @@
                             <constraint firstItem="uhZ-tb-STS" firstAttribute="top" secondItem="E0G-cw-63U" secondAttribute="bottom" constant="20" id="bwR-Cf-Tgd"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="bottom" secondItem="JYf-aM-dnc" secondAttribute="bottom" id="fO6-iw-fKo"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="JYf-aM-dnc" secondAttribute="trailing" id="lMe-s4-lqx"/>
-                            <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="uhZ-tb-STS" secondAttribute="trailing" constant="10" id="oKQ-MQ-gzX"/>
-                            <constraint firstItem="uhZ-tb-STS" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="10" id="qCT-ah-rRE"/>
+                            <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="uhZ-tb-STS" secondAttribute="trailing" constant="4" id="oKQ-MQ-gzX"/>
+                            <constraint firstItem="uhZ-tb-STS" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="4" id="qCT-ah-rRE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mes-af-CNo"/>
                     </view>
