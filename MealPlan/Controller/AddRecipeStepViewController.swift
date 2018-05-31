@@ -14,6 +14,7 @@ protocol AddRecipeStepProtocol: class {
 
 class AddRecipeStepViewController: UIViewController {
 
+
     var embeddedViewControllers: [UIViewController] = [] //0:textView, 1: imagePicker
     weak var delegate: AddRecipeStepProtocol?
     var row: Int = 0
@@ -27,6 +28,7 @@ class AddRecipeStepViewController: UIViewController {
         configureTextViewHints()
         configurePresets()
     }
+    
     
     func configurePresets() {
         if let image = presetImage, let description = presetDescription, let color = textViewPresetTextColor {
