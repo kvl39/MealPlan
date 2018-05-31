@@ -181,7 +181,8 @@ class AddByClassificationViewController: MPTableViewController {
         //searchResultViewTopConstraint.constant = contentInsetY
         //self.view.layoutIfNeeded()
         //searchButton.alpha = 1 - subViewMoveDistance/30
-        containerForScrollView.alpha = 1 - subViewMoveDistance/90
+        containerForScrollView.alpha = 1 - subViewMoveDistance/200
+        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: -1 * subViewMoveDistance + 120)
         if subViewMoveDistance > 0 {
             searchButton.isUserInteractionEnabled = false
             containerForScrollView.isUserInteractionEnabled = false
