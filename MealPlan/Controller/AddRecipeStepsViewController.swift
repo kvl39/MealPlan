@@ -40,22 +40,12 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
             guard let selectedIndexPath = recipeStepCollectionView.indexPathForItem(at: gesture.location(in: recipeStepCollectionView)) else {
                 break
             }
-            indexOfCellToSwitch = selectedIndexPath.row
-            cellToSwitch = itemArray[selectedIndexPath.row]
             selectedCell = recipeStepCollectionView.cellForItem(at: selectedIndexPath) as? RecipeStepCollectionViewCell
             selectedCell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             selectedCell?.alpha = 0.8
             recipeStepCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case .changed: recipeStepCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
         case .ended:
-            guard let selectedIndexPath = recipeStepCollectionView.indexPathForItem(at: gesture.location(in: recipeStepCollectionView)) else {
-                break
-            }
-            cellBeSwitched = itemArray[selectedIndexPath.row]
-            if let cellInstered = cellToSwitch, let cellReplaced = cellBeSwitched {
-                itemArray[selectedIndexPath.row] = cellInstered
-                itemArray[indexOfCellToSwitch] = cellReplaced
-            }
             recipeStepCollectionView.endInteractiveMovement()
         default:
             recipeStepCollectionView.cancelInteractiveMovement()

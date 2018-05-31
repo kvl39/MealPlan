@@ -84,7 +84,9 @@ extension MPIndependentCollectionViewController: UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        let itemToSwitch = self.itemArray[sourceIndexPath.row]
+        self.itemArray.remove(at: sourceIndexPath.row)
+        self.itemArray.insert(itemToSwitch, at: destinationIndexPath.row)
     }
     
 }
