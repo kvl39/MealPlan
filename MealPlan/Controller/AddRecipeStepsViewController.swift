@@ -47,7 +47,6 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
             selectedCell?.alpha = 0.8
             recipeStepCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
         case .changed: recipeStepCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-            
         case .ended:
             guard let selectedIndexPath = recipeStepCollectionView.indexPathForItem(at: gesture.location(in: recipeStepCollectionView)) else {
                 break

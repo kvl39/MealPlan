@@ -22,11 +22,16 @@ class AddRecipeStepViewController: UIViewController {
     var presetDescription: String?
     var textViewPresetTextColor: UIColor?
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resetFrame()
         configureTextViewHints()
         configurePresets()
+        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        
     }
     
     
@@ -88,7 +93,11 @@ class AddRecipeStepViewController: UIViewController {
     }
     
     
+    @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
+  
     
 
 }
