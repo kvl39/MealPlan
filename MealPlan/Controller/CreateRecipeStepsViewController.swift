@@ -42,7 +42,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         addCameraViewController()
         addPhotoViewController()
         addStepInformationViewController()
-        
+        addIngredientInformationViewController()
     }
     
     func addCameraViewController() {
@@ -75,6 +75,14 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         addRecipeStepsViewController.titleTextViewHints = "Recipe Title"
         addRecipeStepsViewController.configureTextViewHints()
         addRecipeStepsViewController.resetFrame()
+    }
+    
+    func addIngredientInformationViewController() {
+        guard let addRecipeIngredientViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "AddRecipeIngredientViewController") as? AddRecipeIngredientViewController else {return}
+        addChildViewController(addRecipeIngredientViewController)
+        addRecipeIngredientViewController.view.frame = CGRect(x: 3*self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
+        self.scrollStepsView.addSubview(addRecipeIngredientViewController.view)
+        didMove(toParentViewController: addRecipeIngredientViewController)
     }
     
     func updatePhotoView() {

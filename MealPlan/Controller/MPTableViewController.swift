@@ -19,6 +19,7 @@ enum MPTableViewCellType {
     case nutrientsEditType
     case recipeIngredientType(String)
     case recipeStepTableViewCellType(String, UIImage)
+    case recipeIngredientEditType
 }
 
 extension MPTableViewCellType {
@@ -46,6 +47,8 @@ extension MPTableViewCellType {
             return RecipeIngredientItem(ingredientText: ingredientText)
         case .recipeStepTableViewCellType(let recipeDescription, let recipeStepImage):
             return RecipeStepTableViewItem(recipeStepDescription: recipeDescription, recipeStepImage: recipeStepImage)
+        case .recipeIngredientEditType:
+            return RecipeIngredientEditItem()
         }
     }
 }
@@ -174,6 +177,11 @@ struct RecipeIngredientItem: MPTableViewCellProtocol {
     }
 }
 
+
+struct RecipeIngredientEditItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "IngredientEditTableViewCell"
+    var rowHeight: Int = 50
+}
 
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
@@ -366,6 +374,42 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? RecipeStepTableViewItem else {return}
             cell.recipeStepDescription.text = itemStruct.recipeStepDescription
             cell.recipeStepImage.image = itemStruct.recipeStepImage
+        case .recipeIngredientEditType:
+            guard let cell = cell as? IngredientEditTableViewCell else {return}
+            cell.selectionStyle = .none
+            var ingredientTitleTextViewController = InputTextViewController()
+            var ingredientWeightTextViewController = InputTextViewController()
+            if let index = self.rowControllerIndexDic[indexPath],
+                let storedIngredientTitleTextViewController = self.rowControllerArray[index][0] as? InputTextViewController,
+                let storedIngredientWeightTextViewController = self.rowControllerArray[index][1] as? InputTextViewController {
+                ingredientTitleTextViewController = storedIngredientTitleTextViewController
+                ingredientWeightTextViewController = storedIngredientWeightTextViewController
+            } else {
+                let controllerArray = [ingredientTitleTextViewController, ingredientWeightTextViewController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
+            }
+            
+            addChildViewController(ingredientWeightTextViewController)
+            ingredientWeightTextViewController.view.frame = cell.ingredientWeightView.frame
+            ingredientWeightTextViewController.view.frame.origin.x = 0
+            ingredientWeightTextViewController.view.frame.origin.y = 0
+            ingredientWeightTextViewController.resetFrame()
+            cell.ingredientWeightView.addSubview(ingredientWeightTextViewController.view)
+            ingredientWeightTextViewController.didMove(toParentViewController: self)
+            
+            addChildViewController(ingredientTitleTextViewController)
+            ingredientTitleTextViewController.view.frame = cell.ingredientTitleView.frame
+            print("title frame:\(ingredientTitleTextViewController.view.frame.height)")
+            ingredientTitleTextViewController.view.frame.origin.x = 0
+            ingredientTitleTextViewController.view.frame.origin.y = 0
+            ingredientTitleTextViewController.resetFrame()
+            cell.ingredientTitleView.addSubview(ingredientTitleTextViewController.view)
+            ingredientTitleTextViewController.didMove(toParentViewController: self)
+            
+            ingredientTitleTextViewController.delegate = self
+            ingredientWeightTextViewController.delegate = self
+            
         }
     }
 
@@ -405,6 +449,9 @@ extension MPTableViewController {
             return cell
         case .recipeStepTableViewCellType:
             guard let cell = cell as? RecipeStepTableViewCell else {return UITableViewCell()}
+            return cell
+        case .recipeIngredientEditType:
+            guard let cell = cell as? IngredientEditTableViewCell else {return UITableViewCell()}
             return cell
         }
     }

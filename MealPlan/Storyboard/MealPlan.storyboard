@@ -1176,6 +1176,36 @@ Long press to reorder</string>
             </objects>
             <point key="canvasLocation" x="5067" y="-1807"/>
         </scene>
+        <!--Add Recipe Ingredient View Controller-->
+        <scene sceneID="Lgi-6H-sHG">
+            <objects>
+                <viewController storyboardIdentifier="AddRecipeIngredientViewController" id="Qq2-9U-er6" customClass="AddRecipeIngredientViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9ex-KE-9hO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AqS-5n-fL3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="87o-UQ-L45" firstAttribute="bottom" secondItem="AqS-5n-fL3" secondAttribute="bottom" id="HCe-cJ-LE4"/>
+                            <constraint firstItem="87o-UQ-L45" firstAttribute="trailing" secondItem="AqS-5n-fL3" secondAttribute="trailing" id="Hul-Is-PxK"/>
+                            <constraint firstItem="AqS-5n-fL3" firstAttribute="top" secondItem="87o-UQ-L45" secondAttribute="top" id="ZvV-8n-uGR"/>
+                            <constraint firstItem="AqS-5n-fL3" firstAttribute="leading" secondItem="87o-UQ-L45" secondAttribute="leading" id="uMv-Sc-9Rx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="87o-UQ-L45"/>
+                    </view>
+                    <connections>
+                        <outlet property="addIngredientTableView" destination="AqS-5n-fL3" id="Khe-B0-98z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5c-qj-ced" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5064" y="-2500"/>
+        </scene>
         <!--Input Text View Controller-->
         <scene sceneID="W2C-UY-2dn">
             <objects>

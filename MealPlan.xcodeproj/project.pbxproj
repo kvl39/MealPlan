@@ -64,6 +64,9 @@
 		AD72B89A20BF940700A4C978 /* MPIndependentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */; };
 		AD72B8A120BF972D00A4C978 /* RecipeStepCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B89F20BF972D00A4C978 /* RecipeStepCollectionViewCell.swift */; };
 		AD72B8A220BF972D00A4C978 /* RecipeStepCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD72B8A020BF972D00A4C978 /* RecipeStepCollectionViewCell.xib */; };
+		AD72B8AC20BFDE2000A4C978 /* IngredientEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8AA20BFDE2000A4C978 /* IngredientEditTableViewCell.swift */; };
+		AD72B8AD20BFDE2000A4C978 /* IngredientEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */; };
+		AD72B8AF20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */; };
 		AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */; };
 		AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */; };
 		AD81675920BD4E9300C61849 /* MPScrollNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */; };
@@ -175,6 +178,9 @@
 		AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPIndependentCollectionViewController.swift; sourceTree = "<group>"; };
 		AD72B89F20BF972D00A4C978 /* RecipeStepCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD72B8A020BF972D00A4C978 /* RecipeStepCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeStepCollectionViewCell.xib; sourceTree = "<group>"; };
+		AD72B8AA20BFDE2000A4C978 /* IngredientEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientEditTableViewCell.swift; sourceTree = "<group>"; };
+		AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientEditTableViewCell.xib; sourceTree = "<group>"; };
+		AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeIngredientViewController.swift; sourceTree = "<group>"; };
 		AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientCell.swift; sourceTree = "<group>"; };
 		AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailIngredientCell.xib; sourceTree = "<group>"; };
 		AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollNavigationViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +302,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD72B8A320BFD66D00A4C978 /* MPIngredientEditCell */,
 				ADA38AAB20BF2C9D00DE86F6 /* RecipeStepCell */,
 				ADB6169120B958C700B637D6 /* MPHorizontalScrollView */,
 				AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */,
@@ -363,6 +370,7 @@
 				AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */,
 				AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */,
 				ADB8797420BDB659005FFA8D /* DrawLineView.swift */,
+				AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -437,6 +445,15 @@
 				AD6FB21D20A971060000A44F /* RecipeDetailTitle.swift */,
 			);
 			path = RecipeDetailTitle;
+			sourceTree = "<group>";
+		};
+		AD72B8A320BFD66D00A4C978 /* MPIngredientEditCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD72B8AA20BFDE2000A4C978 /* IngredientEditTableViewCell.swift */,
+				AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */,
+			);
+			path = MPIngredientEditCell;
 			sourceTree = "<group>";
 		};
 		AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */ = {
@@ -678,6 +695,7 @@
 				AD85E56220B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib in Resources */,
 				AD5D380A20B3E5EF004B65BF /* MPSliderView.xib in Resources */,
 				AD5D381D20B4501C004B65BF /* MPNutrientsEditView.xib in Resources */,
+				AD72B8AD20BFDE2000A4C978 /* IngredientEditTableViewCell.xib in Resources */,
 				AD2C8E502097558C0083B229 /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,6 +787,7 @@
 				AD566B49209B0545009915F3 /* AddPageHistoryController.swift in Sources */,
 				AD2C8E382096EFAD0083B229 /* ViewController.swift in Sources */,
 				AD6ED3F520B2B83800B194BF /* TextViewController.swift in Sources */,
+				AD72B8AC20BFDE2000A4C978 /* IngredientEditTableViewCell.swift in Sources */,
 				ADA4342620A04B16002C7148 /* SearchViewController.swift in Sources */,
 				ADA38AAE20BF2CCE00DE86F6 /* RecipeStepTableViewCell.swift in Sources */,
 				AD6FB22320A97FFD0000A44F /* MPRecipeDetailWebViewController.swift in Sources */,
@@ -812,6 +831,7 @@
 				AD5D381620B41F6A004B65BF /* AlertManager.swift in Sources */,
 				ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
+				AD72B8AF20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift in Sources */,
 				AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */,
 				ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */,
 				AD81675B20BD500100C61849 /* CreateRecipeStepsViewController.swift in Sources */,
