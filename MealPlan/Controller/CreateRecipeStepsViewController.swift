@@ -84,7 +84,49 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         addRecipeIngredientViewController.view.frame = CGRect(x: 3*self.view.frame.width, y: 0, width: self.scrollStepsView.frame.width, height: self.scrollStepsView.frame.height)
         self.scrollStepsView.addSubview(addRecipeIngredientViewController.view)
         didMove(toParentViewController: addRecipeIngredientViewController)
+        self.controllersArray.append(addRecipeIngredientViewController)
     }
+    
+    
+    func finishCheck() {
+        var warningMessage = ""
+        var warnings = 0
+        
+        if !photoIsTaken {
+            warnings += 1
+            warningMessage += "No recipe photo"
+        }
+        
+        if let recipeStepVC = controllersArray[2] as? AddRecipeStepsViewController {
+            if recipeStepVC.itemArray.count == 0 {
+                //no steps
+            }
+            
+            if let recipeTitleVC = recipeStepVC.embeddedViewControllers[0] as? InputTextViewController {
+                if recipeTitleVC.textView.textColor == UIColor.gray {
+                    //no title
+                }
+            }
+        }
+        
+        if let recipeIngredientVC = controllersArray[3] as? AddRecipeIngredientViewController {
+            
+            for index1 in 0..<recipeIngredientVC.rowControllerArray.count {
+                if let ingredientTitleVC = recipeIngredientVC.rowControllerArray[index1][0] as? InputTextViewController,
+                    let ingredientWeightVC = recipeIngredientVC.rowControllerArray[index1][1] as? InputTextViewController {
+                    
+                    //ingredientTitleVC.textView.text
+                    //ingredientWeightVC.textView.text
+                }
+            }
+        }
+ 
+    }
+    
+    
+//    func generateRealmModel()-> RecipeCalendarRealmModel {
+//        
+//    }
     
     func updatePhotoView() {
         if let photoVC = self.controllersArray[1] as? PhotoViewController {
