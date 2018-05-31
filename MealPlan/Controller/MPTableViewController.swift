@@ -215,6 +215,10 @@ extension MPTableViewController {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(red: 57/255.0, green: 101/255.0, blue: 246/255.0, alpha: 1.0)
+        header.textLabel?.font = UIFont(name: "PingFang TC", size: 17.0)
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
