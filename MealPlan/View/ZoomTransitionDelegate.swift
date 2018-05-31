@@ -33,7 +33,7 @@ class ZoomTransitionDelegate: NSObject {
             backgroundViewController.view.alpha = 1
             snapShotView.frame = container.convert(backgroundImageView.frame, from: backgroundImageView.superview)
         case .final:
-            backgroundViewController.view.transform = CGAffineTransform(scaleX: backgroundScale, y: backgroundScale)
+            //backgroundViewController.view.transform = CGAffineTransform(scaleX: backgroundScale, y: backgroundScale)
             if !isPop {
                 foregroundViewController.view.alpha = 1
             }
@@ -106,12 +106,14 @@ extension ZoomTransitionDelegate: UIViewControllerAnimatedTransitioning {
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0.0, options: [], animations: {
             self.configureView(for: postTransitionState, container: containerView, backgroundViewController: backgroundViewController, backgroundImageView: backgroundImageView, foregroundViewController: foregroundViewController, foregroundImageView: foregroundImageView, snapShotView: imageViewSnapShot, isPop: isPop)
         }) { (finished) in
-            backgroundViewController.view.transform = .identity
-            imageViewSnapShot.removeFromSuperview()
-            backgroundImageView.isHidden = false
-            foregroundImageView.isHidden = false
-            foregroundViewController.view.backgroundColor = foregroundViewBackgroundColor
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+           
+                backgroundViewController.view.transform = .identity
+                imageViewSnapShot.removeFromSuperview()
+                backgroundImageView.isHidden = false
+                foregroundImageView.isHidden = false
+                foregroundViewController.view.backgroundColor = foregroundViewBackgroundColor
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            
         }
 
     }
