@@ -15,18 +15,26 @@ class MPScrollNavigationViewController: UIViewController {
     @IBOutlet weak var step2Label: UILabel!
     @IBOutlet weak var step3Label: UILabel!
     @IBOutlet weak var step4Label: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
-    
-    lazy var scrollBar = UIView(frame: CGRect(x: 30, y: 33, width: 50, height: 5))
+    lazy var scrollBar = UIView(frame: CGRect(x: 30, y: 73, width: 50, height: 5))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGestureToStepLabels()
         scrollBar.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
-        scrollBar.frame = CGRect(x: 30, y: 33, width: ((self.view.frame.width-150)/4), height: 5)
+        scrollBar.frame = CGRect(x: 30, y: 73, width: ((self.view.frame.width-150)/4), height: 5)
         self.view.addSubview(scrollBar)
         step1Label.textColor = UIColor.black
+        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        cancelButton.tintColor = UIColor.black
     }
+    
+    
+    @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
+        //go back!
+    }
+    
     
     func addGestureToStepLabels() {
         step1Label.isUserInteractionEnabled = true
@@ -48,21 +56,30 @@ class MPScrollNavigationViewController: UIViewController {
     
     @objc func tapStep1(sender: UITapGestureRecognizer) {
         print("tapped1")
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.scrollToPage(destinationPage: 0)
+        }
     }
     
     @objc func tapStep2(sender: UITapGestureRecognizer) {
         print("tapped2")
         if let parentVC = parent as? CreateRecipeStepsViewController {
-            parentVC.scrollToLeft()
+            parentVC.scrollToPage(destinationPage: 1)
         }
     }
     
     @objc func tapStep3(sender: UITapGestureRecognizer) {
         print("tapped3")
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.scrollToPage(destinationPage: 2)
+        }
     }
     
     @objc func tapStep4(sender: UITapGestureRecognizer) {
         print("tapped4")
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.scrollToPage(destinationPage: 3)
+        }
     }
     
     func updateScrollBarPosition(newX: CGFloat, page: Int) {

@@ -12,7 +12,6 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
 
     
     @IBOutlet weak var scrollStepsView: UIScrollView!
-    @IBOutlet weak var topImageView: UIImageView!
     
     
     
@@ -21,12 +20,14 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     var stepIndicationWidth: CGFloat = 0.0
     var controllersArray: [UIViewController] = []
     var capturedPhoto: UIImage?
+    var alertmanager = AlertManager()
+    var photoIsTaken = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureScrollStepsView()
         stepIndicationWidth = 0.25 * (self.view.frame.width - 150)
-        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
+        
     }
 
     func configureScrollStepsView() {
@@ -72,7 +73,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         self.scrollStepsView.addSubview(addRecipeStepsViewController.view)
         didMove(toParentViewController: addRecipeStepsViewController)
         self.controllersArray.append(addRecipeStepsViewController)
-        addRecipeStepsViewController.titleTextViewHints = "Recipe Title"
+        addRecipeStepsViewController.titleTextViewHints = "Enter Recipe Title"
         addRecipeStepsViewController.configureTextViewHints()
         addRecipeStepsViewController.resetFrame()
     }
@@ -91,6 +92,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             print("photo height:\(photoVC.takenPhoto?.size.height)")
             photoVC.updatePhoto()
         }
+        self.photoIsTaken = true
     }
     
     func reTakePicture() {
@@ -98,6 +100,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             cameraVC.configureViewWillAppear()
         }
        scrollToLeft()
+        self.photoIsTaken = false
     }
     
     func scrollToLeft() {
@@ -106,6 +109,17 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollToRight() {
         self.scrollStepsView.setContentOffset(CGPoint(x: self.scrollStepsView.contentOffset.x+self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
+    }
+    
+    func scrollToPage(destinationPage: Int) {
+        if (photoIsTaken && (destinationPage == 0)) {
+            alertmanager.showAlertForCamera(viewController: self)
+            reTakePicture()
+        } else if ((photoIsTaken == false)&&(destinationPage>0)) {
+            alertmanager.showAlertForPhoto(viewController: self)
+        } else {
+            self.scrollStepsView.setContentOffset(CGPoint(x: CGFloat(destinationPage)*self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
+        }
     }
 
 }

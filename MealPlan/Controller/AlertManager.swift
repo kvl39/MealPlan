@@ -31,4 +31,50 @@ class AlertManager {
             animated: true,
             completion: nil)
     }
+    
+    
+    func showAlertForCamera(viewController: UIViewController) {
+        let alertController = UIAlertController(
+            title: "Warning",
+            message: "Retake Photo",
+            preferredStyle: .alert)
+        
+        
+        let okAction = UIAlertAction(
+            title: "Yes",
+            style: .default,
+            handler: {
+                (action: UIAlertAction!) -> Void in
+                print("按下確認後，閉包裡的動作")
+        })
+        alertController.addAction(okAction)
+        
+        viewController.present(
+            alertController,
+            animated: true,
+            completion: nil)
+    }
+    
+    
+    func showAlertForPhoto(viewController: UIViewController) {
+        let alertController = UIAlertController(
+            title: "Warning",
+            message: "Please take a Photo for the recipe",
+            preferredStyle: .alert)
+        
+        
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {
+                (action: UIAlertAction!) -> Void in
+                print("按下確認後，閉包裡的動作")
+        })
+        alertController.addAction(okAction)
+        
+        viewController.present(
+            alertController,
+            animated: true,
+            completion: nil)
+    }
 }
