@@ -19,6 +19,7 @@ class AddRecipeStepViewController: UIViewController {
     var row: Int = 0
     var presetImage: UIImage?
     var presetDescription: String?
+    var textViewPresetTextColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +29,11 @@ class AddRecipeStepViewController: UIViewController {
     }
     
     func configurePresets() {
-        if let image = presetImage, let description = presetDescription {
+        if let image = presetImage, let description = presetDescription, let color = textViewPresetTextColor {
             if let vc = embeddedViewControllers[0] as? InputTextViewController {
                 vc.textView.text = description
+                vc.textView.textColor = color
+                vc.hasPresetColor = true
             }
             if let vc = embeddedViewControllers[1] as? ImagePickerViewController{
                 vc.image.image = image

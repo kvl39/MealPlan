@@ -24,12 +24,18 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     var drawLineManager = DrawCameraLineManager()
     var separationLine = CAShapeLayer()
     var showSeparationLine = true
+    var hasPresetColor = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
         textView.text = textViewHint
-        textView.textColor = UIColor.gray
+        if hasPresetColor {
+            textView.textColor = UIColor.black
+        } else {
+            textView.textColor = UIColor.gray
+        }
+        
         self.view.addSubview(textView)
         textView.isScrollEnabled = false
 //        NSLayoutConstraint.activate([

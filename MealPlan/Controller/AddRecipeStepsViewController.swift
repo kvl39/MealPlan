@@ -39,6 +39,7 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
                 if self.presetInformation {
                     vc.presetDescription = selectedDescription
                     vc.presetImage = selectedImage
+                    vc.textViewPresetTextColor = UIColor.black
                 }
             }
         }
