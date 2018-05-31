@@ -42,8 +42,8 @@ class AddByClassificationViewController: MPTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
-        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
+        topImageView.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+        //backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
         initialConfigureHintView()
