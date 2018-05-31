@@ -399,7 +399,10 @@ extension MPTableViewController {
             }
             
             addChildViewController(ingredientWeightTextViewController)
-            ingredientWeightTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientWeightView.frame.width, height: 50.0)
+            ingredientWeightTextViewController.view.frame = cell.ingredientWeightView.frame
+            ingredientWeightTextViewController.view.frame.origin.x = 0
+            ingredientWeightTextViewController.view.frame.origin.y = 0
+            //ingredientWeightTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientWeightView.frame.width, height: 40.0)
             ingredientWeightTextViewController.showSeparationLine = false
             ingredientWeightTextViewController.resetFrame()
             cell.ingredientWeightView.addSubview(ingredientWeightTextViewController.view)
@@ -410,7 +413,10 @@ extension MPTableViewController {
             ingredientWeightTextViewController.resetKeyboard()
             
             addChildViewController(ingredientTitleTextViewController)
-            ingredientTitleTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientTitleView.frame.width, height: 50.0)
+            ingredientTitleTextViewController.view.frame = cell.ingredientTitleView.frame
+            ingredientTitleTextViewController.view.frame.origin.x = 0
+            ingredientTitleTextViewController.view.frame.origin.y = 0
+            //ingredientTitleTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientTitleView.frame.width, height: 50.0)
             ingredientTitleTextViewController.showSeparationLine = false
             ingredientTitleTextViewController.resetFrame()
             cell.ingredientTitleView.addSubview(ingredientTitleTextViewController.view)

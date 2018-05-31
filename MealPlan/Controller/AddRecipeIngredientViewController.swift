@@ -24,7 +24,8 @@ class AddRecipeIngredientViewController: MPTableViewController {
     }
     
     @objc func addIngredient(notification: Notification) {
-        self.rowArray[0].insert(.recipeIngredientEditType, at: 0)
+        //self.rowArray[0].insert(.recipeIngredientEditType, at: 0)
+        self.rowArray[0].append(.recipeIngredientEditType)
         //self.rowArray[0].append(.addIngredientType)
         self.addIngredientTableView.reloadData()
     }
