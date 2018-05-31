@@ -44,9 +44,11 @@ class MPIndependentCollectionViewController: UIViewController {
     
     var itemArray = [MPCollectionViewCellType]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 
 }
 
@@ -77,6 +79,13 @@ extension MPIndependentCollectionViewController: UICollectionViewDelegate, UICol
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
     
 }
 

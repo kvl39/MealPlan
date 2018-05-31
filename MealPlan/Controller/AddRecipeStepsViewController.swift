@@ -16,6 +16,12 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
     var presetInformation = false
     var selectedImage: UIImage = UIImage()
     var selectedDescription: String = ""
+    var longPressGesture: UILongPressGestureRecognizer!
+    var indexOfCellToSwitch: Int = 0
+    var cellToSwitch: MPCollectionViewCellType?
+    var indexOfCellBeSwitched: Int = 0
+    var cellBeSwitched: MPCollectionViewCellType?
+    var selectedCell: RecipeStepCollectionViewCell?
     
     @IBOutlet weak var recipeTitleTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var recipeStepCollectionView: UICollectionView!
@@ -23,6 +29,38 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        recipeStepCollectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+            
+        case .began:
+            guard let selectedIndexPath = recipeStepCollectionView.indexPathForItem(at: gesture.location(in: recipeStepCollectionView)) else {
+                break
+            }
+            indexOfCellToSwitch = selectedIndexPath.row
+            cellToSwitch = itemArray[selectedIndexPath.row]
+            selectedCell = recipeStepCollectionView.cellForItem(at: selectedIndexPath) as? RecipeStepCollectionViewCell
+            selectedCell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            selectedCell?.alpha = 0.8
+            recipeStepCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed: recipeStepCollectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            
+        case .ended:
+            guard let selectedIndexPath = recipeStepCollectionView.indexPathForItem(at: gesture.location(in: recipeStepCollectionView)) else {
+                break
+            }
+            cellBeSwitched = itemArray[selectedIndexPath.row]
+            if let cellInstered = cellToSwitch, let cellReplaced = cellBeSwitched {
+                itemArray[selectedIndexPath.row] = cellInstered
+                itemArray[indexOfCellToSwitch] = cellReplaced
+            }
+            recipeStepCollectionView.endInteractiveMovement()
+        default:
+            recipeStepCollectionView.cancelInteractiveMovement()
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +85,7 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
         recipeStepCollectionView.delegate = self
         recipeStepCollectionView.dataSource = self
         recipeStepCollectionView.register(UINib(nibName: "RecipeStepCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecipeStepCollectionViewCell")
+        recipeStepCollectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
 
     func configureTextViewHints() {

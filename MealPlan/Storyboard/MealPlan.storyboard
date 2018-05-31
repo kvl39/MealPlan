@@ -1103,11 +1103,13 @@
                                     <segue destination="i21-E2-irq" kind="embed" identifier="EmbeddedRecipeTitle" id="ZyK-W4-xlP"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add at least 1 step to continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0G-cw-63U">
-                                <rect key="frame" x="20" y="90" width="335" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0G-cw-63U">
+                                <rect key="frame" x="20" y="80" width="335" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="vwX-Xv-coM"/>
+                                    <constraint firstAttribute="height" constant="50" id="vwX-Xv-coM"/>
                                 </constraints>
+                                <string key="text">Add at least 1 step to continue
+Long press to reorder</string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1126,7 +1128,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uhZ-tb-STS">
-                                <rect key="frame" x="4" y="140" width="367" height="477"/>
+                                <rect key="frame" x="4" y="150" width="367" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="XtD-Z0-q9Y">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1150,7 +1152,7 @@
                         <constraints>
                             <constraint firstItem="E0G-cw-63U" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="20" id="3z1-sT-6oL"/>
                             <constraint firstItem="IWS-RO-Zb2" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" id="6XJ-vB-HZA"/>
-                            <constraint firstItem="E0G-cw-63U" firstAttribute="top" secondItem="IWS-RO-Zb2" secondAttribute="bottom" constant="30" id="Hxf-gU-q5s"/>
+                            <constraint firstItem="E0G-cw-63U" firstAttribute="top" secondItem="IWS-RO-Zb2" secondAttribute="bottom" constant="20" id="Hxf-gU-q5s"/>
                             <constraint firstItem="IWS-RO-Zb2" firstAttribute="top" secondItem="Mes-af-CNo" secondAttribute="top" id="IRU-yB-Hdp"/>
                             <constraint firstItem="JYf-aM-dnc" firstAttribute="top" secondItem="uhZ-tb-STS" secondAttribute="bottom" id="PH8-GR-vJh"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="IWS-RO-Zb2" secondAttribute="trailing" id="QkL-d1-Kfl"/>
