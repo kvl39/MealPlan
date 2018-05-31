@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5CE24D471EAAD651562BBEC1 /* Pods_MealPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCEE3EA7654681829386709 /* Pods_MealPlan.framework */; };
+		AD00236E20C0705500ED7AD0 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD00236D20C0705500ED7AD0 /* Search.storyboard */; };
 		AD1D922E209B6B5200B9AFE9 /* MPHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D922D209B6B5200B9AFE9 /* MPHttpRequest.swift */; };
 		AD1D9230209B737400B9AFE9 /* MPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D922F209B737400B9AFE9 /* MPError.swift */; };
 		AD1D9232209B759F00B9AFE9 /* MPHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D9231209B759F00B9AFE9 /* MPHttpClient.swift */; };
@@ -125,6 +126,7 @@
 /* Begin PBXFileReference section */
 		7CCEE3EA7654681829386709 /* Pods_MealPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D3A854EB771AFC1F089BC5 /* Pods-MealPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPlan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MealPlan/Pods-MealPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		AD00236D20C0705500ED7AD0 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		AD1D922D209B6B5200B9AFE9 /* MPHttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPHttpRequest.swift; sourceTree = "<group>"; };
 		AD1D922F209B737400B9AFE9 /* MPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPError.swift; sourceTree = "<group>"; };
 		AD1D9231209B759F00B9AFE9 /* MPHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPHttpClient.swift; sourceTree = "<group>"; };
@@ -364,7 +366,6 @@
 				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
 				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
 				AD59477920B0367500B9C915 /* PopupButtonsManager.swift */,
-				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
 				AD6FD06520B0680100148414 /* TestViewController.swift */,
 				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
 				ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */,
@@ -384,6 +385,7 @@
 				ADB8797420BDB659005FFA8D /* DrawLineView.swift */,
 				AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */,
 				AD72B8B520BFF3DB00A4C978 /* IngredientAddButtonViewController.swift */,
+				ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +406,7 @@
 				AD59477420B01B0300B9C915 /* MealPlan.storyboard */,
 				AD59477220B01AA400B9C915 /* Discovery.storyboard */,
 				AD59477720B024B500B9C915 /* Login.storyboard */,
+				AD00236D20C0705500ED7AD0 /* Search.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */,
 				AD4E2CF420A14C6300C4573F /* RecipeSearchResultCell.xib in Resources */,
 				ADAEAC382098506B001B44CF /* HorizontalCollectionView.xib in Resources */,
+				AD00236E20C0705500ED7AD0 /* Search.storyboard in Resources */,
 				ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */,
 				AD85E56220B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib in Resources */,
 				AD5D380A20B3E5EF004B65BF /* MPSliderView.xib in Resources */,

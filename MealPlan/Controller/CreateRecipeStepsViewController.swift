@@ -56,6 +56,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         addPhotoViewController()
         addStepInformationViewController()
         addIngredientInformationViewController()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func addCameraViewController() {

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         var label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: statusBarHeight))
-        label.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
+        label.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
         self.window?.rootViewController?.view.addSubview(label)
         //self.window?.backgroundColor = UIColor(red: 242/255.0, green: 211/255.0, blue: 136/255.0, alpha: 1.0)
         IQKeyboardManager.shared.enable = true

@@ -15,8 +15,6 @@ import Firebase
 class MealPlanViewController: MPTableViewController, AddByClassificationDelegateProtocol {
 
     @IBOutlet weak var testTable: UITableView!
-    @IBOutlet weak var topImageView: UIImageView!
-    @IBOutlet weak var editPlanButton: UIButton!
     
     let pieChartManager = MPPieChart()
     var addButtonSelected = true
@@ -47,22 +45,15 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         testTable.dataSource = self
 
         configureTableView()
-        configureTopButtons()
-        //configureAddButton()
-        topImageView.backgroundColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
         self.view.addSubview(addedButtonSubView)
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
-        self.tabBarController?.tabBar.isHidden = true
-        
-
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        //self.tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -72,9 +63,11 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     }
     
     
-    func configureTopButtons() {
-        editPlanButton.setImage(#imageLiteral(resourceName: "pencil"), for: .normal)
+    @IBAction func createRecipeButtonDidPressed(_ sender: Any) {
+        performSegue(withIdentifier: "PushToCreateRecipe", sender: self)
     }
+    
+    
     
     @objc func createRecipe(notification: Notification) {
         //guard let userInfo = notification.userInfo,
@@ -168,6 +161,9 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
             vc.recipeDate = selectedDate
             vc.selectedRecipeImage = self.recipeImageArray
             vc.delegate = self
+        } else if (segue.identifier == "PushToCreateRecipe") {
+            guard let vc = segue.destination as? CreateRecipeStepsViewController else {return}
+            vc.selectedDate = self.selectedDate
         }
     }
 
@@ -246,9 +242,6 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
 
     func configureTableView() {
         self.testTable.separatorStyle = .none
-        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
-        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
-        self.testTable.backgroundView = backgroundView
         
         testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")
         testTable.register(UINib(nibName: "HorizontalCollectionView",

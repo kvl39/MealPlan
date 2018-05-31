@@ -10,27 +10,27 @@ import UIKit
 
 enum TabBar {
     case plan
-    case discovery
+    case search
     //case shoppingList
     
     func controller()->UIViewController {
         switch self {
         case .plan: return UIStoryboard(name: "MealPlan", bundle: nil).instantiateInitialViewController()!
-        case .discovery: return UIStoryboard(name: "Discovery", bundle: nil).instantiateInitialViewController()!
+        case .search: return UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController()!
         }
     }
     
     func image() -> UIImage {
         switch self {
         case .plan: return #imageLiteral(resourceName: "Icon-App-40x40")
-        case .discovery: return #imageLiteral(resourceName: "binoculars")
+        case .search: return #imageLiteral(resourceName: "binoculars")
         }
     }
     
     func selectedImage() -> UIImage {
         switch self {
         case .plan: return #imageLiteral(resourceName: "Icon-App-40x40").withRenderingMode(.alwaysTemplate)
-        case .discovery: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
+        case .search: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
         }
     }
 }
@@ -38,7 +38,7 @@ enum TabBar {
 
 class MPTabBarController: UITabBarController {
     
-    let tabs: [TabBar] = [.plan, .discovery]
+    let tabs: [TabBar] = [.plan, .search]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ class MPTabBarController: UITabBarController {
     
     func setupTabs() {
         var controllers: [UIViewController] = []
-        tabBar.tintColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+        tabBar.tintColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
         for tab in tabs {
             let controller = tab.controller()
             let item = UITabBarItem(
