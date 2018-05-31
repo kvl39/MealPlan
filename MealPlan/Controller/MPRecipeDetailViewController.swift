@@ -86,10 +86,9 @@ class MPRecipeDetailViewController: MPTableViewController {
     }
     
     func configureTableView() {
-        configureTableViewBackground()
+        //configureTableViewBackground()
         recipeDetailTableView.register(UINib(nibName: "RecipeTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeTableViewCell")
         recipeDetailTableView.register(UINib(nibName: "RecipeDetailIngredientCell", bundle: nil), forCellReuseIdentifier: "RecipeDetailIngredientCell")
-        
         
         rowArray.append([])
         for ingredient in self.recipeIngredients{
