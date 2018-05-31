@@ -36,6 +36,14 @@ class MPScrollNavigationViewController: UIViewController {
     }
     
     
+    @IBAction func finishEditing(_ sender: Any) {
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.finishCheck()
+        }
+    }
+    
+    
+    
     func addGestureToStepLabels() {
         step1Label.isUserInteractionEnabled = true
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(tapStep1(sender:)))

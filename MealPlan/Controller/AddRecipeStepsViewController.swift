@@ -22,6 +22,8 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
     var indexOfCellBeSwitched: Int = 0
     var cellBeSwitched: MPCollectionViewCellType?
     var selectedCell: RecipeStepCollectionViewCell?
+    var recipeStepDescription: [String] = []
+    var recipeStepImage: [UIImage] = []
     
     @IBOutlet weak var recipeTitleTextViewHeight: NSLayoutConstraint!
     @IBOutlet weak var recipeStepCollectionView: UICollectionView!
@@ -98,8 +100,12 @@ class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRe
     func reloadTableViewRow(stepImage: UIImage, stepDescription: String, row: Int) {
         if row == self.itemArray.count {
             self.itemArray.append(.recipeStepCollectionViewType(stepImage, stepDescription))
+            self.recipeStepImage.append(stepImage)
+            self.recipeStepDescription.append(stepDescription)
         } else {
             self.itemArray[row] = .recipeStepCollectionViewType(stepImage, stepDescription)
+            self.recipeStepImage[row] = stepImage
+            self.recipeStepDescription[row] = stepDescription
         }
         
         recipeStepCollectionView.reloadData()

@@ -77,4 +77,26 @@ class AlertManager {
             animated: true,
             completion: nil)
     }
+    
+    func showAlert(viewController: UIViewController, text: String) {
+        let alertController = UIAlertController(
+            title: "Warning",
+            message: text,
+            preferredStyle: .alert)
+        
+        
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {
+                (action: UIAlertAction!) -> Void in
+                print("按下確認後，閉包裡的動作")
+        })
+        alertController.addAction(okAction)
+        
+        viewController.present(
+            alertController,
+            animated: true,
+            completion: nil)
+    }
 }

@@ -22,6 +22,18 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     var capturedPhoto: UIImage?
     var alertmanager = AlertManager()
     var photoIsTaken = false
+    var stepImages = [UIImage]()
+    var stepDescriptions = [String]()
+    var nutrientsValue: [Float] = [0.0, 0.0]
+    var nutrientsName = ["卡路里", "脂肪"]
+    var ingredientName = [String]()
+    var ingredientWeight = [Float]()
+    var recipeTitle: String?
+    var selectedDate = "2017 08 08"
+    let formatter = DateFormatter()
+    var dateManager = DataFormatManager()
+    var saveImageManger = SaveImageManager()
+    let realmManager = RealmManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +103,11 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
     func finishCheck() {
         var warningMessage = ""
         var warnings = 0
+        self.stepDescriptions = []
+        self.stepImages = []
+        self.ingredientName = []
+        self.ingredientWeight = []
+        self.nutrientsValue = [0.0, 0.0]
         
         if !photoIsTaken {
             warnings += 1
@@ -100,33 +117,107 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         if let recipeStepVC = controllersArray[2] as? AddRecipeStepsViewController {
             if recipeStepVC.itemArray.count == 0 {
                 //no steps
+                warnings += 1
+                warningMessage += "no steps"
+            } else {
+                self.stepDescriptions = recipeStepVC.recipeStepDescription
+                self.stepImages = recipeStepVC.recipeStepImage
             }
             
             if let recipeTitleVC = recipeStepVC.embeddedViewControllers[0] as? InputTextViewController {
                 if recipeTitleVC.textView.textColor == UIColor.gray {
                     //no title
+                    warningMessage += "no title"
+                    warnings += 1
+                } else {
+                    self.recipeTitle = recipeTitleVC.textView.text
                 }
             }
         }
         
         if let recipeIngredientVC = controllersArray[3] as? AddRecipeIngredientViewController {
-            
+            var hasValidData = false
             for index1 in 0..<recipeIngredientVC.rowControllerArray.count {
                 if let ingredientTitleVC = recipeIngredientVC.rowControllerArray[index1][0] as? InputTextViewController,
                     let ingredientWeightVC = recipeIngredientVC.rowControllerArray[index1][1] as? InputTextViewController {
                     
-                    //ingredientTitleVC.textView.text
-                    //ingredientWeightVC.textView.text
+                    if ((ingredientWeightVC.textView.textColor == UIColor.black) &&
+                        (ingredientTitleVC.textView.textColor == UIColor.black)) {
+                        hasValidData = true
+                        self.ingredientName.append(ingredientTitleVC.textView.text)
+                     self.ingredientWeight.append(Float(ingredientWeightVC.textView.text)!)
+                    }
+                
                 }
             }
+            if hasValidData == false {
+                warningMessage += "no ingredient"
+                warnings += 1
+            }
+            
+            
+        }
+        
+        if warnings > 0 {
+            alertmanager.showAlert(viewController: self, text: "Some thing is missing")
+        } else {
+            let recipe = saveData()
+            if let recipeCalendarModel = recipe {
+                realmManager.saveUserCreatedRecipe(createdRecipe: recipeCalendarModel)
+            }
+            if let image = self.capturedPhoto, let title = self.recipeTitle {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil, userInfo: ["createdRecipeImage": image, "createdRecipeTitle": title])
+            }
+            //self.navigationController?.popToRootViewController(animated: true)
         }
  
     }
     
     
-//    func generateRealmModel()-> RecipeCalendarRealmModel {
-//        
-//    }
+    func saveData()-> RecipeCalendarRealmModel? {
+        let recipeModel = RecipeCalendarRealmModel()
+        guard let addDate = self.dateManager.stringToDate(dateString: selectedDate, to: "yyyy MM dd") else {return nil}
+        recipeModel.recipeDay = addDate
+        recipeModel.withSteps = true
+        
+        let recipeRealmModelWithSteps = RecipeRealmModelWithSteps()
+        if let recipeTitle = self.recipeTitle {
+            recipeRealmModelWithSteps.label = recipeTitle
+            if let recipeImage = self.capturedPhoto {
+                self.saveImageManger.saveImage(image: recipeImage, imageFileName: "\(recipeTitle)_RecipeImage")
+                recipeRealmModelWithSteps.image = "\(recipeTitle)_RecipeImage"
+            }
+            
+            for index in 0...self.stepDescriptions.count - 1 {
+                let step = RecipeStep()
+                step.stepDescription = stepDescriptions[index]
+                step.imageName = "\(recipeTitle)_StepImage_\(index)"
+                self.saveImageManger.saveImage(image: self.stepImages[index], imageFileName: "\(recipeTitle)_StepImage_\(index)")
+                recipeRealmModelWithSteps.RecipeSteps.append(step)
+            }
+        }
+        
+        recipeRealmModelWithSteps.calories = Double(self.nutrientsValue[0])
+        
+        for index in 0...self.ingredientName.count-1 {
+            let ingredient = IngredientRecipeModel()
+            ingredient.name = self.ingredientName[index]
+            ingredient.weight = Double(self.ingredientWeight[index])
+            recipeRealmModelWithSteps.ingredients.append(ingredient)
+        }
+        
+        
+        for index in 0...self.nutrientsValue.count-1 {
+            let nutrient = Nutrients()
+            nutrient.label = self.nutrientsName[index]
+            nutrient.quantity = Double(self.nutrientsValue[index])
+            recipeRealmModelWithSteps.nutrients.append(nutrient)
+        }
+        
+        recipeModel.recipeRealmModelWithSteps = recipeRealmModelWithSteps
+        
+        return recipeModel
+    }
     
     func updatePhotoView() {
         if let photoVC = self.controllersArray[1] as? PhotoViewController {
@@ -141,7 +232,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         if let cameraVC = self.controllersArray[0] as? CameraViewController {
             cameraVC.configureViewWillAppear()
         }
-       scrollToLeft()
+        self.scrollStepsView.setContentOffset(CGPoint(x: 0.0, y: self.scrollStepsView.contentOffset.y), animated: true)
         self.photoIsTaken = false
     }
     

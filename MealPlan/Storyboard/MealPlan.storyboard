@@ -1066,10 +1066,21 @@
                                     <action selector="cancelButtonDidPressed:" destination="3Av-dk-mRp" eventType="touchUpInside" id="z71-Im-nJy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-zx-5RL">
+                                <rect key="frame" x="297" y="6" width="48" height="36"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" red="0.22352941176470587" green="0.396078431372549" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishEditing:" destination="3Av-dk-mRp" eventType="touchUpInside" id="ygl-WB-yNl"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wa8-yM-usU" firstAttribute="top" secondItem="YkC-95-Ufy" secondAttribute="top" constant="45" id="1X2-z5-o8D"/>
+                            <constraint firstItem="LF7-6u-uPQ" firstAttribute="trailing" secondItem="eXR-zx-5RL" secondAttribute="trailing" constant="30" id="7H9-PT-EDm"/>
                             <constraint firstItem="mjR-SV-mpK" firstAttribute="leading" secondItem="YkC-95-Ufy" secondAttribute="leading" id="EsG-hA-2bi"/>
                             <constraint firstAttribute="trailing" secondItem="wa8-yM-usU" secondAttribute="trailing" constant="30" id="Qo7-7b-u7U"/>
                             <constraint firstAttribute="bottom" secondItem="mjR-SV-mpK" secondAttribute="bottom" id="W5g-4u-aUJ"/>
@@ -1077,6 +1088,7 @@
                             <constraint firstAttribute="trailing" secondItem="mjR-SV-mpK" secondAttribute="trailing" id="i7t-VP-m7X"/>
                             <constraint firstItem="wa8-yM-usU" firstAttribute="leading" secondItem="YkC-95-Ufy" secondAttribute="leading" constant="30" id="n1u-l4-7Cg"/>
                             <constraint firstItem="XBF-SB-wvt" firstAttribute="leading" secondItem="LF7-6u-uPQ" secondAttribute="leading" constant="40" id="vbe-pq-ynO"/>
+                            <constraint firstItem="eXR-zx-5RL" firstAttribute="top" secondItem="LF7-6u-uPQ" secondAttribute="top" constant="6" id="zYV-d9-6d8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LF7-6u-uPQ"/>
                     </view>
