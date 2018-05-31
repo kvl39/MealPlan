@@ -46,7 +46,7 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeDetailTableView.dataSource = self
         originTitleY = self.recipeTitle.frame.origin.y
         
-        backButton.setImage(#imageLiteral(resourceName: "cancel"), for: .normal)
+        backButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
 //        newHeaderLayer = CAShapeLayer()
 //        newHeaderLayer.fillColor = UIColor.black.cgColor
 //        recipeImage.layer.mask = newHeaderLayer
