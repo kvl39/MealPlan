@@ -25,7 +25,7 @@ class AddRecipeIngredientViewController: MPTableViewController {
     
     @objc func addIngredient(notification: Notification) {
         //self.rowArray[0].append(.recipeIngredientEditType)
-        self.rowArray[0].append(.addIngredientType)
+        //self.rowArray[0].append(.addIngredientType)
         self.addIngredientTableView.reloadData()
     }
     
@@ -35,8 +35,8 @@ class AddRecipeIngredientViewController: MPTableViewController {
         addIngredientTableView.register(UINib(nibName: "IngredientEditTableViewCell", bundle: nil), forCellReuseIdentifier: "IngredientEditTableViewCell")
         addIngredientTableView.register(UINib(nibName: "MPIngredientAddButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "MPIngredientAddButtonTableViewCell")
         self.rowArray.append([])
-        //self.rowArray[0].append(.recipeIngredientEditType)
-        self.rowArray[0].append(.addIngredientType)
+        self.rowArray[0].append(.recipeIngredientEditType)
+        //self.rowArray[0].append(.addIngredientType)
     }
 
     
