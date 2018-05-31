@@ -1111,10 +1111,6 @@
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rcN-bD-Dpk">
-                                <rect key="frame" x="20" y="140" width="335" height="477"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYf-aM-dnc">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.84705882352941175" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1128,27 +1124,47 @@
                                     <action selector="addRecipeButtonDidPressed:" destination="b01-dh-onU" eventType="touchUpInside" id="kB7-DN-0Uq"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uhZ-tb-STS">
+                                <rect key="frame" x="10" y="140" width="355" height="477"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XtD-Z0-q9Y">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aG3-b3-wZZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="rcN-bD-Dpk" firstAttribute="top" secondItem="E0G-cw-63U" secondAttribute="bottom" constant="20" id="26p-JO-adR"/>
                             <constraint firstItem="E0G-cw-63U" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="20" id="3z1-sT-6oL"/>
                             <constraint firstItem="IWS-RO-Zb2" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" id="6XJ-vB-HZA"/>
-                            <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="rcN-bD-Dpk" secondAttribute="trailing" constant="20" id="Erw-zL-erB"/>
                             <constraint firstItem="E0G-cw-63U" firstAttribute="top" secondItem="IWS-RO-Zb2" secondAttribute="bottom" constant="30" id="Hxf-gU-q5s"/>
                             <constraint firstItem="IWS-RO-Zb2" firstAttribute="top" secondItem="Mes-af-CNo" secondAttribute="top" id="IRU-yB-Hdp"/>
-                            <constraint firstItem="JYf-aM-dnc" firstAttribute="top" secondItem="rcN-bD-Dpk" secondAttribute="bottom" id="PLd-eb-OZP"/>
+                            <constraint firstItem="JYf-aM-dnc" firstAttribute="top" secondItem="uhZ-tb-STS" secondAttribute="bottom" id="PH8-GR-vJh"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="IWS-RO-Zb2" secondAttribute="trailing" id="QkL-d1-Kfl"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="E0G-cw-63U" secondAttribute="trailing" constant="20" id="ShE-mA-ty0"/>
-                            <constraint firstItem="rcN-bD-Dpk" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="20" id="Twf-UV-ibD"/>
                             <constraint firstItem="JYf-aM-dnc" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" id="UPd-Au-QPu"/>
+                            <constraint firstItem="uhZ-tb-STS" firstAttribute="top" secondItem="E0G-cw-63U" secondAttribute="bottom" constant="20" id="bwR-Cf-Tgd"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="bottom" secondItem="JYf-aM-dnc" secondAttribute="bottom" id="fO6-iw-fKo"/>
                             <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="JYf-aM-dnc" secondAttribute="trailing" id="lMe-s4-lqx"/>
+                            <constraint firstItem="Mes-af-CNo" firstAttribute="trailing" secondItem="uhZ-tb-STS" secondAttribute="trailing" constant="10" id="oKQ-MQ-gzX"/>
+                            <constraint firstItem="uhZ-tb-STS" firstAttribute="leading" secondItem="Mes-af-CNo" secondAttribute="leading" constant="10" id="qCT-ah-rRE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mes-af-CNo"/>
                     </view>
                     <connections>
-                        <outlet property="recipeStepTableView" destination="rcN-bD-Dpk" id="zzL-NO-CH5"/>
+                        <outlet property="recipeStepCollectionView" destination="uhZ-tb-STS" id="rCu-aP-BnF"/>
                         <outlet property="recipeTitleTextViewHeight" destination="noa-7u-CWO" id="Mkk-LN-DqY"/>
                         <segue destination="UyE-tw-Loa" kind="show" identifier="ShowRecipeStepEditor" id="Bb1-w9-7Yd"/>
                     </connections>
@@ -1165,6 +1181,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="u2e-Kd-K41"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbU-M8-BNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1194,15 +1211,15 @@
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpt-2I-oZZ">
                                 <rect key="frame" x="0.0" y="367" width="375" height="250"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="uoO-1f-VVz"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="oMU-Uw-lio" kind="embed" identifier="EmbeddedRecipeStepDescription" id="3hf-M6-VZ8"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQz-2a-UHP">
                                 <rect key="frame" x="0.0" y="60" width="375" height="307"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="307" id="UOW-78-poS"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="aaS-ej-Sai" kind="embed" identifier="EmbeddedRecipeStepImage" id="Ruv-6T-1Ee"/>
                                 </connections>
@@ -1236,6 +1253,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Q4j-c0-lU2"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRz-LI-7yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1250,6 +1268,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="307"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0zf-h5-kDu"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3x7-b5-TdS" userLabel="First Responder" sceneMemberID="firstResponder"/>

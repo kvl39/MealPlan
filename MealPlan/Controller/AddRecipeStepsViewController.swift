@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol {
+class AddRecipeStepsViewController: MPIndependentCollectionViewController, AddRecipeStepProtocol {
 
     var embeddedViewControllers: [UIViewController] = []
     var titleTextViewHints = ""
@@ -18,13 +18,11 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
     var selectedDescription: String = ""
     
     @IBOutlet weak var recipeTitleTextViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var recipeStepTableView: UITableView!
-    
+    @IBOutlet weak var recipeStepCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rowArray.append([])
-        configureTableView()
+        configureCollectionView()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,10 +43,10 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
         }
     }
     
-    func configureTableView() {
-        recipeStepTableView.delegate = self
-        recipeStepTableView.dataSource = self
-        recipeStepTableView.register(UINib(nibName: "RecipeStepTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipeStepTableViewCell")
+    func configureCollectionView() {
+        recipeStepCollectionView.delegate = self
+        recipeStepCollectionView.dataSource = self
+        recipeStepCollectionView.register(UINib(nibName: "RecipeStepCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RecipeStepCollectionViewCell")
     }
 
     func configureTextViewHints() {
@@ -70,26 +68,27 @@ class AddRecipeStepsViewController: MPTableViewController, AddRecipeStepProtocol
     }
     
     func reloadTableViewRow(stepImage: UIImage, stepDescription: String, row: Int) {
-        if row == self.rowArray[0].count {
-            self.rowArray[0].append(.recipeStepTableViewCellType(stepDescription, stepImage))
+        if row == self.itemArray.count {
+            self.itemArray.append(.recipeStepCollectionViewType(stepImage, stepDescription))
         } else {
-            self.rowArray[0][row] = .recipeStepTableViewCellType(stepDescription, stepImage)
+            self.itemArray[row] = .recipeStepCollectionViewType(stepImage, stepDescription)
         }
         
-        recipeStepTableView.reloadData()
+        recipeStepCollectionView.reloadData()
     }
     
     
     @IBAction func addRecipeButtonDidPressed(_ sender: UIButton) {
-        self.stepInEditing = rowArray[0].count
+        self.stepInEditing = itemArray.count
         presetInformation = false
         performSegue(withIdentifier: "ShowRecipeStepEditor", sender: self)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.stepInEditing = indexPath.row
         presetInformation = true
-        guard let cell = recipeStepTableView.cellForRow(at: indexPath) as? RecipeStepTableViewCell,
+        guard let cell = recipeStepCollectionView.cellForItem(at: indexPath) as? RecipeStepCollectionViewCell,
             let image = cell.recipeStepImage.image,
             let description = cell.recipeStepDescription.text else {return}
         selectedImage = image
