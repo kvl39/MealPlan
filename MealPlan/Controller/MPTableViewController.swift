@@ -20,6 +20,7 @@ enum MPTableViewCellType {
     case recipeIngredientType(String)
     case recipeStepTableViewCellType(String, UIImage)
     case recipeIngredientEditType
+    case addIngredientType
 }
 
 extension MPTableViewCellType {
@@ -49,6 +50,8 @@ extension MPTableViewCellType {
             return RecipeStepTableViewItem(recipeStepDescription: recipeDescription, recipeStepImage: recipeStepImage)
         case .recipeIngredientEditType:
             return RecipeIngredientEditItem()
+        case .addIngredientType:
+            return AddIngredientItem()
         }
     }
 }
@@ -180,6 +183,11 @@ struct RecipeIngredientItem: MPTableViewCellProtocol {
 
 struct RecipeIngredientEditItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "IngredientEditTableViewCell"
+    var rowHeight: Int = 50
+}
+
+struct AddIngredientItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "MPIngredientAddButtonTableViewCell"
     var rowHeight: Int = 50
 }
 
@@ -409,7 +417,24 @@ extension MPTableViewController {
             
             ingredientTitleTextViewController.delegate = self
             ingredientWeightTextViewController.delegate = self
+        case .addIngredientType:
+            guard let cell = cell as? MPIngredientAddButtonTableViewCell else {return}
+            cell.selectionStyle = .none
+            var ingredientAddButtonViewController = IngredientAddButtonViewController()
+            if let index = self.rowControllerIndexDic[indexPath],
+                let storedAddButtonViewController = self.rowControllerArray[index][0] as? IngredientAddButtonViewController {
+                ingredientAddButtonViewController = storedAddButtonViewController
+            } else {
+                let controllerArray = [ingredientAddButtonViewController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
+            }
             
+            addChildViewController(ingredientAddButtonViewController)
+            ingredientAddButtonViewController.view.frame = CGRect(x: 0, y: 0, width: cell.frame.width, height: 50.0)
+            //ingredientAddButtonViewController.resetFrame()
+            cell.addSubview(ingredientAddButtonViewController.view)
+            ingredientAddButtonViewController.didMove(toParentViewController: self)
         }
     }
 
@@ -453,6 +478,9 @@ extension MPTableViewController {
         case .recipeIngredientEditType:
             guard let cell = cell as? IngredientEditTableViewCell else {return UITableViewCell()}
             return cell
+        case .addIngredientType:
+            guard let cell = cell as? MPIngredientAddButtonTableViewCell else {return UITableViewCell()}
+            return cell
         }
     }
 
@@ -463,6 +491,7 @@ extension MPTableViewController {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return CGFloat(rowArray[indexPath.section][indexPath.row].configureCell().rowHeight)
     }
     

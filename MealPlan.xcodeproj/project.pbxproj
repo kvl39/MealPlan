@@ -67,6 +67,11 @@
 		AD72B8AC20BFDE2000A4C978 /* IngredientEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8AA20BFDE2000A4C978 /* IngredientEditTableViewCell.swift */; };
 		AD72B8AD20BFDE2000A4C978 /* IngredientEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */; };
 		AD72B8AF20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */; };
+		AD72B8B320BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8B120BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.swift */; };
+		AD72B8B420BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD72B8B220BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.xib */; };
+		AD72B8B620BFF3DB00A4C978 /* IngredientAddButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8B520BFF3DB00A4C978 /* IngredientAddButtonViewController.swift */; };
+		AD72B8B920BFF5FF00A4C978 /* MPIngredientAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72B8B820BFF5FF00A4C978 /* MPIngredientAddButtonView.swift */; };
+		AD72B8BB20BFF61300A4C978 /* MPIngredientAddButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD72B8BA20BFF61300A4C978 /* MPIngredientAddButtonView.xib */; };
 		AD7C009620B6721F004F40E7 /* RecipeDetailIngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */; };
 		AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */; };
 		AD81675920BD4E9300C61849 /* MPScrollNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */; };
@@ -181,6 +186,11 @@
 		AD72B8AA20BFDE2000A4C978 /* IngredientEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientEditTableViewCell.swift; sourceTree = "<group>"; };
 		AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientEditTableViewCell.xib; sourceTree = "<group>"; };
 		AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeIngredientViewController.swift; sourceTree = "<group>"; };
+		AD72B8B120BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPIngredientAddButtonTableViewCell.swift; sourceTree = "<group>"; };
+		AD72B8B220BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPIngredientAddButtonTableViewCell.xib; sourceTree = "<group>"; };
+		AD72B8B520BFF3DB00A4C978 /* IngredientAddButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientAddButtonViewController.swift; sourceTree = "<group>"; };
+		AD72B8B820BFF5FF00A4C978 /* MPIngredientAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPIngredientAddButtonView.swift; sourceTree = "<group>"; };
+		AD72B8BA20BFF61300A4C978 /* MPIngredientAddButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPIngredientAddButtonView.xib; sourceTree = "<group>"; };
 		AD7C009420B6721F004F40E7 /* RecipeDetailIngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailIngredientCell.swift; sourceTree = "<group>"; };
 		AD7C009520B6721F004F40E7 /* RecipeDetailIngredientCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeDetailIngredientCell.xib; sourceTree = "<group>"; };
 		AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollNavigationViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +312,8 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD72B8B720BFF5E200A4C978 /* MPIngredientAddButtonView */,
+				AD72B8B020BFF15C00A4C978 /* MPIngredientAddButtonCell */,
 				AD72B8A320BFD66D00A4C978 /* MPIngredientEditCell */,
 				ADA38AAB20BF2C9D00DE86F6 /* RecipeStepCell */,
 				ADB6169120B958C700B637D6 /* MPHorizontalScrollView */,
@@ -371,6 +383,7 @@
 				AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */,
 				ADB8797420BDB659005FFA8D /* DrawLineView.swift */,
 				AD72B8AE20BFE54A00A4C978 /* AddRecipeIngredientViewController.swift */,
+				AD72B8B520BFF3DB00A4C978 /* IngredientAddButtonViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -454,6 +467,24 @@
 				AD72B8AB20BFDE2000A4C978 /* IngredientEditTableViewCell.xib */,
 			);
 			path = MPIngredientEditCell;
+			sourceTree = "<group>";
+		};
+		AD72B8B020BFF15C00A4C978 /* MPIngredientAddButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD72B8B120BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.swift */,
+				AD72B8B220BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.xib */,
+			);
+			path = MPIngredientAddButtonCell;
+			sourceTree = "<group>";
+		};
+		AD72B8B720BFF5E200A4C978 /* MPIngredientAddButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				AD72B8B820BFF5FF00A4C978 /* MPIngredientAddButtonView.swift */,
+				AD72B8BA20BFF61300A4C978 /* MPIngredientAddButtonView.xib */,
+			);
+			path = MPIngredientAddButtonView;
 			sourceTree = "<group>";
 		};
 		AD7C009320B671EF004F40E7 /* RecipeDetailIngredients */ = {
@@ -672,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD59477820B024B500B9C915 /* Login.storyboard in Resources */,
+				AD72B8B420BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.xib in Resources */,
 				ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */,
 				AD5D381220B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib in Resources */,
 				ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */,
@@ -686,6 +718,7 @@
 				ADA38AAF20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib in Resources */,
 				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
 				AD2C8E3B2096EFAD0083B229 /* Main.storyboard in Resources */,
+				AD72B8BB20BFF61300A4C978 /* MPIngredientAddButtonView.xib in Resources */,
 				AD7C009720B6721F004F40E7 /* RecipeDetailIngredientCell.xib in Resources */,
 				ADB6169520B9590600B637D6 /* MPHorizontalScrollView.xib in Resources */,
 				ADAEAC492098670A001B44CF /* CalendarCollectionView.xib in Resources */,
@@ -801,11 +834,13 @@
 				AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */,
 				ADB6169320B958E500B637D6 /* MPHorizontalScrollView.swift in Sources */,
 				AD5380F320B724D900B63062 /* DrawCameraLineManager.swift in Sources */,
+				AD72B8B920BFF5FF00A4C978 /* MPIngredientAddButtonView.swift in Sources */,
 				AD1D922E209B6B5200B9AFE9 /* MPHttpRequest.swift in Sources */,
 				AD94BB3620A71D6600D3B791 /* AddPagePopupView.swift in Sources */,
 				AD5D381F20B45278004B65BF /* NutrientsEditViewController.swift in Sources */,
 				ADAEAC372098506B001B44CF /* HorizontalCollectionView.swift in Sources */,
 				AD72B8A120BF972D00A4C978 /* RecipeStepCollectionViewCell.swift in Sources */,
+				AD72B8B320BFF39300A4C978 /* MPIngredientAddButtonTableViewCell.swift in Sources */,
 				AD8A0882209F41B800C3DB84 /* RecipeClassModel.swift in Sources */,
 				ADAEAC482098670A001B44CF /* CalendarCollectionView.swift in Sources */,
 				AD85E55C20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.swift in Sources */,
@@ -828,6 +863,7 @@
 				AD72B89A20BF940700A4C978 /* MPIndependentCollectionViewController.swift in Sources */,
 				ADB6169020B9581A00B637D6 /* MPHorizontalScrollViewController.swift in Sources */,
 				AD2C8E362096EFAD0083B229 /* AppDelegate.swift in Sources */,
+				AD72B8B620BFF3DB00A4C978 /* IngredientAddButtonViewController.swift in Sources */,
 				AD5D381620B41F6A004B65BF /* AlertManager.swift in Sources */,
 				ADF599BB20ADBEA600C73097 /* DiscoverCardView.swift in Sources */,
 				AD57814D20A47C5900130388 /* DateFormatManager.swift in Sources */,
