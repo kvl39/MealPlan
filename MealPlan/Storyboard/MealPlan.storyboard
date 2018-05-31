@@ -548,11 +548,13 @@
                                     <action selector="backButtonDidPressed:" destination="t4C-j5-CjG" eventType="touchUpInside" id="DH0-bh-Qez"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLs-9H-nf3">
-                                <rect key="frame" x="5" y="238" width="365" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="15"/>
-                                <color key="textColor" red="0.52941176470588236" green="0.29803921568627451" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLs-9H-nf3">
+                                <rect key="frame" x="89" y="10" width="281" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eKE-RA-7AL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -566,8 +568,11 @@
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Le9-nA-KeG"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="OX2-GK-eyc"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="Lcf-A9-CPd" secondAttribute="trailing" id="Qeg-aX-aap"/>
+                            <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="HLs-9H-nf3" secondAttribute="trailing" constant="5" id="ZZc-or-5bH"/>
                             <constraint firstItem="4fA-0k-aSV" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="29" id="bcy-El-icH"/>
+                            <constraint firstItem="HLs-9H-nf3" firstAttribute="top" secondItem="mei-bv-pQG" secondAttribute="top" constant="10" id="dWW-LR-xg3"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="6Vp-ZY-xT5" secondAttribute="trailing" constant="10" id="dg9-uc-dgW"/>
+                            <constraint firstItem="HLs-9H-nf3" firstAttribute="leading" secondItem="4fA-0k-aSV" secondAttribute="trailing" constant="30" id="feY-xA-4CJ"/>
                             <constraint firstItem="6Vp-ZY-xT5" firstAttribute="top" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="10" id="frM-RW-pzQ"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="50" id="nbb-KH-U1u"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qPA-Je-MZU"/>
