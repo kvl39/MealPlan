@@ -218,7 +218,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Plan" id="QUU-VF-LJC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="COd-GC-VlM">
-                            <color key="tintColor" red="0.22352941176470587" green="0.396078431372549" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="createRecipeButtonDidPressed:" destination="cUz-YE-dot" id="OHR-HK-jsM"/>
                             </connections>
@@ -532,7 +532,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vp-ZY-xT5">
                                 <rect key="frame" x="0.0" y="553" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.84705882352941175" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Steps">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -621,7 +621,7 @@
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="wVP-b5-o9M"/>
                                         </items>
-                                        <color key="barTintColor" red="0.99215686274509807" green="0.84705882352941175" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="barTintColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </toolbar>
                                 </subviews>
                                 <constraints>
@@ -820,17 +820,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-zx-5RL">
-                                <rect key="frame" x="308" y="6" width="37" height="31"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="13"/>
+                                <rect key="frame" x="302" y="6" width="43" height="33"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                                 <state key="normal" title="Finish">
-                                    <color key="titleColor" red="0.22352941176470587" green="0.396078431372549" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="finishEditing:" destination="3Av-dk-mRp" eventType="touchUpInside" id="ygl-WB-yNl"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a picture!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-wz-cb5">
-                                <rect key="frame" x="87.5" y="10" width="200" height="24"/>
+                                <rect key="frame" x="87.5" y="11" width="200" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Lyo-Qi-BLk"/>
                                 </constraints>
@@ -858,6 +859,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="XBF-SB-wvt" id="zgk-3i-K4Z"/>
+                        <outlet property="finishButton" destination="eXR-zx-5RL" id="rs5-Dy-PW9"/>
                         <outlet property="step1Label" destination="km8-Tc-CTZ" id="zbb-Ui-7w6"/>
                         <outlet property="step2Label" destination="ria-1g-QaG" id="cE4-44-y2Q"/>
                         <outlet property="step3Label" destination="Cm2-yk-1EG" id="sh6-Er-ruG"/>
@@ -899,7 +901,7 @@ Long press to reorder</string>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYf-aM-dnc">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.84705882352941175" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.6588235294117647" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zI9-KN-7fV"/>
                                 </constraints>
@@ -1014,7 +1016,7 @@ Long press to reorder</string>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfb-uj-Mo8">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.99215686270000003" green="0.84705882349999995" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.6588235294117647" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D9M-lh-LQe"/>
                                 </constraints>
@@ -1041,10 +1043,10 @@ Long press to reorder</string>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dif-t2-qwX">
-                                <rect key="frame" x="30" y="26" width="30" height="30"/>
+                                <rect key="frame" x="30" y="30" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4VN-C2-4C3"/>
-                                    <constraint firstAttribute="width" constant="30" id="5qh-Mz-Ziw"/>
+                                    <constraint firstAttribute="height" constant="20" id="4VN-C2-4C3"/>
+                                    <constraint firstAttribute="width" constant="20" id="5qh-Mz-Ziw"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -1061,7 +1063,7 @@ Long press to reorder</string>
                             <constraint firstItem="Mpt-2I-oZZ" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" id="HZl-5n-bEc"/>
                             <constraint firstItem="FLG-je-PTq" firstAttribute="trailing" secondItem="Mpt-2I-oZZ" secondAttribute="trailing" id="Ogt-8r-nGB"/>
                             <constraint firstItem="FLG-je-PTq" firstAttribute="trailing" secondItem="wQz-2a-UHP" secondAttribute="trailing" id="T8h-C4-bka"/>
-                            <constraint firstItem="dif-t2-qwX" firstAttribute="top" secondItem="FLG-je-PTq" secondAttribute="top" constant="6" id="Vtr-up-8cP"/>
+                            <constraint firstItem="dif-t2-qwX" firstAttribute="top" secondItem="FLG-je-PTq" secondAttribute="top" constant="10" id="Vtr-up-8cP"/>
                             <constraint firstItem="Mpt-2I-oZZ" firstAttribute="top" secondItem="wQz-2a-UHP" secondAttribute="bottom" constant="30" id="XxY-p4-KWQ"/>
                             <constraint firstItem="dif-t2-qwX" firstAttribute="leading" secondItem="FLG-je-PTq" secondAttribute="leading" constant="30" id="dRu-m7-vh6"/>
                             <constraint firstItem="wQz-2a-UHP" firstAttribute="top" secondItem="FLG-je-PTq" secondAttribute="top" constant="40" id="pjH-Ae-VR3"/>

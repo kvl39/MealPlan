@@ -47,7 +47,7 @@ class MPTabBarController: UITabBarController {
     
     func setupTabs() {
         var controllers: [UIViewController] = []
-        tabBar.tintColor = UIColor(red: 253/255.0, green: 216/255.0, blue: 53/255.0, alpha: 1)
+        tabBar.tintColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
         for tab in tabs {
             let controller = tab.controller()
             let item = UITabBarItem(

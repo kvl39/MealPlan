@@ -19,6 +19,9 @@ class MPScrollNavigationViewController: UIViewController {
     
     @IBOutlet weak var stepTitle: UILabel!
     
+    @IBOutlet weak var finishButton: UIButton!
+    
+    
     lazy var scrollBar = UIView(frame: CGRect(x: 30, y: 73, width: 50, height: 5))
     
     override func viewDidLoad() {
@@ -29,7 +32,10 @@ class MPScrollNavigationViewController: UIViewController {
         self.view.addSubview(scrollBar)
         step1Label.textColor = UIColor.black
         cancelButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
-        cancelButton.tintColor = UIColor.black
+        cancelButton.tintColor = UIColor.lightGray
+        
+        finishButton.layer.cornerRadius = 5
+        finishButton.clipsToBounds = true
     }
     
     

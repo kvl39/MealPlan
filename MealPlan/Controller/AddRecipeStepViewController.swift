@@ -30,7 +30,8 @@ class AddRecipeStepViewController: UIViewController {
         resetFrame()
         configureTextViewHints()
         configurePresets()
-        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        cancelButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
+        cancelButton.tintColor = UIColor.lightGray
         
     }
     
