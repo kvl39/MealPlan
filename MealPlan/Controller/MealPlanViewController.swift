@@ -263,7 +263,8 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     }
     
     @objc func startPlanning(notification: Notification?) {
-        performSegue(withIdentifier: "PushToAddByClassificationPage", sender: self)
+        //performSegue(withIdentifier: "PushToAddByClassificationPage", sender: self)
+        self.tabBarController?.selectedIndex = 1
     }
     
     @objc func onSelectCollectionViewItem(notification: Notification) {

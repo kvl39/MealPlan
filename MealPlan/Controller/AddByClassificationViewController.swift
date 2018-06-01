@@ -47,6 +47,13 @@ class AddByClassificationViewController: MPTableViewController {
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
         initialConfigureHintView()
+        searchButton.layer.cornerRadius = 10
+        searchButton.clipsToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func initialConfigureHintView() {
