@@ -103,7 +103,7 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: self.tableView.bounds.size.height))
         backgroundView.backgroundColor = UIColor.clear
         self.tableView.backgroundView = backgroundView
-        self.tableView.contentInset = UIEdgeInsets(top: 260, left: 0, bottom: 0, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
     }
 
     
@@ -224,9 +224,9 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
 extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = -1 * tableView.contentOffset.y
-        let height = min(max(y,200), 260)
+        let height = min(max(y,200), 220)
         //tableView.contentInset = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
-        let moveDistance = 260 - y
+        let moveDistance = 200 - y
         print("offset:\(y)")
         print("height:\(height)")
         if let parentVC = self.parent as? AddByClassificationViewController {

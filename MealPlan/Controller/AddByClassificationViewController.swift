@@ -56,6 +56,17 @@ class AddByClassificationViewController: MPTableViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    
+    func cropTagView() {
+//        let cutDirection = UIBezierPath()
+//        cutDirection.move(to: CGPoint(x: 0, y: recipeImage.frame.height-10))
+//        cutDirection.addLine(to: CGPoint(x: 0, y: 10))
+//        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: 10))
+//        cutDirection.addLine(to: CGPoint(x: recipeImage.frame.width, y: recipeImage.frame.height-10))
+//        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: recipeImage.frame.height-10), controlPoint: CGPoint(x: view.frame.width/2, y: controlY))
+//        containerForScrollView.path = cutDirection.cgPath
+    }
+    
     func initialConfigureHintView() {
         hintView.alpha = 0
         hintView.layer.cornerRadius = 10

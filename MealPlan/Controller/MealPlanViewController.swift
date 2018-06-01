@@ -56,6 +56,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
     }
     
     
