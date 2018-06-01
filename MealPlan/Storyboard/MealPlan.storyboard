@@ -809,10 +809,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBF-SB-wvt">
-                                <rect key="frame" x="40" y="6" width="30" height="30"/>
+                                <rect key="frame" x="40" y="12" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="LMP-E5-Flq"/>
-                                    <constraint firstAttribute="height" constant="30" id="shv-4G-sdn"/>
+                                    <constraint firstAttribute="width" constant="20" id="LMP-E5-Flq"/>
+                                    <constraint firstAttribute="height" constant="20" id="shv-4G-sdn"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -820,8 +820,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXR-zx-5RL">
-                                <rect key="frame" x="297" y="6" width="48" height="36"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <rect key="frame" x="308" y="6" width="37" height="31"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="13"/>
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" red="0.22352941176470587" green="0.396078431372549" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -829,12 +829,12 @@
                                     <action selector="finishEditing:" destination="3Av-dk-mRp" eventType="touchUpInside" id="ygl-WB-yNl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-wz-cb5">
-                                <rect key="frame" x="147.5" y="14" width="80" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take a picture!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6x-wz-cb5">
+                                <rect key="frame" x="87.5" y="10" width="200" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="Lyo-Qi-BLk"/>
+                                    <constraint firstAttribute="width" constant="200" id="Lyo-Qi-BLk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -847,7 +847,7 @@
                             <constraint firstAttribute="trailing" secondItem="wa8-yM-usU" secondAttribute="trailing" constant="30" id="Qo7-7b-u7U"/>
                             <constraint firstItem="Y6x-wz-cb5" firstAttribute="centerY" secondItem="eXR-zx-5RL" secondAttribute="centerY" id="Uxq-3R-KLv"/>
                             <constraint firstAttribute="bottom" secondItem="mjR-SV-mpK" secondAttribute="bottom" id="W5g-4u-aUJ"/>
-                            <constraint firstItem="XBF-SB-wvt" firstAttribute="top" secondItem="LF7-6u-uPQ" secondAttribute="top" constant="6" id="bEG-Jn-T95"/>
+                            <constraint firstItem="XBF-SB-wvt" firstAttribute="top" secondItem="LF7-6u-uPQ" secondAttribute="top" constant="12" id="bEG-Jn-T95"/>
                             <constraint firstItem="Y6x-wz-cb5" firstAttribute="centerX" secondItem="YkC-95-Ufy" secondAttribute="centerX" id="fBL-SP-MTT"/>
                             <constraint firstAttribute="trailing" secondItem="mjR-SV-mpK" secondAttribute="trailing" id="i7t-VP-m7X"/>
                             <constraint firstItem="wa8-yM-usU" firstAttribute="leading" secondItem="YkC-95-Ufy" secondAttribute="leading" constant="30" id="n1u-l4-7Cg"/>
@@ -862,6 +862,7 @@
                         <outlet property="step2Label" destination="ria-1g-QaG" id="cE4-44-y2Q"/>
                         <outlet property="step3Label" destination="Cm2-yk-1EG" id="sh6-Er-ruG"/>
                         <outlet property="step4Label" destination="qRx-zh-49R" id="cDY-SY-ZZx"/>
+                        <outlet property="stepTitle" destination="Y6x-wz-cb5" id="2tZ-Mo-Ps4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DK-ZN-Skp" userLabel="First Responder" sceneMemberID="firstResponder"/>

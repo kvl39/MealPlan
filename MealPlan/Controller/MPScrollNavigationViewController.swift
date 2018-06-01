@@ -17,6 +17,8 @@ class MPScrollNavigationViewController: UIViewController {
     @IBOutlet weak var step4Label: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     
+    @IBOutlet weak var stepTitle: UILabel!
+    
     lazy var scrollBar = UIView(frame: CGRect(x: 30, y: 73, width: 50, height: 5))
     
     override func viewDidLoad() {
@@ -26,13 +28,16 @@ class MPScrollNavigationViewController: UIViewController {
         scrollBar.frame = CGRect(x: 30, y: 73, width: ((self.view.frame.width-150)/4), height: 5)
         self.view.addSubview(scrollBar)
         step1Label.textColor = UIColor.black
-        cancelButton.setImage(#imageLiteral(resourceName: "iTunesArtwork-1"), for: .normal)
+        cancelButton.setImage(#imageLiteral(resourceName: "delete"), for: .normal)
         cancelButton.tintColor = UIColor.black
     }
     
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
         //go back!
+        if let parentVC = parent as? CreateRecipeStepsViewController {
+            parentVC.cancelButtonDidPressed()
+        }
     }
     
     

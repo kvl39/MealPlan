@@ -39,7 +39,6 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         configureScrollStepsView()
         stepIndicationWidth = 0.25 * (self.view.frame.width - 150)
-        
     }
 
     func configureScrollStepsView() {
@@ -255,6 +254,11 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             self.scrollStepsView.setContentOffset(CGPoint(x: CGFloat(destinationPage)*self.view.frame.width, y: self.scrollStepsView.contentOffset.y), animated: true)
         }
     }
+    
+    
+    func cancelButtonDidPressed() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 
@@ -271,6 +275,13 @@ extension CreateRecipeStepsViewController {
         for child in childViewControllers {
             if let child = child as? MPScrollNavigationViewController {
                 child.updateScrollBarPosition(newX: newX, page: page)
+                switch page {
+                case 0: child.stepTitle.text = "Take a picture"
+                case 1: child.stepTitle.text = "Confirm the picture"
+                case 2: child.stepTitle.text = "Recipe name and steps"
+                case 3: child.stepTitle.text = "Recipe Ingredients"
+                default: child.stepTitle.text = "Take a picture"
+                }
             }
         }
         
