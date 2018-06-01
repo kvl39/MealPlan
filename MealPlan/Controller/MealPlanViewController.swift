@@ -54,6 +54,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     
@@ -76,20 +77,21 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
               let image = userInfo["createdRecipeImage"] as? UIImage,
               let title = userInfo["createdRecipeTitle"] as? String else {return}
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
         reloadData(addedRecipeImageView: [imageView], addedRecipeTitle: [title])
     }
     
     
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {
-        //self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
-        //self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
-        self.recipeImageArray = addedRecipeImageView
-        self.recipeTitleArray = addedRecipeTitle
+        self.recipeImageArray = self.recipeImageArray + addedRecipeImageView
+        self.recipeTitleArray = self.recipeTitleArray + addedRecipeTitle
+        //self.recipeImageArray = addedRecipeImageView
+        //self.recipeTitleArray = addedRecipeTitle
         updateDataInTableView()
         
-        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
-        guard let fetchResult = result else {return}
-        self.recipeToday = fetchResult
+//        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+//        guard let fetchResult = result else {return}
+//        self.recipeToday = fetchResult
     }
 
     func configureAddButton() {
@@ -269,6 +271,9 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
             let selectedRow = userInfo["row"] as? Int else {return}
         self.selectedCollectViewImageView = imageView
         self.selectedRow = selectedRow
+        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+        guard let fetchResult = result else {return}
+        self.recipeToday = fetchResult
         print("selected:\(self.selectedRow)")
         self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
     }
@@ -317,6 +322,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
                 let recipeImage = self.saveImageManager.getSavedImage(imageFileName: recipeImageName)
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
                 imageView.image = recipeImage
+                imageView.contentMode = .scaleAspectFill
                 self.recipeTitleArray.append(recipeLabel)
                 self.recipeImageArray.append(imageView)
             }

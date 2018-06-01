@@ -89,12 +89,14 @@ class AddRecipeStepViewController: UIViewController {
         }
         
         self.delegate?.reloadTableViewRow(stepImage: stepImage, stepDescription: stepDescription, row: self.row)
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
   

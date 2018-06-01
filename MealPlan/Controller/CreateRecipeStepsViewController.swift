@@ -169,7 +169,7 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             if let image = self.capturedPhoto, let title = self.recipeTitle {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil, userInfo: ["createdRecipeImage": image, "createdRecipeTitle": title])
             }
-            //self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
  
     }
