@@ -350,6 +350,7 @@
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
 				ADAC0FBE20C277090060750A /* SearchViewController */,
 				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
+				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 				AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */,
 				ADAEAC4420985E53001B44CF /* MPCalendarView.swift */,
 				AD7044232099A5590022E15D /* MPPieChart.swift */,
@@ -559,7 +560,6 @@
 			isa = PBXGroup;
 			children = (
 				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
-				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";

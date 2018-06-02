@@ -188,6 +188,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     @IBAction func scheduleButtonDidPressed(_ sender: UIButton) {
         guard let addToCalendarViewController = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "AddToCalendarViewController") as? AddToCalendarViewController else {return}
+        addToCalendarViewController.recipeData = self.recipeData
         self.navigationController?.pushViewController(addToCalendarViewController, animated: true)
     }
     

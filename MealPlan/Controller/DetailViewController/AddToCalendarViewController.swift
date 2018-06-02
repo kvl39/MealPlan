@@ -12,7 +12,10 @@ class AddToCalendarViewController: UIViewController {
 
     
     @IBOutlet weak var cancelButton: UIButton!
-    
+    var calendarViewController: UIViewController?
+    var realmManager = RealmManager()
+    var recipeData: RecipeCalendarRealmModel!
+    var dateManager = DataFormatManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +25,13 @@ class AddToCalendarViewController: UIViewController {
     }
     
     func configureCalendarView() {
-        guard let calendarViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "MealPlanViewController") as? MealPlanViewController else {return}
-        calendarViewController.view.frame = CGRect(x: 0, y: 52.0, width: view.frame.width, height: view.frame.height-52-50)
-        self.addChildViewController(calendarViewController)
-        self.view.addSubview(calendarViewController.view)
-        calendarViewController.isSegueFromDetaiView = true
-        calendarViewController.didMove(toParentViewController: self)
+        calendarViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "MealPlanViewController") as? MealPlanViewController
+        guard let calendarVC = calendarViewController as? MealPlanViewController else {return}
+        calendarVC.view.frame = CGRect(x: 0, y: 52.0, width: view.frame.width, height: view.frame.height-52-50)
+        self.addChildViewController(calendarVC)
+        self.view.addSubview(calendarVC.view)
+        calendarVC.isSegueFromDetaiView = true
+        calendarVC.didMove(toParentViewController: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,8 +41,11 @@ class AddToCalendarViewController: UIViewController {
     }
 
     @IBAction func addToCalendarButtonDidPressed(_ sender: UIButton) {
-        
-        
+        guard let calendarVC = calendarViewController as? MealPlanViewController else {return}
+        guard let addDate = self.dateManager.stringToDate(dateString: calendarVC.selectedDate, to: "yyyy MM dd") else {return}
+        self.recipeData.recipeDay = addDate
+        realmManager.saveUserCreatedRecipe(createdRecipe: self.recipeData)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
