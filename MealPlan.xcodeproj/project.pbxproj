@@ -346,7 +346,7 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ADAC0FC320C2C9410060750A /* TextFieldViewController */,
+				ADAC0FC320C2C9410060750A /* TextViewController */,
 				ADAC0FBF20C277230060750A /* DetailViewController */,
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
 				ADAC0FBE20C277090060750A /* SearchViewController */,
@@ -374,7 +374,6 @@
 				ADA38AA720BF000100DE86F6 /* AddRecipeStepsViewController.swift */,
 				ADA38AA920BF1EDB00DE86F6 /* AddRecipeStepViewController.swift */,
 				AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */,
-				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 				AD5D381320B3F86F004B65BF /* SliderViewController.swift */,
 				AD5D381E20B45278004B65BF /* NutrientsEditViewController.swift */,
 				AD5D381520B41F6A004B65BF /* AlertManager.swift */,
@@ -583,11 +582,12 @@
 			path = AddByClassification;
 			sourceTree = "<group>";
 		};
-		ADAC0FC320C2C9410060750A /* TextFieldViewController */ = {
+		ADAC0FC320C2C9410060750A /* TextViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 			);
-			path = TextFieldViewController;
+			path = TextViewController;
 			sourceTree = "<group>";
 		};
 		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {

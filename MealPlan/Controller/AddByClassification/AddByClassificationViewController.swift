@@ -36,6 +36,7 @@ class AddByClassificationViewController: MPTableViewController {
     var recipeDate = ""
     var selectedRowImageView = UIImageView()
     weak var delegate: AddByClassificationDelegateProtocol?
+    var embeddedViewControllers: [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,9 @@ class AddByClassificationViewController: MPTableViewController {
         originalScrollViewY = containerForScrollView.frame.origin.y
         originalSearchButtonViewY = searchButton.frame.origin.y
         originalIndicatorViewY = activityIndicator.frame.origin.y
+        guard let textVC = self.embeddedViewControllers[0] as? InputTextViewController else {return}
+        textVC.resetFrame()
+        configureTextViewHints()
     }
     
     
@@ -157,6 +161,10 @@ class AddByClassificationViewController: MPTableViewController {
             vc?.selectedDate = self.recipeDate
             vc?.delegate = self.delegate
             vc?.selectedRecipeImage = self.selectedRecipeImage
+        } else if segue.identifier == "TextViewInAddByClassfication" {
+            guard let vc = segue.destination as? InputTextViewController else {return}
+            self.embeddedViewControllers.append(vc)
+            vc.showSeparationLine = false
         }
     }
     
@@ -195,6 +203,14 @@ class AddByClassificationViewController: MPTableViewController {
             if let childVC = childVC as? MPTagViewController {
                 childVC.createTag(onView: childVC.view, with: self.selectedTags)
             }
+        }
+    }
+    
+    
+    func configureTextViewHints() {
+        if let vc = embeddedViewControllers[0] as? InputTextViewController {
+            vc.textViewHint = "Enter something or choose tags"
+            vc.configureTextFieldEmpty()
         }
     }
 
