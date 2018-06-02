@@ -530,16 +530,6 @@
                                     <constraint firstAttribute="height" constant="300" id="ey7-nB-FTa"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vp-ZY-xT5">
-                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Steps">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Tgu-9C-LrK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-0k-aSV">
                                 <rect key="frame" x="15" y="8" width="20" height="20"/>
                                 <constraints>
@@ -559,23 +549,61 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImK-Mg-h5T">
+                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="62w-aE-9Vl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vp-ZY-xT5">
+                                                <rect key="frame" x="0.0" y="0.0" width="186.5" height="50"/>
+                                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Steps">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Tgu-9C-LrK"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcZ-9r-uKy">
+                                                <rect key="frame" x="188.5" y="0.0" width="186.5" height="50"/>
+                                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Add to schedule">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Xbr-n3-LbK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="62w-aE-9Vl" firstAttribute="leading" secondItem="ImK-Mg-h5T" secondAttribute="leading" id="CND-uD-xN1"/>
+                                    <constraint firstItem="62w-aE-9Vl" firstAttribute="top" secondItem="ImK-Mg-h5T" secondAttribute="top" id="OIT-yn-AXK"/>
+                                    <constraint firstAttribute="bottom" secondItem="62w-aE-9Vl" secondAttribute="bottom" id="eWV-8r-l5H"/>
+                                    <constraint firstAttribute="trailing" secondItem="62w-aE-9Vl" secondAttribute="trailing" id="gzg-yN-gkV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="6Vp-ZY-xT5" secondAttribute="bottom" id="0mc-zH-1Sn"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="9jZ-wu-As4"/>
                             <constraint firstItem="4fA-0k-aSV" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" constant="8" id="9pC-yk-6Nk"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="B2y-Oe-BsI"/>
-                            <constraint firstItem="6Vp-ZY-xT5" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="GyI-Qr-PfV"/>
+                            <constraint firstItem="ImK-Mg-h5T" firstAttribute="bottom" secondItem="8vG-UF-dgM" secondAttribute="bottom" id="EbS-WO-GsI"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="top" secondItem="8vG-UF-dgM" secondAttribute="top" id="Le9-nA-KeG"/>
+                            <constraint firstItem="ImK-Mg-h5T" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="MAk-vf-MLa"/>
+                            <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="ImK-Mg-h5T" secondAttribute="trailing" id="N2r-fj-PT7"/>
                             <constraint firstItem="wA2-AV-S09" firstAttribute="trailing" secondItem="8vG-UF-dgM" secondAttribute="trailing" id="OX2-GK-eyc"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="Lcf-A9-CPd" secondAttribute="trailing" id="Qeg-aX-aap"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="HLs-9H-nf3" secondAttribute="trailing" constant="5" id="ZZc-or-5bH"/>
                             <constraint firstItem="4fA-0k-aSV" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" constant="15" id="bcy-El-icH"/>
                             <constraint firstItem="HLs-9H-nf3" firstAttribute="top" secondItem="mei-bv-pQG" secondAttribute="top" constant="10" id="dWW-LR-xg3"/>
-                            <constraint firstItem="8vG-UF-dgM" firstAttribute="trailing" secondItem="6Vp-ZY-xT5" secondAttribute="trailing" id="dg9-uc-dgW"/>
                             <constraint firstItem="HLs-9H-nf3" firstAttribute="leading" secondItem="4fA-0k-aSV" secondAttribute="trailing" constant="30" id="feY-xA-4CJ"/>
-                            <constraint firstItem="6Vp-ZY-xT5" firstAttribute="top" secondItem="Lcf-A9-CPd" secondAttribute="bottom" id="frM-RW-pzQ"/>
+                            <constraint firstItem="ImK-Mg-h5T" firstAttribute="top" secondItem="Lcf-A9-CPd" secondAttribute="bottom" id="iYg-YB-L1i"/>
                             <constraint firstItem="8vG-UF-dgM" firstAttribute="bottom" secondItem="Lcf-A9-CPd" secondAttribute="bottom" constant="50" id="nbb-KH-U1u"/>
                             <constraint firstItem="Lcf-A9-CPd" firstAttribute="leading" secondItem="8vG-UF-dgM" secondAttribute="leading" id="qPA-Je-MZU"/>
                         </constraints>
@@ -593,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0G2-rc-x6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3250" y="2230"/>
+            <point key="canvasLocation" x="3248.8000000000002" y="2229.5352323838083"/>
         </scene>
         <!--Recipe Detail Web View Controller-->
         <scene sceneID="VgZ-my-OzW">
