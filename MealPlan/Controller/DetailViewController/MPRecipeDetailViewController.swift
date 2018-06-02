@@ -47,7 +47,7 @@ class MPRecipeDetailViewController: MPTableViewController {
         recipeImage.image = displayImage
         recipeImage.clipsToBounds = true
         self.navigationController?.navigationBar.isHidden = false
-        recipeDetailTableView.contentInset = UIEdgeInsets(top: 340, left: 0, bottom: 0, right: 0)
+        recipeDetailTableView.contentInset = UIEdgeInsets(top: 310, left: 0, bottom: 0, right: 0)
         recipeDetailTableView.delegate = self
         recipeDetailTableView.dataSource = self
         originTitleY = self.recipeTitle.frame.origin.y
@@ -68,9 +68,12 @@ class MPRecipeDetailViewController: MPTableViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.isTranslucent = true
     }
     
     func hideScheduleButton() {
@@ -217,12 +220,12 @@ extension MPRecipeDetailViewController {
         let titleOriginY = max(height-recipeTitle.frame.height/2, 60)
         //recipeDetailTableView.layoutIfNeeded()
         
-        let distance = 340 - y
-        let imageHeight = max(300 - distance, 50)
+        let distance = 310 - y
+        let imageHeight = max(300 - distance, 90)
         //imageViewHeight.constant = imageHeight
         
         //recipeImage.gradientLayer.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: imageHeight)
-        recipeImage.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: UIScreen.main.bounds.size.width, height: imageHeight)
+        recipeImage.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: imageHeight)
         //recipeImage.layoutIfNeeded()
         
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: view.safeAreaInsets.top + height-recipeTitle.frame.height/2, width: recipeTitle.frame.width, height: titleY)
