@@ -19,6 +19,11 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     @IBOutlet weak var showStepButton: UIButton!
     
+    @IBOutlet weak var scheduleButton: UIButton!
+    
+    
+    @IBOutlet weak var buttonStackView: UIStackView!
+    
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var backButton: UIButton!
@@ -61,6 +66,12 @@ class MPRecipeDetailViewController: MPTableViewController {
         
         //self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    
+    func hideScheduleButton() {
+        scheduleButton.alpha = 0
+        scheduleButton.removeFromSuperview()
     }
     
     override func viewDidLayoutSubviews() {

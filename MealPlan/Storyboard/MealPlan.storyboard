@@ -568,7 +568,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcZ-9r-uKy">
                                                 <rect key="frame" x="188.5" y="0.0" width="186.5" height="50"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Add to schedule">
+                                                <state key="normal" title="Schedule">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -611,10 +611,12 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="4fA-0k-aSV" id="vG2-O4-Ho2"/>
+                        <outlet property="buttonStackView" destination="62w-aE-9Vl" id="fvb-nK-AHR"/>
                         <outlet property="imageViewHeight" destination="ey7-nB-FTa" id="Tjw-Gl-o6W"/>
                         <outlet property="recipeDetailTableView" destination="Lcf-A9-CPd" id="YDE-Rc-Kr4"/>
                         <outlet property="recipeImage" destination="wA2-AV-S09" id="bEG-KJ-P0H"/>
                         <outlet property="recipeTitle" destination="HLs-9H-nf3" id="PBl-XI-iwh"/>
+                        <outlet property="scheduleButton" destination="qcZ-9r-uKy" id="FjB-Zq-Ovy"/>
                         <outlet property="showStepButton" destination="6Vp-ZY-xT5" id="HJj-0f-DaG"/>
                         <segue destination="Q2U-Q4-zZO" kind="show" identifier="PushToWebView" id="fG4-2E-XXK"/>
                     </connections>
@@ -697,6 +699,21 @@
             </objects>
             <point key="canvasLocation" x="4408.8000000000002" y="2229.5352323838083"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="1Cz-zx-AYx">
+            <objects>
+                <viewController id="R9j-ik-hCa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kh5-DL-PoR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Sd6-Bx-1VQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1r-tp-8O5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4409" y="3046"/>
+        </scene>
         <!--Recipe Detail Steps View Controller-->
         <scene sceneID="LLC-0V-aPN">
             <objects>
@@ -725,7 +742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAn-N3-jTV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4447" y="2948"/>
+            <point key="canvasLocation" x="5297" y="2230"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jBY-a3-3ee">
