@@ -64,6 +64,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
             self.tabBarController?.tabBar.isHidden = false
             self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         }
+        reloadCalendarData(date: self.selectedDate)
     }
     
     
@@ -301,6 +302,10 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
               let date = userInfo["date"] as? String else {return}
         print(date)
         self.selectedDate = date
+        reloadCalendarData(date: date)
+    }
+    
+    func reloadCalendarData(date: String) {
         fetchDataInDate(in: date)
         updateDataInTableView()
     }
