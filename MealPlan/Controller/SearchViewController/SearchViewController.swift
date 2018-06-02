@@ -144,9 +144,6 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
             self.selectedRecipes.append(selectedRecipeInCalendarFormat)
             hintText = "\(cellTitle) is added to the menu"
         }
-        if let parentVC = self.parent as? AddByClassificationViewController {
-            parentVC.updateHintArray(newHintText: hintText)
-        }
         print(self.selecteRecipeName)
         
         

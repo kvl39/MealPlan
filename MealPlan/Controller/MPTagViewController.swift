@@ -124,10 +124,7 @@ class MPTagViewController: UIViewController {
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43) - CGFloat(30)
             tag += 1
         }
-        //increase view height
-        if let parent = self.parent as? AddByClassificationViewController {
-            parent.updateHeightOfTagView(newHeight: yPos + 20.0)
-        }
+        
     }
 
     

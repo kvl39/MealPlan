@@ -346,6 +346,7 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC0FC320C2C9410060750A /* TextFieldViewController */,
 				ADAC0FBF20C277230060750A /* DetailViewController */,
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
 				ADAC0FBE20C277090060750A /* SearchViewController */,
@@ -580,6 +581,13 @@
 				ADB6168A20B91F7800B637D6 /* AddByClassificationViewController.swift */,
 			);
 			path = AddByClassification;
+			sourceTree = "<group>";
+		};
+		ADAC0FC320C2C9410060750A /* TextFieldViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TextFieldViewController;
 			sourceTree = "<group>";
 		};
 		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {

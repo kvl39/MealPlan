@@ -14,17 +14,13 @@ protocol AddByClassificationDelegateProtocol: class {
 
 class AddByClassificationViewController: MPTableViewController {
 
-    @IBOutlet weak var topImageView: UIImageView!
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var containerForScrollView: UIView!
     @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var searchResultContainerView: UIView!
-    @IBOutlet weak var searchResultViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var heightOfTagView: NSLayoutConstraint!
     @IBOutlet weak var searchButtonLabel: UILabel!
-    @IBOutlet weak var hintView: UIView!
-    @IBOutlet weak var hintLabel: UILabel!
+
     
     var hintTextArray = [String]()
     var isShowingHint = false
@@ -43,11 +39,8 @@ class AddByClassificationViewController: MPTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topImageView.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
-        //backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background008"))
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
-        initialConfigureHintView()
         searchButton.layer.cornerRadius = 10
         searchButton.clipsToBounds = true
     }
@@ -69,11 +62,6 @@ class AddByClassificationViewController: MPTableViewController {
 //        containerForScrollView.path = cutDirection.cgPath
     }
     
-    func initialConfigureHintView() {
-        hintView.alpha = 0
-        hintView.layer.cornerRadius = 10
-        hintView.layer.masksToBounds = true
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -91,39 +79,10 @@ class AddByClassificationViewController: MPTableViewController {
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
     
-    func updateHeightOfTagView(newHeight: CGFloat){
-        UIView.animate(withDuration: 0.2) {
-            self.heightOfTagView.constant = newHeight
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func updateHintArray(newHintText: String) {
-        self.hintTextArray.append(newHintText)
-        if isShowingHint == false {
-            showHint()
-        }
-    }
     
     
-    func showHint() {
-        if self.hintTextArray.count > 0 {
-            hintLabel.text = self.hintTextArray[0]
-            self.isShowingHint = true
-            UIView.animate(withDuration: 0.5, animations: {
-                self.hintView.alpha = 1
-            }) { (showViewComplete) in
-                self.hintTextArray.remove(at: 0)
-                UIView.animate(withDuration: 0.5, delay: 1, options: [], animations: {
-                    self.hintView.alpha = 0
-                }, completion: { (hideViewComplete) in
-                    self.showHint()
-                })
-            }
-        } else {
-            self.isShowingHint = false
-        }
-    }
+    
+    
     
     func initialConfigueViews() {
         stopActivityIndicator()
@@ -210,7 +169,8 @@ class AddByClassificationViewController: MPTableViewController {
         //self.view.layoutIfNeeded()
         //searchButton.alpha = 1 - subViewMoveDistance/30
         containerForScrollView.alpha = 1 - subViewMoveDistance/200
-        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: -1 * subViewMoveDistance + 120)
+        let containerForScrollViewY = max(20, -1 * subViewMoveDistance + 120)
+        containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: containerForScrollViewY)
         if subViewMoveDistance > 0 {
             searchButton.isUserInteractionEnabled = false
             containerForScrollView.isUserInteractionEnabled = false
