@@ -38,6 +38,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     var selectedRow = 0
     lazy var addedButtonSubView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var isSegueFromDetaiView = false
+    var isSearchViewAction = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,10 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+        configureObserver()
     }
 
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -64,7 +66,19 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
             self.tabBarController?.tabBar.isHidden = false
             self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         }
-        reloadCalendarData(date: self.selectedDate)
+        
+        if isSearchViewAction {
+            reloadCalendarData(date: self.selectedDate)
+            isSearchViewAction = false
+        }
+    }
+    
+    func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAfterSearchViewAction(notification:)), name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil)
+    }
+    
+    @objc func reloadAfterSearchViewAction(notification: Notification) {
+        self.isSearchViewAction = true
     }
     
     
@@ -296,8 +310,8 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     }
 
     @objc func onSelectDate(notification: Notification) {
-        self.recipeTitleArray = []
-        self.recipeImageArray = []
+        //self.recipeTitleArray = []
+        //self.recipeImageArray = []
         guard let userInfo = notification.userInfo,
               let date = userInfo["date"] as? String else {return}
         print(date)
@@ -306,6 +320,8 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     }
     
     func reloadCalendarData(date: String) {
+        self.recipeTitleArray = []
+        self.recipeImageArray = []
         fetchDataInDate(in: date)
         updateDataInTableView()
     }

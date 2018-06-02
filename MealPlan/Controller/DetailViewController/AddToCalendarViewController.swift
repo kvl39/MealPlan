@@ -46,6 +46,7 @@ class AddToCalendarViewController: UIViewController {
         self.recipeData.recipeDay = addDate
         realmManager.saveUserCreatedRecipe(createdRecipe: self.recipeData)
         self.navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: [:])
     }
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {

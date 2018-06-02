@@ -68,6 +68,10 @@ class MPRecipeDetailViewController: MPTableViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     func hideScheduleButton() {
         scheduleButton.alpha = 0
