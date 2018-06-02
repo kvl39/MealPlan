@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="XLt-TY-cSY" id="hH7-SI-tmA"/>
                         <outlet property="containerForScrollView" destination="Tpz-Hn-XPd" id="DvD-GE-00c"/>
+                        <outlet property="heightOfTextView" destination="NMe-yG-qub" id="tPG-ns-NnV"/>
                         <outlet property="searchButton" destination="cTi-os-Gx5" id="giY-xD-e51"/>
                         <outlet property="searchButtonLabel" destination="mfO-pV-Zh1" id="EFH-gH-vyZ"/>
                         <outlet property="searchResultContainerView" destination="blG-Uj-ptz" id="Xo4-Hf-7T6"/>
@@ -214,21 +215,6 @@
             </objects>
             <point key="canvasLocation" x="5312.8000000000002" y="1577.3613193403301"/>
         </scene>
-        <!--Tag View Controller-->
-        <scene sceneID="5Xp-WK-W23">
-            <objects>
-                <viewController id="M8P-Gv-5dV" customClass="MPTagViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E3x-5j-dWL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="rMJ-bT-uvg"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kjW-lH-ud2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5312.8000000000002" y="782.60869565217399"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4da-Ff-NHW">
             <objects>
@@ -259,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vo9-Tm-S5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5258" y="333"/>
+            <point key="canvasLocation" x="5342" y="902"/>
         </scene>
     </scenes>
 </document>

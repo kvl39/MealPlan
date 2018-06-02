@@ -346,6 +346,7 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC0FC420C2D2570060750A /* HorizontalTagViewController */,
 				ADAC0FC320C2C9410060750A /* TextViewController */,
 				ADAC0FBF20C277230060750A /* DetailViewController */,
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
@@ -360,7 +361,6 @@
 				AD566B4A209B0649009915F3 /* AddPageViewController.swift */,
 				AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */,
 				AD53A1F3209FF15D0016E4D1 /* MPTagViewController.swift */,
-				ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */,
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
 				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
 				AD57814C20A47C5900130388 /* DateFormatManager.swift */,
@@ -380,7 +380,6 @@
 				AD5D381720B42168004B65BF /* SaveImageManager.swift */,
 				AD5380F220B724D900B63062 /* DrawCameraLineManager.swift */,
 				ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */,
-				ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */,
 				AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */,
 				AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */,
 				ADB8797420BDB659005FFA8D /* DrawLineView.swift */,
@@ -588,6 +587,15 @@
 				AD6ED3F420B2B83800B194BF /* TextViewController.swift */,
 			);
 			path = TextViewController;
+			sourceTree = "<group>";
+		};
+		ADAC0FC420C2D2570060750A /* HorizontalTagViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */,
+				ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */,
+			);
+			path = HorizontalTagViewController;
 			sourceTree = "<group>";
 		};
 		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {

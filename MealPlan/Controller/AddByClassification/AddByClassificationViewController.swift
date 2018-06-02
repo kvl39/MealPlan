@@ -20,7 +20,7 @@ class AddByClassificationViewController: MPTableViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchResultContainerView: UIView!
     @IBOutlet weak var searchButtonLabel: UILabel!
-
+    @IBOutlet weak var heightOfTextView: NSLayoutConstraint!
     
     var hintTextArray = [String]()
     var isShowingHint = false
@@ -188,6 +188,11 @@ class AddByClassificationViewController: MPTableViewController {
         }
     }
     
+    func updateTextViewHeight(newHeight: CGFloat) {
+        self.heightOfTextView.constant = newHeight
+        self.view.layoutIfNeeded()
+    }
+    
     
     @IBAction func ConfirmButtonDidPressed(_ sender: UIButton) {
         for childVC in childViewControllers {
@@ -204,6 +209,19 @@ class AddByClassificationViewController: MPTableViewController {
                 childVC.createTag(onView: childVC.view, with: self.selectedTags)
             }
         }
+    }
+    
+    func updateTextView(selectedTag: String) {
+        guard let textVC = self.embeddedViewControllers[0] as? InputTextViewController else {return}
+        if textVC.textView.textColor == UIColor.gray {
+            textVC.textView.textColor = UIColor.black
+            textVC.textView.text = selectedTag
+        } else {
+            guard let originalText = textVC.textView.text else {return}
+            textVC.textView.text = "\(originalText) + \(selectedTag)"
+            textVC.textViewDidChange(textVC.textView)
+        }
+    
     }
     
     

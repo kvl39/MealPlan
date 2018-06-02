@@ -97,6 +97,7 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
     }
     
     
+    
     func textViewDidChange(_ textView: UITextView) {
         //textView.translatesAutoresizingMaskIntoConstraints = true
         //textView.sizeToFit()
@@ -115,6 +116,9 @@ class InputTextViewController: UIViewController, UITextViewDelegate {
             drawSeperation()
             if let parentVC = self.parent as? AddRecipeStepsViewController {
                 parentVC.setRecipeTitleTextViewHeight(newHeight: newSize.height)
+            }
+            if let parentVC = self.parent as? AddByClassificationViewController {
+                parentVC.updateTextViewHeight(newHeight: newSize.height)
             }
         }
     }

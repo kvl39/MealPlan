@@ -12,6 +12,7 @@ class MPSelectionTagViewController: UIViewController {
     
     var unSelectedTags = [Int]()
     var seletedTags = [Int]()
+    var tagControllerNumber = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,25 +62,26 @@ class MPSelectionTagViewController: UIViewController {
     }
     
     @objc func tagDidTouch(sender: UIButton) {
-        if let index =  unSelectedTags.index(of: sender.tag){
-            //not selected -> selected
-            seletedTags.append(sender.tag)
-            unSelectedTags.remove(at: index)
-            sender.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
-            if let subView = sender.subviews.first as? UILabel {
-                subView.textColor = UIColor.white
-            }
-        } else if let index = seletedTags.index(of: sender.tag){
-            //selected -> unselected
-            unSelectedTags.append(sender.tag)
-            seletedTags.remove(at: index)
-            sender.backgroundColor = UIColor.clear
-            if let subView = sender.subviews.first as? UILabel {
-                subView.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
-            }
-        }
+//        if let index =  unSelectedTags.index(of: sender.tag){
+//            //not selected -> selected
+//            seletedTags.append(sender.tag)
+//            unSelectedTags.remove(at: index)
+//            sender.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+//            if let subView = sender.subviews.first as? UILabel {
+//                subView.textColor = UIColor.white
+//            }
+//        } else if let index = seletedTags.index(of: sender.tag){
+//            //selected -> unselected
+//            unSelectedTags.append(sender.tag)
+//            seletedTags.remove(at: index)
+//            sender.backgroundColor = UIColor.clear
+//            if let subView = sender.subviews.first as? UILabel {
+//                subView.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+//            }
+//        }
         if let parentVC = self.parent as? MPHorizontalScrollViewController {
-            parentVC.getSelectedTags()
+            //parentVC.getSelectedTag()
+            parentVC.getSelectedTag(tagControllerNumber: self.tagControllerNumber, tagIndex: sender.tag)
         }
     }
     
