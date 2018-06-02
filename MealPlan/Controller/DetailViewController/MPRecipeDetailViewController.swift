@@ -36,6 +36,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var recipeURLString = ""
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeImage.image = displayImage
@@ -206,9 +207,9 @@ extension MPRecipeDetailViewController {
         //recipeTitle.frame = CGRect(x: recipeTitle.frame.origin.x, y: titleOriginY, width: recipeTitle.frame.width, height: titleY)
         //updateImage(height: height)
     }
-    
-    
-    
 }
+
+
+
 
 

@@ -344,6 +344,9 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC0FBF20C277230060750A /* DetailViewController */,
+				ADAC0FC020C277DD0060750A /* AddByClassification */,
+				ADAC0FBE20C277090060750A /* SearchViewController */,
 				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
 				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 				AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */,
@@ -355,12 +358,9 @@
 				AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */,
 				AD53A1F3209FF15D0016E4D1 /* MPTagViewController.swift */,
 				ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */,
-				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
 				AD4E2CF620A175E700C4573F /* AddPageAnimationController.swift */,
 				AD428EE520A32D1E00A04A32 /* AddPagePopupNavigationController.swift */,
 				AD57814C20A47C5900130388 /* DateFormatManager.swift */,
-				AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */,
-				AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */,
 				AD2F274020AA95E900F8CA1B /* PhotoViewController.swift */,
 				AD2F274220AA96CB00F8CA1B /* CameraViewController.swift */,
 				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
@@ -378,7 +378,6 @@
 				AD5D381720B42168004B65BF /* SaveImageManager.swift */,
 				AD5380F220B724D900B63062 /* DrawCameraLineManager.swift */,
 				ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */,
-				ADB6168A20B91F7800B637D6 /* AddByClassificationViewController.swift */,
 				ADB6168F20B9581A00B637D6 /* MPHorizontalScrollViewController.swift */,
 				AD81675820BD4E9300C61849 /* MPScrollNavigationViewController.swift */,
 				AD81675A20BD500100C61849 /* CreateRecipeStepsViewController.swift */,
@@ -553,6 +552,31 @@
 				ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */,
 			);
 			path = RecipeNoteView;
+			sourceTree = "<group>";
+		};
+		ADAC0FBE20C277090060750A /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		ADAC0FBF20C277230060750A /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */,
+				AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */,
+			);
+			path = DetailViewController;
+			sourceTree = "<group>";
+		};
+		ADAC0FC020C277DD0060750A /* AddByClassification */ = {
+			isa = PBXGroup;
+			children = (
+				ADB6168A20B91F7800B637D6 /* AddByClassificationViewController.swift */,
+			);
+			path = AddByClassification;
 			sourceTree = "<group>";
 		};
 		ADAEAC2E20984E38001B44CF /* CalendarCell */ = {

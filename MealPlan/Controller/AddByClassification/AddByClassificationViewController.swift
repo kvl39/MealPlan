@@ -38,6 +38,7 @@ class AddByClassificationViewController: MPTableViewController {
     var originalSearchButtonViewY: CGFloat = 0.0
     var originalIndicatorViewY: CGFloat = 0.0
     var recipeDate = ""
+    var selectedRowImageView = UIImageView()
     weak var delegate: AddByClassificationDelegateProtocol?
     
     override func viewDidLoad() {
@@ -81,6 +82,14 @@ class AddByClassificationViewController: MPTableViewController {
         originalIndicatorViewY = activityIndicator.frame.origin.y
     }
     
+    
+    func pushToDetailView(recipeCalendarModel: RecipeCalendarRealmModel, selectedRowImageView: UIImageView) {
+        guard let detailViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "MPRecipeDetailViewController") as? MPRecipeDetailViewController else {return}
+        detailViewController.recipeData = recipeCalendarModel
+        detailViewController.displayImage = selectedRowImageView.image
+        self.selectedRowImageView = selectedRowImageView
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
     func updateHeightOfTagView(newHeight: CGFloat){
         UIView.animate(withDuration: 0.2) {
@@ -229,4 +238,13 @@ class AddByClassificationViewController: MPTableViewController {
         }
     }
 
+}
+
+
+
+extension AddByClassificationViewController: ZoomingViewController {
+    
+    func zoomingImageView() -> UIImageView? {
+        return self.selectedRowImageView
+    }
 }
