@@ -509,7 +509,7 @@
         <!--Recipe Detail View Controller-->
         <scene sceneID="DYE-by-hFC">
             <objects>
-                <viewController id="t4C-j5-CjG" customClass="MPRecipeDetailViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MPRecipeDetailViewController" id="t4C-j5-CjG" customClass="MPRecipeDetailViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mei-bv-pQG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

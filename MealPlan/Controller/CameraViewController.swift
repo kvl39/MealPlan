@@ -102,6 +102,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         takePhotoButton.addTarget(self, action: #selector(takePhoto(_:)), for: .touchUpInside)
         self.view.addSubview(takePhotoButton)
         takePhotoButton.setImage(#imageLiteral(resourceName: "shutter"), for: .normal)
+        takePhotoButton.tintColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
         self.view.bringSubview(toFront: takePhotoButton)
         
         let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85-120+10, width: 40, height: 40))
@@ -109,12 +110,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         cancelButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         self.view.addSubview(cancelButton)
         self.view.bringSubview(toFront: cancelButton)
+        cancelButton.alpha = 0
         
         let filterButton = UIButton(frame: CGRect(x: self.view.frame.width - 20 - 60, y: self.view.frame.height-85-120+10, width: 40, height: 40))
         filterButton.addTarget(self, action: #selector(filterButtonDidPressed(_:)), for: .touchUpInside)
         filterButton.setImage(#imageLiteral(resourceName: "instagram"), for: .normal)
         self.view.addSubview(filterButton)
         self.view.bringSubview(toFront: filterButton)
+        filterButton.alpha = 0
         
         focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130-120, width: 30, height: 30))
         focusFilterButton.addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)

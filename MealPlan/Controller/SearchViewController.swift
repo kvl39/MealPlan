@@ -30,7 +30,8 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
     var realmManager = RealmManager()
     var selectedDate = ""
     weak var delegate: AddByClassificationDelegateProtocol?
-
+    var selectedRowImageView = UIImageView()
+    
     @IBOutlet weak var tableView: UITableView!
 
     
@@ -218,6 +219,23 @@ class SearchViewController: MPTableViewController, RecipeManagerProtocol {
         self.realmManager.updateRecipe(recipeArray: self.selectedRecipes, dateString: self.selectedDate)
         self.delegate?.reloadData(addedRecipeImageView: self.selectedRecipeImage, addedRecipeTitle: self.selecteRecipeName)
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //recipeModel->recipeInformation->calendarModel
+        if let searchResult = self.searchRecipeModel {
+            print(searchResult.hits[indexPath.row])
+            let recipeCalendarModel = realmManager.recipeFormatTranslation(from: searchResult.hits[indexPath.row].recipe, in: "2018 08 08")
+            guard let selectedRow = tableView.cellForRow(at: indexPath) as? RecipeSearchResultCell,
+                let selectedRowImage = selectedRow.recipeImage.image else {return}
+            self.selectedRowImageView = selectedRow.recipeImage
+            guard let detailViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "MPRecipeDetailViewController") as? MPRecipeDetailViewController else {return}
+            detailViewController.recipeData = recipeCalendarModel
+            detailViewController.displayImage = selectedRowImage
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+        
+    }
 }
 
 
@@ -232,5 +250,13 @@ extension SearchViewController {
         if let parentVC = self.parent as? AddByClassificationViewController {
             parentVC.adjustView(subViewMoveDistance: moveDistance)
         }
+    }
+}
+
+
+extension SearchViewController: ZoomingViewController {
+    
+    func zoomingImageView() -> UIImageView? {
+        return self.selectedRowImageView
     }
 }
