@@ -196,7 +196,7 @@
         <!--Plan-->
         <scene sceneID="xX4-bw-Ute">
             <objects>
-                <viewController id="cUz-YE-dot" customClass="MealPlanViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealPlanViewController" id="cUz-YE-dot" customClass="MealPlanViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeK-vd-cdX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -572,7 +572,7 @@
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="pushToStepPage:" destination="t4C-j5-CjG" eventType="touchUpInside" id="Xbr-n3-LbK"/>
+                                                    <action selector="scheduleButtonDidPressed:" destination="t4C-j5-CjG" eventType="touchUpInside" id="pbG-Qx-ea2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -698,21 +698,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LID-au-Ogw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4408.8000000000002" y="2229.5352323838083"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1Cz-zx-AYx">
-            <objects>
-                <viewController id="R9j-ik-hCa" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kh5-DL-PoR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Sd6-Bx-1VQ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N1r-tp-8O5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4409" y="3046"/>
         </scene>
         <!--Recipe Detail Steps View Controller-->
         <scene sceneID="LLC-0V-aPN">

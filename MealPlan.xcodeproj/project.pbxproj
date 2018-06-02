@@ -98,6 +98,7 @@
 		ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA469FC20BE40F800A80F25 /* GradientImageView.swift */; };
 		ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */; };
 		ADAA4DAB20AC1319002F9658 /* RecipeNoteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */; };
+		ADAC0FC220C2965F0060750A /* AddToCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC0FC120C2965F0060750A /* AddToCalendarViewController.swift */; };
 		ADAEAC2B20981F33001B44CF /* MPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */; };
 		ADAEAC2D20983CA6001B44CF /* MealPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */; };
 		ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */; };
@@ -218,6 +219,7 @@
 		ADA469FC20BE40F800A80F25 /* GradientImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
 		ADAA4DA820AC1319002F9658 /* RecipeNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNoteView.swift; sourceTree = "<group>"; };
 		ADAA4DA920AC1319002F9658 /* RecipeNoteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeNoteView.xib; sourceTree = "<group>"; };
+		ADAC0FC120C2965F0060750A /* AddToCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCalendarViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTableViewController.swift; sourceTree = "<group>"; };
 		ADAEAC2C20983CA6001B44CF /* MealPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewController.swift; sourceTree = "<group>"; };
 		ADAEAC3020984E87001B44CF /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -348,7 +350,6 @@
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
 				ADAC0FBE20C277090060750A /* SearchViewController */,
 				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
-				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 				AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */,
 				ADAEAC4420985E53001B44CF /* MPCalendarView.swift */,
 				AD7044232099A5590022E15D /* MPPieChart.swift */,
@@ -558,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA4342520A04B16002C7148 /* SearchViewController.swift */,
+				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";
@@ -567,6 +569,7 @@
 			children = (
 				AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */,
 				AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */,
+				ADAC0FC120C2965F0060750A /* AddToCalendarViewController.swift */,
 			);
 			path = DetailViewController;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
 				AD59477A20B0367500B9C915 /* PopupButtonsManager.swift in Sources */,
 				AD53A1F4209FF15D0016E4D1 /* MPTagViewController.swift in Sources */,
+				ADAC0FC220C2965F0060750A /* AddToCalendarViewController.swift in Sources */,
 				AD260DDA20AF1FFC007D4C89 /* MPFirebaseModel.swift in Sources */,
 				ADAEAC2D20983CA6001B44CF /* MealPlanViewController.swift in Sources */,
 				AD2C8E4F2097558C0083B229 /* CalendarCell.swift in Sources */,

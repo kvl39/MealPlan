@@ -37,6 +37,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     var saveImageManager = SaveImageManager()
     var selectedRow = 0
     lazy var addedButtonSubView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    var isSegueFromDetaiView = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,15 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+
+        if isSegueFromDetaiView {
+            self.navigationController?.navigationBar.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
+        } else {
+            self.navigationController?.navigationBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        }
     }
     
     
