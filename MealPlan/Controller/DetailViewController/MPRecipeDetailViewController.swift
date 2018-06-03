@@ -79,6 +79,12 @@ class MPRecipeDetailViewController: MPTableViewController {
         if isSegueFromCalendarView {
             hideScheduleButton()
         }
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
     
     func hideScheduleButton() {
