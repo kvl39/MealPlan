@@ -47,6 +47,9 @@ class DiscoverCardView: UIView {
         self.containerView.clipsToBounds = true
         self.contentView.layer.cornerRadius = 15
         self.contentView.clipsToBounds = true
+        
+        rightButton.setImage(#imageLiteral(resourceName: "right-arrow"), for: .normal)
+        leftButton.setImage(#imageLiteral(resourceName: "left-arrow"), for: .normal)
  
     }
     

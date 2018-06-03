@@ -23,6 +23,7 @@ class DiscoveryPageViewController: UIViewController {
     var realmManager = RealmManager()
     var menuRecipeNameArray = [[String]]()
     var menuRecipeArray = [[MPFirebaseRecipeModel]]()
+    var cardPagingNumber: [Int] = []
     
     
     override func viewDidLoad() {
@@ -70,8 +71,32 @@ class DiscoveryPageViewController: UIViewController {
             cardArray.append(newCardView)
             //self.view.insertSubview(newCardView, at: 0)
             self.view.insertSubview(newCardView, at: 0)
+            cardPagingNumber.append(0)
+            newCardView.leftButton.addTarget(self, action: #selector(leftButtonDidPressed(sender:)), for: .touchUpInside)
+            newCardView.rightButton.addTarget(self, action: #selector(rightButtonDidPressed(sender:)), for: .touchUpInside)
         }
         addGestureRecognizer()
+    }
+    
+    
+    @objc func leftButtonDidPressed(sender: UIButton) {
+        if cardPagingNumber[0] > 0 {
+            cardPagingNumber[0] -= 1
+            updateCardData(newPagingNumber: cardPagingNumber[0])
+        }
+    }
+    
+    @objc func rightButtonDidPressed(sender: UIButton) {
+        if cardPagingNumber[0] < self.menuRecipeArray[0].count-2 {
+            cardPagingNumber[0] += 1
+            updateCardData(newPagingNumber: cardPagingNumber[0])
+        }
+    }
+    
+    func updateCardData(newPagingNumber: Int) {
+        self.cardArray[0].updatePaging(newPagingNumber: newPagingNumber)
+        self.cardArray[0].imageArray[0].sd_setImage(with: URL(string: menuRecipeArray[0][newPagingNumber].image), placeholderImage: nil, options: [], completed: nil)
+        self.cardArray[0].title.text = self.menuRecipeArray[0][newPagingNumber].label
     }
     
     func addGestureRecognizer() {
@@ -156,6 +181,7 @@ class DiscoveryPageViewController: UIViewController {
         self.cardArray[0].gestureRecognizers?.removeAll()
         self.cardArray.remove(at: 0)
         self.menuRecipeArray.remove(at: 0)
+        self.cardPagingNumber.remove(at: 0)
         if self.cardArray.count > 0 {
             addGestureRecognizer()
         }
@@ -168,8 +194,11 @@ class DiscoveryPageViewController: UIViewController {
             counter += 1
             cardArray.append(newCardView)
             newCardView.alpha = 0
+            cardPagingNumber.append(0)
             //self.view.insertSubview(newCardView, at: 0)
             self.view.insertSubview(newCardView, at: 0)
+            newCardView.leftButton.addTarget(self, action: #selector(leftButtonDidPressed(sender:)), for: .touchUpInside)
+            newCardView.rightButton.addTarget(self, action: #selector(rightButtonDidPressed(sender:)), for: .touchUpInside)
             
             UIView.animate(withDuration: 0.2) {
                 if self.counter == 4 {
