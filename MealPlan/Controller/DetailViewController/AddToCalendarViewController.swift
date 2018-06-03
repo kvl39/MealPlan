@@ -45,12 +45,12 @@ class AddToCalendarViewController: UIViewController {
         guard let addDate = self.dateManager.stringToDate(dateString: calendarVC.selectedDate, to: "yyyy MM dd") else {return}
         self.recipeData.recipeDay = addDate
         realmManager.saveUserCreatedRecipe(createdRecipe: self.recipeData)
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: [:])
     }
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     

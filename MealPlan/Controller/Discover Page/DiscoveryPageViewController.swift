@@ -161,6 +161,13 @@ class DiscoveryPageViewController: UIViewController {
     }
     
     
+    func addToCalendar() {
+        guard let addToCalendarViewController = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "AddToCalendarViewController") as? AddToCalendarViewController else {return}
+        //addToCalendarViewController.recipeData
+        self.present(addToCalendarViewController, animated: true, completion: nil)
+    }
+    
+    
     func attachCardInformation(newCardView: DiscoverCardView) {
         self.firebaseManager.findRecipesInMenu(menu: self.menuRecipeNameArray[counter]) { (recipeArray) in
             self.menuRecipeArray.append(recipeArray)
