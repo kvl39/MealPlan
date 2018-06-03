@@ -88,7 +88,7 @@ class DiscoveryPageViewController: UIViewController {
     }
     
     @objc func rightButtonDidPressed(sender: UIButton) {
-        if cardPagingNumber[0] < self.menuRecipeArray[0].count-2 {
+        if cardPagingNumber[0] < self.menuRecipeArray[0].count-1 {
             cardPagingNumber[0] += 1
             updateCardData(newPagingNumber: cardPagingNumber[0])
         }
@@ -185,7 +185,7 @@ class DiscoveryPageViewController: UIViewController {
 //                }
 //            }
             newCardView.imageArray[0].sd_setImage(with: URL(string: recipeArray[0].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
-            newCardView.addCustomPaging(pagingNumber: recipeArray.count-1)
+            newCardView.addCustomPaging(pagingNumber: recipeArray.count)
             newCardView.updatePaging(newPagingNumber: 0)
         }
     }
