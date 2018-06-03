@@ -11,12 +11,11 @@ import UIKit
 class DiscoverCardView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var hint: UILabel!
     @IBOutlet weak var title: UILabel!
-
     @IBOutlet var imageArray: [UIImageView]!
-    
- 
+    @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,10 +33,19 @@ class DiscoverCardView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.7
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 10
+        self.layer.masksToBounds = false
+        self.backgroundColor = UIColor.clear
+        
+        self.containerView.layer.cornerRadius = 15
+        self.containerView.clipsToBounds = true
+        self.contentView.layer.cornerRadius = 15
+        self.contentView.clipsToBounds = true
+ 
     }
 
 }

@@ -11,12 +11,14 @@ import UIKit
 enum TabBar {
     case plan
     case search
+    case discovery
     //case shoppingList
     
     func controller()->UIViewController {
         switch self {
         case .plan: return UIStoryboard(name: "MealPlan", bundle: nil).instantiateInitialViewController()!
         case .search: return UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController()!
+        case .discovery: return UIStoryboard(name: "Discovery", bundle: nil).instantiateInitialViewController()!
         }
     }
     
@@ -24,6 +26,7 @@ enum TabBar {
         switch self {
         case .plan: return #imageLiteral(resourceName: "Icon-App-40x40")
         case .search: return #imageLiteral(resourceName: "binoculars")
+        case .discovery: return #imageLiteral(resourceName: "binoculars")
         }
     }
     
@@ -31,6 +34,7 @@ enum TabBar {
         switch self {
         case .plan: return #imageLiteral(resourceName: "Icon-App-40x40").withRenderingMode(.alwaysTemplate)
         case .search: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
+        case .discovery: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
         }
     }
 }
@@ -38,7 +42,7 @@ enum TabBar {
 
 class MPTabBarController: UITabBarController {
     
-    let tabs: [TabBar] = [.plan, .search]
+    let tabs: [TabBar] = [.plan, .search, .discovery]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -346,6 +346,8 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADE8B64820C34D9900C82E39 /* Tabbar */,
+				ADE8B64720C34D7C00C82E39 /* Discover Page */,
 				ADAC0FC420C2D2570060750A /* HorizontalTagViewController */,
 				ADAC0FC320C2C9410060750A /* TextViewController */,
 				ADAC0FBF20C277230060750A /* DetailViewController */,
@@ -366,8 +368,6 @@
 				AD57814C20A47C5900130388 /* DateFormatManager.swift */,
 				AD2F274020AA95E900F8CA1B /* PhotoViewController.swift */,
 				AD2F274220AA96CB00F8CA1B /* CameraViewController.swift */,
-				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
-				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
 				AD59477920B0367500B9C915 /* PopupButtonsManager.swift */,
 				AD6FD06520B0680100148414 /* TestViewController.swift */,
 				AD85E55720B19561002B80EB /* AddRecipeInformationViewController.swift */,
@@ -650,6 +650,22 @@
 				ADB6169420B9590600B637D6 /* MPHorizontalScrollView.xib */,
 			);
 			path = MPHorizontalScrollView;
+			sourceTree = "<group>";
+		};
+		ADE8B64720C34D7C00C82E39 /* Discover Page */ = {
+			isa = PBXGroup;
+			children = (
+				ADF599BC20ADC5A100C73097 /* DiscoveryPageViewController.swift */,
+			);
+			path = "Discover Page";
+			sourceTree = "<group>";
+		};
+		ADE8B64820C34D9900C82E39 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		ADF599B020AD393300C73097 /* Firebase */ = {

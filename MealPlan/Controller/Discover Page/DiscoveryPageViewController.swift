@@ -11,9 +11,7 @@ import SDWebImage
 
 class DiscoveryPageViewController: UIViewController {
     
-    @IBOutlet weak var topImageView: UIImageView!
-    
-    @IBOutlet weak var mainBackgroundImageView: UIImageView!
+
     
     var cardArray: [DiscoverCardView] = []
     var counter = 0
@@ -29,8 +27,6 @@ class DiscoveryPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
-        mainBackgroundImageView.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,11 +66,10 @@ class DiscoveryPageViewController: UIViewController {
             
             attachCardInformation(newCardView: newCardView)
             newCardView.title.text = self.menuRecipeNameArray[counter][0]
-            newCardView.hint.text = "\(counter)"
             counter += 1
             cardArray.append(newCardView)
             //self.view.insertSubview(newCardView, at: 0)
-            mainBackgroundImageView.insertSubview(newCardView, at: 0)
+            self.view.insertSubview(newCardView, at: 0)
         }
         addGestureRecognizer()
     }
@@ -144,11 +139,12 @@ class DiscoveryPageViewController: UIViewController {
     func attachCardInformation(newCardView: DiscoverCardView) {
         self.firebaseManager.findRecipesInMenu(menu: self.menuRecipeNameArray[counter]) { (recipeArray) in
             self.menuRecipeArray.append(recipeArray)
-            for j in 0...2{
-                if j < recipeArray.count {
-                    newCardView.imageArray[j].sd_setImage(with: URL(string: recipeArray[j].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
-                }
-            }
+//            for j in 0...2{
+//                if j < recipeArray.count {
+//                    newCardView.imageArray[j].sd_setImage(with: URL(string: recipeArray[j].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
+//                }
+//            }
+            newCardView.imageArray[0].sd_setImage(with: URL(string: recipeArray[0].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
         }
     }
     
@@ -167,12 +163,11 @@ class DiscoveryPageViewController: UIViewController {
             newCardView.transform = CGAffineTransform(scaleX: 0.6, y: 1).translatedBy(x: 0, y: -20)
             attachCardInformation(newCardView: newCardView)
             newCardView.title.text = self.menuRecipeNameArray[counter][0]
-            newCardView.hint.text = "\(counter)"
             counter += 1
             cardArray.append(newCardView)
             newCardView.alpha = 0
             //self.view.insertSubview(newCardView, at: 0)
-            mainBackgroundImageView.insertSubview(newCardView, at: 0)
+            self.view.insertSubview(newCardView, at: 0)
             
             UIView.animate(withDuration: 0.2) {
                 if self.counter == 4 {
