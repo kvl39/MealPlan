@@ -38,6 +38,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var firebaseManager = MPFirebaseManager()
     var recipeIngredients = [[String: Any]]()
     var recipeNutrients = [[String: Any]]()
+    var recipeSteps = [RecipeStep]()
     var recipeURLString = ""
     var isSegueFromCalendarView = false
     
@@ -98,6 +99,9 @@ class MPRecipeDetailViewController: MPTableViewController {
             self.recipeTitle.text = self.recipeData.recipeRealmModelWithSteps?.label
             if let recipeRealmIngredient = recipeData.recipeRealmModelWithSteps?.ingredients {
                 self.recipeIngredients = firebaseManager.recipeIngredientRealmModelToDictionary(recipeIngredients: Array(recipeRealmIngredient))
+            }
+            if let recipeSteps = self.recipeData.recipeRealmModelWithSteps?.RecipeSteps {
+                self.recipeSteps = Array(recipeSteps)
             }
             
         } else {
@@ -176,7 +180,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     @IBAction func pushToStepPage(_ sender: UIButton) {
         if self.recipeData.withSteps {
-            
+            performSegue(withIdentifier: "PushToStepsView", sender: self)
         } else {
             if let url = self.recipeData.recipeRealmModel?.url {
                 self.recipeURLString = url
@@ -190,6 +194,9 @@ class MPRecipeDetailViewController: MPTableViewController {
         if segue.identifier == "PushToWebView" {
             let vc = segue.destination as? MPRecipeDetailWebViewController
             vc?.urlString = self.recipeURLString
+        } else if segue.identifier == "PushToStepsView" {
+            let vc = segue.destination as? RecipeStepsViewController
+            vc?.recipeSteps = self.recipeSteps
         }
     }
     

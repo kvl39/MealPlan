@@ -117,6 +117,7 @@
 		ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */; };
 		ADB8797520BDB659005FFA8D /* DrawLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB8797420BDB659005FFA8D /* DrawLineView.swift */; };
 		ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */; };
+		ADE8B64C20C4294D00C82E39 /* RecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8B64B20C4294D00C82E39 /* RecipeStepsViewController.swift */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
 		ADF599B920ADBDC700C73097 /* DiscoverCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */; };
@@ -238,6 +239,7 @@
 		ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSelectionTagViewController.swift; sourceTree = "<group>"; };
 		ADB8797420BDB659005FFA8D /* DrawLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawLineView.swift; sourceTree = "<group>"; };
 		ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailStepsViewController.swift; sourceTree = "<group>"; };
+		ADE8B64B20C4294D00C82E39 /* RecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsViewController.swift; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
 		ADF599B820ADBDC700C73097 /* DiscoverCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCardView.xib; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		AD2C8E4A2096F0040083B229 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ADE8B64920C4286100C82E39 /* MPCollectionViewController */,
 				ADE8B64820C34D9900C82E39 /* Tabbar */,
 				ADE8B64720C34D7C00C82E39 /* Discover Page */,
 				ADAC0FC420C2D2570060750A /* HorizontalTagViewController */,
@@ -354,8 +357,6 @@
 				ADAC0FC020C277DD0060750A /* AddByClassification */,
 				ADAC0FBE20C277090060750A /* SearchViewController */,
 				ADAEAC2A20981F33001B44CF /* MPTableViewController.swift */,
-				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
-				AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */,
 				ADAEAC4420985E53001B44CF /* MPCalendarView.swift */,
 				AD7044232099A5590022E15D /* MPPieChart.swift */,
 				AD566B48209B0545009915F3 /* AddPageHistoryController.swift */,
@@ -569,6 +570,7 @@
 				AD6C0C5520A7FBB100EE49CA /* MPRecipeDetailViewController.swift */,
 				AD6FB22220A97FFD0000A44F /* MPRecipeDetailWebViewController.swift */,
 				ADAC0FC120C2965F0060750A /* AddToCalendarViewController.swift */,
+				ADE8B64B20C4294D00C82E39 /* RecipeStepsViewController.swift */,
 			);
 			path = DetailViewController;
 			sourceTree = "<group>";
@@ -666,6 +668,15 @@
 				AD59477020B019D900B9C915 /* MPTabBarController.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		ADE8B64920C4286100C82E39 /* MPCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEAC3A20985B98001B44CF /* MPCollectionViewController.swift */,
+				AD72B89920BF940700A4C978 /* MPIndependentCollectionViewController.swift */,
+			);
+			path = MPCollectionViewController;
 			sourceTree = "<group>";
 		};
 		ADF599B020AD393300C73097 /* Firebase */ = {
@@ -937,6 +948,7 @@
 				AD85E55820B19561002B80EB /* AddRecipeInformationViewController.swift in Sources */,
 				AD6FD06620B0680100148414 /* TestViewController.swift in Sources */,
 				ADA469FD20BE40F800A80F25 /* GradientImageView.swift in Sources */,
+				ADE8B64C20C4294D00C82E39 /* RecipeStepsViewController.swift in Sources */,
 				AD5D381B20B45003004B65BF /* MPNutrientsEditView.swift in Sources */,
 				AD6ED3F320B2B3A600B194BF /* NSLayoutConstraintExtension.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
