@@ -177,6 +177,7 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
             guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
             vc.displayImage = self.selectedCollectViewImageView.image
             vc.recipeData = self.recipeToday[self.selectedRow]
+            vc.isSegueFromCalendarView = true
         } else if (segue.identifier == "PushToCameraPage") {
             guard let vc = segue.destination as? CameraViewController else {return}
             vc.selectedDate = self.selectedDate

@@ -35,7 +35,11 @@ class MPRecipeDetailWebViewController: UIViewController, WKNavigationDelegate, W
 
 
     @IBAction func doneWebView(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     

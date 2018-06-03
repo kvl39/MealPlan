@@ -39,6 +39,7 @@ class MPRecipeDetailViewController: MPTableViewController {
     var recipeIngredients = [[String: Any]]()
     var recipeNutrients = [[String: Any]]()
     var recipeURLString = ""
+    var isSegueFromCalendarView = false
     
     
     
@@ -71,14 +72,19 @@ class MPRecipeDetailViewController: MPTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        if isSegueFromCalendarView {
+            hideScheduleButton()
+        }
     }
     
     func hideScheduleButton() {
-        scheduleButton.alpha = 0
-        scheduleButton.removeFromSuperview()
+        if let scheduleButton = self.scheduleButton {
+            scheduleButton.alpha = 0
+            scheduleButton.removeFromSuperview()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -189,7 +195,11 @@ class MPRecipeDetailViewController: MPTableViewController {
     
     
     @IBAction func backButtonDidPressed(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
