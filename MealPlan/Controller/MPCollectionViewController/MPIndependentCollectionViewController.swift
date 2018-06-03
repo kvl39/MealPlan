@@ -97,7 +97,7 @@ extension MPIndependentCollectionViewController: UICollectionViewDelegateFlowLay
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        var cellWidth = (screenWidth-16)/3
+        var cellWidth = (screenWidth-16)/3 
         var cellHeight = cellWidth * 237 / 130
         
 //        if screenWidth < 375 {
