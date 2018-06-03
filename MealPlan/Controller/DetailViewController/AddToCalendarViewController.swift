@@ -14,7 +14,7 @@ class AddToCalendarViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     var calendarViewController: UIViewController?
     var realmManager = RealmManager()
-    var recipeData: RecipeCalendarRealmModel!
+    var recipeData: [RecipeCalendarRealmModel]!
     var dateManager = DataFormatManager()
     
     override func viewDidLoad() {
@@ -42,9 +42,13 @@ class AddToCalendarViewController: UIViewController {
 
     @IBAction func addToCalendarButtonDidPressed(_ sender: UIButton) {
         guard let calendarVC = calendarViewController as? MealPlanViewController else {return}
+        var recipeArrayInCalendarFormat = [RecipeCalendarRealmModel]()
         guard let addDate = self.dateManager.stringToDate(dateString: calendarVC.selectedDate, to: "yyyy MM dd") else {return}
-        self.recipeData.recipeDay = addDate
-        realmManager.saveUserCreatedRecipe(createdRecipe: self.recipeData)
+        for eachRecipeData in recipeData {
+            eachRecipeData.recipeDay = addDate
+            recipeArrayInCalendarFormat.append(eachRecipeData)
+        }
+        realmManager.saveAddedRecipeInCalendarFormat(recipeArray: recipeArrayInCalendarFormat)
         self.dismiss(animated: true, completion: nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: [:])
     }

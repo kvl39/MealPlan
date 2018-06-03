@@ -21,23 +21,7 @@ class RealmManager {
             let menu = likedMenuRealmModel()
             var counter = 0
             for recipe in menuRecipes {
-                let recipeRealmType = RecipeRealmModel()
-                recipeRealmType.calories = recipe.calories
-                recipeRealmType.image = recipe.image
-                recipeRealmType.label = recipe.label
-                recipeRealmType.url = recipe.url
-                for ingredient in recipe.ingredients {
-                    let recipeIngredientRealmType = IngredientRecipeModel()
-                    recipeIngredientRealmType.name = ingredient.name
-                    recipeIngredientRealmType.weight = ingredient.weight
-                    recipeRealmType.ingredients.append(recipeIngredientRealmType)
-                }
-                for nuitrient in recipe.nuitrients {
-                    let recipeNuitrientRealmType = Nutrients()
-                    recipeNuitrientRealmType.label = nuitrient.label
-                    recipeNuitrientRealmType.quantity = nuitrient.quantity
-                    recipeRealmType.nutrients.append(recipeNuitrientRealmType)
-                }
+                let recipeRealmType = self.recipeFormatTransition(from: recipe)
                 menu.recipes.append(recipeRealmType)
                 counter += 1
             }
@@ -45,6 +29,38 @@ class RealmManager {
                 realm.add(menu)
             }
         }
+    }
+    
+    
+    func recipeFormatTransition(from recipe: MPFirebaseRecipeModel) -> RecipeRealmModel {
+        let recipeRealmType = RecipeRealmModel()
+        recipeRealmType.calories = recipe.calories
+        recipeRealmType.image = recipe.image
+        recipeRealmType.label = recipe.label
+        recipeRealmType.url = recipe.url
+        for ingredient in recipe.ingredients {
+            let recipeIngredientRealmType = IngredientRecipeModel()
+            recipeIngredientRealmType.name = ingredient.name
+            recipeIngredientRealmType.weight = ingredient.weight
+            recipeRealmType.ingredients.append(recipeIngredientRealmType)
+        }
+        for nuitrient in recipe.nuitrients {
+            let recipeNuitrientRealmType = Nutrients()
+            recipeNuitrientRealmType.label = nuitrient.label
+            recipeNuitrientRealmType.quantity = nuitrient.quantity
+            recipeRealmType.nutrients.append(recipeNuitrientRealmType)
+        }
+        return recipeRealmType
+    }
+    
+    func recipeFormatTransition(from recipe: MPFirebaseRecipeModel, in recipeDate: String) -> RecipeCalendarRealmModel? {
+        let recipeRealmType = self.recipeFormatTransition(from: recipe)
+        let recipeRealmCalendarType = RecipeCalendarRealmModel()
+        guard let addDate = self.dateManager.stringToDate(dateString: recipeDate, to: "yyyy MM dd") else {return nil}
+        recipeRealmCalendarType.recipeDay = addDate
+        recipeRealmCalendarType.withSteps = false
+        recipeRealmCalendarType.recipeRealmModel = recipeRealmType
+        return recipeRealmCalendarType
     }
     
     

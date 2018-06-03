@@ -26,6 +26,7 @@ class DiscoveryPageViewController: UIViewController {
     var cardPagingNumber: [Int] = []
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -145,7 +146,8 @@ class DiscoveryPageViewController: UIViewController {
                      card.alpha = 0
                     self.rightDestinationButton.alpha = 0
                     self.leftDestinationButton.alpha = 0
-                    self.realmManager.saveLikedMenu(menuRecipes: self.menuRecipeArray[0])
+                    //self.realmManager.saveLikedMenu(menuRecipes: self.menuRecipeArray[0])
+                    self.addToCalendar()
                     self.configureCardTransition()
                 }
                 return
@@ -164,6 +166,12 @@ class DiscoveryPageViewController: UIViewController {
     func addToCalendar() {
         guard let addToCalendarViewController = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "AddToCalendarViewController") as? AddToCalendarViewController else {return}
         //addToCalendarViewController.recipeData
+        var recipeArrayInCalendarModel = [RecipeCalendarRealmModel]()
+        for recipe in menuRecipeArray[0] {
+            guard let recipeInCalendarModel = realmManager.recipeFormatTransition(from: recipe, in: "2018 08 08") else {return}
+            recipeArrayInCalendarModel.append(recipeInCalendarModel)
+        }
+        addToCalendarViewController.recipeData = recipeArrayInCalendarModel
         self.present(addToCalendarViewController, animated: true, completion: nil)
     }
     
