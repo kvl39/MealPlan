@@ -145,6 +145,8 @@ class DiscoveryPageViewController: UIViewController {
 //                }
 //            }
             newCardView.imageArray[0].sd_setImage(with: URL(string: recipeArray[0].image), placeholderImage: #imageLiteral(resourceName: "pork"), options: [], completed: nil)
+            newCardView.addCustomPaging(pagingNumber: recipeArray.count-1)
+            newCardView.updatePaging(newPagingNumber: 0)
         }
     }
     
