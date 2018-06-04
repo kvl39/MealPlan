@@ -15,6 +15,7 @@ class MPDayCalendarViewController: MPTableViewController {
     var dateManager = DataFormatManager()
     var endDate: Date = Date()
     var beginningDate: Date = Date()
+    var numberOfWeekAddedAtTheBeginning = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,7 @@ class MPDayCalendarViewController: MPTableViewController {
     
     func generateWeekRowForWeekCell(in year: Int, month: Int, isAtTheBeginning: Bool) {
         var index = 1
+        numberOfWeekAddedAtTheBeginning = 0
         if let beginEndArrayThisMonth = dateManager.extractBeginEndDateFromYearMonth(year: year, month: month) {
             for beginEndDay in beginEndArrayThisMonth {
                 if let monthOfBeginDate = beginEndDay.beingDate.month,
@@ -85,6 +87,7 @@ class MPDayCalendarViewController: MPTableViewController {
                     let dayOfEndDate = beginEndDay.endDate.day {
                     if isAtTheBeginning {
                         rowArray[0].insert(.weekType("\(monthOfBeginDate)/\(dayOfBeginDate)~\(monthOfEndDate)/\(dayOfEndDate)"), at: index)
+                        numberOfWeekAddedAtTheBeginning += 1
                     } else {
                         rowArray[0].append(.weekType("\(monthOfBeginDate)/\(dayOfBeginDate)~\(monthOfEndDate)/\(dayOfEndDate)"))
                     }
@@ -99,8 +102,8 @@ class MPDayCalendarViewController: MPTableViewController {
 
 extension MPDayCalendarViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        let top: CGFloat = 0
+        print("content offset y:\(scrollView.contentOffset.y)")
+        let top: CGFloat = 0.0
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let buffer: CGFloat = 300.0
         let scrollPosition = scrollView.contentOffset.y
@@ -109,7 +112,17 @@ extension MPDayCalendarViewController {
             guard let nextMonth = dateManager.getNextMonth(date: self.endDate) else {return}
             generateRowsForOneMonth(in: nextMonth, isAtTheBeginning: false)
             dayCalendarView.reloadData()
-        } 
+        } else if scrollPosition < top + buffer {
+            // Add more dates to the top
+            guard let previousMonth = dateManager.getPreviousMonth(date: self.beginningDate) else {return}
+            print("previousMonth:\(previousMonth)")
+            generateRowsForOneMonth(in: previousMonth, isAtTheBeginning: true)
+    
+            // Update the tableView and contentOffset
+            dayCalendarView.reloadData()
+            dayCalendarView.contentOffset.y += CGFloat(self.numberOfWeekAddedAtTheBeginning) * CGFloat(50) + CGFloat(100)
+            //CGFloat(self.daysToAdd) * self.cellHeight
+        }
 //
 //        // Reached the bottom of the list
 //        if scrollPosition > bottom - buffer {
