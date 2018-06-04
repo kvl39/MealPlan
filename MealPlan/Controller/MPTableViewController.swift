@@ -21,6 +21,8 @@ enum MPTableViewCellType {
     case recipeStepTableViewCellType(String, UIImage)
     case recipeIngredientEditType
     case addIngredientType
+    case monthType(String)
+    case weekType(String)
 }
 
 extension MPTableViewCellType {
@@ -52,6 +54,10 @@ extension MPTableViewCellType {
             return RecipeIngredientEditItem()
         case .addIngredientType:
             return AddIngredientItem()
+        case .monthType(let labelText):
+            return MonthItem(labelText: labelText)
+        case .weekType(let labelText):
+            return WeekItem(labelText: labelText)
         }
     }
 }
@@ -189,6 +195,26 @@ struct RecipeIngredientEditItem: MPTableViewCellProtocol {
 struct AddIngredientItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "MPIngredientAddButtonTableViewCell"
     var rowHeight: Int = 50
+}
+
+struct MonthItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "MonthTableViewCell"
+    var rowHeight: Int = 100
+    var labelText: String = ""
+    
+    init(labelText: String) {
+        self.labelText = labelText
+    }
+}
+
+struct WeekItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "WeekTableViewCell"
+    var rowHeight: Int = 50
+    var labelText: String = ""
+    
+    init(labelText: String) {
+        self.labelText = labelText
+    }
 }
 
 
@@ -451,6 +477,14 @@ extension MPTableViewController {
             //ingredientAddButtonViewController.resetFrame()
             cell.addSubview(ingredientAddButtonViewController.view)
             ingredientAddButtonViewController.didMove(toParentViewController: self)
+        case .monthType:
+            guard let cell = cell as? MonthTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? MonthItem else {return}
+            cell.yearMonthLabel.text = itemStruct.labelText
+        case .weekType:
+            guard let cell = cell as? WeekTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? WeekItem else {return}
+            cell.weekLabel.text = itemStruct.labelText
         }
     }
 
@@ -496,6 +530,12 @@ extension MPTableViewController {
             return cell
         case .addIngredientType:
             guard let cell = cell as? MPIngredientAddButtonTableViewCell else {return UITableViewCell()}
+            return cell
+        case .monthType:
+            guard let cell = cell as? MonthTableViewCell else {return UITableViewCell()}
+            return cell
+        case .weekType:
+            guard let cell = cell as? WeekTableViewCell else {return UITableViewCell()}
             return cell
         }
     }
