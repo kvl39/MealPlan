@@ -83,6 +83,12 @@
 		AD85E56120B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E55F20B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.swift */; };
 		AD85E56220B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD85E56020B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib */; };
 		AD85E56620B1C36B002B80EB /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */; };
+		AD86889A20C4F3F60033B2C9 /* MonthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86889820C4F3F60033B2C9 /* MonthTableViewCell.swift */; };
+		AD86889B20C4F3F60033B2C9 /* MonthTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD86889920C4F3F60033B2C9 /* MonthTableViewCell.xib */; };
+		AD86889E20C508DA0033B2C9 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86889C20C508DA0033B2C9 /* WeekTableViewCell.swift */; };
+		AD86889F20C508DA0033B2C9 /* WeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD86889D20C508DA0033B2C9 /* WeekTableViewCell.xib */; };
+		AD8688A220C509700033B2C9 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8688A020C509700033B2C9 /* DayTableViewCell.swift */; };
+		AD8688A320C509700033B2C9 /* DayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8688A120C509700033B2C9 /* DayTableViewCell.xib */; };
 		AD8A087B209EB47600C3DB84 /* AddPagePopupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */; };
 		AD8A087E209ED65000C3DB84 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */; };
 		AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */; };
@@ -205,6 +211,12 @@
 		AD85E55F20B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeInformationTextFieldWithImageCell.swift; sourceTree = "<group>"; };
 		AD85E56020B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRecipeInformationTextFieldWithImageCell.xib; sourceTree = "<group>"; };
 		AD85E56520B1C36B002B80EB /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		AD86889820C4F3F60033B2C9 /* MonthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTableViewCell.swift; sourceTree = "<group>"; };
+		AD86889920C4F3F60033B2C9 /* MonthTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTableViewCell.xib; sourceTree = "<group>"; };
+		AD86889C20C508DA0033B2C9 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
+		AD86889D20C508DA0033B2C9 /* WeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekTableViewCell.xib; sourceTree = "<group>"; };
+		AD8688A020C509700033B2C9 /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		AD8688A120C509700033B2C9 /* DayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayTableViewCell.xib; sourceTree = "<group>"; };
 		AD8A087A209EB47600C3DB84 /* AddPagePopupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPagePopupTableViewController.swift; sourceTree = "<group>"; };
 		AD8A087C209ED65000C3DB84 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		AD8A087D209ED65000C3DB84 /* RecipeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeTableViewCell.xib; sourceTree = "<group>"; };
@@ -318,6 +330,7 @@
 		AD2C8E492096EFFE0083B229 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD86889420C4F3460033B2C9 /* CalendarCell */,
 				AD72B8B720BFF5E200A4C978 /* MPIngredientAddButtonView */,
 				AD72B8B020BFF15C00A4C978 /* MPIngredientAddButtonCell */,
 				AD72B8A320BFD66D00A4C978 /* MPIngredientEditCell */,
@@ -516,6 +529,44 @@
 				AD85E56020B1AE82002B80EB /* AddRecipeInformationTextFieldWithImageCell.xib */,
 			);
 			path = AddRecipeInformationTextFieldWithImage;
+			sourceTree = "<group>";
+		};
+		AD86889420C4F3460033B2C9 /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD86889720C4F3770033B2C9 /* DayCell */,
+				AD86889620C4F36C0033B2C9 /* WeekCell */,
+				AD86889520C4F3650033B2C9 /* MonthCell */,
+			);
+			name = CalendarCell;
+			path = MonthCell;
+			sourceTree = "<group>";
+		};
+		AD86889520C4F3650033B2C9 /* MonthCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD86889820C4F3F60033B2C9 /* MonthTableViewCell.swift */,
+				AD86889920C4F3F60033B2C9 /* MonthTableViewCell.xib */,
+			);
+			path = MonthCell;
+			sourceTree = "<group>";
+		};
+		AD86889620C4F36C0033B2C9 /* WeekCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD86889C20C508DA0033B2C9 /* WeekTableViewCell.swift */,
+				AD86889D20C508DA0033B2C9 /* WeekTableViewCell.xib */,
+			);
+			path = WeekCell;
+			sourceTree = "<group>";
+		};
+		AD86889720C4F3770033B2C9 /* DayCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD8688A020C509700033B2C9 /* DayTableViewCell.swift */,
+				AD8688A120C509700033B2C9 /* DayTableViewCell.xib */,
+			);
+			path = DayCell;
 			sourceTree = "<group>";
 		};
 		AD8A0880209ED65700C3DB84 /* RecipeTableViewCell */ = {
@@ -781,12 +832,15 @@
 				AD5D381220B3EB4E004B65BF /* AddRecipeInformationSliderCell.xib in Resources */,
 				ADAEAC3320984E87001B44CF /* HorizontalCollectionViewCell.xib in Resources */,
 				AD72B8A220BF972D00A4C978 /* RecipeStepCollectionViewCell.xib in Resources */,
+				AD8688A320C509700033B2C9 /* DayTableViewCell.xib in Resources */,
+				AD86889F20C508DA0033B2C9 /* WeekTableViewCell.xib in Resources */,
 				ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */,
 				AD2C8E402096EFAF0083B229 /* LaunchScreen.storyboard in Resources */,
 				AD2C8E3D2096EFAF0083B229 /* Assets.xcassets in Resources */,
 				AD5D382820B455E4004B65BF /* NutrientsEditCell.xib in Resources */,
 				AD85E55D20B1A42D002B80EB /* AddRecipeInformationTextFieldCell.xib in Resources */,
 				AD59477520B01B0300B9C915 /* MealPlan.storyboard in Resources */,
+				AD86889B20C4F3F60033B2C9 /* MonthTableViewCell.xib in Resources */,
 				AD8A087F209ED65000C3DB84 /* RecipeTableViewCell.xib in Resources */,
 				ADA38AAF20BF2CCE00DE86F6 /* RecipeStepTableViewCell.xib in Resources */,
 				AD59477320B01AA400B9C915 /* Discovery.storyboard in Resources */,
@@ -921,12 +975,14 @@
 				ADAEAC3B20985B98001B44CF /* MPCollectionViewController.swift in Sources */,
 				ADAEAC3220984E87001B44CF /* HorizontalCollectionViewCell.swift in Sources */,
 				AD428EE620A32D1E00A04A32 /* AddPagePopupNavigationController.swift in Sources */,
+				AD86889A20C4F3F60033B2C9 /* MonthTableViewCell.swift in Sources */,
 				AD2C8E4C20971AFA0083B229 /* CustomCell.swift in Sources */,
 				AD5D381120B3EB4E004B65BF /* AddRecipeInformationSliderCell.swift in Sources */,
 				AD6FB21F20A971060000A44F /* RecipeDetailTitle.swift in Sources */,
 				AD2F274320AA96CB00F8CA1B /* CameraViewController.swift in Sources */,
 				AD5D381420B3F86F004B65BF /* SliderViewController.swift in Sources */,
 				ADA4342420A03C6E002C7148 /* AddPageTag.swift in Sources */,
+				AD8688A220C509700033B2C9 /* DayTableViewCell.swift in Sources */,
 				AD679E5C209C284E00039ED4 /* RecipeModel.swift in Sources */,
 				AD428EE220A2C66700A04A32 /* RealmManager.swift in Sources */,
 				AD94BB3820A7E7CE00D3B791 /* ZoomTransitionDelegate.swift in Sources */,
@@ -952,6 +1008,7 @@
 				AD5D381B20B45003004B65BF /* MPNutrientsEditView.swift in Sources */,
 				AD6ED3F320B2B3A600B194BF /* NSLayoutConstraintExtension.swift in Sources */,
 				AD7044242099A5590022E15D /* MPPieChart.swift in Sources */,
+				AD86889E20C508DA0033B2C9 /* WeekTableViewCell.swift in Sources */,
 				AD5D382720B455E4004B65BF /* NutrientsEditCell.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
