@@ -27,13 +27,13 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
         guard let cell = cell as? HorizontalCollectionViewCell else { return }
         print("row:\(indexPath.row)")
         let subImageview = viewArray[indexPath.row]
-        subImageview.layer.cornerRadius = 5
+        subImageview.layer.cornerRadius = 15
         subImageview.layer.masksToBounds = true
         subImageview.translatesAutoresizingMaskIntoConstraints = false
         cell.collectionViewCell.addSubview(subImageview)
         NSLayoutConstraint.activate([
-            subImageview.leadingAnchor.constraint(equalTo: cell.collectionViewCell.leadingAnchor, constant: 10),
-            subImageview.trailingAnchor.constraint(equalTo: cell.collectionViewCell.trailingAnchor, constant: -10),
+            subImageview.leadingAnchor.constraint(equalTo: cell.collectionViewCell.leadingAnchor, constant: 0),
+            subImageview.trailingAnchor.constraint(equalTo: cell.collectionViewCell.trailingAnchor, constant: 0),
             subImageview.topAnchor.constraint(equalTo: cell.collectionViewCell.topAnchor, constant: 10),
             subImageview.bottomAnchor.constraint(equalTo: cell.collectionViewCell.bottomAnchor, constant: -10)
             ])
@@ -62,7 +62,7 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
 extension MPCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 200, height: 180)
+        return CGSize(width: 200, height: 200)
     }
 }
 
