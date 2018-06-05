@@ -222,7 +222,7 @@ struct WeekItem: MPTableViewCellProtocol {
 
 struct DayItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "DayTableViewCell"
-    var rowHeight: Int = 200
+    var rowHeight: Int = 250
     var dayLabel: String = ""
     var weekDayLabel: String = ""
     var viewArray: [UIView] = []
