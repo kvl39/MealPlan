@@ -490,11 +490,13 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? MonthItem else {return}
             cell.yearMonthLabel.text = itemStruct.labelText
             print("month label text:\(itemStruct.labelText)")
+            cell.selectionStyle = .none
         case .weekType:
             guard let cell = cell as? WeekTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? WeekItem else {return}
             print("week lable text:\(itemStruct.labelText)")
             cell.weekLabel.text = itemStruct.labelText
+            cell.selectionStyle = .none
         case .dayType:
             guard let cell = cell as? DayTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? DayItem else {return}
@@ -503,6 +505,7 @@ extension MPTableViewController {
             cell.viewArray = itemStruct.viewArray
             cell.today = itemStruct.today
             cell.horizontalCollectionView.reloadData()
+            cell.selectionStyle = .none
         }
     }
 
