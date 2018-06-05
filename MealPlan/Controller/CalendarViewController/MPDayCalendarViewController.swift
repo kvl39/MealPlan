@@ -19,11 +19,45 @@ class MPDayCalendarViewController: MPTableViewController {
     var dateRecord = [DateRecord]()
     var realmManager = RealmManager()
     var saveImageManager = SaveImageManager()
+    var selectedCollectViewImageView = UIImageView()
+    var selectedRow = 0
+    var recipeToday: [RecipeCalendarRealmModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureObserver()
     }
+    
+    
+    func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
+    }
+    
+    
+    @objc func onSelectCollectionViewItem(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let imageView = userInfo["imageView"] as? UIImageView,
+            let selectedRow = userInfo["row"] as? Int,
+            let today = userInfo["today"] as? Date else {return}
+        self.selectedCollectViewImageView = imageView
+        self.selectedRow = selectedRow
+        let result = self.realmManager.fetchRecipe(in: today)
+        guard let fetchResult = result else {return}
+        self.recipeToday = fetchResult
+//        print("selected:\(self.selectedRow)")
+        self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "PushToDetailPage") {
+            guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
+            vc.displayImage = self.selectedCollectViewImageView.image
+            vc.recipeData = self.recipeToday[self.selectedRow]
+            vc.isSegueFromCalendarView = true
+        }
+    }
+    
     
     func configureTableView() {
         dayCalendarView.delegate = self
@@ -131,13 +165,15 @@ class MPDayCalendarViewController: MPTableViewController {
                     if recipeArray.count > 0 {
                         let nextDateComponent = dateManager.dateToDateComponent(date: nextDate)
                         if let day = nextDateComponent.day,
-                            let weekDay = nextDateComponent.weekday {
+                            let weekDay = nextDateComponent.weekday,
+                            let year = nextDateComponent.year,
+                            let month = nextDateComponent.month{
                             if isAtTheBeginning {
                                 indexOfRow += 1
-                                self.rowArray[0].insert(.dayType(String(day), String(weekDay), imageView), at: indexOfRow)
+                                self.rowArray[0].insert(.dayType(String(day), String(weekDay), imageView, nextDate), at: indexOfRow)
                                 //add data to record
                             } else {
-                                self.rowArray[0].append(.dayType(String(day), String(weekDay), imageView))
+                                self.rowArray[0].append(.dayType(String(day), String(weekDay), imageView, nextDate))
                                 //add data to record
                             }
                         }

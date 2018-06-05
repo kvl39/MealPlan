@@ -23,7 +23,7 @@ enum MPTableViewCellType {
     case addIngredientType
     case monthType(String)
     case weekType(String)
-    case dayType(String, String, [UIView])
+    case dayType(String, String, [UIView], Date)
 }
 
 extension MPTableViewCellType {
@@ -59,8 +59,8 @@ extension MPTableViewCellType {
             return MonthItem(labelText: labelText)
         case .weekType(let labelText):
             return WeekItem(labelText: labelText)
-        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray):
-            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray)
+        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray, let today):
+            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray, today: today)
         }
     }
 }
@@ -226,11 +226,13 @@ struct DayItem: MPTableViewCellProtocol {
     var dayLabel: String = ""
     var weekDayLabel: String = ""
     var viewArray: [UIView] = []
+    var today =  Date()
     
-    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView]) {
+    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView], today: Date) {
         self.dayLabel = dayLabel
         self.weekDayLabel = weekDayLabel
         self.viewArray = viewArray
+        self.today = today
     }
 }
 
@@ -499,6 +501,7 @@ extension MPTableViewController {
             cell.dayLabel.text = itemStruct.dayLabel
             cell.weekDayLabel.text = itemStruct.weekDayLabel
             cell.viewArray = itemStruct.viewArray
+            cell.today = itemStruct.today
             cell.horizontalCollectionView.reloadData()
         }
     }

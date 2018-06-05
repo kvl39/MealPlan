@@ -15,6 +15,9 @@ class DayTableViewCell: MPCollectionViewController {
     @IBOutlet weak var viewForHorizontalCollectionView: UIView!
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
     
+    var today: Date = Date()
+    var dateManager = DataFormatManager()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +35,15 @@ class DayTableViewCell: MPCollectionViewController {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+        //guard let imageView = self.viewArray[indexPath.row].viewWithTag(2) as? UIImageView else {return}
+        guard let imageView = self.viewArray[indexPath.row] as? UIImageView else {return}
+        //let todayDateString = dateManager.dateToString(date: self.today)
+        NotificationCenter.default.post(name: Notification.Name("collectionViewItemDidSelect"), object: nil, userInfo: ["imageView": imageView, "row": indexPath.row, "today": today])
     }
     
     

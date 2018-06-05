@@ -25,6 +25,13 @@ class DataFormatManager {
         formatter.locale = Calendar.current.locale
         return formatter.date(from: dateString)
     }
+    
+    func dateToString(date: Date)-> String {
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        return formatter.string(from: date)
+    }
 
     func extractDayFromDate(dateString: String) -> String? {
         formatter.dateFormat = "yyyy MM dd"
@@ -35,6 +42,7 @@ class DataFormatManager {
         guard let tempDate1 = tempDate else {return nil}
         return formatter.string(from: tempDate1)
     }
+
     
     
     func dateToDateComponent(date: Date)-> DateComponents {
