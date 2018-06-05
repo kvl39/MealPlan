@@ -33,5 +33,16 @@ class MPHorizontalScrollView: UIView {
         self.horizontalScrollView.isPagingEnabled = true
         self.backgroundColor = UIColor.clear
         self.contentView.backgroundColor = UIColor.clear
+        shadowEffect()
+    }
+    
+    
+    func shadowEffect() {
+        contentView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
+        contentView.layer.cornerRadius = 3.0
+        contentView.layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        contentView.layer.shadowOpacity = 0.8
     }
 }

@@ -26,7 +26,7 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
+        self.view.frame = CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
         configureScrollView()
         self.view.backgroundColor = UIColor.clear
         addLeftRightIndicator()
