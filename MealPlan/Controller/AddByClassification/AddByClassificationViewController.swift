@@ -126,7 +126,12 @@ class AddByClassificationViewController: MPTableViewController {
     @IBAction func startSearchButtonDidPressed(_ sender: UIButton) {
         //get search tags
         //start search and progress indicator
+        startSearch()
         
+    }
+    
+    
+    func startSearch() {
         startActivityIndicator()
         for childVC in childViewControllers {
             if let childVC = childVC as? MPHorizontalScrollViewController {
@@ -146,11 +151,23 @@ class AddByClassificationViewController: MPTableViewController {
     func startActivityIndicator() {
         activityIndicator.startAnimating()
         searchButtonLabel.alpha = 0
+        for childVC in childViewControllers {
+            if let childVC = childVC as? MPHorizontalScrollViewController {
+                childVC.horizontalScrollView.activityIndicator.startAnimating()
+                childVC.horizontalScrollView.searchLabel.alpha = 0
+            }
+        }
     }
     
     func stopActivityIndicator() {
         activityIndicator.stopAnimating()
         searchButtonLabel.alpha = 1
+        for childVC in childViewControllers {
+            if let childVC = childVC as? MPHorizontalScrollViewController {
+                childVC.horizontalScrollView.activityIndicator.stopAnimating()
+                childVC.horizontalScrollView.searchLabel.alpha = 1
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

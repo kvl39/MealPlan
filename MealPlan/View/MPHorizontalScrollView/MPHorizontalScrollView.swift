@@ -13,8 +13,11 @@ class MPHorizontalScrollView: UIView {
     
     @IBOutlet weak var horizontalScrollView: UIScrollView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var searchButton: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var searchLabel: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -34,6 +37,7 @@ class MPHorizontalScrollView: UIView {
         self.backgroundColor = UIColor.clear
         self.contentView.backgroundColor = UIColor.clear
         shadowEffect()
+        configureButton()
     }
     
     
@@ -44,5 +48,10 @@ class MPHorizontalScrollView: UIView {
         contentView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
         contentView.layer.shadowOpacity = 0.8
+    }
+    
+    func configureButton() {
+        self.searchButton.layer.cornerRadius = 10
+        self.searchButton.clipsToBounds = true
     }
 }

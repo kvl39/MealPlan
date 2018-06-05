@@ -26,12 +26,23 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.frame = CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 20, height: 200)
+        self.view.frame = CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 20, height: 250)
         configureScrollView()
+         configureSearchButton()
         self.view.backgroundColor = UIColor.clear
         addLeftRightIndicator()
         leftButton.alpha = 0
         rightButton.alpha = 1
+    }
+    
+    func configureSearchButton() {
+        horizontalScrollView.searchButton.addTarget(self, action: #selector(searchButtonDidPressed(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func searchButtonDidPressed(sender: UIButton) {
+        if let parentVC = self.parent as? AddByClassificationViewController {
+            parentVC.startSearch()
+        }
     }
     
     
@@ -80,9 +91,9 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
             //label
             let label = UILabel(frame: CGRect(x: 0, y: 5, width: 0, height: 40))
             label.text = scrollViewLabel[index]
-            label.font = UIFont(name: "PingFangTC-Light ", size: 30)
-            label.font = UIFont.boldSystemFont(ofSize: 25.0)
-            label.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+            label.font = UIFont(name: "PingFangTC-Thin", size: 30)
+            //label.font = UIFont.boldSystemFont(ofSize: 25.0)
+            label.textColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
             label.sizeToFit()
             label.tag = 10 + index + viewTagOffset
             label.isUserInteractionEnabled = true

@@ -42,7 +42,7 @@ class MPSelectionTagViewController: UIViewController {
             let bgView = UIButton(frame: CGRect(x: xPos, y: yPos, width: width + 17.0 + 38.5 - offset, height: 29.0))
             bgView.layer.cornerRadius = 14.5
             //bgView.backgroundColor = UIColor.clear
-            bgView.layer.borderWidth = 2
+            bgView.layer.borderWidth = 1
             bgView.backgroundColor = UIColor.white
             bgView.layer.borderColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1).cgColor
             bgView.addTarget(self, action: #selector(tagDidTouch(sender:)), for: .touchUpInside)
@@ -67,7 +67,7 @@ class MPSelectionTagViewController: UIViewController {
             //not selected -> selected
             seletedTags.append(sender.tag)
             unSelectedTags.remove(at: index)
-            sender.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+            sender.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
             if let subView = sender.subviews.first as? UILabel {
                 subView.textColor = UIColor.white
             }
