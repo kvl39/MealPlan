@@ -88,6 +88,9 @@ class MPDayCalendarViewController: MPTableViewController {
             vc.displayImage = self.selectedCollectViewImageView.image
             vc.recipeData = self.recipeToday[self.selectedRow]
             vc.isSegueFromCalendarView = true
+        } else if (segue.identifier == "PushToCreateRecipe") {
+            guard let vc = segue.destination as? CreateRecipeStepsViewController else {return}
+            vc.selectedDate = "2018 08 08"
         }
     }
     

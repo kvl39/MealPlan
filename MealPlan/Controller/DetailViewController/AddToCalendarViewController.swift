@@ -49,12 +49,22 @@ class AddToCalendarViewController: UIViewController {
             recipeArrayInCalendarFormat.append(eachRecipeData)
         }
         realmManager.saveAddedRecipeInCalendarFormat(recipeArray: recipeArrayInCalendarFormat)
-        self.dismiss(animated: true, completion: nil)
+        
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: ["date": addDate,"recipeData":recipeData])
     }
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        if let navigationController = self.navigationController {
+            navigationController.popToRootViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     

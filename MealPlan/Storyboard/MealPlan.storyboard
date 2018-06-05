@@ -193,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="5296.8000000000002" y="-1015.1424287856073"/>
         </scene>
-        <!--Day Calendar View Controller-->
+        <!--Plan-->
         <scene sceneID="Dfq-yr-OM6">
             <objects>
-                <viewController id="Ned-03-ubW" customClass="MPDayCalendarViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Plan" id="Ned-03-ubW" customClass="MPDayCalendarViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rUR-wr-lTR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,10 +215,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xFd-Yu-a63"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Gel-4l-vLt"/>
+                    <navigationItem key="navigationItem" title="Plan" id="Gel-4l-vLt">
+                        <barButtonItem key="rightBarButtonItem" title="Add Recipe" id="t3Y-Ra-rMA">
+                            <connections>
+                                <segue destination="jcw-KK-Qt1" kind="show" identifier="PushToCreateRecipe" id="evU-C8-7P3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dayCalendarView" destination="H17-0Z-nMI" id="4ge-TZ-Ah0"/>
-                        <segue destination="jcw-KK-Qt1" kind="show" identifier="PushToCreateRecipe" id="kO0-4f-F9M"/>
                         <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="XNb-ZA-w6q"/>
                     </connections>
                 </viewController>

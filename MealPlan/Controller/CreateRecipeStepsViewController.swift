@@ -162,13 +162,19 @@ class CreateRecipeStepsViewController: UIViewController, UIScrollViewDelegate {
             alertmanager.showAlert(viewController: self, text: "Some thing is missing")
         } else {
             let recipe = saveData()
-            if let recipeCalendarModel = recipe {
-                realmManager.saveUserCreatedRecipe(createdRecipe: recipeCalendarModel)
-            }
-            if let image = self.capturedPhoto, let title = self.recipeTitle {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil, userInfo: ["createdRecipeImage": image, "createdRecipeTitle": title])
-            }
-            self.navigationController?.popToRootViewController(animated: true)
+//            if let recipeCalendarModel = recipe {
+//                realmManager.saveUserCreatedRecipe(createdRecipe: recipeCalendarModel)
+//            }
+//            if let image = self.capturedPhoto, let title = self.recipeTitle {
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil, userInfo: ["createdRecipeImage": image, "createdRecipeTitle": title])
+//            }
+//            self.navigationController?.popToRootViewController(animated: true)
+            
+            guard let recipeCalendarModel = recipe else {return}
+            guard let addToCalendarViewController = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "AddToCalendarViewController") as? AddToCalendarViewController else {return}
+            addToCalendarViewController.recipeData = [recipeCalendarModel]
+            //self.present(addToCalendarViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(addToCalendarViewController, animated: true)
         }
  
     }
