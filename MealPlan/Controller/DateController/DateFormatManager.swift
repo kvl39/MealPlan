@@ -39,7 +39,7 @@ class DataFormatManager {
         switch weekday {
         case 1: return "Sun"
         case 2: return "Mon"
-        case 3: return "Tus"
+        case 3: return "Tue"
         case 4: return "Wed"
         case 5: return "Thu"
         case 6: return "Fri"

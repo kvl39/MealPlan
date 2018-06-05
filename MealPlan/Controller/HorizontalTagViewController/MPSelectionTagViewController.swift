@@ -31,7 +31,7 @@ class MPSelectionTagViewController: UIViewController {
         let offset: CGFloat = 15.0
         
         for data in array {
-            let width = data.widthOfString(using: UIFont(name: "Verdana", size: 13.0)!)
+            let width = data.widthOfString(using: UIFont(name: "PingFang TC", size: 16.0)!)
             let checkWholeWidth = xPos + width + 13.0 + 25.5 - offset + 10
             if checkWholeWidth > UIScreen.main.bounds.width - 60.0 {
                 xPos = 15.0
@@ -43,16 +43,17 @@ class MPSelectionTagViewController: UIViewController {
             bgView.layer.cornerRadius = 14.5
             //bgView.backgroundColor = UIColor.clear
             bgView.layer.borderWidth = 2
-            bgView.layer.borderColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1).cgColor
+            bgView.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
+            bgView.layer.borderColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1).cgColor
             bgView.addTarget(self, action: #selector(tagDidTouch(sender:)), for: .touchUpInside)
             bgView.tag = tag
             unSelectedTags.append(tag)
             
             let textLabel = UILabel(frame: CGRect(x: 17.0, y: 0.0, width: width, height: bgView.frame.size.height))
             //textLabel.isUserInteractionEnabled = true
-            textLabel.font = UIFont(name: "Verdana", size: 13.0)
+            textLabel.font = UIFont(name: "PingFang TC", size: 16.0)
             textLabel.text = data
-            textLabel.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+            textLabel.textColor = UIColor.white
             bgView.addSubview(textLabel)
             
             self.view.addSubview(bgView)
