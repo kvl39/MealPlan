@@ -27,7 +27,7 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
         guard let cell = cell as? HorizontalCollectionViewCell else { return }
         print("row:\(indexPath.row)")
         let subImageview = viewArray[indexPath.row]
-        subImageview.layer.cornerRadius = 15
+        subImageview.layer.cornerRadius = 5
         subImageview.layer.masksToBounds = true
         subImageview.translatesAutoresizingMaskIntoConstraints = false
         cell.collectionViewCell.addSubview(subImageview)

@@ -243,12 +243,14 @@ class MPDayCalendarViewController: MPTableViewController {
             
             let dateRecordCell = DateRecord(dateRecordType: .month, year: thisYear, month: thisMonth, day: nil, startDate: nil, endDate: nil, imageViewArray: nil, recipeData: nil)
             
+            let thisMonthName = dateManager.monthTranlation(month: thisMonth)
+            
             if isAtTheBeginning {
-                rowArray[0].insert(.monthType("\(thisYear) \(thisMonth)"), at: 0)
+                rowArray[0].insert(.monthType("\(thisYear) \(thisMonthName)"), at: 0)
                 self.beginningDate = date
                 self.dateRecord.insert(dateRecordCell, at: 0)
             } else {
-                rowArray[0].append(.monthType("\(thisYear) \(thisMonth)"))
+                rowArray[0].append(.monthType("\(thisYear) \(thisMonthName)"))
                 self.endDate = date
                 self.dateRecord.append(dateRecordCell)
             }
