@@ -8,16 +8,24 @@
 
 import UIKit
 
-class DayTableViewCell: UITableViewCell {
+class DayTableViewCell: MPCollectionViewController {
 
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var weekDayLabel: UILabel!
     @IBOutlet weak var viewForHorizontalCollectionView: UIView!
+    @IBOutlet weak var horizontalCollectionView: UICollectionView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configureCollectionView()
+    }
+    
+    func configureCollectionView() {
+        horizontalCollectionView.delegate = self
+        horizontalCollectionView.dataSource = self
+        self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
+        self.itemCount = self.viewArray.count
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,5 +33,7 @@ class DayTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
     
 }

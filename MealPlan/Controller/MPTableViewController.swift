@@ -498,7 +498,8 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? DayItem else {return}
             cell.dayLabel.text = itemStruct.dayLabel
             cell.weekDayLabel.text = itemStruct.weekDayLabel
-            //add horizontal collection view
+            cell.viewArray = itemStruct.viewArray
+            cell.horizontalCollectionView.reloadData()
         }
     }
 

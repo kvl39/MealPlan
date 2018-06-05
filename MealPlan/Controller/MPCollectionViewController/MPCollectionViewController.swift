@@ -25,7 +25,7 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         guard let cell = cell as? HorizontalCollectionViewCell else { return }
-        
+        print("row:\(indexPath.row)")
         let subImageview = viewArray[indexPath.row]
         subImageview.layer.cornerRadius = 5
         subImageview.layer.masksToBounds = true
@@ -49,7 +49,10 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
     
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        viewArray[indexPath.row].removeFromSuperview()
+        if viewArray.count-1 >= indexPath.row {
+            viewArray[indexPath.row].removeFromSuperview()
+        }
+        
     }
     
 }
