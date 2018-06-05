@@ -41,18 +41,22 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNO-VD-GCe">
-                        <rect key="frame" x="20" y="5" width="94" height="45"/>
+                        <rect key="frame" x="20" y="5" width="200" height="45"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ok-7f-Mtg">
-                                <rect key="frame" x="0.0" y="-9" width="48" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ok-7f-Mtg">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="eF2-wQ-fVT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4W-ER-zJ5">
-                                <rect key="frame" x="51" y="10" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4W-ER-zJ5">
+                                <rect key="frame" x="53" y="10" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="k7g-HL-WDa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,8 +64,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="94" id="BRB-EV-NCB"/>
+                            <constraint firstItem="1ok-7f-Mtg" firstAttribute="leading" secondItem="mNO-VD-GCe" secondAttribute="leading" id="AoW-ia-QbJ"/>
+                            <constraint firstAttribute="width" constant="200" id="BRB-EV-NCB"/>
                             <constraint firstAttribute="height" constant="45" id="Cjj-Zu-Ppg"/>
+                            <constraint firstItem="I4W-ER-zJ5" firstAttribute="leading" secondItem="1ok-7f-Mtg" secondAttribute="trailing" constant="5" id="G8I-YG-gci"/>
+                            <constraint firstItem="I4W-ER-zJ5" firstAttribute="top" secondItem="mNO-VD-GCe" secondAttribute="top" constant="10" id="soE-Ml-DEA"/>
+                            <constraint firstAttribute="bottom" secondItem="I4W-ER-zJ5" secondAttribute="bottom" constant="14" id="ubm-n3-HHO"/>
+                            <constraint firstAttribute="bottom" secondItem="1ok-7f-Mtg" secondAttribute="bottom" constant="5" id="y1g-bf-hRb"/>
+                            <constraint firstItem="1ok-7f-Mtg" firstAttribute="top" secondItem="mNO-VD-GCe" secondAttribute="top" id="ykP-Fs-xBX"/>
                         </constraints>
                     </view>
                 </subviews>

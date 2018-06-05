@@ -307,12 +307,13 @@ class MPDayCalendarViewController: MPTableViewController {
                             
                             let dateRecordCell = DateRecord(dateRecordType: .day, year: year, month: month, day: day, startDate: nil, endDate: nil, imageViewArray: imageView, recipeData: recipeArray)
                             
+                            let weekDayName = dateManager.weekdayTranslation(weekday: weekDay)
                             if isAtTheBeginning {
                                 indexOfRow += 1
-                                self.rowArray[0].insert(.dayType(String(day), String(weekDay), imageView, nextDate), at: indexOfRow)
+                                self.rowArray[0].insert(.dayType(String(day), weekDayName, imageView, nextDate), at: indexOfRow)
                                 self.dateRecord.insert(dateRecordCell, at: indexOfRow)
                             } else {
-                                self.rowArray[0].append(.dayType(String(day), String(weekDay), imageView, nextDate))
+                                self.rowArray[0].append(.dayType(String(day), weekDayName, imageView, nextDate))
                                 self.dateRecord.append(dateRecordCell)
                             }
                         }

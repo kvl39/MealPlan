@@ -14,6 +14,8 @@ struct BeginEndOfWeek {
     var endDate: DateComponents
 }
 
+
+
 class DataFormatManager {
 
     let formatter = DateFormatter()
@@ -31,6 +33,19 @@ class DataFormatManager {
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         return formatter.string(from: date)
+    }
+    
+    func weekdayTranslation(weekday: Int)-> String {
+        switch weekday {
+        case 1: return "Sun"
+        case 2: return "Mon"
+        case 3: return "Tus"
+        case 4: return "Wed"
+        case 5: return "Thu"
+        case 6: return "Fri"
+        case 7: return "Sat"
+        default: return "Sun"
+        }
     }
 
     func extractDayFromDate(dateString: String) -> String? {
