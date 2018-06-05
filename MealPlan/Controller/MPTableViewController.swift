@@ -212,7 +212,7 @@ struct MonthItem: MPTableViewCellProtocol {
 
 struct WeekItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "WeekTableViewCell"
-    var rowHeight: Int = 50
+    var rowHeight: Int = 35
     var labelText: String = ""
     
     init(labelText: String) {
