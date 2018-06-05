@@ -159,27 +159,32 @@ class RealmManager {
 
     func fetchRecipe(in dateString: String) -> [RecipeCalendarRealmModel]? {
 
-        let realm = try! Realm()
-
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         guard let date = formatter.date(from: dateString) else {return nil}
 
+        return fetchRecipe(in: date)
+    }
+    
+    func fetchRecipe(in date: Date)-> [RecipeCalendarRealmModel]?  {
+        
+        let realm = try! Realm()
+        
         // Get the current calendar with local time zone
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-
+        
         // Get today's beginning & end
         let dateFrom = calendar.startOfDay(for: date) // eg. 2016-10-10 00:00:00
         let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
         // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
-
+        
         // Set predicate as date being today's date
         let datePredicate = NSPredicate(format: "(%@ <= recipeDay) AND (recipeDay < %@)", argumentArray: [dateFrom, dateTo])
-
+        
         let fetchResult = realm.objects(RecipeCalendarRealmModel.self).filter(datePredicate).toArray(ofType: RecipeCalendarRealmModel.self)
-
+        
         return fetchResult
     }
     

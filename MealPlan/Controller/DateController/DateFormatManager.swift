@@ -38,7 +38,11 @@ class DataFormatManager {
     
     
     func dateToDateComponent(date: Date)-> DateComponents {
-        return calendar.dateComponents([.year, .month, .day], from: date)
+        return calendar.dateComponents([.year, .month, .day, .weekday], from: date)
+    }
+    
+    func dateComponentToDate(dateComponent: DateComponents)-> Date? {
+        return calendar.date(from: dateComponent)
     }
     
     func getNextMonth(date: Date)-> Date? {
@@ -46,9 +50,15 @@ class DataFormatManager {
         return nextMonth
     }
     
+    
     func getPreviousMonth(date: Date)-> Date? {
         guard let previousMonth = calendar.date(byAdding: .month, value: -1, to: date) else {return nil}
         return previousMonth
+    }
+    
+    func getNextDay(date: Date)-> Date? {
+        guard let nextDay = calendar.date(byAdding: .day, value: 1, to: date) else {return nil}
+        return nextDay
     }
     
     //get Weekday for a given year, month, day
@@ -80,6 +90,11 @@ class DataFormatManager {
             beginEndOfWeekArray.append(beginEndOfAWeek)
         }
         return beginEndOfWeekArray
+    }
+    
+    func getDateComponentsInBetween(beginEndOfWeek: BeginEndOfWeek)-> Int? {
+        let dateComponents = calendar.dateComponents([.day], from: beginEndOfWeek.beingDate, to: beginEndOfWeek.endDate)
+        return dateComponents.day
     }
     
     func getBeginOrEndOfAWeek(year: Int, month: Int, indexOfWeekInAMonth: Int, isGettingBegin: Bool)-> DateComponents?{

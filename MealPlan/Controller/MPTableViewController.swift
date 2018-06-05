@@ -23,6 +23,7 @@ enum MPTableViewCellType {
     case addIngredientType
     case monthType(String)
     case weekType(String)
+    case dayType(String, String, [UIView])
 }
 
 extension MPTableViewCellType {
@@ -58,6 +59,8 @@ extension MPTableViewCellType {
             return MonthItem(labelText: labelText)
         case .weekType(let labelText):
             return WeekItem(labelText: labelText)
+        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray):
+            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray)
         }
     }
 }
@@ -217,6 +220,19 @@ struct WeekItem: MPTableViewCellProtocol {
     }
 }
 
+struct DayItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "DayTableViewCell"
+    var rowHeight: Int = 200
+    var dayLabel: String = ""
+    var weekDayLabel: String = ""
+    var viewArray: [UIView] = []
+    
+    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView]) {
+        self.dayLabel = dayLabel
+        self.weekDayLabel = weekDayLabel
+        self.viewArray = viewArray
+    }
+}
 
 class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
     var sectionArray: [String] = []
@@ -268,9 +284,6 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return}
             cell.viewArray = itemStruct.viewArray
             cell.titleArray = itemStruct.titleArray
-            //cell.frame = tableView.bounds
-            //cell.layoutIfNeeded()
-            //cell
             cell.selectionStyle = .none
             if itemStruct.viewArray.count == 0 {
                 cell.hintView.alpha = 1
@@ -337,13 +350,6 @@ extension MPTableViewController {
             imagePickerViewController.resetFrame()
             cell.viewForImagePicker.addSubview(imagePickerViewController.view)
             imagePickerViewController.didMove(toParentViewController: self)
-            //            NSLayoutConstraint.activate([
-            //                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.viewForImagePicker.trailingAnchor, constant: 0),
-            //                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.viewForImagePicker.leadingAnchor, constant: 0),
-            //                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
-            //                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
-            //                ])
-            
             addChildViewController(inputTextViewController)
             inputTextViewController.view.frame = cell.viewForTextField.frame
             inputTextViewController.view.frame.origin.x = 0
@@ -481,10 +487,18 @@ extension MPTableViewController {
             guard let cell = cell as? MonthTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? MonthItem else {return}
             cell.yearMonthLabel.text = itemStruct.labelText
+            print("month label text:\(itemStruct.labelText)")
         case .weekType:
             guard let cell = cell as? WeekTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? WeekItem else {return}
+            print("week lable text:\(itemStruct.labelText)")
             cell.weekLabel.text = itemStruct.labelText
+        case .dayType:
+            guard let cell = cell as? DayTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? DayItem else {return}
+            cell.dayLabel.text = itemStruct.dayLabel
+            cell.weekDayLabel.text = itemStruct.weekDayLabel
+            //add horizontal collection view
         }
     }
 
@@ -536,6 +550,11 @@ extension MPTableViewController {
             return cell
         case .weekType:
             guard let cell = cell as? WeekTableViewCell else {return UITableViewCell()}
+            print("============")
+            print("index Path Row\(indexPath.row)")
+            return cell
+        case .dayType:
+            guard let cell = cell as? DayTableViewCell else {return UITableViewCell()}
             return cell
         }
     }

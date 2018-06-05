@@ -124,6 +124,7 @@
 		ADB6169720B9785800B637D6 /* MPSelectionTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */; };
 		ADB8797520BDB659005FFA8D /* DrawLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB8797420BDB659005FFA8D /* DrawLineView.swift */; };
 		ADC3426720B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */; };
+		ADD231AE20C57B590008B0CD /* DateRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD231AD20C57B590008B0CD /* DateRecordModel.swift */; };
 		ADE8B64C20C4294D00C82E39 /* RecipeStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE8B64B20C4294D00C82E39 /* RecipeStepsViewController.swift */; };
 		ADF599AE20AD35C100C73097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */; };
 		ADF599B220AD394400C73097 /* MPFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF599B120AD394400C73097 /* MPFirebaseManager.swift */; };
@@ -253,6 +254,7 @@
 		ADB6169620B9785800B637D6 /* MPSelectionTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSelectionTagViewController.swift; sourceTree = "<group>"; };
 		ADB8797420BDB659005FFA8D /* DrawLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawLineView.swift; sourceTree = "<group>"; };
 		ADC3426620B7E85D00B2F04C /* MPRecipeDetailStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecipeDetailStepsViewController.swift; sourceTree = "<group>"; };
+		ADD231AD20C57B590008B0CD /* DateRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRecordModel.swift; sourceTree = "<group>"; };
 		ADE8B64B20C4294D00C82E39 /* RecipeStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeStepsViewController.swift; sourceTree = "<group>"; };
 		ADF599AD20AD35C100C73097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADF599B120AD394400C73097 /* MPFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPFirebaseManager.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				AD679E5F209C37ED00039ED4 /* RecipeManager.swift */,
 				AD8A0881209F41B800C3DB84 /* RecipeClassModel.swift */,
 				ADA4342320A03C6E002C7148 /* AddPageTag.swift */,
+				ADD231AD20C57B590008B0CD /* DateRecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				AD5D382720B455E4004B65BF /* NutrientsEditCell.swift in Sources */,
 				AD679E5E209C308500039ED4 /* RecipeProvider.swift in Sources */,
 				ADAA4DAA20AC1319002F9658 /* RecipeNoteView.swift in Sources */,
+				ADD231AE20C57B590008B0CD /* DateRecordModel.swift in Sources */,
 				AD59477A20B0367500B9C915 /* PopupButtonsManager.swift in Sources */,
 				AD53A1F4209FF15D0016E4D1 /* MPTagViewController.swift in Sources */,
 				ADAC0FC220C2965F0060750A /* AddToCalendarViewController.swift in Sources */,
