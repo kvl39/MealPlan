@@ -24,17 +24,17 @@ enum TabBar {
     
     func image() -> UIImage {
         switch self {
-        case .plan: return #imageLiteral(resourceName: "Icon-App-40x40")
-        case .search: return #imageLiteral(resourceName: "binoculars")
-        case .discovery: return #imageLiteral(resourceName: "binoculars")
+        case .plan: return #imageLiteral(resourceName: "Calendar2")
+        case .search: return #imageLiteral(resourceName: "Icon-App-29x29-2")
+        case .discovery: return #imageLiteral(resourceName: "Icon-App-29x29-1")
         }
     }
     
     func selectedImage() -> UIImage {
         switch self {
-        case .plan: return #imageLiteral(resourceName: "Icon-App-40x40").withRenderingMode(.alwaysTemplate)
-        case .search: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
-        case .discovery: return #imageLiteral(resourceName: "binoculars").withRenderingMode(.alwaysTemplate)
+        case .plan: return #imageLiteral(resourceName: "Calendar2").withRenderingMode(.alwaysTemplate)
+        case .search: return #imageLiteral(resourceName: "Icon-App-29x29-2").withRenderingMode(.alwaysTemplate)
+        case .discovery: return #imageLiteral(resourceName: "Icon-App-29x29-1").withRenderingMode(.alwaysTemplate)
         }
     }
 }
