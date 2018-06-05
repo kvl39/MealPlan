@@ -136,10 +136,10 @@ class MPDayCalendarViewController: MPTableViewController {
                     if isAtTheBeginning {
                         rowArray[0].insert(.weekType("\(monthOfBeginDate)/\(dayOfBeginDate)~\(monthOfEndDate)/\(dayOfEndDate)"), at: index)
                         numberOfWeekAddedAtTheBeginning += 1
-                        //self.dateRecord.insert(dateRecordCell, at: index)
+                        self.dateRecord.insert(dateRecordCell, at: index)
                     } else {
                         rowArray[0].append(.weekType("\(monthOfBeginDate)/\(dayOfBeginDate)~\(monthOfEndDate)/\(dayOfEndDate)"))
-                        //self.dateRecord.append(dateRecordCell)
+                        self.dateRecord.append(dateRecordCell)
                     }
                     if let newIndex = fetchData(beginEndDay: beginEndDay, isAtTheBeginning: isAtTheBeginning, indexToInsert: index) {
                         index = newIndex
@@ -168,13 +168,16 @@ class MPDayCalendarViewController: MPTableViewController {
                             let weekDay = nextDateComponent.weekday,
                             let year = nextDateComponent.year,
                             let month = nextDateComponent.month{
+                            
+                            let dateRecordCell = DateRecord(dateRecordType: .day, year: year, month: month, day: day, startDate: nil, endDate: nil, imageViewArray: imageView, recipeData: recipeArray)
+                            
                             if isAtTheBeginning {
                                 indexOfRow += 1
                                 self.rowArray[0].insert(.dayType(String(day), String(weekDay), imageView, nextDate), at: indexOfRow)
-                                //add data to record
+                                self.dateRecord.insert(dateRecordCell, at: indexOfRow)
                             } else {
                                 self.rowArray[0].append(.dayType(String(day), String(weekDay), imageView, nextDate))
-                                //add data to record
+                                self.dateRecord.append(dateRecordCell)
                             }
                         }
                     }
@@ -182,10 +185,6 @@ class MPDayCalendarViewController: MPTableViewController {
             }
         }
         return indexOfRow
-        //get all date in between
-        //fetch all recipe data in between
-        //add rows from those data
-        
     }
     
     func fetchDataInDate(in date: Date,
