@@ -44,14 +44,14 @@ class MPHorizontalScrollViewController: UIViewController, UIScrollViewDelegate {
         }
         if let parentVC = self.parent as? AddByClassificationViewController{
             parentVC.selectedTags = selectedTags
-            parentVC.updateTagView()
+            //parentVC.updateTagView()
         }
     }
     
     func getSelectedTag(tagControllerNumber: Int, tagIndex: Int) {
         if let parentVC = self.parent as? AddByClassificationViewController{
             let selectedTag = self.tagData[tagControllerNumber][tagIndex-10]
-            parentVC.updateTextView(selectedTag: selectedTag)
+            //parentVC.updateTextView(selectedTag: selectedTag)
         }
     }
 

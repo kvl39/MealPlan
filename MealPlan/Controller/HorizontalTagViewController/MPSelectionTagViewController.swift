@@ -43,7 +43,7 @@ class MPSelectionTagViewController: UIViewController {
             bgView.layer.cornerRadius = 14.5
             //bgView.backgroundColor = UIColor.clear
             bgView.layer.borderWidth = 2
-            bgView.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
+            bgView.backgroundColor = UIColor.white
             bgView.layer.borderColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1).cgColor
             bgView.addTarget(self, action: #selector(tagDidTouch(sender:)), for: .touchUpInside)
             bgView.tag = tag
@@ -53,7 +53,7 @@ class MPSelectionTagViewController: UIViewController {
             //textLabel.isUserInteractionEnabled = true
             textLabel.font = UIFont(name: "PingFang TC", size: 16.0)
             textLabel.text = data
-            textLabel.textColor = UIColor.white
+            textLabel.textColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
             bgView.addSubview(textLabel)
             
             self.view.addSubview(bgView)
@@ -63,23 +63,23 @@ class MPSelectionTagViewController: UIViewController {
     }
     
     @objc func tagDidTouch(sender: UIButton) {
-//        if let index =  unSelectedTags.index(of: sender.tag){
-//            //not selected -> selected
-//            seletedTags.append(sender.tag)
-//            unSelectedTags.remove(at: index)
-//            sender.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
-//            if let subView = sender.subviews.first as? UILabel {
-//                subView.textColor = UIColor.white
-//            }
-//        } else if let index = seletedTags.index(of: sender.tag){
-//            //selected -> unselected
-//            unSelectedTags.append(sender.tag)
-//            seletedTags.remove(at: index)
-//            sender.backgroundColor = UIColor.clear
-//            if let subView = sender.subviews.first as? UILabel {
-//                subView.textColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
-//            }
-//        }
+        if let index =  unSelectedTags.index(of: sender.tag){
+            //not selected -> selected
+            seletedTags.append(sender.tag)
+            unSelectedTags.remove(at: index)
+            sender.backgroundColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1)
+            if let subView = sender.subviews.first as? UILabel {
+                subView.textColor = UIColor.white
+            }
+        } else if let index = seletedTags.index(of: sender.tag){
+            //selected -> unselected
+            unSelectedTags.append(sender.tag)
+            seletedTags.remove(at: index)
+            sender.backgroundColor = UIColor.white
+            if let subView = sender.subviews.first as? UILabel {
+                subView.textColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
+            }
+        }
         if let parentVC = self.parent as? MPHorizontalScrollViewController {
             //parentVC.getSelectedTag()
             parentVC.getSelectedTag(tagControllerNumber: self.tagControllerNumber, tagIndex: sender.tag)
