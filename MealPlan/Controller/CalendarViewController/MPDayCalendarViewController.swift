@@ -32,6 +32,31 @@ class MPDayCalendarViewController: MPTableViewController {
     
     func configureObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newRecipeAdded(notification:)), name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil)
+        
+    }
+    
+    @objc func newRecipeAdded(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let recipeData = userInfo["recipeData"] as? [RecipeCalendarRealmModel],
+            let date = userInfo["date"] as? Date else {return}
+        initSetting()
+        //findInsertRow(date: date, recipeData: recipeData)
+    }
+    
+    func initSetting() {
+        self.dateRecord = []
+        self.rowArray[0] = []
+        let date = Date()
+        guard let nextMonth = dateManager.getNextMonth(date: date),
+            let previousMonth = dateManager.getPreviousMonth(date: date) else {return}
+        
+        
+        generateRowsForOneMonth(in: date, isAtTheBeginning: false)
+        generateRowsForOneMonth(in: nextMonth, isAtTheBeginning: false)
+        generateRowsForOneMonth(in: previousMonth, isAtTheBeginning: true)
+        dayCalendarView.contentOffset.y = (CGFloat(4) * CGFloat(50) + CGFloat(100))
+        self.dayCalendarView.reloadData()
     }
     
     
@@ -83,11 +108,122 @@ class MPDayCalendarViewController: MPTableViewController {
         generateRowsForOneMonth(in: previousMonth, isAtTheBeginning: true)
         dayCalendarView.contentOffset.y = (CGFloat(4) * CGFloat(50) + CGFloat(100))
         
-        //get next month of current month
-        //get previous month of current month
-        //generate data for the three months
     }
     
+    
+    
+    func findInsertRow(date: Date, recipeData: [RecipeCalendarRealmModel]) {
+        //this function is triggered when user creates a new recipe, add recipe from search view or from discovery view
+        
+        var imageViewArray = [UIImageView]()
+        for recipe in recipeData {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+            imageView.contentMode = .scaleAspectFill
+            
+            if recipe.withSteps == false {
+                guard let imageURL = recipe.recipeRealmModel?.image else {return}
+                
+                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
+                    guard let error = error else {return}
+                    print(error)
+                }
+                imageViewArray.append(imageView)
+            } else {
+                guard let imageURL = recipe.recipeRealmModelWithSteps?.image else {return}
+                
+                imageView.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
+                    guard let error = error else {return}
+                    print(error)
+                }
+                imageViewArray.append(imageView)
+            }
+            
+        }
+        
+        //find the specific row by year, month, day
+  
+            //find cells in between these two week cell and check if the specific row exists or not
+        var targetRowIndex = 0
+        var nextTargetRowIndex = 0
+        var didFindTargetRow = false
+        var didFindNextTargetRow = false
+        for index in 0..<dateRecord.count {
+            //ignore month cell
+            if dateRecord[index].dateRecordType == .week {
+                //find week cell which the specific date is in between
+                if let startDateComponents = dateRecord[index].startDate,
+                    let endDateComponents = dateRecord[index].endDate,
+                    let startDate = dateManager.dateComponentToDate(dateComponent: startDateComponents),
+                    let endDate = dateManager.dateComponentToDate(dateComponent: endDateComponents) {
+                    
+                    if ((date > startDate) && (date < endDate)) {
+                        targetRowIndex = index
+                        didFindTargetRow = true
+                        //find next week cell's row number
+                        for index1 in targetRowIndex+1..<dateRecord.count {
+                            if dateRecord[index1].dateRecordType == .week {
+                                nextTargetRowIndex = index1
+                                didFindNextTargetRow = true
+                                break
+                            }
+                        }
+                        break
+                    }
+                }
+            }
+        }
+        
+        
+        
+        if didFindTargetRow && didFindNextTargetRow {
+            
+            var sameDayExist = false
+            let todayDateComponents = self.dateManager.dateToDateComponent(date: date)
+            for index in targetRowIndex..<nextTargetRowIndex {
+                if let rowDate = self.dateRecord[index].day,
+                    let addDay = todayDateComponents.day {
+                    if ((self.dateRecord[index].year == todayDateComponents.year) &&
+                        (self.dateRecord[index].month == todayDateComponents.month) &&
+                        (rowDate == addDay)) {
+                        sameDayExist = true
+                        //if the specific row exists, retrieve the image array from record, then add a new row
+                        self.dateRecord[index].imageViewArray! += imageViewArray
+                        guard let day = todayDateComponents.day,
+                            let weekday = todayDateComponents.weekday else {return}
+                        self.rowArray[0][index] = .dayType(String(day), String(weekday), imageViewArray, date)
+                        reloadRow(at: index)
+                        break
+                    }
+                }
+                
+            }
+            if sameDayExist == false {
+                //if the specific row doesn't exist, create a new row withe image view
+                
+                guard let year = todayDateComponents.year,
+                    let month = todayDateComponents.month,
+                    let day = todayDateComponents.day ,
+                    let weekday = todayDateComponents.weekday else {return}
+                let dateRecordCell = DateRecord(dateRecordType: .day, year: year, month: month, day: day, startDate: nil, endDate: nil, imageViewArray: imageViewArray, recipeData: nil)
+                self.dateRecord.insert(dateRecordCell, at: targetRowIndex)
+                self.rowArray[0].insert(.dayType(String(day), String(weekday), imageViewArray, date), at: targetRowIndex)
+                reloadRow(at: targetRowIndex+1)
+            }
+            
+        }
+        
+        
+        
+        
+    }
+    
+    
+    func reloadRow(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        guard let cell = self.dayCalendarView.cellForRow(at: indexPath) as? DayTableViewCell else {return}
+        cell.horizontalCollectionView.reloadData()
+        self.dayCalendarView.reloadData()
+    }
     
     
     func generateRowsForOneMonth(in date: Date, isAtTheBeginning: Bool){

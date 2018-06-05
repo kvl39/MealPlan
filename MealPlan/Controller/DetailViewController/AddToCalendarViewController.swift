@@ -50,7 +50,7 @@ class AddToCalendarViewController: UIViewController {
         }
         realmManager.saveAddedRecipeInCalendarFormat(recipeArray: recipeArrayInCalendarFormat)
         self.dismiss(animated: true, completion: nil)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: [:])
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil, userInfo: ["date": addDate,"recipeData":recipeData])
     }
     
     @IBAction func cancelButtonDidPressed(_ sender: UIButton) {
