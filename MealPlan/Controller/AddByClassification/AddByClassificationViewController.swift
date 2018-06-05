@@ -15,12 +15,10 @@ protocol AddByClassificationDelegateProtocol: class {
 class AddByClassificationViewController: MPTableViewController {
 
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     @IBOutlet weak var containerForScrollView: UIView!
-    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchResultContainerView: UIView!
-    @IBOutlet weak var searchButtonLabel: UILabel!
-    @IBOutlet weak var heightOfTextView: NSLayoutConstraint!
+    @IBOutlet weak var hintLabel: UILabel!
     
     var hintTextArray = [String]()
     var isShowingHint = false
@@ -42,8 +40,7 @@ class AddByClassificationViewController: MPTableViewController {
         super.viewDidLoad()
         print("child count: \(self.childViewControllers.count)")
         initialConfigueViews()
-        searchButton.layer.cornerRadius = 10
-        searchButton.clipsToBounds = true
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +64,11 @@ class AddByClassificationViewController: MPTableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         originalScrollViewY = containerForScrollView.frame.origin.y
-        originalSearchButtonViewY = searchButton.frame.origin.y
-        originalIndicatorViewY = activityIndicator.frame.origin.y
-        guard let textVC = self.embeddedViewControllers[0] as? InputTextViewController else {return}
-        textVC.resetFrame()
-        configureTextViewHints()
+//        originalSearchButtonViewY = searchButton.frame.origin.y
+//        originalIndicatorViewY = activityIndicator.frame.origin.y
+        //guard let textVC = self.embeddedViewControllers[0] as? InputTextViewController else {return}
+//        textVC.resetFrame()
+//        configureTextViewHints()
     }
     
     
@@ -149,8 +146,8 @@ class AddByClassificationViewController: MPTableViewController {
     }
     
     func startActivityIndicator() {
-        activityIndicator.startAnimating()
-        searchButtonLabel.alpha = 0
+//        activityIndicator.startAnimating()
+//        searchButtonLabel.alpha = 0
         for childVC in childViewControllers {
             if let childVC = childVC as? MPHorizontalScrollViewController {
                 childVC.horizontalScrollView.activityIndicator.startAnimating()
@@ -160,8 +157,8 @@ class AddByClassificationViewController: MPTableViewController {
     }
     
     func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        searchButtonLabel.alpha = 1
+        //activityIndicator.stopAnimating()
+        //searchButtonLabel.alpha = 1
         for childVC in childViewControllers {
             if let childVC = childVC as? MPHorizontalScrollViewController {
                 childVC.horizontalScrollView.activityIndicator.stopAnimating()
@@ -194,19 +191,22 @@ class AddByClassificationViewController: MPTableViewController {
         //self.view.layoutIfNeeded()
         //searchButton.alpha = 1 - subViewMoveDistance/30
         containerForScrollView.alpha = 1 - subViewMoveDistance/200
+        hintLabel.alpha = 1 - subViewMoveDistance/200
         let containerForScrollViewY = max(20, -1 * subViewMoveDistance + 120)
+        let hintLabelY = -1 * subViewMoveDistance + 84
         containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: containerForScrollViewY)
+        hintLabel.frame.origin = CGPoint(x: hintLabel.frame.origin.x, y: hintLabelY)
         if subViewMoveDistance > 0 {
-            searchButton.isUserInteractionEnabled = false
+            //searchButton.isUserInteractionEnabled = false
             containerForScrollView.isUserInteractionEnabled = false
         } else {
-            searchButton.isUserInteractionEnabled = true
+            //searchButton.isUserInteractionEnabled = true
             containerForScrollView.isUserInteractionEnabled = true
         }
     }
     
     func updateTextViewHeight(newHeight: CGFloat) {
-        self.heightOfTextView.constant = newHeight
+        //self.heightOfTextView.constant = newHeight
         self.view.layoutIfNeeded()
     }
     
