@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ned-03-ubW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WEV-W8-2VX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -198,11 +198,11 @@
             <objects>
                 <viewController id="Ned-03-ubW" customClass="MPDayCalendarViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rUR-wr-lTR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H17-0Z-nMI">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -215,25 +215,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xFd-Yu-a63"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Gel-4l-vLt"/>
                     <connections>
                         <outlet property="dayCalendarView" destination="H17-0Z-nMI" id="4ge-TZ-Ah0"/>
-                        <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="F3r-Sr-eua"/>
+                        <segue destination="jcw-KK-Qt1" kind="show" identifier="PushToCreateRecipe" id="kO0-4f-F9M"/>
+                        <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="XNb-ZA-w6q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qL-he-f4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2142" y="2146"/>
+            <point key="canvasLocation" x="2055" y="122"/>
         </scene>
         <!--Plan-->
         <scene sceneID="xX4-bw-Ute">
             <objects>
                 <viewController storyboardIdentifier="MealPlanViewController" id="cUz-YE-dot" customClass="MealPlanViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeK-vd-cdX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-lO-jyl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -257,25 +259,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="testTable" destination="ZDh-lO-jyl" id="Aj5-tg-lqg"/>
-                        <segue destination="3ge-nm-NUA" kind="show" identifier="PushToAddPage" id="ENS-uP-iF4"/>
-                        <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="Woe-Rb-AIh"/>
-                        <segue destination="jcw-KK-Qt1" kind="show" identifier="PushToCreateRecipe" id="uL8-ba-wtX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frj-fP-CZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168.8000000000002" y="121.88905547226388"/>
+            <point key="canvasLocation" x="1111" y="1085"/>
         </scene>
         <!--Add Page View Controller-->
         <scene sceneID="ZPS-ve-w5V">
             <objects>
                 <viewController id="3ge-nm-NUA" customClass="AddPageViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z4S-p1-mIv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEw-TW-0Cd">
-                                <rect key="frame" x="162.5" y="5" width="50" height="50"/>
+                                <rect key="frame" x="162.5" y="25" width="50" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jL-y9-lFf">
                                         <rect key="frame" x="5" y="5" width="40.5" height="40"/>
@@ -295,7 +294,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-AR-FOU">
-                                <rect key="frame" x="20" y="55" width="335" height="200"/>
+                                <rect key="frame" x="20" y="75" width="335" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="sqM-Zs-KvL"/>
                                 </constraints>
@@ -304,7 +303,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE0-KG-DZN">
-                                <rect key="frame" x="0.0" y="275" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="295" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="St0-3B-hCr"/>
                                 </constraints>
@@ -313,7 +312,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vch-gQ-48d">
-                                <rect key="frame" x="0.0" y="345" width="375" height="178"/>
+                                <rect key="frame" x="0.0" y="365" width="375" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="178" id="lOS-HA-aci"/>
                                 </constraints>
@@ -322,7 +321,7 @@
                                 </connections>
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvM-a9-MC4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="548"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9gp-tB-HeY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,7 +350,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huu-Ex-MHK">
-                                <rect key="frame" x="50" y="553" width="30" height="30"/>
+                                <rect key="frame" x="50" y="617" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="tQS-AS-ZyA"/>
                                     <constraint firstAttribute="height" constant="30" id="yuP-eJ-8ft"/>
@@ -362,7 +361,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epd-X7-hYb">
-                                <rect key="frame" x="295" y="553" width="30" height="30"/>
+                                <rect key="frame" x="295" y="617" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="6Xh-33-WEN"/>
                                     <constraint firstAttribute="height" constant="30" id="veq-R9-Uvy"/>
@@ -542,7 +541,7 @@
             <objects>
                 <viewController storyboardIdentifier="MPRecipeDetailViewController" id="t4C-j5-CjG" customClass="MPRecipeDetailViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mei-bv-pQG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-O2-MgQ">
@@ -551,7 +550,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Lcf-A9-CPd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -562,7 +561,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-0k-aSV">
-                                <rect key="frame" x="15" y="28" width="20" height="20"/>
+                                <rect key="frame" x="15" y="8" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BUh-Wg-ph0"/>
                                     <constraint firstAttribute="width" constant="20" id="TTh-7l-FsX"/>
@@ -581,7 +580,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImK-Mg-h5T">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="62w-aE-9Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -655,18 +654,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0G2-rc-x6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3248.8000000000002" y="2229.5352323838083"/>
+            <point key="canvasLocation" x="3114" y="1251"/>
         </scene>
         <!--Recipe Detail Web View Controller-->
         <scene sceneID="VgZ-my-OzW">
             <objects>
                 <viewController id="Q2U-Q4-zZO" customClass="MPRecipeDetailWebViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kRR-eM-UGf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JjS-pc-OQQ">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbe-aR-P2s">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -695,7 +694,7 @@
                                 </constraints>
                             </stackView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4D-in-Tac">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -703,7 +702,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rde-ej-R0b">
-                                <rect key="frame" x="0.0" y="20" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -729,18 +728,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LID-au-Ogw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4408.8000000000002" y="2229.5352323838083"/>
+            <point key="canvasLocation" x="4274" y="1251"/>
         </scene>
         <!--Recipe Steps View Controller-->
         <scene sceneID="gDo-Gc-Pab">
             <objects>
                 <viewController id="YqF-th-YUn" customClass="RecipeStepsViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bML-SJ-MEX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-s6-70i">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="553" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PdR-c3-A8D"/>
@@ -754,7 +753,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="07e-I5-Ue6">
-                                <rect key="frame" x="4" y="20" width="367" height="597"/>
+                                <rect key="frame" x="4" y="0.0" width="367" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="raQ-Ir-vCd">
                                     <size key="itemSize" width="50" height="50"/>
@@ -792,7 +791,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMc-Fj-m1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4409" y="2976"/>
+            <point key="canvasLocation" x="4274" y="1996"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jBY-a3-3ee">
@@ -807,7 +806,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <outlet property="delegate" destination="1f9-zg-axY" id="suU-5E-mKw"/>
-                        <segue destination="cUz-YE-dot" kind="relationship" relationship="rootViewController" id="RkN-3z-RX1"/>
+                        <segue destination="Ned-03-ubW" kind="relationship" relationship="rootViewController" id="F4h-tS-DsD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijJ-aB-5tT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1211,7 +1210,4 @@ Long press to reorder</string>
         <image name="drawer" width="512" height="512"/>
         <image name="pureBackground.001" width="1024" height="768"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="F3r-Sr-eua"/>
-    </inferredMetricsTieBreakers>
 </document>

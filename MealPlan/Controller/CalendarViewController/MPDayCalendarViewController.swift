@@ -257,3 +257,11 @@ extension MPDayCalendarViewController {
 
     }
 }
+
+
+extension MPDayCalendarViewController: ZoomingViewController {
+    
+    func zoomingImageView() -> UIImageView? {
+        return self.selectedCollectViewImageView
+    }
+}
