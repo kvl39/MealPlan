@@ -192,17 +192,21 @@ class AddByClassificationViewController: MPTableViewController {
         //searchButton.alpha = 1 - subViewMoveDistance/30
         containerForScrollView.alpha = 1 - subViewMoveDistance/200
         hintLabel.alpha = 1 - subViewMoveDistance/200
-        let containerForScrollViewY = max(20, -1 * subViewMoveDistance + 120)
-        let hintLabelY = -1 * subViewMoveDistance + 84
+        var navigationBarHeight: CGFloat = 0.0
+        if let navigationController = self.navigationController {
+            navigationBarHeight = navigationController.navigationBar.frame.height
+        }
+        let containerForScrollViewY = max(20, -1 * subViewMoveDistance + 120 - navigationBarHeight)
+        let hintLabelY = -1 * subViewMoveDistance + 84 - navigationBarHeight
         containerForScrollView.frame.origin = CGPoint(x: containerForScrollView.frame.origin.x, y: containerForScrollViewY)
         hintLabel.frame.origin = CGPoint(x: hintLabel.frame.origin.x, y: hintLabelY)
-        if subViewMoveDistance > 0 {
-            //searchButton.isUserInteractionEnabled = false
-            containerForScrollView.isUserInteractionEnabled = false
-        } else {
-            //searchButton.isUserInteractionEnabled = true
-            containerForScrollView.isUserInteractionEnabled = true
-        }
+//        if subViewMoveDistance > 0 {
+//            //searchButton.isUserInteractionEnabled = false
+//            containerForScrollView.isUserInteractionEnabled = false
+//        } else {
+//            //searchButton.isUserInteractionEnabled = true
+//            containerForScrollView.isUserInteractionEnabled = true
+//        }
     }
     
     func updateTextViewHeight(newHeight: CGFloat) {
