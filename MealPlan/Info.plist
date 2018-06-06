@@ -58,9 +58,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Take Photos!</string>
+	<string>Zesty needs to access camera to take a picture of your recipe. The picture can only be viewed in Zesty.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Choose image </string>
+	<string>Zesty needs to access your photo library to choose pictures of your cooking process. The picture you choose are not used elsewhere.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
