@@ -45,8 +45,12 @@ class AddToCalendarViewController: UIViewController {
         var recipeArrayInCalendarFormat = [RecipeCalendarRealmModel]()
         guard let addDate = self.dateManager.stringToDate(dateString: calendarVC.selectedDate, to: "yyyy MM dd") else {return}
         for eachRecipeData in recipeData {
-            eachRecipeData.recipeDay = addDate
-            recipeArrayInCalendarFormat.append(eachRecipeData)
+            let newRecipeData = RecipeCalendarRealmModel()
+            newRecipeData.recipeDay = addDate
+            newRecipeData.recipeRealmModelWithSteps = eachRecipeData.recipeRealmModelWithSteps
+            newRecipeData.recipeRealmModel = eachRecipeData.recipeRealmModel
+            newRecipeData.withSteps = eachRecipeData.withSteps
+            recipeArrayInCalendarFormat.append(newRecipeData)
         }
         realmManager.saveAddedRecipeInCalendarFormat(recipeArray: recipeArrayInCalendarFormat)
         
