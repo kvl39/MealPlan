@@ -27,7 +27,7 @@ class AddToCalendarViewController: UIViewController {
     func configureCalendarView() {
         calendarViewController = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "MealPlanViewController") as? MealPlanViewController
         guard let calendarVC = calendarViewController as? MealPlanViewController else {return}
-        calendarVC.view.frame = CGRect(x: 0, y: 52.0, width: view.frame.width, height: view.frame.height-52-50)
+        calendarVC.view.frame = CGRect(x: 0, y: 70.0, width: view.frame.width, height: view.frame.height-70-50)
         self.addChildViewController(calendarVC)
         self.view.addSubview(calendarVC.view)
         calendarVC.isSegueFromDetaiView = true

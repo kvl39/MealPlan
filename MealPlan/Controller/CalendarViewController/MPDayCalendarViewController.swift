@@ -111,7 +111,8 @@ class MPDayCalendarViewController: MPTableViewController {
         
         
         guard let nextMonth = dateManager.getNextMonth(date: date),
-            let previousMonth = dateManager.getPreviousMonth(date: date) else {return}
+            let previousMonth = dateManager.getPreviousMonth(date: date),
+            let previousTwoMonth = dateManager.getPreviousMonth(date: previousMonth) else {return}
         
         
         generateRowsForOneMonth(in: date, isAtTheBeginning: false)
@@ -393,16 +394,17 @@ extension MPDayCalendarViewController {
             guard let nextMonth = dateManager.getNextMonth(date: self.endDate) else {return}
             generateRowsForOneMonth(in: nextMonth, isAtTheBeginning: false)
             dayCalendarView.reloadData()
-        } else if scrollPosition < top + buffer {
-            // Add more dates to the top
-            guard let previousMonth = dateManager.getPreviousMonth(date: self.beginningDate) else {return}
-            print("previousMonth:\(previousMonth)")
-            generateRowsForOneMonth(in: previousMonth, isAtTheBeginning: true)
-    
-            // Update the tableView and contentOffset
-            dayCalendarView.reloadData()
-            dayCalendarView.contentOffset.y +=  (CGFloat(self.numberOfWeekAddedAtTheBeginning) * CGFloat(50) + CGFloat(100))
         }
+//        else if scrollPosition < top + buffer {
+//            // Add more dates to the top
+//            guard let previousMonth = dateManager.getPreviousMonth(date: self.beginningDate) else {return}
+//            print("previousMonth:\(previousMonth)")
+//            generateRowsForOneMonth(in: previousMonth, isAtTheBeginning: true)
+//    
+//            // Update the tableView and contentOffset
+//            dayCalendarView.reloadData()
+//            dayCalendarView.contentOffset.y +=  (CGFloat(self.numberOfWeekAddedAtTheBeginning) * CGFloat(50) + CGFloat(100))
+//        }
 
     }
 }

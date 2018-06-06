@@ -140,11 +140,22 @@
                                     <action selector="cancelButtonDidPressed:" destination="DZT-3s-C4M" eventType="touchUpInside" id="mzn-7Y-flE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a day to add the recipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WU-bX-mbx">
+                                <rect key="frame" x="64" y="28" width="286" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="EqH-7Q-PLH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NBF-fA-vYW" firstAttribute="leading" secondItem="Dhn-hA-EPS" secondAttribute="leading" constant="15" id="I8n-cy-k1u"/>
+                            <constraint firstItem="Dhn-hA-EPS" firstAttribute="trailing" secondItem="8WU-bX-mbx" secondAttribute="trailing" constant="25" id="a7g-pn-uel"/>
                             <constraint firstItem="NBF-fA-vYW" firstAttribute="top" secondItem="EqZ-9N-21O" secondAttribute="top" constant="32" id="ckR-Kn-C9y"/>
+                            <constraint firstItem="8WU-bX-mbx" firstAttribute="centerY" secondItem="NBF-fA-vYW" secondAttribute="centerY" id="czh-uI-Rhi"/>
                             <constraint firstItem="eBf-wW-lBT" firstAttribute="leading" secondItem="Dhn-hA-EPS" secondAttribute="leading" id="iNl-fq-wU1"/>
                             <constraint firstItem="Dhn-hA-EPS" firstAttribute="bottom" secondItem="eBf-wW-lBT" secondAttribute="bottom" id="o6i-7U-YCc"/>
                             <constraint firstItem="Dhn-hA-EPS" firstAttribute="trailing" secondItem="eBf-wW-lBT" secondAttribute="trailing" id="tTl-gc-Qht"/>
