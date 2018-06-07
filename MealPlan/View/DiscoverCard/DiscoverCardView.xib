@@ -78,7 +78,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="SpX-ve-jDe" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GYK-nn-uEr"/>
                 <constraint firstItem="SpX-ve-jDe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="M2g-iK-Mvw"/>

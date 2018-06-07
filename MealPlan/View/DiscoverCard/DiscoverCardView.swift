@@ -19,6 +19,7 @@ class DiscoverCardView: UIView {
     
     var pagingPointArray = [UIView]()
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()

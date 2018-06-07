@@ -264,6 +264,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="testTable" destination="ZDh-lO-jyl" id="Aj5-tg-lqg"/>
+                        <segue destination="t4C-j5-CjG" kind="show" identifier="PushToDetailPage" id="1NB-gu-rvI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frj-fP-CZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,7 +547,7 @@
             <objects>
                 <viewController storyboardIdentifier="MPRecipeDetailViewController" id="t4C-j5-CjG" customClass="MPRecipeDetailViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mei-bv-pQG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-O2-MgQ">
@@ -555,7 +556,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Lcf-A9-CPd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="684"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -566,7 +567,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fA-0k-aSV">
-                                <rect key="frame" x="15" y="8" width="20" height="20"/>
+                                <rect key="frame" x="15" y="52" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="BUh-Wg-ph0"/>
                                     <constraint firstAttribute="width" constant="20" id="TTh-7l-FsX"/>
@@ -585,7 +586,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImK-Mg-h5T">
-                                <rect key="frame" x="0.0" y="640" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="62w-aE-9Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -666,11 +667,11 @@
             <objects>
                 <viewController id="Q2U-Q4-zZO" customClass="MPRecipeDetailWebViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kRR-eM-UGf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JjS-pc-OQQ">
-                                <rect key="frame" x="0.0" y="640" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbe-aR-P2s">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -699,7 +700,7 @@
                                 </constraints>
                             </stackView>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4D-in-Tac">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="640"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="684"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -707,7 +708,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rde-ej-R0b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="2"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -740,11 +741,11 @@
             <objects>
                 <viewController id="YqF-th-YUn" customClass="RecipeStepsViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bML-SJ-MEX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZ2-s6-70i">
-                                <rect key="frame" x="0.0" y="640" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PdR-c3-A8D"/>
@@ -758,7 +759,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="07e-I5-Ue6">
-                                <rect key="frame" x="4" y="0.0" width="367" height="640"/>
+                                <rect key="frame" x="4" y="44" width="367" height="684"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="raQ-Ir-vCd">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1215,4 +1216,7 @@ Long press to reorder</string>
         <image name="drawer" width="512" height="512"/>
         <image name="pureBackground.001" width="1024" height="768"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1NB-gu-rvI"/>
+    </inferredMetricsTieBreakers>
 </document>
