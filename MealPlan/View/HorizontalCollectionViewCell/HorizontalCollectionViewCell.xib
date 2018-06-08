@@ -20,7 +20,37 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-j3-80G">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="189.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-Fm-73o">
+                                <rect key="frame" x="150" y="10" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPk-qQ-QZD">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-Re-gb9">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qPk-qQ-QZD" secondAttribute="bottom" id="3g9-u5-PPy"/>
+                                    <constraint firstAttribute="trailing" secondItem="IqH-Re-gb9" secondAttribute="trailing" id="94M-Nq-0NY"/>
+                                    <constraint firstItem="IqH-Re-gb9" firstAttribute="top" secondItem="GTc-Fm-73o" secondAttribute="top" id="Fad-bL-SJ6"/>
+                                    <constraint firstAttribute="width" constant="40" id="Kwc-Fd-dXc"/>
+                                    <constraint firstAttribute="trailing" secondItem="qPk-qQ-QZD" secondAttribute="trailing" id="OQ4-n4-Fym"/>
+                                    <constraint firstAttribute="bottom" secondItem="IqH-Re-gb9" secondAttribute="bottom" id="Q1e-br-9bN"/>
+                                    <constraint firstItem="IqH-Re-gb9" firstAttribute="leading" secondItem="GTc-Fm-73o" secondAttribute="leading" id="VYm-MY-JTs"/>
+                                    <constraint firstItem="qPk-qQ-QZD" firstAttribute="top" secondItem="GTc-Fm-73o" secondAttribute="top" id="Zi2-Y1-gwS"/>
+                                    <constraint firstItem="qPk-qQ-QZD" firstAttribute="leading" secondItem="GTc-Fm-73o" secondAttribute="leading" id="g31-F6-2gs"/>
+                                    <constraint firstAttribute="height" constant="40" id="jWF-0n-VmN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GTc-Fm-73o" secondAttribute="trailing" constant="10" id="Sl8-ul-3VZ"/>
+                            <constraint firstItem="GTc-Fm-73o" firstAttribute="top" secondItem="PAN-j3-80G" secondAttribute="top" constant="10" id="eoq-PT-asO"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olt-Km-QX7">
                         <rect key="frame" x="0.0" y="189.5" width="200" height="30"/>
@@ -46,8 +76,14 @@ dasf</string>
             <connections>
                 <outlet property="RecipeNameLabel" destination="olt-Km-QX7" id="8k4-5A-gBM"/>
                 <outlet property="collectionViewCell" destination="PAN-j3-80G" id="w6W-s0-3SH"/>
+                <outlet property="deleteButton" destination="qPk-qQ-QZD" id="8bu-Nm-cz3"/>
+                <outlet property="deleteButtonView" destination="GTc-Fm-73o" id="1B7-v9-cZz"/>
+                <outlet property="deleteImageView" destination="IqH-Re-gb9" id="AKA-Kq-9Kg"/>
             </connections>
             <point key="canvasLocation" x="-72" y="149"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="delete" width="512" height="512"/>
+    </resources>
 </document>

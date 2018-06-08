@@ -13,6 +13,9 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var collectionViewCell: UIView!
     @IBOutlet weak var RecipeNameLabel: UILabel!
+    @IBOutlet weak var deleteButtonView: UIView!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var deleteImageView: UIImageView!
     
     
     override func awakeFromNib() {

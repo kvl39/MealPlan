@@ -31,7 +31,12 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
         subImageview.layer.cornerRadius = 5
         subImageview.layer.masksToBounds = true
         subImageview.translatesAutoresizingMaskIntoConstraints = false
+        subImageview.tag = 30
         cell.collectionViewCell.addSubview(subImageview)
+        cell.deleteButtonView.alpha = 1
+        cell.deleteButton.tag = indexPath.row
+        cell.bringSubview(toFront: cell.deleteButton)
+        cell.deleteButton.addTarget(self, action: #selector(deleteButtonDidPressed(sender:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
             subImageview.leadingAnchor.constraint(equalTo: cell.collectionViewCell.leadingAnchor, constant: 0),
             subImageview.trailingAnchor.constraint(equalTo: cell.collectionViewCell.trailingAnchor, constant: 0),
@@ -40,6 +45,9 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
             ])
         
     }
+    
+    @objc func deleteButtonDidPressed(sender: UIButton) {}
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell else {
@@ -50,10 +58,16 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
     
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if viewArray.count-1 >= indexPath.row {
-            viewArray[indexPath.row].removeFromSuperview()
+//        if viewArray.count-1 >= indexPath.row {
+//            viewArray[indexPath.row].removeFromSuperview()
+//        }
+        if let item = collectionView.cellForItem(at: indexPath) as? HorizontalCollectionViewCell {
+            for subview in item.collectionViewCell.subviews {
+                if subview.tag == 30 {
+                    subview.removeFromSuperview()
+                }
+            }
         }
-        
     }
     
 }

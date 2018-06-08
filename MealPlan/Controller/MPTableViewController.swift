@@ -238,7 +238,7 @@ struct DayItem: MPTableViewCellProtocol {
     }
 }
 
-class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
+class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate, DayTableViewCellProtocol {
     var sectionArray: [String] = []
     var rowArray: [[MPTableViewCellType]] = []
     var rowControllerArray : [[UIViewController]] = []
@@ -246,6 +246,7 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
     var hintLabels = HintLabels()
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
+    func deleteItem(at row: Int, itemNumber: Int) {}
 }
 
 extension MPTableViewController {
@@ -509,6 +510,8 @@ extension MPTableViewController {
             cell.today = itemStruct.today
             cell.horizontalCollectionView.reloadData()
             cell.selectionStyle = .none
+            cell.row = indexPath.row
+            cell.delegate = self
         }
     }
 
@@ -586,6 +589,13 @@ extension MPTableViewController {
                 controller.willMove(toParentViewController: nil)
                 controller.view.removeFromSuperview()
                 controller.removeFromParentViewController()
+            }
+        }
+        if let cell = tableView.cellForRow(at: indexPath) as? DayTableViewCell {
+            for subview in cell.subviews {
+                if subview.tag == 30 {
+                    subview.removeFromSuperview()
+                }
             }
         }
     }

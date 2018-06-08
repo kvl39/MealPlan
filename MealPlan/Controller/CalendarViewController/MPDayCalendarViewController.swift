@@ -381,6 +381,11 @@ class MPDayCalendarViewController: MPTableViewController {
         completion(fetchResult, imageViewArray, recipeNameArray)
         
     }
+    
+    
+    override func deleteItem(at row: Int, itemNumber: Int) {
+        self.dateRecord[row].imageViewArray?.remove(at: itemNumber)
+    }
 
 }
 
@@ -419,3 +424,5 @@ extension MPDayCalendarViewController: ZoomingViewController {
         return self.selectedCollectViewImageView
     }
 }
+
+

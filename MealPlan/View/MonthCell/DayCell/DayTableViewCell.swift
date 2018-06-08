@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DayTableViewCellProtocol: class {
+    func deleteItem(at row: Int, itemNumber: Int)
+}
+
 class DayTableViewCell: MPCollectionViewController {
 
     @IBOutlet weak var dayLabel: UILabel!
@@ -17,7 +21,8 @@ class DayTableViewCell: MPCollectionViewController {
     
     var today: Date = Date()
     var dateManager = DataFormatManager()
-    
+    var row: Int = 0
+    weak var delegate: DayTableViewCellProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +50,14 @@ class DayTableViewCell: MPCollectionViewController {
         guard let imageView = self.viewArray[indexPath.row] as? UIImageView else {return}
         //let todayDateString = dateManager.dateToString(date: self.today)
         NotificationCenter.default.post(name: Notification.Name("collectionViewItemDidSelect"), object: nil, userInfo: ["imageView": imageView, "row": indexPath.row, "today": today])
+    }
+    
+    override func deleteButtonDidPressed(sender: UIButton) {
+        //sender.tag
+        //self.row
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        self.horizontalCollectionView.deleteItems(at: [indexPath])
+        self.delegate?.deleteItem(at: self.row, itemNumber: sender.tag)
     }
     
     
