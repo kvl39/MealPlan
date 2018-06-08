@@ -29,6 +29,7 @@ class DayTableViewCell: MPCollectionViewController {
         horizontalCollectionView.dataSource = self
         self.horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
         self.itemCount = self.viewArray.count
+        horizontalCollectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
