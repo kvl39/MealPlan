@@ -23,7 +23,7 @@ enum MPTableViewCellType {
     case addIngredientType
     case monthType(String)
     case weekType(String)
-    case dayType(String, String, [UIView], Date)
+    case dayType(String, String, [UIView], [String], Date)
 }
 
 extension MPTableViewCellType {
@@ -59,8 +59,8 @@ extension MPTableViewCellType {
             return MonthItem(labelText: labelText)
         case .weekType(let labelText):
             return WeekItem(labelText: labelText)
-        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray, let today):
-            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray, today: today)
+        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray, let recipeNameArray, let today):
+            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray, recipeNameArray: recipeNameArray,today: today)
         }
     }
 }
@@ -222,16 +222,18 @@ struct WeekItem: MPTableViewCellProtocol {
 
 struct DayItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "DayTableViewCell"
-    var rowHeight: Int = 250
+    var rowHeight: Int = 275
     var dayLabel: String = ""
     var weekDayLabel: String = ""
     var viewArray: [UIView] = []
+    var recipeNameArray: [String] = []
     var today =  Date()
     
-    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView], today: Date) {
+    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView], recipeNameArray: [String],today: Date) {
         self.dayLabel = dayLabel
         self.weekDayLabel = weekDayLabel
         self.viewArray = viewArray
+        self.recipeNameArray = recipeNameArray
         self.today = today
     }
 }
@@ -503,6 +505,7 @@ extension MPTableViewController {
             cell.dayLabel.text = itemStruct.dayLabel
             cell.weekDayLabel.text = itemStruct.weekDayLabel
             cell.viewArray = itemStruct.viewArray
+            cell.titleArray = itemStruct.recipeNameArray
             cell.today = itemStruct.today
             cell.horizontalCollectionView.reloadData()
             cell.selectionStyle = .none

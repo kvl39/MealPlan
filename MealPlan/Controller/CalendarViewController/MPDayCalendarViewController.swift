@@ -202,7 +202,7 @@ class MPDayCalendarViewController: MPTableViewController {
                         self.dateRecord[index].imageViewArray! += imageViewArray
                         guard let day = todayDateComponents.day,
                             let weekday = todayDateComponents.weekday else {return}
-                        self.rowArray[0][index] = .dayType(String(day), String(weekday), imageViewArray, date)
+//                        self.rowArray[0][index] = .dayType(String(day), String(weekday), imageViewArray, date)
                         reloadRow(at: index)
                         break
                     }
@@ -218,7 +218,7 @@ class MPDayCalendarViewController: MPTableViewController {
                     let weekday = todayDateComponents.weekday else {return}
                 let dateRecordCell = DateRecord(dateRecordType: .day, year: year, month: month, day: day, startDate: nil, endDate: nil, imageViewArray: imageViewArray, recipeData: nil)
                 self.dateRecord.insert(dateRecordCell, at: targetRowIndex)
-                self.rowArray[0].insert(.dayType(String(day), String(weekday), imageViewArray, date), at: targetRowIndex)
+//                self.rowArray[0].insert(.dayType(String(day), String(weekday), imageViewArray, date), at: targetRowIndex)
                 reloadRow(at: targetRowIndex+1)
             }
             
@@ -311,7 +311,7 @@ class MPDayCalendarViewController: MPTableViewController {
         for index in 0..<numberOfDayInBetween {
             if let nextDate = dateManager.getNextDay(date: dateInBetween) {
                 dateInBetween = nextDate
-                self.fetchDataInDate(in: nextDate) { (recipeArray, imageView) in
+                self.fetchDataInDate(in: nextDate) { (recipeArray, imageView, recipeNameArray) in
                     if recipeArray.count > 0 {
                         let nextDateComponent = dateManager.dateToDateComponent(date: nextDate)
                         if let day = nextDateComponent.day,
@@ -324,10 +324,10 @@ class MPDayCalendarViewController: MPTableViewController {
                             let weekDayName = dateManager.weekdayTranslation(weekday: weekDay)
                             if isAtTheBeginning {
                                 indexOfRow += 1
-                                self.rowArray[0].insert(.dayType(String(day), weekDayName, imageView, nextDate), at: indexOfRow)
+                                self.rowArray[0].insert(.dayType(String(day), weekDayName, imageView, recipeNameArray, nextDate), at: indexOfRow)
                                 self.dateRecord.insert(dateRecordCell, at: indexOfRow)
                             } else {
-                                self.rowArray[0].append(.dayType(String(day), weekDayName, imageView, nextDate))
+                                self.rowArray[0].append(.dayType(String(day), weekDayName, imageView, recipeNameArray, nextDate))
                                 self.dateRecord.append(dateRecordCell)
                             }
                         }
@@ -339,12 +339,13 @@ class MPDayCalendarViewController: MPTableViewController {
     }
     
     func fetchDataInDate(in date: Date,
-                         completion: ([RecipeCalendarRealmModel],[UIImageView])-> Void) {
+                         completion: ([RecipeCalendarRealmModel],[UIImageView], [String])-> Void) {
         let result = self.realmManager.fetchRecipe(in: date)
         
         guard let fetchResult = result else {return}
         //self.recipeToday = fetchResult
         var imageViewArray = [UIImageView]()
+        var recipeNameArray = [String]()
         for recipe in fetchResult {
             if recipe.withSteps == false {
                 guard let recipeLabel = recipe.recipeRealmModel?.label,
@@ -358,6 +359,7 @@ class MPDayCalendarViewController: MPTableViewController {
                 }
                 
                 imageViewArray.append(imageView)
+                recipeNameArray.append(recipeLabel)
                 //self.recipeTitleArray.append(recipeLabel)
                 //self.recipeImageArray.append(imageView)
                 
@@ -369,13 +371,14 @@ class MPDayCalendarViewController: MPTableViewController {
                 imageView.image = recipeImage
                 imageView.contentMode = .scaleAspectFill
                 imageViewArray.append(imageView)
+                recipeNameArray.append(recipeLabel)
                 //self.recipeTitleArray.append(recipeLabel)
                 //self.recipeImageArray.append(imageView)
             }
             
         }
         
-        completion(fetchResult, imageViewArray)
+        completion(fetchResult, imageViewArray, recipeNameArray)
         
     }
 

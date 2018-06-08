@@ -12,7 +12,9 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
 
     
     @IBOutlet weak var collectionViewCell: UIView!
-
+    @IBOutlet weak var RecipeNameLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
