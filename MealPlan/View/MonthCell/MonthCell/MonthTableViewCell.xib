@@ -19,17 +19,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018 Feb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjV-Gf-gf3">
-                        <rect key="frame" x="20" y="5" width="280" height="89.5"/>
+                        <rect key="frame" x="55" y="15" width="210" height="70"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="50"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otK-Ng-wcn">
+                        <rect key="frame" x="44" y="30" width="5" height="41"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.6588235294117647" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="6bT-RO-zd8"/>
+                            <constraint firstAttribute="width" constant="5" id="bGH-eb-epA"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="YjV-Gf-gf3" secondAttribute="bottom" constant="5" id="2va-ba-ydc"/>
-                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8BD-bK-Xbb"/>
-                    <constraint firstAttribute="trailing" secondItem="YjV-Gf-gf3" secondAttribute="trailing" constant="20" id="C5B-bz-o57"/>
-                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="zb1-RQ-SNM"/>
+                    <constraint firstItem="otK-Ng-wcn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P5T-8B-Kfd"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rfk-7X-3af"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Wd8-7M-o5A"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="leading" secondItem="otK-Ng-wcn" secondAttribute="trailing" constant="6" id="hQC-RD-vpL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
