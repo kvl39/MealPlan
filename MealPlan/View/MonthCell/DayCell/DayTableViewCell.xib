@@ -74,11 +74,33 @@
                             <constraint firstItem="1ok-7f-Mtg" firstAttribute="top" secondItem="mNO-VD-GCe" secondAttribute="top" id="ykP-Fs-xBX"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmn-pe-urc">
+                        <rect key="frame" x="348" y="10" width="46" height="31"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swr-OE-ge4">
+                                <rect key="frame" x="0.0" y="0.0" width="46" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="shareButtonDidPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cDj-nv-FUo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Swr-OE-ge4" firstAttribute="leading" secondItem="hmn-pe-urc" secondAttribute="leading" id="0rv-wS-jKn"/>
+                            <constraint firstAttribute="bottom" secondItem="Swr-OE-ge4" secondAttribute="bottom" id="CE4-lf-oHk"/>
+                            <constraint firstItem="Swr-OE-ge4" firstAttribute="top" secondItem="hmn-pe-urc" secondAttribute="top" id="GBR-Z4-9jM"/>
+                            <constraint firstAttribute="trailing" secondItem="Swr-OE-ge4" secondAttribute="trailing" id="IUN-aY-JAH"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mNO-VD-GCe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Avv-1B-SHp"/>
                     <constraint firstItem="0Tt-5h-W93" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hh9-1b-dpT"/>
+                    <constraint firstItem="hmn-pe-urc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="IcO-eU-mfw"/>
                     <constraint firstItem="mNO-VD-GCe" firstAttribute="leading" secondItem="iHn-td-510" secondAttribute="leading" id="LLG-vT-0M6"/>
+                    <constraint firstAttribute="trailing" secondItem="hmn-pe-urc" secondAttribute="trailing" constant="30" id="cE3-3i-ILl"/>
+                    <constraint firstItem="0Tt-5h-W93" firstAttribute="top" secondItem="hmn-pe-urc" secondAttribute="bottom" constant="9" id="n0A-rK-R59"/>
                     <constraint firstAttribute="trailing" secondItem="0Tt-5h-W93" secondAttribute="trailing" id="nlu-Bc-xf5"/>
                     <constraint firstItem="0Tt-5h-W93" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="rAj-ZQ-rI1"/>
                     <constraint firstAttribute="bottom" secondItem="0Tt-5h-W93" secondAttribute="bottom" constant="5" id="yMb-lT-yuR"/>
@@ -88,10 +110,11 @@
             <connections>
                 <outlet property="dayLabel" destination="1ok-7f-Mtg" id="HM4-Lu-8lr"/>
                 <outlet property="horizontalCollectionView" destination="iHn-td-510" id="vbd-w1-7Bk"/>
+                <outlet property="shareButton" destination="Swr-OE-ge4" id="7ge-ln-St0"/>
                 <outlet property="viewForHorizontalCollectionView" destination="0Tt-5h-W93" id="cLB-jW-lBA"/>
                 <outlet property="weekDayLabel" destination="I4W-ER-zJ5" id="i2E-eo-kIZ"/>
             </connections>
-            <point key="canvasLocation" x="-18" y="131"/>
+            <point key="canvasLocation" x="-18" y="130.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -99,4 +99,23 @@ class AlertManager {
             animated: true,
             completion: nil)
     }
+    
+    
+    func showShareActionSheet(viewController: UIViewController, date:String, shareFunction: @escaping ()-> Void) {
+        let optionMenu = UIAlertController(title: nil, message: "share my \(date) menu", preferredStyle: .actionSheet)
+        let shareAction = UIAlertAction(title: "Confirm", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            //share to the internet
+            shareFunction()
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(shareAction)
+        optionMenu.addAction(cancelAction)
+        
+        viewController.present(optionMenu, animated: true, completion: nil)
+    }
 }

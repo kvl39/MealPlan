@@ -19,6 +19,8 @@ class MPDayCalendarViewController: MPTableViewController {
     var dateRecord = [DateRecord]()
     var realmManager = RealmManager()
     var saveImageManager = SaveImageManager()
+    var alertManager = AlertManager()
+    var firebaseManager = MPFirebaseManager()
     var selectedCollectViewImageView = UIImageView()
     var selectedRow = 0
     var recipeToday: [RecipeCalendarRealmModel] = []
@@ -385,6 +387,19 @@ class MPDayCalendarViewController: MPTableViewController {
     
     override func deleteItem(at row: Int, itemNumber: Int) {
         self.dateRecord[row].imageViewArray?.remove(at: itemNumber)
+    }
+    
+    override func shareItem(date: Date) {
+        let dateString = self.dateManager.dateToString(date: date)
+        alertManager.showShareActionSheet(viewController: self, date: dateString) { () in
+            self.shareFunction(date: date)
+        }
+    }
+    
+    func shareFunction(date: Date) {
+        let selectedDate = self.dateManager.dateToString(date: date)
+        guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
+        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
     }
 
 }

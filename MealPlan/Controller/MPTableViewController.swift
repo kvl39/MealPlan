@@ -247,6 +247,7 @@ class MPTableViewController: UIViewController, UITableViewDataSource, UITableVie
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
     func deleteItem(at row: Int, itemNumber: Int) {}
+    func shareItem(date: Date) {}
 }
 
 extension MPTableViewController {

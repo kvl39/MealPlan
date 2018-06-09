@@ -10,6 +10,7 @@ import UIKit
 
 protocol DayTableViewCellProtocol: class {
     func deleteItem(at row: Int, itemNumber: Int)
+    func shareItem(date: Date)
 }
 
 class DayTableViewCell: MPCollectionViewController {
@@ -18,11 +19,15 @@ class DayTableViewCell: MPCollectionViewController {
     @IBOutlet weak var weekDayLabel: UILabel!
     @IBOutlet weak var viewForHorizontalCollectionView: UIView!
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
+    @IBOutlet weak var shareButton: UIButton!
+    
     
     var today: Date = Date()
     var dateManager = DataFormatManager()
     var row: Int = 0
     weak var delegate: DayTableViewCellProtocol?
+    var realmManager = RealmManager()
+    var firebaseManager = MPFirebaseManager()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,8 +61,16 @@ class DayTableViewCell: MPCollectionViewController {
         //sender.tag
         //self.row
         let indexPath = IndexPath(item: sender.tag, section: 0)
+        //self.delegate?.deleteItem(at: self.row, itemNumber: sender.tag)
+        self.viewArray.remove(at: indexPath.row)
         self.horizontalCollectionView.deleteItems(at: [indexPath])
-        self.delegate?.deleteItem(at: self.row, itemNumber: sender.tag)
+    }
+    
+    
+    @IBAction func shareButtonDidPressed(_ sender: UIButton) {
+        //show action sheet
+        self.delegate?.shareItem(date: today)
+        
     }
     
     

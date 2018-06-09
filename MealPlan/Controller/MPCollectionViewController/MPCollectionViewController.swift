@@ -33,9 +33,9 @@ extension MPCollectionViewController: UICollectionViewDelegate, UICollectionView
         subImageview.translatesAutoresizingMaskIntoConstraints = false
         subImageview.tag = 30
         cell.collectionViewCell.addSubview(subImageview)
-        cell.deleteButtonView.alpha = 1
+        cell.deleteButtonView.alpha = 0
         cell.deleteButton.tag = indexPath.row
-        cell.bringSubview(toFront: cell.deleteButton)
+        cell.collectionViewCell.bringSubview(toFront: cell.deleteButtonView)
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonDidPressed(sender:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
             subImageview.leadingAnchor.constraint(equalTo: cell.collectionViewCell.leadingAnchor, constant: 0),
