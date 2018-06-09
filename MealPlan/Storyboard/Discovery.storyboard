@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kte-sz-0DA">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,11 +14,35 @@
             <objects>
                 <viewController id="kte-sz-0DA" customClass="DiscoveryPageViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SpI-38-2lx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBj-Ju-Yqz">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vy-90-PhG">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="trailing" secondItem="6vy-90-PhG" secondAttribute="trailing" id="19j-b2-Kkc"/>
+                            <constraint firstItem="PBj-Ju-Yqz" firstAttribute="leading" secondItem="KJD-66-jgC" secondAttribute="leading" id="2Ne-FD-qIv"/>
+                            <constraint firstItem="PBj-Ju-Yqz" firstAttribute="top" secondItem="KJD-66-jgC" secondAttribute="top" id="9oS-5U-JqE"/>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="bottom" secondItem="6vy-90-PhG" secondAttribute="bottom" id="Eme-3Q-h2F"/>
+                            <constraint firstItem="6vy-90-PhG" firstAttribute="top" secondItem="KJD-66-jgC" secondAttribute="top" id="LoE-U8-6mf"/>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="bottom" secondItem="PBj-Ju-Yqz" secondAttribute="bottom" id="efh-uF-HB4"/>
+                            <constraint firstItem="6vy-90-PhG" firstAttribute="leading" secondItem="KJD-66-jgC" secondAttribute="leading" id="ixR-is-zxP"/>
+                            <constraint firstItem="KJD-66-jgC" firstAttribute="trailing" secondItem="PBj-Ju-Yqz" secondAttribute="trailing" id="oN4-t5-KJu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KJD-66-jgC"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="PBj-Ju-Yqz" id="LTc-Rx-ZKe"/>
+                        <outlet property="cardBaseView" destination="6vy-90-PhG" id="jnv-rd-fuF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2U-S0-q6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="xHO-PN-rLe">
@@ -34,7 +58,7 @@
             <objects>
                 <viewController id="AxY-Cz-vdv" customClass="TestViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNC-GN-1FZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0ci-Ga-r7k"/>

@@ -11,7 +11,9 @@ import SDWebImage
 
 class DiscoveryPageViewController: UIViewController {
     
-
+    
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var cardBaseView: UIView!
     
     var cardArray: [DiscoverCardView] = []
     var counter = 0
@@ -29,6 +31,7 @@ class DiscoveryPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +55,8 @@ class DiscoveryPageViewController: UIViewController {
     func configureCardDestination() {
         leftDestinationButton.setImage(#imageLiteral(resourceName: "btn_like_normal"), for: .normal)
         rightDestinationButton.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
-        self.view.addSubview(leftDestinationButton)
-        self.view.addSubview(rightDestinationButton)
+        self.cardBaseView.addSubview(leftDestinationButton)
+        self.cardBaseView.addSubview(rightDestinationButton)
         leftDestinationButton.alpha = 0
         rightDestinationButton.alpha = 0
     }
@@ -71,7 +74,7 @@ class DiscoveryPageViewController: UIViewController {
             counter += 1
             cardArray.append(newCardView)
             //self.view.insertSubview(newCardView, at: 0)
-            self.view.insertSubview(newCardView, at: 0)
+            self.cardBaseView.insertSubview(newCardView, at: 0)
             cardPagingNumber.append(0)
             newCardView.leftButton.addTarget(self, action: #selector(leftButtonDidPressed(sender:)), for: .touchUpInside)
             newCardView.rightButton.addTarget(self, action: #selector(rightButtonDidPressed(sender:)), for: .touchUpInside)
@@ -211,7 +214,7 @@ class DiscoveryPageViewController: UIViewController {
             newCardView.alpha = 0
             cardPagingNumber.append(0)
             //self.view.insertSubview(newCardView, at: 0)
-            self.view.insertSubview(newCardView, at: 0)
+            self.cardBaseView.insertSubview(newCardView, at: 0)
             newCardView.leftButton.addTarget(self, action: #selector(leftButtonDidPressed(sender:)), for: .touchUpInside)
             newCardView.rightButton.addTarget(self, action: #selector(rightButtonDidPressed(sender:)), for: .touchUpInside)
             
@@ -229,6 +232,33 @@ class DiscoveryPageViewController: UIViewController {
         }
     }
     
+    func configureBackground() {
+        let newHeaderLayer = CAShapeLayer()
+        let cutDirection = UIBezierPath()
+        cutDirection.move(to: CGPoint(x: 0, y: 400))
+        cutDirection.addLine(to: CGPoint(x: 0, y: 0))
+        cutDirection.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+        cutDirection.addLine(to: CGPoint(x: UIScreen.main.bounds.width, y: 400))
+        cutDirection.addQuadCurve(to: CGPoint(x: 0, y: 400), controlPoint: CGPoint(x: UIScreen.main.bounds.width/2, y: 450))
+        newHeaderLayer.path = cutDirection.cgPath
+        self.backgroundView.layer.mask = newHeaderLayer
+        gradientBackground(frame: self.backgroundView.layer.bounds, layer: self.backgroundView.layer)
+    }
     
+    func gradientBackground(frame: CGRect, layer: CALayer) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = frame
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.5)
+        let colors: [CGColor] = [
+            UIColor.white.cgColor,
+            UIColor(red: 252/255.0, green: 212/255.0, blue: 147/255.0, alpha: 1).cgColor,
+            UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1).cgColor]
+        gradientLayer.colors = colors
+        gradientLayer.locations = [0,0.3,0.6]
+        gradientLayer.isOpaque = false
+        layer.addSublayer(gradientLayer)
+        
+    }
 
 }
