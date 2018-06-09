@@ -32,6 +32,12 @@ class DayTableViewCell: MPCollectionViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCollectionView()
+        configureSharebutton()
+    }
+    
+    func configureSharebutton() {
+        shareButton.setImage(#imageLiteral(resourceName: "share"), for: .normal)
+        shareButton.tintColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
     }
     
     func configureCollectionView() {

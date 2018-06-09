@@ -75,11 +75,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmn-pe-urc">
-                        <rect key="frame" x="348" y="10" width="46" height="31"/>
+                        <rect key="frame" x="364" y="10" width="30" height="30"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swr-OE-ge4">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="31"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <connections>
                                     <action selector="shareButtonDidPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cDj-nv-FUo"/>
                                 </connections>
@@ -91,6 +90,8 @@
                             <constraint firstAttribute="bottom" secondItem="Swr-OE-ge4" secondAttribute="bottom" id="CE4-lf-oHk"/>
                             <constraint firstItem="Swr-OE-ge4" firstAttribute="top" secondItem="hmn-pe-urc" secondAttribute="top" id="GBR-Z4-9jM"/>
                             <constraint firstAttribute="trailing" secondItem="Swr-OE-ge4" secondAttribute="trailing" id="IUN-aY-JAH"/>
+                            <constraint firstAttribute="width" constant="30" id="OzE-OU-m23"/>
+                            <constraint firstAttribute="height" constant="30" id="Vrp-pv-cuA"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -100,7 +101,6 @@
                     <constraint firstItem="hmn-pe-urc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="IcO-eU-mfw"/>
                     <constraint firstItem="mNO-VD-GCe" firstAttribute="leading" secondItem="iHn-td-510" secondAttribute="leading" id="LLG-vT-0M6"/>
                     <constraint firstAttribute="trailing" secondItem="hmn-pe-urc" secondAttribute="trailing" constant="30" id="cE3-3i-ILl"/>
-                    <constraint firstItem="0Tt-5h-W93" firstAttribute="top" secondItem="hmn-pe-urc" secondAttribute="bottom" constant="9" id="n0A-rK-R59"/>
                     <constraint firstAttribute="trailing" secondItem="0Tt-5h-W93" secondAttribute="trailing" id="nlu-Bc-xf5"/>
                     <constraint firstItem="0Tt-5h-W93" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="rAj-ZQ-rI1"/>
                     <constraint firstAttribute="bottom" secondItem="0Tt-5h-W93" secondAttribute="bottom" constant="5" id="yMb-lT-yuR"/>
