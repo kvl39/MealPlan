@@ -149,8 +149,8 @@ class MealPlanViewController: MPTableViewController, AddByClassificationDelegate
     @objc func shareButtonInteraction(_ sender: UIButton) {
         hideButton()
         self.addButtonSelected = !self.addButtonSelected
-        guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
-        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
+//        guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
+//        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
     }
 
     @objc func typeButtonInteraction(_ sender: UIButton) {

@@ -24,6 +24,8 @@ class MPDayCalendarViewController: MPTableViewController {
     var selectedCollectViewImageView = UIImageView()
     var selectedRow = 0
     var recipeToday: [RecipeCalendarRealmModel] = []
+    var shareHintArray: [String] = []
+    var isShowingHing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -399,8 +401,23 @@ class MPDayCalendarViewController: MPTableViewController {
     func shareFunction(date: Date) {
         let selectedDate = self.dateManager.dateToString(date: date)
         guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
-        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
+        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result) { (hintString) in
+            self.shareHintArray.append(hintString)
+            self.showHint()
+        }
     }
+    
+    func showHint() {
+        if (self.shareHintArray.count > 0) && (isShowingHing == false) {
+            self.isShowingHing = true
+            alertManager.showHint(on: self.view, with: shareHintArray[0]) {
+                self.shareHintArray.remove(at: 0)
+                self.isShowingHing = false
+                self.showHint()
+            }
+        }
+    }
+    
 
 }
 
