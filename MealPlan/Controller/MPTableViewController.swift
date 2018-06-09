@@ -414,13 +414,15 @@ extension MPTableViewController {
             cell.contentView.addSubview(nutrientsEditController.view)
             nutrientsEditController.didMove(toParentViewController: self)
         case .recipeIngredientType:
-            guard let cell = cell as? RecipeDetailIngredientCell else {return}
-            cell.selectionStyle = .none
-            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
-            cell.ingredientLabel.text = itemStruct.ingredientText
-            if (indexPath.row%2 == 0) {
-                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
-            }
+//            guard let cell = cell as? RecipeDetailIngredientCell else {return}
+//            cell.selectionStyle = .none
+//            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
+//            cell.ingredientLabel.text = itemStruct.ingredientText
+//            if (indexPath.row%2 == 0) {
+//                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+//            }
+//            cell.layoutIfNeeded()
+            return
         case .recipeStepTableViewCellType:
             guard let cell = cell as? RecipeStepTableViewCell else {return}
             cell.selectionStyle = .none
@@ -549,6 +551,13 @@ extension MPTableViewController {
             return cell
         case .recipeIngredientType:
             guard let cell = cell as? RecipeDetailIngredientCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return UITableViewCell()}
+            cell.ingredientLabel.text = itemStruct.ingredientText
+            if (indexPath.row%2 == 0) {
+                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+            }
+            cell.layoutIfNeeded()
             return cell
         case .recipeStepTableViewCellType:
             guard let cell = cell as? RecipeStepTableViewCell else {return UITableViewCell()}

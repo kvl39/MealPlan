@@ -16,7 +16,6 @@ class RecipeDetailIngredientCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
 //        collectionViewCell.layer.cornerRadius = 3.0
 //        collectionViewCell.layer.masksToBounds = false
 //        collectionViewCell.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
