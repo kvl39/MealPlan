@@ -59,6 +59,7 @@ class GradientImageViewUpSideDown: UIImageView {
     
     func commonInit() {
         gradientLayer.frame = self.frame
+        print("gradient Frame:\(gradientLayer.frame)")
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.5)
         let colors: [CGColor] = [UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor,
