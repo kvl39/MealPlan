@@ -23,6 +23,7 @@ class MPRecipeDetailWebViewController: UIViewController, WKNavigationDelegate, W
         progressBar.tintColor = UIColor(red: 57/255.0, green: 101/255.0, blue: 246/255.0, alpha: 1.0)
         progressBar.progress = 0.0
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
