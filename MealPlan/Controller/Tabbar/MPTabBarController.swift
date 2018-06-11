@@ -48,7 +48,9 @@ class MPTabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabs()
         setupCenterButton()
+        selectedIndex = 1
     }
+    
     
     func setupCenterButton() {
         let centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
@@ -59,6 +61,8 @@ class MPTabBarController: UITabBarController {
         
         centerButton.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
         centerButton.layer.cornerRadius = centerButtonFrame.width/2
+        centerButton.layer.borderWidth = 4
+        centerButton.layer.borderColor = UIColor.white.cgColor
         centerButton.setImage(#imageLiteral(resourceName: "Icon-App-29x29-3"), for: .normal)
         centerButton.tintColor = UIColor.white
         view.addSubview(centerButton)
