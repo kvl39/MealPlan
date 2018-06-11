@@ -47,7 +47,7 @@ class DiscoveryPageViewController: UIViewController {
     
     func retrieveAllMenu(completion: @escaping ()->Void) {
         firebaseManager.retrieveAllMenu { (menuRecipeNameArray) in
-            self.menuRecipeNameArray = menuRecipeNameArray
+            self.menuRecipeNameArray += menuRecipeNameArray
             completion()
         }
     }
@@ -202,6 +202,11 @@ class DiscoveryPageViewController: UIViewController {
         self.cardPagingNumber.remove(at: 0)
         if self.cardArray.count > 0 {
             addGestureRecognizer()
+        }
+        
+        if (self.menuRecipeNameArray.count - counter) == 3 {
+            //load more cards
+            retrieveAllMenu {}
         }
         
         if counter < self.menuRecipeNameArray.count {
