@@ -42,11 +42,33 @@ enum TabBar {
 
 class MPTabBarController: UITabBarController {
     
-    let tabs: [TabBar] = [.plan, .search, .discovery]
+    let tabs: [TabBar] = [.plan, .discovery, .search]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
+        setupCenterButton()
+    }
+    
+    func setupCenterButton() {
+        let centerButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+        var centerButtonFrame = centerButton.frame
+        centerButtonFrame.origin.y = view.bounds.height - centerButtonFrame.height
+        centerButtonFrame.origin.x = view.bounds.width/2 - centerButtonFrame.size.width/2
+        centerButton.frame = centerButtonFrame
+        
+        centerButton.backgroundColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
+        centerButton.layer.cornerRadius = centerButtonFrame.width/2
+        centerButton.setImage(#imageLiteral(resourceName: "Icon-App-29x29-3"), for: .normal)
+        centerButton.tintColor = UIColor.white
+        view.addSubview(centerButton)
+        centerButton.addTarget(self, action: #selector(centerButtonDidPressed(sender:)), for: .touchUpInside)
+        
+        view.layoutIfNeeded()
+    }
+    
+    @objc func centerButtonDidPressed(sender: UIButton) {
+        selectedIndex = 1
     }
     
     func setupTabs() {
