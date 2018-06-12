@@ -19,7 +19,7 @@ Zesty Plan
     <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0106.PNG" width="200" height="356" align=center/>
 * Check your everyday meal plan in one place
     * You can check your daily plans in the calendar in an elegant way. For the recipe details, you can click each item in your plan. You can also share your favorite recipes with others.
-<img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0108.PNG" width="200" height="356" align=center/>
+ &emsp; &emsp; <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0108.PNG" width="200" height="356" align=center/>
 
 ## Libraries
 * JTAppleCalendar
