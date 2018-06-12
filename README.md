@@ -8,8 +8,7 @@ Zesty Plan
 * The App is available in App Store: [Zesty Plan](https://itunes.apple.com/tw/app/zesty-plan/id1390442104?mt=8)
 
 ## Features & ScreenShots
-
-
+<img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMB_ehsHYe.GIF" width="200" height="356" />
 
 ## Libraries
 * JTAppleCalendar
