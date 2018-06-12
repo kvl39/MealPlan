@@ -7,7 +7,7 @@ Zesty Plan
 * Start organizing you plan today!
 * The App is available in App Store: [Zesty Plan](https://itunes.apple.com/tw/app/zesty-plan/id1390442104?mt=8)
 
-## Features
+## Features & ScreenShots
 
 
 
