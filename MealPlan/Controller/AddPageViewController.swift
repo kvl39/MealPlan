@@ -73,7 +73,7 @@ class AddPageViewController: UIViewController, SearchViewControllerProtocol, Ani
             vc.tagArray = self.tags
         } else if (segue.identifier == "AddPageToSearchView") {
             guard let vc = segue.destination as? SearchViewController else {return}
-            vc.delegate = self
+            //vc.delegate = self
             vc.tagArray = self.tags
         } else if (segue.identifier == "AddPageToHistoryView") {
             guard let vc = segue.destination as? AddPageHistoryController else {return}

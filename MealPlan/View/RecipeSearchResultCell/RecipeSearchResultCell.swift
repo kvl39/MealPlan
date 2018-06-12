@@ -11,7 +11,7 @@ import SDWebImage
 
 class RecipeSearchResultCell: UITableViewCell {
 
-    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeImage: GradientImageView!
 
     @IBOutlet weak var recipeTitle: UILabel!
 
@@ -21,7 +21,6 @@ class RecipeSearchResultCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func loadImage(imageURL: String?) {

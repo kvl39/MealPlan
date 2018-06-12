@@ -18,6 +18,12 @@ enum MPTableViewCellType {
     case sliderType(Float, String, String)
     case nutrientsEditType
     case recipeIngredientType(String)
+    case recipeStepTableViewCellType(String, UIImage)
+    case recipeIngredientEditType
+    case addIngredientType
+    case monthType(String)
+    case weekType(String)
+    case dayType(String, String, [UIView], [String], Date)
 }
 
 extension MPTableViewCellType {
@@ -43,6 +49,18 @@ extension MPTableViewCellType {
             return NutrientsEditItem()
         case .recipeIngredientType(let ingredientText):
             return RecipeIngredientItem(ingredientText: ingredientText)
+        case .recipeStepTableViewCellType(let recipeDescription, let recipeStepImage):
+            return RecipeStepTableViewItem(recipeStepDescription: recipeDescription, recipeStepImage: recipeStepImage)
+        case .recipeIngredientEditType:
+            return RecipeIngredientEditItem()
+        case .addIngredientType:
+            return AddIngredientItem()
+        case .monthType(let labelText):
+            return MonthItem(labelText: labelText)
+        case .weekType(let labelText):
+            return WeekItem(labelText: labelText)
+        case .dayType(let dayLabelText, let weekDayLabelText, let viewArray, let recipeNameArray, let today):
+            return DayItem(dayLabel: dayLabelText, weekDayLabel: weekDayLabelText, viewArray: viewArray, recipeNameArray: recipeNameArray,today: today)
         }
     }
 }
@@ -89,7 +107,7 @@ struct RecipeCellItem: MPTableViewCellProtocol {
 
 struct RecipeSearchCellItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "RecipeSearchResultCell"
-    var rowHeight: Int = 80
+    var rowHeight: Int = 300
     var image: UIImage?
     var title: String = ""
     var selected: Bool = false
@@ -129,6 +147,18 @@ struct RecipeStepItem: MPTableViewCellProtocol {
     var inputTextViewController = InputTextViewController()
 }
 
+struct RecipeStepTableViewItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "RecipeStepTableViewCell"
+    var rowHeight: Int = 250
+    var recipeStepDescription = ""
+    var recipeStepImage = UIImage()
+    
+    init(recipeStepDescription: String, recipeStepImage: UIImage) {
+        self.recipeStepDescription = recipeStepDescription
+        self.recipeStepImage = recipeStepImage
+    }
+}
+
 struct SliderItem: MPTableViewCellProtocol {
     var reuseIdentifier: String = "AddRecipeInformationSliderCell"
     var rowHeight: Int = 100
@@ -159,13 +189,65 @@ struct RecipeIngredientItem: MPTableViewCellProtocol {
     }
 }
 
-class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate {
+
+struct RecipeIngredientEditItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "IngredientEditTableViewCell"
+    var rowHeight: Int = 50
+}
+
+struct AddIngredientItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "MPIngredientAddButtonTableViewCell"
+    var rowHeight: Int = 50
+}
+
+struct MonthItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "MonthTableViewCell"
+    var rowHeight: Int = 100
+    var labelText: String = ""
+    
+    init(labelText: String) {
+        self.labelText = labelText
+    }
+}
+
+struct WeekItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "WeekTableViewCell"
+    var rowHeight: Int = 35
+    var labelText: String = ""
+    
+    init(labelText: String) {
+        self.labelText = labelText
+    }
+}
+
+struct DayItem: MPTableViewCellProtocol {
+    var reuseIdentifier: String = "DayTableViewCell"
+    var rowHeight: Int = 275
+    var dayLabel: String = ""
+    var weekDayLabel: String = ""
+    var viewArray: [UIView] = []
+    var recipeNameArray: [String] = []
+    var today =  Date()
+    
+    init(dayLabel: String, weekDayLabel: String, viewArray: [UIView], recipeNameArray: [String],today: Date) {
+        self.dayLabel = dayLabel
+        self.weekDayLabel = weekDayLabel
+        self.viewArray = viewArray
+        self.recipeNameArray = recipeNameArray
+        self.today = today
+    }
+}
+
+class MPTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InputTextViewControllerDelegate, DayTableViewCellProtocol {
     var sectionArray: [String] = []
     var rowArray: [[MPTableViewCellType]] = []
     var rowControllerArray : [[UIViewController]] = []
     var rowControllerIndexDic : [IndexPath : Int] = [:]
+    var hintLabels = HintLabels()
     //weak var delegate: MPTableViewControllerDelegateProtocol?
     func updateTableView(newHeight: CGFloat, section: Int, row: Int) {}
+    func deleteItem(at row: Int, itemNumber: Int) {}
+    func shareItem(date: Date) {}
 }
 
 extension MPTableViewController {
@@ -181,6 +263,15 @@ extension MPTableViewController {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1.0)
+        header.backgroundColor = UIColor.green
+        header.textLabel?.font = UIFont(name: "PingFang TC", size: 17.0)
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -204,15 +295,18 @@ extension MPTableViewController {
             guard let itemStruct = item.configureCell() as? HorizontalCollectionViewItem else {return}
             cell.viewArray = itemStruct.viewArray
             cell.titleArray = itemStruct.titleArray
-            //cell.frame = tableView.bounds
-            //cell.layoutIfNeeded()
-            //cell
             cell.selectionStyle = .none
+            if itemStruct.viewArray.count == 0 {
+                cell.hintView.alpha = 1
+                let randomIndex = Int(arc4random_uniform(UInt32(hintLabels.hintLabels.count)))
+                cell.hintViewLabel.text = hintLabels.hintLabels[randomIndex]
+                print(randomIndex)
+            } else {
+                cell.hintView.alpha = 0
+            }
         case .calendarCollectionViewType:
             guard let cell = cell as? CalendarCollectionView else {return}
-            //cell.frame = tableView.bounds
-            //cell.layoutIfNeeded()
-            //cell.delegate = self
+            cell.selectionStyle = .none
         case .recipeCellType:
             guard let cell = cell as? RecipeTableViewCell else {return}
             guard let itemStruct = item.configureCell() as? RecipeCellItem else {return }
@@ -235,6 +329,8 @@ extension MPTableViewController {
             } else {
                 cell.loadImage(imageURL: itemStruct.imageURL)
             }
+            cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = .none
         case .recipeNoteType:
             guard let cell = cell as? RecipeNoteView else {return}
         case .textFieldType:
@@ -265,13 +361,6 @@ extension MPTableViewController {
             imagePickerViewController.resetFrame()
             cell.viewForImagePicker.addSubview(imagePickerViewController.view)
             imagePickerViewController.didMove(toParentViewController: self)
-            //            NSLayoutConstraint.activate([
-            //                imagePickerViewController.view.trailingAnchor.constraint(equalTo: cell.viewForImagePicker.trailingAnchor, constant: 0),
-            //                imagePickerViewController.view.leadingAnchor.constraint(equalTo: cell.viewForImagePicker.leadingAnchor, constant: 0),
-            //                imagePickerViewController.view.topAnchor.constraint(equalTo: cell.viewForImagePicker.topAnchor, constant: 0),
-            //                imagePickerViewController.view.bottomAnchor.constraint(equalTo: cell.viewForImagePicker.bottomAnchor, constant: 0)
-            //                ])
-            
             addChildViewController(inputTextViewController)
             inputTextViewController.view.frame = cell.viewForTextField.frame
             inputTextViewController.view.frame.origin.x = 0
@@ -330,10 +419,107 @@ extension MPTableViewController {
             cell.contentView.addSubview(nutrientsEditController.view)
             nutrientsEditController.didMove(toParentViewController: self)
         case .recipeIngredientType:
-            guard let cell = cell as? RecipeDetailIngredientCell else {return}
+//            guard let cell = cell as? RecipeDetailIngredientCell else {return}
+//            cell.selectionStyle = .none
+//            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
+//            cell.ingredientLabel.text = itemStruct.ingredientText
+//            if (indexPath.row%2 == 0) {
+//                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+//            }
+//            cell.layoutIfNeeded()
+            return
+        case .recipeStepTableViewCellType:
+            guard let cell = cell as? RecipeStepTableViewCell else {return}
             cell.selectionStyle = .none
-            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return}
-            cell.ingredientLabel.text = itemStruct.ingredientText
+            guard let itemStruct = item.configureCell() as? RecipeStepTableViewItem else {return}
+            cell.recipeStepDescription.text = itemStruct.recipeStepDescription
+            cell.recipeStepImage.image = itemStruct.recipeStepImage
+        case .recipeIngredientEditType:
+            guard let cell = cell as? IngredientEditTableViewCell else {return}
+            cell.selectionStyle = .none
+            var ingredientTitleTextViewController = InputTextViewController()
+            var ingredientWeightTextViewController = InputTextViewController()
+            if let index = self.rowControllerIndexDic[indexPath],
+                let storedIngredientTitleTextViewController = self.rowControllerArray[index][0] as? InputTextViewController,
+                let storedIngredientWeightTextViewController = self.rowControllerArray[index][1] as? InputTextViewController {
+                ingredientTitleTextViewController = storedIngredientTitleTextViewController
+                ingredientWeightTextViewController = storedIngredientWeightTextViewController
+            } else {
+                let controllerArray = [ingredientTitleTextViewController, ingredientWeightTextViewController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
+            }
+            
+            addChildViewController(ingredientWeightTextViewController)
+            ingredientWeightTextViewController.view.frame = cell.ingredientWeightView.frame
+            ingredientWeightTextViewController.view.frame.origin.x = 0
+            ingredientWeightTextViewController.view.frame.origin.y = 0
+            //ingredientWeightTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientWeightView.frame.width, height: 40.0)
+            ingredientWeightTextViewController.showSeparationLine = false
+            ingredientWeightTextViewController.resetFrame()
+            cell.ingredientWeightView.addSubview(ingredientWeightTextViewController.view)
+            ingredientWeightTextViewController.didMove(toParentViewController: self)
+            ingredientWeightTextViewController.textViewHint = "gram"
+            ingredientWeightTextViewController.configureTextFieldEmpty()
+            ingredientWeightTextViewController.useNumberKeyboard = true
+            ingredientWeightTextViewController.resetKeyboard()
+            
+            addChildViewController(ingredientTitleTextViewController)
+            ingredientTitleTextViewController.view.frame = cell.ingredientTitleView.frame
+            ingredientTitleTextViewController.view.frame.origin.x = 0
+            ingredientTitleTextViewController.view.frame.origin.y = 0
+            //ingredientTitleTextViewController.view.frame = CGRect(x: 0, y: 0, width: cell.ingredientTitleView.frame.width, height: 50.0)
+            ingredientTitleTextViewController.showSeparationLine = false
+            ingredientTitleTextViewController.resetFrame()
+            cell.ingredientTitleView.addSubview(ingredientTitleTextViewController.view)
+            ingredientTitleTextViewController.didMove(toParentViewController: self)
+            ingredientTitleTextViewController.textViewHint = "Enter ingredient"
+            ingredientTitleTextViewController.configureTextFieldEmpty()
+            
+            ingredientTitleTextViewController.delegate = self
+            ingredientWeightTextViewController.delegate = self
+        case .addIngredientType:
+            guard let cell = cell as? MPIngredientAddButtonTableViewCell else {return}
+            cell.selectionStyle = .none
+            var ingredientAddButtonViewController = IngredientAddButtonViewController()
+            if let index = self.rowControllerIndexDic[indexPath],
+                let storedAddButtonViewController = self.rowControllerArray[index][0] as? IngredientAddButtonViewController {
+                ingredientAddButtonViewController = storedAddButtonViewController
+            } else {
+                let controllerArray = [ingredientAddButtonViewController]
+                self.rowControllerArray.append(controllerArray)
+                self.rowControllerIndexDic[indexPath] = self.rowControllerArray.count-1
+            }
+            
+            addChildViewController(ingredientAddButtonViewController)
+            ingredientAddButtonViewController.view.frame = CGRect(x: 0, y: 0, width: cell.frame.width, height: 50.0)
+            //ingredientAddButtonViewController.resetFrame()
+            cell.addSubview(ingredientAddButtonViewController.view)
+            ingredientAddButtonViewController.didMove(toParentViewController: self)
+        case .monthType:
+            guard let cell = cell as? MonthTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? MonthItem else {return}
+            cell.yearMonthLabel.text = itemStruct.labelText
+            print("month label text:\(itemStruct.labelText)")
+            cell.selectionStyle = .none
+        case .weekType:
+            guard let cell = cell as? WeekTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? WeekItem else {return}
+            print("week lable text:\(itemStruct.labelText)")
+            cell.weekLabel.text = itemStruct.labelText
+            cell.selectionStyle = .none
+        case .dayType:
+            guard let cell = cell as? DayTableViewCell else {return}
+            guard let itemStruct = item.configureCell() as? DayItem else {return}
+            cell.dayLabel.text = itemStruct.dayLabel
+            cell.weekDayLabel.text = itemStruct.weekDayLabel
+            cell.viewArray = itemStruct.viewArray
+            cell.titleArray = itemStruct.recipeNameArray
+            cell.today = itemStruct.today
+            cell.horizontalCollectionView.reloadData()
+            cell.selectionStyle = .none
+            cell.row = indexPath.row
+            cell.delegate = self
         }
     }
 
@@ -370,6 +556,33 @@ extension MPTableViewController {
             return cell
         case .recipeIngredientType:
             guard let cell = cell as? RecipeDetailIngredientCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
+            guard let itemStruct = item.configureCell() as? RecipeIngredientItem else {return UITableViewCell()}
+            cell.ingredientLabel.text = itemStruct.ingredientText
+            if (indexPath.row%2 == 0) {
+                cell.backgroundColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+            }
+            cell.layoutIfNeeded()
+            return cell
+        case .recipeStepTableViewCellType:
+            guard let cell = cell as? RecipeStepTableViewCell else {return UITableViewCell()}
+            return cell
+        case .recipeIngredientEditType:
+            guard let cell = cell as? IngredientEditTableViewCell else {return UITableViewCell()}
+            return cell
+        case .addIngredientType:
+            guard let cell = cell as? MPIngredientAddButtonTableViewCell else {return UITableViewCell()}
+            return cell
+        case .monthType:
+            guard let cell = cell as? MonthTableViewCell else {return UITableViewCell()}
+            return cell
+        case .weekType:
+            guard let cell = cell as? WeekTableViewCell else {return UITableViewCell()}
+            print("============")
+            print("index Path Row\(indexPath.row)")
+            return cell
+        case .dayType:
+            guard let cell = cell as? DayTableViewCell else {return UITableViewCell()}
             return cell
         }
     }
@@ -381,6 +594,7 @@ extension MPTableViewController {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return CGFloat(rowArray[indexPath.section][indexPath.row].configureCell().rowHeight)
     }
     
@@ -390,6 +604,13 @@ extension MPTableViewController {
                 controller.willMove(toParentViewController: nil)
                 controller.view.removeFromSuperview()
                 controller.removeFromParentViewController()
+            }
+        }
+        if let cell = tableView.cellForRow(at: indexPath) as? DayTableViewCell {
+            for subview in cell.subviews {
+                if subview.tag == 30 {
+                    subview.removeFromSuperview()
+                }
             }
         }
     }

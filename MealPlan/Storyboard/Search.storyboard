@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IK2-Co-9m4">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add By Classification View Controller-->
+        <scene sceneID="iqv-bc-W4k">
+            <objects>
+                <viewController id="n01-oz-eH3" customClass="AddByClassificationViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JhM-y2-pig">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqp-BJ-jSh">
+                                <rect key="frame" x="0.0" y="146" width="375" height="632"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="643-hG-m2d">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aok-xn-POs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="643-hG-m2d" firstAttribute="leading" secondItem="Yqp-BJ-jSh" secondAttribute="leading" id="3Sk-vC-C4w"/>
+                                    <constraint firstAttribute="bottom" secondItem="643-hG-m2d" secondAttribute="bottom" id="LZB-iZ-ZkG"/>
+                                    <constraint firstAttribute="trailing" secondItem="643-hG-m2d" secondAttribute="trailing" id="k5S-IG-B9h"/>
+                                    <constraint firstItem="643-hG-m2d" firstAttribute="top" secondItem="Yqp-BJ-jSh" secondAttribute="top" id="y7Z-RT-TDU"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blG-Uj-ptz">
+                                <rect key="frame" x="0.0" y="146" width="375" height="632"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="Ee7-z6-OOC" kind="embed" identifier="PushToSearchResult" id="puZ-R1-GeK"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-Hn-XPd">
+                                <rect key="frame" x="0.0" y="146" width="375" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="1tL-aS-irY"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="PLm-bA-Otp" kind="embed" identifier="PushToScrollView" id="cGw-t7-IGl"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose tags to search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jju-Ao-Ka4">
+                                <rect key="frame" x="20" y="108" width="335" height="33"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tpz-Hn-XPd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JhM-y2-pig" secondAttribute="top" constant="20" id="2Y2-1z-hHE"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="trailing" secondItem="jju-Ao-Ka4" secondAttribute="trailing" constant="20" id="AP3-Gn-qAb"/>
+                            <constraint firstItem="Tpz-Hn-XPd" firstAttribute="top" secondItem="NRg-I0-hAS" secondAttribute="top" constant="58" id="DHI-oo-yiv"/>
+                            <constraint firstItem="Yqp-BJ-jSh" firstAttribute="leading" secondItem="NRg-I0-hAS" secondAttribute="leading" id="HOS-uM-DRO"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="trailing" secondItem="blG-Uj-ptz" secondAttribute="trailing" id="Hg5-oB-PNf"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="trailing" secondItem="Yqp-BJ-jSh" secondAttribute="trailing" id="MsX-U2-fhv"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="bottom" secondItem="blG-Uj-ptz" secondAttribute="bottom" id="NiL-1e-fnd"/>
+                            <constraint firstItem="blG-Uj-ptz" firstAttribute="top" secondItem="NRg-I0-hAS" secondAttribute="top" constant="58" id="ae0-mt-EHn"/>
+                            <constraint firstItem="blG-Uj-ptz" firstAttribute="leading" secondItem="NRg-I0-hAS" secondAttribute="leading" id="bd5-Kc-hYL"/>
+                            <constraint firstItem="jju-Ao-Ka4" firstAttribute="leading" secondItem="NRg-I0-hAS" secondAttribute="leading" constant="20" id="enb-YM-dm0"/>
+                            <constraint firstItem="Yqp-BJ-jSh" firstAttribute="top" secondItem="NRg-I0-hAS" secondAttribute="top" constant="58" id="fQI-gB-dCk"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="trailing" secondItem="Tpz-Hn-XPd" secondAttribute="trailing" id="g9e-cT-XIE"/>
+                            <constraint firstItem="jju-Ao-Ka4" firstAttribute="top" secondItem="NRg-I0-hAS" secondAttribute="top" constant="20" id="gt5-k3-0Wm"/>
+                            <constraint firstItem="Yqp-BJ-jSh" firstAttribute="top" secondItem="jju-Ao-Ka4" secondAttribute="bottom" constant="5" id="lbJ-pZ-zJr"/>
+                            <constraint firstItem="NRg-I0-hAS" firstAttribute="bottom" secondItem="Yqp-BJ-jSh" secondAttribute="bottom" id="xdr-3N-sbV"/>
+                            <constraint firstItem="Tpz-Hn-XPd" firstAttribute="leading" secondItem="NRg-I0-hAS" secondAttribute="leading" id="xqg-1o-K6J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NRg-I0-hAS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mh2-oz-La6"/>
+                    <connections>
+                        <outlet property="containerForScrollView" destination="Tpz-Hn-XPd" id="DvD-GE-00c"/>
+                        <outlet property="hintLabel" destination="jju-Ao-Ka4" id="6yY-pz-hNw"/>
+                        <outlet property="searchResultContainerView" destination="blG-Uj-ptz" id="Xo4-Hf-7T6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pxx-ku-u08" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4528.8000000000002" y="1044.8275862068967"/>
+        </scene>
+        <!--Horizontal Scroll View Controller-->
+        <scene sceneID="q5m-vn-hb4">
+            <objects>
+                <viewController id="PLm-bA-Otp" customClass="MPHorizontalScrollViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TGq-TY-SEh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hYJ-Nn-kts"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9eE-Uw-0dX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5416.8000000000002" y="1090.2548725637182"/>
+        </scene>
+        <!--Add To Calendar View Controller-->
+        <scene sceneID="g2X-OA-1eS">
+            <objects>
+                <viewController storyboardIdentifier="AddToCalendarViewController" id="DZT-3s-C4M" customClass="AddToCalendarViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EqZ-9N-21O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBf-wW-lBT">
+                                <rect key="frame" x="0.0" y="762" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.6588235294" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RbJ-WI-riH"/>
+                                </constraints>
+                                <state key="normal" title="Add to calendar">
+                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToCalendarButtonDidPressed:" destination="DZT-3s-C4M" eventType="touchUpInside" id="Q2L-ym-vQX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBF-fA-vYW">
+                                <rect key="frame" x="15" y="32" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ag1-KW-wJZ"/>
+                                    <constraint firstAttribute="width" constant="20" id="uhl-w4-nIL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cancelButtonDidPressed:" destination="DZT-3s-C4M" eventType="touchUpInside" id="mzn-7Y-flE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a day to add the recipe" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WU-bX-mbx">
+                                <rect key="frame" x="79" y="28.666666666666664" width="286" height="26.666666666666664"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="EqH-7Q-PLH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NBF-fA-vYW" firstAttribute="leading" secondItem="Dhn-hA-EPS" secondAttribute="leading" constant="15" id="I8n-cy-k1u"/>
+                            <constraint firstItem="Dhn-hA-EPS" firstAttribute="trailing" secondItem="8WU-bX-mbx" secondAttribute="trailing" constant="10" id="a7g-pn-uel"/>
+                            <constraint firstItem="NBF-fA-vYW" firstAttribute="top" secondItem="EqZ-9N-21O" secondAttribute="top" constant="32" id="ckR-Kn-C9y"/>
+                            <constraint firstItem="8WU-bX-mbx" firstAttribute="centerY" secondItem="NBF-fA-vYW" secondAttribute="centerY" id="czh-uI-Rhi"/>
+                            <constraint firstItem="eBf-wW-lBT" firstAttribute="leading" secondItem="Dhn-hA-EPS" secondAttribute="leading" id="iNl-fq-wU1"/>
+                            <constraint firstAttribute="bottom" secondItem="eBf-wW-lBT" secondAttribute="bottom" id="o6i-7U-YCc"/>
+                            <constraint firstItem="Dhn-hA-EPS" firstAttribute="trailing" secondItem="eBf-wW-lBT" secondAttribute="trailing" id="tTl-gc-Qht"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dhn-hA-EPS"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="NBF-fA-vYW" id="huA-9n-hUK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j6q-12-Uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6465" y="1008"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="Y8C-mL-i1d">
+            <objects>
+                <viewController id="Ee7-z6-OOC" customClass="SearchViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x6H-xF-Esl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jrr-jx-CnE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="632"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jrr-jx-CnE" secondAttribute="bottom" id="3vb-gE-5OE"/>
+                            <constraint firstItem="jrr-jx-CnE" firstAttribute="top" secondItem="x6H-xF-Esl" secondAttribute="top" id="HIL-rr-6Zg"/>
+                            <constraint firstAttribute="trailing" secondItem="jrr-jx-CnE" secondAttribute="trailing" id="ned-xZ-YG4"/>
+                            <constraint firstItem="jrr-jx-CnE" firstAttribute="leading" secondItem="x6H-xF-Esl" secondAttribute="leading" id="rMx-wd-hdm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U7u-hC-rSs"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="jrr-jx-CnE" id="u3L-sP-uvO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AXW-h7-53O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5312.8000000000002" y="1577.3613193403301"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4da-Ff-NHW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IK2-Co-9m4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pqB-3L-H5j">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n01-oz-eH3" kind="relationship" relationship="rootViewController" id="zjD-Fa-Pg6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXb-eJ-bc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3589.5999999999999" y="1044.8275862068967"/>
+        </scene>
+        <!--Input Text View Controller-->
+        <scene sceneID="KjD-Q3-stV">
+            <objects>
+                <viewController id="Jyj-Av-r8I" customClass="InputTextViewController" customModule="MealPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="84K-1f-RJS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="v6i-ES-MGQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vo9-Tm-S5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7311" y="994"/>
+        </scene>
+    </scenes>
+</document>

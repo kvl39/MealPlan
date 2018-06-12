@@ -8,11 +8,14 @@
 
 import UIKit
 import SDWebImage
+import Crashlytics
+import Firebase
 
-class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
+
+class MealPlanViewController: MPTableViewController, AddByClassificationDelegateProtocol {
 
     @IBOutlet weak var testTable: UITableView!
-    @IBOutlet weak var topImageView: UIImageView!
+    
     let pieChartManager = MPPieChart()
     var addButtonSelected = true
     var addButton: UIButton?
@@ -34,6 +37,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     var saveImageManager = SaveImageManager()
     var selectedRow = 0
     lazy var addedButtonSubView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    var isSegueFromDetaiView = false
+    var isSearchViewAction = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +47,51 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         testTable.dataSource = self
 
         configureTableView()
-        configureAddButton()
-        topImageView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1.0)
         self.view.addSubview(addedButtonSubView)
         addedButtonSubView.alpha = 0
         self.view.bringSubview(toFront: addedButtonSubView)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+        configureObserver()
     }
-    
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = false
+
+        if isSegueFromDetaiView {
+            self.navigationController?.navigationBar.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
+        } else {
+            self.navigationController?.navigationBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+            self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        }
+        
+        if isSearchViewAction {
+            reloadCalendarData(date: self.selectedDate)
+            isSearchViewAction = false
+        }
     }
+    
+    func configureObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAfterSearchViewAction(notification:)), name: NSNotification.Name(rawValue: "searchViewAddRecipe"), object: nil)
+    }
+    
+    @objc func reloadAfterSearchViewAction(notification: Notification) {
+        self.isSearchViewAction = true
+    }
+    
+    
+    @IBAction func editButtonDidPressed(_ sender: UIButton) {
+        startPlanning(notification: nil)
+        Analytics.logEvent("EditButtonDidPressed", parameters: nil)
+    }
+    
+    
+    @IBAction func createRecipeButtonDidPressed(_ sender: Any) {
+        performSegue(withIdentifier: "PushToCreateRecipe", sender: self)
+    }
+    
     
     
     @objc func createRecipe(notification: Notification) {
@@ -63,18 +101,21 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
               let image = userInfo["createdRecipeImage"] as? UIImage,
               let title = userInfo["createdRecipeTitle"] as? String else {return}
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
         reloadData(addedRecipeImageView: [imageView], addedRecipeTitle: [title])
     }
     
     
     func reloadData(addedRecipeImageView: [UIImageView], addedRecipeTitle: [String]) {
-        self.recipeImageArray = addedRecipeImageView + self.recipeImageArray
-        self.recipeTitleArray = addedRecipeTitle + self.recipeTitleArray
+        self.recipeImageArray = self.recipeImageArray + addedRecipeImageView
+        self.recipeTitleArray = self.recipeTitleArray + addedRecipeTitle
+        //self.recipeImageArray = addedRecipeImageView
+        //self.recipeTitleArray = addedRecipeTitle
         updateDataInTableView()
         
-        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
-        guard let fetchResult = result else {return}
-        self.recipeToday = fetchResult
+//        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+//        guard let fetchResult = result else {return}
+//        self.recipeToday = fetchResult
     }
 
     func configureAddButton() {
@@ -108,8 +149,8 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     @objc func shareButtonInteraction(_ sender: UIButton) {
         hideButton()
         self.addButtonSelected = !self.addButtonSelected
-        guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
-        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
+//        guard let result = self.realmManager.fetchRecipe(in: selectedDate) else {return}
+//        self.firebaseManager.uploadNewMenu(date: selectedDate, recipeInformation: result)
     }
 
     @objc func typeButtonInteraction(_ sender: UIButton) {
@@ -129,15 +170,26 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
         if (segue.identifier == "PushToAddPage") {
             guard let vc = segue.destination as? AddPageViewController else {return}
             vc.recipeDate = selectedDate
-            vc.delegate = self
+            //vc.delegate = self
             vc.historyImageArray = self.recipeImageArray
             vc.historyTitleArray = self.recipeTitleArray
         } else if (segue.identifier == "PushToDetailPage") {
             guard let vc = segue.destination as? MPRecipeDetailViewController else {return}
             vc.displayImage = self.selectedCollectViewImageView.image
             vc.recipeData = self.recipeToday[self.selectedRow]
+            vc.isSegueFromCalendarView = true
         } else if (segue.identifier == "PushToCameraPage") {
             guard let vc = segue.destination as? CameraViewController else {return}
+            vc.selectedDate = self.selectedDate
+        } else if (segue.identifier == "PushToAddByClassificationPage") {
+            guard let vc = segue.destination as? AddByClassificationViewController else {return}
+            vc.selectedRecipes = self.recipeToday
+            vc.selectedRecipesName = self.recipeTitleArray
+            vc.recipeDate = selectedDate
+            vc.selectedRecipeImage = self.recipeImageArray
+            vc.delegate = self
+        } else if (segue.identifier == "PushToCreateRecipe") {
+            guard let vc = segue.destination as? CreateRecipeStepsViewController else {return}
             vc.selectedDate = self.selectedDate
         }
     }
@@ -195,19 +247,12 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
         let button = UIButton.init(type: .system)
         button.setTitle("", for: .normal)
-        //button.setImage(#imageLiteral(resourceName: "btn_like_selected"), for: .normal)
         button.setImage(image, for: .normal)
         button.tintColor = UIColor(red: 201/255.0, green: 132/255.0, blue: 116/255.0, alpha: 1.0)
-        //button.setTitle(title, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = button.frame.size.width / 2
         button.layer.masksToBounds = true
-        //button.clipsToBounds = true
-
-//        globeButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
-//        globeButton.layer.shadowOffset = CGSizeMake(0.0, 2.0)
-//        globeButton.layer.shadowOpacity = 1.0
 
         button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         button.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
@@ -224,36 +269,27 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
 
     func configureTableView() {
         self.testTable.separatorStyle = .none
-        let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: self.testTable.bounds.size.width, height: self.testTable.bounds.size.height))
-        //backgroundView.backgroundColor = UIColor(red: 167/255.0, green: 210/255.0, blue: 203/255.0, alpha: 1)
-        backgroundView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background.001"))
-        self.testTable.backgroundView = backgroundView
-        testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")//only for reuse? but if this line is removed, it crashes!
+        
+        testTable.register(UINib(nibName: "CalendarCollectionView", bundle: nil), forCellReuseIdentifier: "CalendarCollectionView")
         testTable.register(UINib(nibName: "HorizontalCollectionView",
                                  bundle: nil), forCellReuseIdentifier: "HorizontalCollectionView")
         testTable.register(UINib(nibName: "RecipeNoteView", bundle: nil), forCellReuseIdentifier: "RecipeNoteView")
         self.rowArray.append([])
         self.rowArray[0].append(.calendarCollectionViewType)
-
-       var imageArray = [UIView]()
-       imageArray.append(pieChartManager.generateViewWithPieChart(value: 90))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_selected")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_like_normal")))
-       imageArray.append(generateViewWithImage(image: #imageLiteral(resourceName: "btn_back")))
-       var titleArray = ["A", "B", "C", "D", "E", "F", "G"]
        
-       self.rowArray[0].append(.horizontalCollectionViewType(imageArray, titleArray))
-       //self.rowArray.append(.recipeNoteType)
+       self.rowArray[0].append(.horizontalCollectionViewType([], []))
 
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectDate(notification:)), name: NSNotification.Name(rawValue: "SelectDate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onSelectCollectionViewItem(notification:)), name: NSNotification.Name(rawValue: "collectionViewItemDidSelect"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(createRecipe(notification:)), name: NSNotification.Name(rawValue: "CreatedRecipe"), object: nil)
-
+        //collectionViewHintButtonDidPressed
+        NotificationCenter.default.addObserver(self, selector: #selector(startPlanning(notification:)), name: NSNotification.Name(rawValue: "collectionViewHintButtonDidPressed"), object: nil)
     }
     
+    @objc func startPlanning(notification: Notification?) {
+        //performSegue(withIdentifier: "PushToAddByClassificationPage", sender: self)
+        self.tabBarController?.selectedIndex = 1
+    }
     
     @objc func onSelectCollectionViewItem(notification: Notification) {
         guard let userInfo = notification.userInfo,
@@ -261,11 +297,12 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
             let selectedRow = userInfo["row"] as? Int else {return}
         self.selectedCollectViewImageView = imageView
         self.selectedRow = selectedRow
+        let result = self.realmManager.fetchRecipe(in: self.selectedDate)
+        guard let fetchResult = result else {return}
+        self.recipeToday = fetchResult
         print("selected:\(self.selectedRow)")
         self.performSegue(withIdentifier: "PushToDetailPage", sender: self)
     }
-    
-    
 
     func generateViewWithImage(image: UIImage) -> UIView {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
@@ -274,12 +311,18 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
 
     @objc func onSelectDate(notification: Notification) {
-        self.recipeTitleArray = []
-        self.recipeImageArray = []
+        //self.recipeTitleArray = []
+        //self.recipeImageArray = []
         guard let userInfo = notification.userInfo,
               let date = userInfo["date"] as? String else {return}
         print(date)
         self.selectedDate = date
+        reloadCalendarData(date: date)
+    }
+    
+    func reloadCalendarData(date: String) {
+        self.recipeTitleArray = []
+        self.recipeImageArray = []
         fetchDataInDate(in: date)
         updateDataInTableView()
     }
@@ -297,6 +340,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
                     let recipeImageURL = recipe.recipeRealmModel?.image else {return}
                 
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
+                imageView.contentMode = .scaleAspectFill
                 imageView.sd_setImage(with: URL(string: recipeImageURL), placeholderImage: #imageLiteral(resourceName: "dish"), options: .retryFailed) { (_, error, _, _) in
                     guard let error = error else {return}
                     print(error)
@@ -310,6 +354,7 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
                 let recipeImage = self.saveImageManager.getSavedImage(imageFileName: recipeImageName)
                 let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 49.5))
                 imageView.image = recipeImage
+                imageView.contentMode = .scaleAspectFill
                 self.recipeTitleArray.append(recipeLabel)
                 self.recipeImageArray.append(imageView)
             }
@@ -319,7 +364,6 @@ class MealPlanViewController: MPTableViewController, AddPageDelegateProtocol {
     }
 
     func updateDataInTableView() {
-
         self.rowArray[0][1] = .horizontalCollectionViewType(recipeImageArray, recipeTitleArray)
 
         var indexPath = IndexPath(row: 1, section: 0)

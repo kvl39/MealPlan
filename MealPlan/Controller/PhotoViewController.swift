@@ -30,7 +30,13 @@ class PhotoViewController: UIViewController {
             photoImageView.image = availableImage
         }
         configureButtons()
-        
+        photoImageView.contentMode = .scaleToFill
+    }
+    
+    func updatePhoto() {
+        if let availableImage = takenPhoto {
+            photoImageView.image = availableImage
+        }
     }
     
     func configureButtons() {
@@ -41,33 +47,27 @@ class PhotoViewController: UIViewController {
         acceptButton.setImage(#imageLiteral(resourceName: "success_black"), for: .normal)
         acceptButton.tintColor = UIColor(red: 135/255.0, green: 76/255.0, blue: 98/255.0, alpha: 1)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
     @IBAction func cancelPhotoShooting(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
     
     @IBAction func takePhotoAgain(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if let parentVC = self.parent as? CreateRecipeStepsViewController {
+            parentVC.reTakePicture()
+        }
     }
     
     
     @IBAction func acceptPhoto(_ sender: UIButton) {
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PushToAddRecipeInformationView" {
-            let destination = segue.destination as? AddRecipeInformationViewController
-            destination?.recipeImage = takenPhoto
-            destination?.selectedDate = self.selectedDate
+        if let parentVC = self.parent as? CreateRecipeStepsViewController {
+            parentVC.scrollToRight()
         }
     }
+    
+    
     
 
 }

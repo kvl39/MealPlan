@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthTableViewCell" rowHeight="116" id="KGk-i7-Jjw" customClass="MonthTableViewCell" customModule="MealPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018 Feb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjV-Gf-gf3">
+                        <rect key="frame" x="55" y="15" width="210" height="70"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Thin" family="PingFang TC" pointSize="50"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="otK-Ng-wcn">
+                        <rect key="frame" x="44" y="30" width="5" height="41"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.6588235294117647" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="6bT-RO-zd8"/>
+                            <constraint firstAttribute="width" constant="5" id="bGH-eb-epA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="otK-Ng-wcn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="P5T-8B-Kfd"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rfk-7X-3af"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Wd8-7M-o5A"/>
+                    <constraint firstItem="YjV-Gf-gf3" firstAttribute="leading" secondItem="otK-Ng-wcn" secondAttribute="trailing" constant="6" id="hQC-RD-vpL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="yearMonthLabel" destination="YjV-Gf-gf3" id="txc-2t-GFy"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="90"/>
+        </tableViewCell>
+    </objects>
+</document>

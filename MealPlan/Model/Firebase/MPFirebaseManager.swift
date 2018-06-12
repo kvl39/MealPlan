@@ -17,12 +17,12 @@ class MPFirebaseManager {
     let user = "FakeUser"
     
     
-    func uploadNewMenu(date: String, recipeInformation: [RecipeCalendarRealmModel]) {
-        recipeRealmModelToFirebase(recipeInformation: recipeInformation, date: date)
+    func uploadNewMenu(date: String, recipeInformation: [RecipeCalendarRealmModel], completion: @escaping (String)-> Void) {
+        recipeRealmModelToFirebase(recipeInformation: recipeInformation, date: date, completion: completion)
     }
     
     
-    func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel], date: String) {
+    func recipeRealmModelToFirebase(recipeInformation: [RecipeCalendarRealmModel], date: String, completion: @escaping (String)-> Void) {
         var recipeNameArray: [String] = []
         
         for recipe in recipeInformation {
@@ -46,6 +46,7 @@ class MPFirebaseManager {
                 "reference": databaseReference.key,
                 "date": date
                 ])
+            completion("menu on \(date) is shared successfully")
         }
     }
     

@@ -30,6 +30,7 @@ struct RecipeManager {
 
         }) { (error) in
             print(error)
+            self.delegate?.manager(self, didFailWith: error)
         }
 
     }

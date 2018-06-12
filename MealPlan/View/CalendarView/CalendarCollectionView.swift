@@ -23,9 +23,10 @@ class CalendarCollectionView: MPCalendarView {
         calendarCollectionView.ibCalendarDataSource = self
         calendarCollectionView.register(UINib(nibName: "CalendarCell", bundle: nil), forCellWithReuseIdentifier: "CalendarCell")
         setupCalendarView()
-
     }
-
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -52,7 +53,22 @@ class CalendarCollectionView: MPCalendarView {
         yearLabel.text = formatter.string(from: date)
 
         formatter.dateFormat = "MM"
-        monthLabel.text = formatter.string(from: date)
+        //monthLabel.text = formatter.string(from: date)
+        switch formatter.string(from: date) {
+        case "01": monthLabel.text = "Jan"
+        case "02": monthLabel.text = "Feb"
+        case "03": monthLabel.text = "March"
+        case "04": monthLabel.text = "Apr"
+        case "05": monthLabel.text = "May"
+        case "06": monthLabel.text = "Jun"
+        case "07": monthLabel.text = "Jul"
+        case "08": monthLabel.text = "Aug"
+        case "09": monthLabel.text = "Sep"
+        case "10": monthLabel.text = "Oct"
+        case "11": monthLabel.text = "Nov"
+        case "12": monthLabel.text = "Dec"
+        default: monthLabel.text = "Jan"
+        }
     }
 
     override func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {

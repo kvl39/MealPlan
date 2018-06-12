@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,29 +12,78 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HorizontalCollectionViewCell" rowHeight="175" id="KGk-i7-Jjw" customClass="HorizontalCollectionViewCell" customModule="MealPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="99" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="99" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="219.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAN-j3-80G">
-                        <rect key="frame" x="8" y="8" width="83" height="83.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="189.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-Fm-73o">
+                                <rect key="frame" x="150" y="10" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPk-qQ-QZD">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-Re-gb9">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qPk-qQ-QZD" secondAttribute="bottom" id="3g9-u5-PPy"/>
+                                    <constraint firstAttribute="trailing" secondItem="IqH-Re-gb9" secondAttribute="trailing" id="94M-Nq-0NY"/>
+                                    <constraint firstItem="IqH-Re-gb9" firstAttribute="top" secondItem="GTc-Fm-73o" secondAttribute="top" id="Fad-bL-SJ6"/>
+                                    <constraint firstAttribute="width" constant="40" id="Kwc-Fd-dXc"/>
+                                    <constraint firstAttribute="trailing" secondItem="qPk-qQ-QZD" secondAttribute="trailing" id="OQ4-n4-Fym"/>
+                                    <constraint firstAttribute="bottom" secondItem="IqH-Re-gb9" secondAttribute="bottom" id="Q1e-br-9bN"/>
+                                    <constraint firstItem="IqH-Re-gb9" firstAttribute="leading" secondItem="GTc-Fm-73o" secondAttribute="leading" id="VYm-MY-JTs"/>
+                                    <constraint firstItem="qPk-qQ-QZD" firstAttribute="top" secondItem="GTc-Fm-73o" secondAttribute="top" id="Zi2-Y1-gwS"/>
+                                    <constraint firstItem="qPk-qQ-QZD" firstAttribute="leading" secondItem="GTc-Fm-73o" secondAttribute="leading" id="g31-F6-2gs"/>
+                                    <constraint firstAttribute="height" constant="40" id="jWF-0n-VmN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GTc-Fm-73o" secondAttribute="trailing" constant="10" id="Sl8-ul-3VZ"/>
+                            <constraint firstItem="GTc-Fm-73o" firstAttribute="top" secondItem="PAN-j3-80G" secondAttribute="top" constant="10" id="eoq-PT-asO"/>
+                        </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olt-Km-QX7">
+                        <rect key="frame" x="0.0" y="189.5" width="200" height="30"/>
+                        <string key="text">joaidsjf;odsijf;oiadsjf;o
+dasf</string>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="PAN-j3-80G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jHW-hq-VYM"/>
-                    <constraint firstAttribute="trailing" secondItem="PAN-j3-80G" secondAttribute="trailing" constant="8" id="nbT-zO-tOl"/>
-                    <constraint firstAttribute="bottom" secondItem="PAN-j3-80G" secondAttribute="bottom" constant="8" id="vsA-fM-diz"/>
-                    <constraint firstItem="PAN-j3-80G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="y0H-j4-IF7"/>
+                    <constraint firstItem="olt-Km-QX7" firstAttribute="top" secondItem="PAN-j3-80G" secondAttribute="bottom" id="Huq-nj-Suh"/>
+                    <constraint firstItem="olt-Km-QX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iua-ZM-ZdK"/>
+                    <constraint firstItem="PAN-j3-80G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jHW-hq-VYM"/>
+                    <constraint firstAttribute="trailing" secondItem="PAN-j3-80G" secondAttribute="trailing" id="nbT-zO-tOl"/>
+                    <constraint firstAttribute="bottom" secondItem="olt-Km-QX7" secondAttribute="bottom" id="rUI-pL-7xZ"/>
+                    <constraint firstAttribute="bottom" secondItem="PAN-j3-80G" secondAttribute="bottom" constant="30" id="vsA-fM-diz"/>
+                    <constraint firstAttribute="trailing" secondItem="olt-Km-QX7" secondAttribute="trailing" id="xNF-eJ-AGA"/>
+                    <constraint firstItem="PAN-j3-80G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="y0H-j4-IF7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="RecipeNameLabel" destination="olt-Km-QX7" id="8k4-5A-gBM"/>
                 <outlet property="collectionViewCell" destination="PAN-j3-80G" id="w6W-s0-3SH"/>
+                <outlet property="deleteButton" destination="qPk-qQ-QZD" id="8bu-Nm-cz3"/>
+                <outlet property="deleteButtonView" destination="GTc-Fm-73o" id="1B7-v9-cZz"/>
+                <outlet property="deleteImageView" destination="IqH-Re-gb9" id="AKA-Kq-9Kg"/>
             </connections>
-            <point key="canvasLocation" x="-71.5" y="149.5"/>
+            <point key="canvasLocation" x="-72" y="149"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="delete" width="512" height="512"/>
+    </resources>
 </document>

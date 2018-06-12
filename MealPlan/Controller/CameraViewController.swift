@@ -15,11 +15,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var previewLayer: CALayer!
     var captureDevice: AVCaptureDevice!
     var isTakePhoto = false
-    var filter: CIFilter? = CIFilter(name: "CIColorInvert")//CIFilter!
+    var filter: CIFilter? = CIFilter(name: "CIBokehBlur")//CIFilter!
     var popupButtonManager = PopupButtonManager()
     var popupButtons = [UIButton]()
     var selectedDate = ""
     var drawCameraLineManager = DrawCameraLineManager()
+    var focusFilterButton = UIButton()
+    var blackFilterButton = UIButton()
+    var lightFilterButton = UIButton()
+    var filterButtonsIsShown = false
     lazy var context: CIContext = {
         if let eaglContext = EAGLContext(api: EAGLRenderingAPI.openGLES2){
             let options = [kCIContextWorkingColorSpace: NSNull()]
@@ -39,6 +43,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureViewWillAppear()
+    }
+    
+    func configureViewWillAppear() {
         prepareCamera()
         moveButtonsToFront()
         configureCameraLines()
@@ -90,35 +98,64 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     func configureButtons() {
-        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 30, y: self.view.frame.height-80, width: 60, height: 60))
+        let takePhotoButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 30, y: self.view.frame.height-80-120, width: 60, height: 60))
         takePhotoButton.addTarget(self, action: #selector(takePhoto(_:)), for: .touchUpInside)
         self.view.addSubview(takePhotoButton)
         takePhotoButton.setImage(#imageLiteral(resourceName: "shutter"), for: .normal)
+        takePhotoButton.tintColor = UIColor(red: 249/255.0, green: 168/255.0, blue: 37/255.0, alpha: 1)
         self.view.bringSubview(toFront: takePhotoButton)
         
-        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85, width: 50, height: 50))
+        let cancelButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height-85-120+10, width: 40, height: 40))
         cancelButton.addTarget(self, action: #selector(cancel(_:)), for: .touchUpInside)
         cancelButton.setImage(#imageLiteral(resourceName: "back"), for: .normal)
         self.view.addSubview(cancelButton)
         self.view.bringSubview(toFront: cancelButton)
+        cancelButton.alpha = 0
         
-        let focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130, width: 30, height: 30))
+        let filterButton = UIButton(frame: CGRect(x: self.view.frame.width - 20 - 60, y: self.view.frame.height-85-120+10, width: 40, height: 40))
+        filterButton.addTarget(self, action: #selector(filterButtonDidPressed(_:)), for: .touchUpInside)
+        filterButton.setImage(#imageLiteral(resourceName: "instagram"), for: .normal)
+        self.view.addSubview(filterButton)
+        self.view.bringSubview(toFront: filterButton)
+        filterButton.alpha = 0
+        
+        focusFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 115, y: self.view.frame.height-130-120, width: 30, height: 30))
         focusFilterButton.addTarget(self, action: #selector(popupButton1Action(_:)), for: .touchUpInside)
         focusFilterButton.setImage(#imageLiteral(resourceName: "focus"), for: .normal)
         self.view.addSubview(focusFilterButton)
         self.view.bringSubview(toFront: focusFilterButton)
+        focusFilterButton.alpha = 0
         
-        let blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130, width: 30, height: 30))
+        blackFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 - 15, y: self.view.frame.height-130-120, width: 30, height: 30))
         blackFilterButton.addTarget(self, action: #selector(popupButton2Action(_:)), for: .touchUpInside)
         blackFilterButton.setImage(#imageLiteral(resourceName: "two-circles-sign-one-black-other-white"), for: .normal)
         self.view.addSubview(blackFilterButton)
         self.view.bringSubview(toFront: blackFilterButton)
+        blackFilterButton.alpha = 0
         
-        let lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130, width: 30, height: 30))
+        lightFilterButton = UIButton(frame: CGRect(x: self.view.frame.width/2 + 85, y: self.view.frame.height-130-120, width: 30, height: 30))
         lightFilterButton.addTarget(self, action: #selector(popupButton3Action(_:)), for: .touchUpInside)
         lightFilterButton.setImage(#imageLiteral(resourceName: "light-bulb"), for: .normal)
         self.view.addSubview(lightFilterButton)
         self.view.bringSubview(toFront: lightFilterButton)
+        lightFilterButton.alpha = 0
+    }
+    
+    @objc func filterButtonDidPressed(_ sender: UIButton) {
+        if self.filterButtonsIsShown {
+            UIView.animate(withDuration: 0.3) {
+                self.focusFilterButton.alpha = 0
+                self.blackFilterButton.alpha = 0
+                self.lightFilterButton.alpha = 0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.focusFilterButton.alpha = 1
+                self.blackFilterButton.alpha = 1
+                self.lightFilterButton.alpha = 1
+            }
+        }
+        self.filterButtonsIsShown = !self.filterButtonsIsShown
     }
     
     @objc func cancel(_ sender: UIButton) {
@@ -140,7 +177,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func beginSession() {
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession.addInput(captureDeviceInput)
+            if captureSession.inputs.isEmpty {
+                captureSession.addInput(captureDeviceInput)
+            }
         } catch {
             print(error.localizedDescription)
         }
@@ -149,7 +188,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         self.previewLayer = CALayer()
         
         previewLayer.bounds = CGRect(x: 0, y: 0, width: self.view.frame.height-150, height: self.view.frame.size.width)
-        
+        print("camera view height:\(self.view.frame.height)")
         //previewLayer.position = CGPoint(x: self.view.frame.size.width / 2.0, y: self.view.frame.size.height / 2.0)
         
         
@@ -178,6 +217,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             var outputImage = CIImage(cvPixelBuffer: imageBuffer)
             if let filter = filter {
                 filter.setValue(outputImage, forKey: kCIInputImageKey)
+                filter.setValue(2, forKey: kCIInputRadiusKey)
+                filter.setValue(10, forKey: "inputRingAmount")
+                filter.setValue(5, forKey: "inputRingSize")
+                filter.setValue(1, forKey: "inputSoftness")
+                /// - parameter inputRadius: The radius determines how many pixels are used to create the blur. The larger the radius, the blurrier the result. defaultValue = 20.
+                /// - parameter inputRingAmount: The amount of extra emphasis at the ring of the bokeh. defaultValue = 0.
+                /// - parameter inputRingSize: The size of extra emphasis at the ring of the bokeh defaultValue = 0.1.
+                /// - parameter inputSoftness:  defaultValue = 1.
                 if let filterOutputImage = filter.outputImage {
                     outputImage = filterOutputImage
                 }
@@ -190,17 +237,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             if isTakePhoto {
                 isTakePhoto = false
-                
-                if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
-                    let photoVC = UIStoryboard(name: "MealPlan", bundle: nil).instantiateViewController(withIdentifier: "PhotoVC") as! PhotoViewController
-                    photoVC.takenPhoto = image
-                    photoVC.selectedDate = self.selectedDate
-                    DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(photoVC, animated: true)
+                if let parentVC = self.parent as? CreateRecipeStepsViewController {
+                    if let image = self.getImageFromSampleBuffer(cgImage: cgImage) {
+                        parentVC.capturedPhoto = image
+                        DispatchQueue.main.async {
+                            parentVC.scrollToRight()
+                            parentVC.updatePhotoView()
+                        }
                         self.stopCaptureSession()
-//                        self.present(photoVC, animated: true, completion: {
-//                            self.stopCaptureSession()
-//                        })
                     }
                 }
             }
