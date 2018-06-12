@@ -8,7 +8,14 @@ Zesty Plan
 * The App is available in App Store: [Zesty Plan](https://itunes.apple.com/tw/app/zesty-plan/id1390442104?mt=8)
 
 ## Features & ScreenShots
-<img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMB_ehsHYe.GIF" width="200" height="356" />
+* Which do you prefer? 
+    * The cards are recommended by other users. By sliding cards, you can always find the recipes you like. Then, you can add those recipes into your daily plans.
+    <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMB_ehsHYe.GIF" width="200" height="356" />
+* Choose recipes by ingredients
+    * For ingredients at hand, you can find related recipes. You can get the ingredients, nutrients and cooking steps of the recipes. You can add the recipes  that you interested in into your daily plans as well.
+* Check your everyday meal plan in one place
+    * You can check your daily plans in the calendar in an elegant way. For the recipe details, you can click each item in your plan. You can also share your favorite recipes with others.
+
 
 ## Libraries
 * JTAppleCalendar
