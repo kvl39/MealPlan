@@ -19,11 +19,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4F-Od-B9v">
-                        <rect key="frame" x="10" y="10" width="300" height="55.5"/>
+                        <rect key="frame" x="7" y="10" width="303" height="55.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrY-m1-bty">
-                                <rect key="frame" x="8" y="2" width="284" height="51"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="7" y="2" width="288" height="51"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -31,7 +31,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LrY-m1-bty" secondAttribute="trailing" constant="8" id="BJ1-LA-lpF"/>
-                            <constraint firstItem="LrY-m1-bty" firstAttribute="leading" secondItem="x4F-Od-B9v" secondAttribute="leading" constant="8" id="Okk-V1-Rzq"/>
+                            <constraint firstItem="LrY-m1-bty" firstAttribute="leading" secondItem="x4F-Od-B9v" secondAttribute="leading" constant="7" id="Okk-V1-Rzq"/>
                             <constraint firstItem="LrY-m1-bty" firstAttribute="top" secondItem="x4F-Od-B9v" secondAttribute="top" constant="2" id="XEU-lc-B1a"/>
                             <constraint firstAttribute="bottom" secondItem="LrY-m1-bty" secondAttribute="bottom" constant="2" id="a8A-yv-ZYa"/>
                         </constraints>
@@ -42,7 +42,7 @@
                     <constraint firstAttribute="bottom" secondItem="x4F-Od-B9v" secondAttribute="bottom" constant="10" id="ABL-1L-3Os"/>
                     <constraint firstAttribute="trailing" secondItem="x4F-Od-B9v" secondAttribute="trailing" constant="10" id="SS1-uF-WYJ"/>
                     <constraint firstItem="x4F-Od-B9v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="cOA-8j-pHI"/>
-                    <constraint firstItem="x4F-Od-B9v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zFT-Y4-4ib"/>
+                    <constraint firstItem="x4F-Od-B9v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="zFT-Y4-4ib"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

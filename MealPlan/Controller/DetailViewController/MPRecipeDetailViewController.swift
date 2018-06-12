@@ -97,6 +97,9 @@ class MPRecipeDetailViewController: MPTableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.originTableViewY = self.recipeDetailTableView.frame.origin.y
+//        self.recipeDetailTableView.tableHeaderView?.frame.size = CGSize(width: self.recipeDetailTableView.tableHeaderView?.frame.width, height: 30)
+        
+        
     }
     
     
