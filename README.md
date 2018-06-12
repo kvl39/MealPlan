@@ -11,11 +11,15 @@ Zesty Plan
 * Which do you prefer? 
     * The cards are recommended by other users. By sliding cards, you can always find the recipes you like. Then, you can add those recipes into your daily plans.
     <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMB_ehsHYe.GIF" width="200" height="356" />
+    <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0107.PNG" width="200" height="356" />
 * Choose recipes by ingredients
     * For ingredients at hand, you can find related recipes. You can get the ingredients, nutrients and cooking steps of the recipes. You can add the recipes  that you interested in into your daily plans as well.
+    <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0104.PNG" width="200" height="356" />
+    <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0105.PNG" width="200" height="356" />
+    <img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0106.PNG" width="200" height="356" />
 * Check your everyday meal plan in one place
     * You can check your daily plans in the calendar in an elegant way. For the recipe details, you can click each item in your plan. You can also share your favorite recipes with others.
-
+<img src="https://github.com/kvl39/MealPlan/blob/master/ScreenShots/IMG_0108.PNG" width="200" height="356" />
 
 ## Libraries
 * JTAppleCalendar
